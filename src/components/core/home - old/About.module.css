@@ -1,0 +1,309 @@
+/* ===========================
+   ABOUT / MISSION — dpworld.com style
+   =========================== */
+
+.about {
+  background: #0d1526;
+  overflow: hidden;
+}
+
+.layout {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 640px;
+}
+
+/* ── Image Column ── */
+
+.imageCol {
+  position: relative;
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.imageCol.slideInLeft {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.imgWrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  overflow: hidden;
+}
+
+.img {
+  object-fit: cover;
+}
+
+.imgOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(13, 21, 38, 0.35) 0%,
+    transparent 60%
+  );
+}
+
+/* Red corner accent (top-right of image) */
+.cornerAccent {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+}
+
+.cornerH {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  background: #e4002b;
+}
+
+.cornerV {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: #e4002b;
+}
+
+/* Floating badge */
+.badge {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 2rem;
+  z-index: 3;
+  background: rgba(10, 15, 30, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 3px solid #e4002b;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  border-radius: 2px;
+  min-width: 230px;
+}
+
+.badgeIcon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(228, 0, 43, 0.3);
+  background: rgba(228, 0, 43, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badgeText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.badgeTitle {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+
+.badgeSub {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* ── Text Column ── */
+
+.textCol {
+  position: relative;
+  padding: clamp(3rem, 6vw, 5rem) clamp(2rem, 5vw, 4.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.25rem;
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.7s 0.15s ease, transform 0.7s 0.15s ease;
+}
+
+.textCol.slideInRight {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.redLine {
+  width: 3px;
+  height: 60px;
+  background: #e4002b;
+  border-radius: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.sectionLabel {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #e4002b;
+  font-family: "Barlow Condensed", sans-serif;
+}
+
+.heading {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.body {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.58);
+  line-height: 1.75;
+  max-width: 480px;
+}
+
+/* Mini stats row */
+.miniStats {
+  display: flex;
+  gap: 2rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  margin: 0.25rem 0;
+}
+
+.miniStat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.miniValue {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+}
+
+.miniLabel {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.06em;
+  font-weight: 500;
+}
+
+/* CTAs */
+.ctaRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.ctaPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.6rem;
+  background: #e4002b;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: 2px;
+  transition: background 0.2s, gap 0.2s, transform 0.2s;
+}
+
+.ctaPrimary:hover {
+  background: #c40025;
+  gap: 0.7rem;
+  transform: translateY(-1px);
+}
+
+.ctaGhost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.73rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: 2px;
+  transition: border-color 0.2s, color 0.2s, gap 0.2s;
+}
+
+.ctaGhost:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #fff;
+  gap: 0.7rem;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 1024px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .imgWrap {
+    min-height: 400px;
+    aspect-ratio: 16 / 9;
+  }
+
+  .imageCol {
+    transform: translateY(-24px);
+  }
+
+  .imageCol.slideInLeft {
+    transform: translateY(0);
+  }
+
+  .textCol {
+    transform: translateY(24px);
+  }
+
+  .textCol.slideInRight {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .textCol {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .miniStats {
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    left: 1rem;
+    bottom: 1rem;
+    min-width: unset;
+  }
+}

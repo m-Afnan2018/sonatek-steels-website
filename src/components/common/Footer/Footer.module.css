@@ -1,0 +1,255 @@
+/* ================================
+   FOOTER — exact match
+   Deep purple gradient bg,
+   5-col link grid, bottom legal bar
+   ================================ */
+
+.footer {
+    font-family: "Barlow", "DM Sans", -apple-system, sans-serif;
+    background: linear-gradient(135deg,
+            #1e1a6e 0%,
+            #2d2a8e 30%,
+            #3535a8 60%,
+            #2a2d9e 80%,
+            #232070 100%);
+    width: 100%;
+}
+
+/* ================================
+   MAIN SECTION
+   ================================ */
+
+.main {
+    padding: 4rem 0 3.5rem;
+}
+
+.inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 3rem;
+    display: flex;
+    gap: 3.5rem;
+    align-items: flex-start;
+}
+
+/* ── Logo column ── */
+.logoCol {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+    width: 140px;
+    padding-top: 0.25rem;
+}
+
+.swoosh {
+    display: block;
+}
+
+.logoText {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.12em;
+    font-family: "Barlow", sans-serif;
+}
+
+/* ── Columns grid ── */
+.cols {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* Column heading */
+.colHeading {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 0 0 0.25rem 0;
+    font-family: "Barlow", sans-serif;
+}
+
+/* Link list */
+.linkList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.link {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    font-weight: 400;
+    line-height: 1.4;
+    transition: color 0.18s ease;
+}
+
+.link:hover {
+    color: #ffffff;
+}
+
+/* ================================
+   BOTTOM BAR
+   ================================ */
+
+.bottomBar {
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 1.1rem 0;
+}
+
+.bottomInner {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+/* Legal links */
+.legalLinks {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.1rem;
+}
+
+.legalItem {
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+}
+
+.pipe {
+    color: rgba(255, 255, 255, 0.25);
+    font-size: 0.72rem;
+    padding: 0 0.4rem;
+    user-select: none;
+}
+
+.legalLink {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.55);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.18s ease;
+}
+
+.legalLink:hover {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Social icons */
+.socials {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    flex-shrink: 0;
+}
+
+.socialBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.socialBtn:hover {
+    background: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* ================================
+   RESPONSIVE
+   ================================ */
+
+@media (max-width: 1100px) {
+    .cols {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem 1rem;
+    }
+
+    .inner {
+        gap: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .main {
+        padding: 3rem 0 2.5rem;
+    }
+
+    .inner {
+        flex-direction: column;
+        padding: 0 1.5rem;
+        gap: 2rem;
+    }
+
+    .logoCol {
+        width: auto;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .cols {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem 1.5rem;
+        width: 100%;
+    }
+
+    .bottomInner {
+        padding: 0 1.5rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cols {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem 1rem;
+    }
+
+    .inner {
+        padding: 0 1.25rem;
+    }
+
+    .bottomInner {
+        padding: 0 1.25rem;
+    }
+
+    .legalLinks {
+        gap: 0.25rem 0;
+    }
+
+    .pipe {
+        padding: 0 0.25rem;
+    }
+}

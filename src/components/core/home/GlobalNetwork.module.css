@@ -1,0 +1,159 @@
+/* ================================
+   GLOBAL NETWORK — exact match
+   White bg, centered video,
+   scroll-driven scale effect
+   ================================ */
+
+.section {
+    background: #ffffff;
+    width: 100%;
+    padding: 5.5rem 0 5rem;
+    font-family: "Barlow", "DM Sans", -apple-system, sans-serif;
+    overflow: hidden;
+}
+
+.inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+}
+
+/* ── Header ── */
+.header {
+    text-align: center;
+    padding: 0 2rem;
+    margin-bottom: 2.25rem;
+}
+
+.label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #333333;
+    margin: 0 0 0.85rem 0;
+}
+
+.headline {
+    font-size: clamp(2rem, 4.5vw, 3.8rem);
+    font-weight: 800;
+    color: #111111;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+    margin: 0;
+    font-family: "Barlow", sans-serif;
+}
+
+/* ── Video outer — controls horizontal margins ── */
+/*
+  The video doesn't go full-bleed.
+  It has ~8% left/right margin from the viewport.
+  Scale transform origin is center so it grows/shrinks symmetrically.
+*/
+.videoOuter {
+    width: 100%;
+    padding: 0 8%;
+    /* overflow visible so scale doesn't clip */
+}
+
+.videoWrap {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    transform-origin: center center;
+    /* transition is set inline via JS for smoothness */
+    will-change: transform;
+}
+
+.video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+/* ── Footer ── */
+.footer {
+    text-align: center;
+    padding: 2.5rem 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.sub {
+    font-size: clamp(0.875rem, 1.2vw, 0.975rem);
+    color: #444444;
+    line-height: 1.65;
+    max-width: 580px;
+    margin: 0;
+    font-weight: 400;
+}
+
+.cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #3d37b0;
+    text-decoration: none;
+    transition: gap 0.2s ease, color 0.2s ease;
+}
+
+.cta:hover {
+    gap: 0.8rem;
+    color: #2a2490;
+}
+
+.cta svg {
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+}
+
+.cta:hover svg {
+    transform: translateX(3px);
+}
+
+/* ================================
+   RESPONSIVE
+   ================================ */
+
+@media (max-width: 768px) {
+    .section {
+        padding: 4rem 0 3.5rem;
+    }
+
+    .videoOuter {
+        padding: 0 4%;
+    }
+
+    .headline {
+        font-size: clamp(1.75rem, 7vw, 2.8rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .section {
+        padding: 3rem 0 3rem;
+    }
+
+    .videoOuter {
+        /* Nearly full width on small screens */
+        padding: 0 1.25rem;
+    }
+
+    .headline {
+        font-size: clamp(1.6rem, 8vw, 2.4rem);
+    }
+
+    .sub {
+        font-size: 0.875rem;
+    }
+}

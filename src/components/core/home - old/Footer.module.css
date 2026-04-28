@@ -1,0 +1,349 @@
+/* ===========================
+   FOOTER — dpworld.com style
+   =========================== */
+
+.footer {
+  background: #060c1a;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* ── Top Section ── */
+
+.top {
+  padding: 5rem 0 4rem;
+}
+
+.inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 4vw, 3rem);
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.8fr;
+  gap: 3rem;
+}
+
+/* ── Brand Col ── */
+
+.brandCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  width: fit-content;
+  transition: opacity 0.2s;
+}
+
+.logo:hover {
+  opacity: 0.85;
+}
+
+.logoBadge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e4002b;
+  padding: 0.28rem 0.55rem;
+  border-radius: 2px;
+}
+
+.logoDP {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+.logoWorld {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.18em;
+  line-height: 1;
+}
+
+.tagline {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  font-family: "Barlow Condensed", sans-serif;
+}
+
+.brandDesc {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.7;
+  max-width: 280px;
+}
+
+/* Socials */
+.socials {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+.socialBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.45);
+  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.socialBtn:hover {
+  background: #e4002b;
+  border-color: #e4002b;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ── Link Columns ── */
+
+.linkCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.colHeading {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: "Barlow Condensed", sans-serif;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.linkList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.footLink {
+  font-size: 0.83rem;
+  color: rgba(255, 255, 255, 0.42);
+  padding: 0.3rem 0;
+  transition: color 0.2s, padding-left 0.2s;
+  display: block;
+}
+
+.footLink:hover {
+  color: rgba(255, 255, 255, 0.85);
+  padding-left: 0.4rem;
+}
+
+/* ── Connect Col ── */
+
+.connectCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.address {
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.address p {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.5;
+}
+
+.contactLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.contactLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.42);
+  transition: color 0.2s;
+}
+
+.contactLink:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Newsletter */
+.newsletter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.newsletterLabel {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.35);
+  font-family: "Barlow Condensed", sans-serif;
+}
+
+.newsletterForm {
+  display: flex;
+  gap: 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.newsletterForm:focus-within {
+  border-color: rgba(228, 0, 43, 0.4);
+}
+
+.emailInput {
+  flex: 1;
+  min-width: 0;
+  padding: 0.65rem 0.9rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: none;
+  outline: none;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: "Barlow", sans-serif;
+  caret-color: #e4002b;
+}
+
+.emailInput::placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.subscribeBtn {
+  padding: 0.65rem 1rem;
+  background: #e4002b;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  font-family: "Barlow", sans-serif;
+  cursor: pointer;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.subscribeBtn:hover {
+  background: #c40025;
+}
+
+/* ── Bottom Bar ── */
+
+.bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 1.25rem 0;
+}
+
+.bottomInner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 4vw, 3rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.copyright {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.legalLinks {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.legalLink {
+  font-size: 0.73rem;
+  color: rgba(255, 255, 255, 0.25);
+  transition: color 0.2s;
+}
+
+.legalLink:hover {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.dot {
+  color: rgba(255, 255, 255, 0.15);
+  font-size: 0.8rem;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 1200px) {
+  .inner {
+    grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  .brandCol {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .brandDesc {
+    max-width: 360px;
+  }
+}
+
+@media (max-width: 640px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .brandCol {
+    grid-column: 1;
+    flex-direction: column;
+  }
+
+  .top {
+    padding: 3.5rem 0 3rem;
+  }
+
+  .bottomInner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+}

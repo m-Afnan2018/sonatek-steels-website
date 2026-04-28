@@ -1,0 +1,598 @@
+/* ===========================
+   HERO — dpworld.com style
+   =========================== */
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100svh;
+    min-height: 620px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    font-family: "Barlow", "DM Sans", sans-serif;
+    background: #060c1a;
+}
+
+/* ========== BACKGROUND ========== */
+
+.bgStack {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.bgLayer {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    will-change: opacity, transform;
+}
+
+.bgLayerActive {
+    opacity: 1;
+    transform: scale(1.04);
+    animation: kenBurns 7s ease-out forwards;
+}
+
+.bgLayerIn {
+    opacity: 0;
+    transform: scale(1.08);
+    animation: slideIn 0.7s ease forwards;
+}
+
+.bgLayerOut {
+    opacity: 1;
+    animation: slideOut 0.7s ease forwards;
+    z-index: 1;
+}
+
+@keyframes kenBurns {
+    from {
+        transform: scale(1.05);
+    }
+
+    to {
+        transform: scale(1.0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: scale(1.06);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.04);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+/* Layered gradient — left dark, right lighter */
+.overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(105deg,
+            rgba(5, 10, 25, 0.88) 0%,
+            rgba(5, 10, 25, 0.65) 45%,
+            rgba(5, 10, 25, 0.25) 100%);
+    z-index: 2;
+}
+
+/* Diagonal red bar — bottom left decoration */
+.diagonalAccent {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 480px;
+    height: 5px;
+    background: #E4002B;
+    z-index: 3;
+    transform-origin: left center;
+}
+
+/* Subtle noise overlay for texture */
+.noise {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    pointer-events: none;
+}
+
+/* ========== CONTENT ========== */
+
+.content {
+    position: relative;
+    z-index: 10;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    padding-top: 104px;
+    /* offset for fixed navbar */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 780px;
+    padding-left: clamp(1.5rem, 5vw, 7rem);
+}
+
+/* Label pill */
+.labelPill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(228, 0, 43, 0.15);
+    border: 1px solid rgba(228, 0, 43, 0.4);
+    color: #ff6b6b;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.9rem;
+    border-radius: 2px;
+    width: fit-content;
+    animation: fadeUp 0.55s ease both;
+}
+
+.labelDot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #E4002B;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.4;
+        transform: scale(0.7);
+    }
+}
+
+/* Headline */
+.headline {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    line-height: 1.0;
+}
+
+.headlineLine {
+    display: block;
+    font-size: clamp(3rem, 7vw, 6.5rem);
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    font-family: "Barlow Condensed", "Barlow", sans-serif;
+    animation: fadeUp 0.55s ease both;
+    /* staggered via inline style */
+}
+
+.headlineLine:last-child {
+    color: #E4002B;
+    -webkit-text-stroke: 0px;
+}
+
+/* Sub */
+.sub {
+    margin: 0;
+    font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.65;
+    max-width: 520px;
+    font-weight: 400;
+    animation: fadeUp 0.55s 0.25s ease both;
+}
+
+/* CTAs */
+.ctaRow {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    animation: fadeUp 0.55s 0.35s ease both;
+}
+
+.ctaPrimary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 2rem;
+    background: #E4002B;
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.2s, gap 0.2s;
+}
+
+.ctaPrimary:hover {
+    background: #c00025;
+    transform: translateY(-2px);
+    gap: 0.9rem;
+}
+
+.ctaSecondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s, gap 0.2s;
+}
+
+.ctaSecondary:hover {
+    color: #fff;
+    gap: 1rem;
+}
+
+.playIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    transition: border-color 0.2s, background 0.2s;
+    flex-shrink: 0;
+}
+
+.ctaSecondary:hover .playIcon {
+    border-color: #E4002B;
+    background: rgba(228, 0, 43, 0.15);
+}
+
+/* ========== SLIDE CONTROLS ========== */
+
+.controls {
+    position: absolute;
+    bottom: 3rem;
+    left: clamp(1.5rem, 5vw, 7rem);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.arrowBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s, color 0.2s;
+}
+
+.arrowBtn:hover {
+    border-color: #E4002B;
+    background: rgba(228, 0, 43, 0.15);
+    color: #fff;
+}
+
+.dots {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.2s, transform 0.2s, width 0.3s;
+}
+
+.dotActive {
+    background: #E4002B;
+    width: 22px;
+    border-radius: 3px;
+}
+
+/* Auto-progress bar */
+.progressBar {
+    position: absolute;
+    bottom: -1.5rem;
+    left: 0;
+    width: 120px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progressFill {
+    height: 100%;
+    background: #E4002B;
+    border-radius: 2px;
+    animation: progress 6s linear forwards;
+}
+
+@keyframes progress {
+    from {
+        width: 0%;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+/* ========== COUNTER ========== */
+
+.counter {
+    position: absolute;
+    bottom: 3rem;
+    right: 2.5rem;
+    z-index: 10;
+    display: flex;
+    align-items: baseline;
+    gap: 0.25rem;
+    font-family: "Barlow Condensed", "Barlow", sans-serif;
+}
+
+.counterCurrent {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+}
+
+.counterSep {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.3);
+    margin: 0 0.1rem;
+}
+
+.counterTotal {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 500;
+}
+
+/* ========== SCROLL INDICATOR ========== */
+
+.scrollIndicator {
+    position: absolute;
+    right: 2.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.scrollLabel {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.35);
+    writing-mode: vertical-rl;
+}
+
+.scrollLine {
+    width: 1.5px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+}
+
+.scrollDot {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    background: #E4002B;
+    border-radius: 2px;
+    animation: scrollAnim 2s ease-in-out infinite;
+}
+
+@keyframes scrollAnim {
+    0% {
+        top: -30%;
+    }
+
+    100% {
+        top: 130%;
+    }
+}
+
+/* ========== VIDEO MODAL ========== */
+
+.videoModal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.25s ease;
+}
+
+.videoBox {
+    position: relative;
+    width: min(860px, 92vw);
+    aspect-ratio: 16 / 9;
+    background: #0a0f1e;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.7);
+}
+
+.closeBtn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 2;
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.closeBtn:hover {
+    background: #E4002B;
+    border-color: #E4002B;
+}
+
+.videoPlaceholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.videoPlaceholderInner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.85rem;
+}
+
+/* ========== KEYFRAMES ========== */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(28px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 768px) {
+    .hero {
+        min-height: 100svh;
+        align-items: flex-end;
+    }
+
+    .content {
+        padding: 0 1.5rem 6rem;
+        padding-top: 80px;
+        max-width: 100%;
+    }
+
+    .headlineLine {
+        font-size: clamp(2.8rem, 12vw, 4.5rem);
+    }
+
+    .sub {
+        font-size: 0.9rem;
+    }
+
+    .ctaRow {
+        gap: 1rem;
+    }
+
+    .ctaPrimary {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.8rem;
+    }
+
+    .controls {
+        bottom: 2rem;
+        left: 1.5rem;
+    }
+
+    .counter {
+        bottom: 2rem;
+        right: 1.5rem;
+    }
+
+    .counterCurrent {
+        font-size: 1.75rem;
+    }
+
+    .scrollIndicator {
+        display: none;
+    }
+
+    .diagonalAccent {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .headlineLine {
+        font-size: clamp(2.4rem, 13vw, 3.5rem);
+    }
+
+    .ctaSecondary {
+        font-size: 0.78rem;
+    }
+}
