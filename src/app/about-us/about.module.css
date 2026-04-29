@@ -1,0 +1,383 @@
+/* ================================
+   ABOUT US PAGE STYLES
+   ================================ */
+
+.main {
+    font-family: "Barlow", "DM Sans", -apple-system, sans-serif;
+    color: #111111;
+    background: #ffffff;
+    overflow-x: hidden;
+}
+
+/* ================================
+   HERO SECTION
+   ================================ */
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    align-items: end;
+    padding: 3rem 5%;
+    background-color: #0b101e;
+    overflow: hidden;
+}
+
+.heroBg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0.8;
+}
+.heroOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 100%);
+    z-index: 1;
+}
+
+.heroContent {
+    position: relative;
+    z-index: 2;
+    max-width: 1250px;
+    width: 100%;
+    color: #ffffff;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.breadcrumb {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    opacity: 0.8;
+}
+
+.heroTitle {
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    max-width: 800px;
+    text-transform: uppercase;
+}
+
+.heroDesc {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.primaryBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3d37b0;
+    color: #ffffff;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 999px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.primaryBtn:hover {
+    background-color: #2a2490;
+    transform: translateY(-2px);
+}
+
+/* ================================
+   INTRO SECTION
+   ================================ */
+.intro {
+    padding: 6rem 5%;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.sectionLabel {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #3d37b0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.introTitle {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+    color: #111111;
+}
+
+.introDesc {
+    font-size: 1.125rem;
+    color: #555555;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+}
+
+.outlineBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    color: #3d37b0;
+    padding: 0.875rem 2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 50px;
+    border: 2px solid #3d37b0;
+    transition: all 0.3s ease;
+}
+
+.outlineBtn:hover {
+    background-color: #3d37b0;
+    color: #ffffff;
+}
+
+/* ================================
+   VIDEO SECTION
+   ================================ */
+.videoSection {
+    padding: 2rem 5% 6rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.videoTitle {
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+    line-height: 1.1;
+}
+
+.videoWrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 7;
+    background-color: #eee;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.videoImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.videoWrapper:hover .videoImage {
+    transform: scale(1.03);
+}
+
+.playBtn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background-color: rgba(61, 55, 176, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    z-index: 2;
+}
+
+.videoWrapper:hover .playBtn {
+    transform: translate(-50%, -50%) scale(1.1);
+    background-color: rgba(61, 55, 176, 1);
+}
+
+.playIcon {
+    width: 30px;
+    height: 30px;
+    fill: #ffffff;
+    margin-left: 5px;
+}
+
+.videoDesc {
+    margin-top: 3rem;
+    font-size: 1.125rem;
+    color: #555555;
+    line-height: 1.8;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ================================
+   ALTERNATING SECTIONS
+   ================================ */
+.alternatingSection {
+    padding: 5rem 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.alternatingSection.reverse {
+    flex-direction: row-reverse;
+}
+
+.altContent {
+    flex: 1;
+    max-width: 500px;
+}
+
+.altTitle {
+    font-size: clamp(2rem, 3vw, 2.5rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    color: #111111;
+}
+
+.altDesc {
+    font-size: 1.125rem;
+    color: #555555;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.altImageWrap {
+    flex: 1;
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.altImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.alternatingSection:hover .altImage {
+    transform: scale(1.05);
+}
+
+/* ================================
+   JOIN TEAM SECTION
+   ================================ */
+.joinTeam {
+    padding: 6rem 5%;
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    max-width: 100%;
+    margin: 4rem auto 0;
+}
+
+.joinTeamInner {
+    max-width: 1300px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+}
+
+.joinTitle {
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    font-weight: 800;
+    color: #111111;
+    flex: 1;
+    max-width: 600px;
+}
+
+.joinContent {
+    flex: 1;
+    max-width: 500px;
+}
+
+.joinDesc {
+    font-size: 1.125rem;
+    color: #555555;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+/* ================================
+   RESPONSIVE
+   ================================ */
+@media (max-width: 992px) {
+    .alternatingSection,
+    .alternatingSection.reverse {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 3rem;
+    }
+
+    .altContent {
+        max-width: 100%;
+    }
+
+    .altImageWrap {
+        width: 100%;
+    }
+
+    .joinTeamInner {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .joinTitle {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 6rem 5% 4rem;
+        min-height: 60vh;
+    }
+    
+    .videoWrapper {
+        aspect-ratio: 16 / 9;
+    }
+
+    .playBtn {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .playIcon {
+        width: 20px;
+        height: 20px;
+    }
+}

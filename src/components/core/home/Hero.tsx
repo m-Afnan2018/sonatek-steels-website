@@ -34,7 +34,7 @@ export default function Hero() {
             Using a free sample port/logistics video for demo.
           */}
                     <source
-                        src="https://www.w3schools.com/html/mov_bbb.mp4"
+                        src="https://cdn.pixabay.com/video/2021/02/05/64212-509543056_large.mp4"
                         type="video/mp4"
                     />
                 </video>

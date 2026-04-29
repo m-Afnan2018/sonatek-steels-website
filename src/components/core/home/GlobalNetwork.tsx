@@ -90,7 +90,7 @@ export default function GlobalNetwork() {
                             aria-label="Global network video"
                         >
                             <source
-                                src="https://www.w3schools.com/html/mov_bbb.mp4"
+                                src="https://cdn.pixabay.com/video/2025/09/22/305657_large.mp4"
                                 type="video/mp4"
                             />
                         </video>
