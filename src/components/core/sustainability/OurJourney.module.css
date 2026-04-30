@@ -1,0 +1,140 @@
+.section {
+  padding: 100px 0;
+  background-color: #ffffff;
+  color: #111;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 60px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 30px;
+}
+
+.headerText {
+  max-width: 600px;
+}
+
+.title {
+  font-family: var(--font-pilat-wide, 'Inter', sans-serif);
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.description {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 24px;
+  border: 1px solid #111;
+  border-radius: 30px;
+  color: #111;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  background-color: #111;
+  color: #fff;
+}
+
+.btnIcon {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s ease;
+}
+
+.btn:hover .btnIcon {
+  transform: translateX(4px);
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.itemReverse {
+  flex-direction: row-reverse;
+}
+
+.content {
+  flex: 1;
+}
+
+.itemTitle {
+  font-family: var(--font-pilat-wide, 'Inter', sans-serif);
+  font-size: 2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+
+.itemDes {
+  font-size: 1.1rem;
+  color: #444;
+  line-height: 1.7;
+}
+
+.itemDes p {
+  margin-bottom: 16px;
+}
+
+.imageWrap {
+  flex: 1;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  aspect-ratio: 4 / 3;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.item:hover .image {
+  transform: scale(1.03);
+}
+
+@media (max-width: 900px) {
+  .item, .itemReverse {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .header {
+    flex-direction: column;
+    gap: 20px;
+  }
+}

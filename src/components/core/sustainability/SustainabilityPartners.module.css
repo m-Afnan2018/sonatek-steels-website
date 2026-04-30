@@ -1,0 +1,85 @@
+.section {
+  padding: 100px 0;
+  background-color: #fafafa;
+  overflow: hidden;
+  text-align: center;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto 60px;
+  padding: 0 24px;
+}
+
+.label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #0055ff;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  letter-spacing: 0.05em;
+}
+
+.title {
+  font-family: var(--font-pilat-wide, 'Inter', sans-serif);
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+  color: #111;
+  line-height: 1.1;
+}
+
+.description {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+.parallax {
+  overflow: hidden;
+  letter-spacing: -2px;
+  line-height: 0.8;
+  margin: 0;
+  white-space: nowrap;
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 20px 0;
+}
+
+.scroller {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 64px;
+  display: flex;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  gap: 40px;
+}
+
+.partnerCard {
+  background: white;
+  padding: 30px 50px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 250px;
+  height: 120px;
+}
+
+.logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.partnerCard:hover .logo {
+  filter: grayscale(0%);
+  opacity: 1;
+}

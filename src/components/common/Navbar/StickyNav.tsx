@@ -1,15 +1,25 @@
+"use client";
 import { useEffect, useState, useRef } from 'react';
 import styles from './StickyNav.module.css';
 
-const navItems = [
+export interface NavItem {
+  id: string;
+  label: string;
+}
+
+interface StickyNavProps {
+  navItems?: NavItem[];
+}
+
+const defaultNavItems = [
   { id: 'home', label: 'Home' },
   { id: 'beyond-business', label: 'Beyond Business' },
   { id: 'hello', label: 'Hello' },
   { id: 'nice', label: 'Nice To Meet You' },
 ];
 
-export default function StickyNav() {
-  const [activeId, setActiveId] = useState('home');
+export default function StickyNav({ navItems = defaultNavItems }: StickyNavProps) {
+  const [activeId, setActiveId] = useState(navItems.length > 0 ? navItems[0].id : '');
   const [stripStyle, setStripStyle] = useState({ left: 0, width: 0 });
   const navRefs = useRef<(HTMLAnchorElement | null)[]>([]);
   const containerRef = useRef<HTMLDivElement | null>(null);

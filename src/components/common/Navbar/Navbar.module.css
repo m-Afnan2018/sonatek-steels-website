@@ -31,7 +31,7 @@
   font-weight: 800;
   font-size: 20px;
   letter-spacing: 0.02em;
-  font-family: 'Arial', sans-serif;
+  font-family: var(--font-pilat-wide), "Barlow", sans-serif;
   /* fallback */
   cursor: pointer;
 }
@@ -49,9 +49,9 @@
 
 .navLink {
   color: #fff;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-pilat-wide), "Barlow", sans-serif;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
   text-decoration: none;
   padding: 8px 18px;
   border-radius: 24px;

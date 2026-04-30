@@ -1,9 +1,17 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import styles from "./GlobalNetwork.module.css";
+import styles from "./VideoTeaserSection.module.css";
 
-export default function GlobalNetwork({ videoUrl = 'https://cdn.pixabay.com/video/2025/09/22/305657_large.mp4' }: { videoUrl?: string }) {
+interface VideoTeaserSectionProps {
+  label?: string;
+  title?: string;
+  description?: string;
+  videoUrl?: string;
+}
+
+export default function VideoTeaserSection({ videoUrl = 'https://cdn.pixabay.com/video/2025/09/22/305657_large.mp4',
+label, title, description }: VideoTeaserSectionProps) {
     const sectionRef = useRef<HTMLDivElement>(null);
     const videoWrapRef = useRef<HTMLDivElement>(null);
     const videoRef = useRef<HTMLVideoElement>(null);
@@ -61,12 +69,10 @@ export default function GlobalNetwork({ videoUrl = 'https://cdn.pixabay.com/vide
             <div className={styles.inner}>
                 {/* ── Header ── */}
                 <div className={styles.header}>
-                    <p className={styles.label}>Our Global Network</p>
+                    <p className={styles.label}>{label}</p>
                     <h2 className={styles.headline}>
-                        Connected Across
-                        <br />
-                        Continents
-                    </h2>
+                        {title}
+                    </h2> 
                 </div>
 
                 {/* ── Video — scroll-scale ── */}
@@ -100,27 +106,8 @@ export default function GlobalNetwork({ videoUrl = 'https://cdn.pixabay.com/vide
                 {/* ── Footer text ── */}
                 <div className={styles.footer}>
                     <p className={styles.sub}>
-                        Our global footprint means fewer handovers, faster
-                        decision-making, and tailored solutions delivered
-                        through a single trusted partner.
+                        {description}
                     </p>
-                    <a href="#" className={styles.cta}>
-                        Our Locations
-                        <svg
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2.5"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            aria-hidden="true"
-                        >
-                            <line x1="5" y1="12" x2="19" y2="12" />
-                            <polyline points="12 5 19 12 12 19" />
-                        </svg>
-                    </a>
                 </div>
             </div>
         </section>
