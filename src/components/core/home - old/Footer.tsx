@@ -169,7 +169,7 @@ export default function Footer() {
             &copy; 2025 DP World. All rights reserved.
           </p>
           <nav className={styles.legalLinks} aria-label="Legal navigation">
-            <a href="#" className={styles.legalLink}>
+            <a href="/privacy" className={styles.legalLink}>
               Privacy Policy
             </a>
             <span className={styles.dot}>·</span>
@@ -177,7 +177,7 @@ export default function Footer() {
               Cookie Policy
             </a>
             <span className={styles.dot}>·</span>
-            <a href="#" className={styles.legalLink}>
+            <a href="/terms-conditions" className={styles.legalLink}>
               Terms of Use
             </a>
           </nav>
