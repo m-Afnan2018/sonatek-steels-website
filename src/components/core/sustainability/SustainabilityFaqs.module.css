@@ -51,9 +51,6 @@
 .item {
   border-bottom: 1px solid #eee;
 }
-.item:hover{
-  background-color: #f8f9fa;
-}
 
 .questionBtn {
   width: 100%;

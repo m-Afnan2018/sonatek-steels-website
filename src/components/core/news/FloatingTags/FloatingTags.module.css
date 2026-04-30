@@ -1,0 +1,117 @@
+.floatingContainer {
+  background: #f8f8f8;
+  padding: 32px 24px;
+  border-radius: 5px;
+  width: 100%;
+  border: 1px solid #cac8c8;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.floatingContainer:hover {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+  border-color: #e5e7eb;
+}
+
+.title {
+  font-family: var(--font-pilat-wide), sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #999;
+  letter-spacing: 0.12em;
+  margin-bottom: 24px;
+  padding-left: 4px;
+}
+
+.tagList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tagItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 12px 16px;
+  margin: 0 -8px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  width: calc(100% + 16px);
+  text-align: left;
+}
+
+.tagLabel {
+  font-family: var(--font-pilat-narrow), sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #222;
+  transition: color 0.3s ease;
+}
+
+.chevron {
+  color: #ccc;
+  transition: all 0.3s ease;
+  transform: translateX(-10px);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+}
+
+.tagItem:hover {
+  background-color: #f5f7ff;
+}
+
+.tagItem:hover .tagLabel {
+  color: #3b82f6;
+}
+
+.tagItem:hover .chevron {
+  color: #3b82f6;
+  transform: translateX(0);
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .floatingContainer {
+    padding: 20px 0;
+    border: none;
+    border-bottom: 1px solid #f0f0f0;
+    border-radius: 0;
+  }
+
+  .title {
+    margin-bottom: 16px;
+    padding-left: 16px;
+  }
+  
+  .tagList {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 0 16px 4px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .tagList::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .tagItem {
+    width: auto;
+    margin: 0;
+    padding: 10px 20px;
+    border: 1px solid #eee;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+  
+  .chevron {
+    display: none;
+  }
+}

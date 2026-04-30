@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './page.module.css';
 import NewsCard from '@/components/core/news/NewsCard/NewsCard';
 import FeaturedNewsCard from '@/components/core/news/FeaturedNewsCard/FeaturedNewsCard';
+import FloatingTags from '@/components/core/news/FloatingTags/FloatingTags';
 
 export default function NewsPage() {
   const featuredArticle1 = {
@@ -127,52 +128,60 @@ export default function NewsPage() {
           </p>
         </section>
 
-        {/* First Featured Article */}
-        <FeaturedNewsCard 
-          date={featuredArticle1.date}
-          title={featuredArticle1.title}
-          excerpt={featuredArticle1.excerpt}
-          imageUrl={featuredArticle1.imageUrl}
-          link={featuredArticle1.link}
-        />
-
-        {/* First Grid */}
-        <section className={styles.newsGrid}>
-          {gridArticles1.map((article, index) => (
-            <NewsCard 
-              key={`grid1-${index}`}
-              date={article.date}
-              title={article.title}
-              excerpt={article.excerpt}
-              imageUrl={article.imageUrl}
-              link={article.link}
+        <div className={styles.contentLayout}>
+          <div className={styles.newsColumn}>
+            {/* First Featured Article */}
+            <FeaturedNewsCard 
+              date={featuredArticle1.date}
+              title={featuredArticle1.title}
+              excerpt={featuredArticle1.excerpt}
+              imageUrl={featuredArticle1.imageUrl}
+              link={featuredArticle1.link}
             />
-          ))}
-        </section>
 
-        {/* Second Featured Article (Reversed) */}
-        <FeaturedNewsCard 
-          date={featuredArticle2.date}
-          title={featuredArticle2.title}
-          excerpt={featuredArticle2.excerpt}
-          imageUrl={featuredArticle2.imageUrl}
-          link={featuredArticle2.link}
-          isReversed={true}
-        />
+            {/* First Grid */}
+            <section className={styles.newsGrid}>
+              {gridArticles1.map((article, index) => (
+                <NewsCard 
+                  key={`grid1-${index}`}
+                  date={article.date}
+                  title={article.title}
+                  excerpt={article.excerpt}
+                  imageUrl={article.imageUrl}
+                  link={article.link}
+                />
+              ))}
+            </section>
 
-        {/* Second Grid */}
-        <section className={styles.newsGrid}>
-          {gridArticles2.map((article, index) => (
-            <NewsCard 
-              key={`grid2-${index}`}
-              date={article.date}
-              title={article.title}
-              excerpt={article.excerpt}
-              imageUrl={article.imageUrl}
-              link={article.link}
+            {/* Second Featured Article (Reversed) */}
+            <FeaturedNewsCard 
+              date={featuredArticle2.date}
+              title={featuredArticle2.title}
+              excerpt={featuredArticle2.excerpt}
+              imageUrl={featuredArticle2.imageUrl}
+              link={featuredArticle2.link}
+              isReversed={true}
             />
-          ))}
-        </section>
+
+            {/* Second Grid */}
+            <section className={styles.newsGrid}>
+              {gridArticles2.map((article, index) => (
+                <NewsCard 
+                  key={`grid2-${index}`}
+                  date={article.date}
+                  title={article.title}
+                  excerpt={article.excerpt}
+                  imageUrl={article.imageUrl}
+                  link={article.link}
+                />
+              ))}
+            </section>
+          </div>
+
+          <aside className={styles.sidebar}>
+            <FloatingTags />
+          </aside>
+        </div>
 
       </div>
     </main>
