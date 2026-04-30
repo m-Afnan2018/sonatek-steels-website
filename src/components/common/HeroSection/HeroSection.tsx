@@ -3,7 +3,7 @@ import styles from "./HeroSection.module.css";
 import Link from "next/link";
 
 interface HeroSectionProps {
-  breadcrumb: string;
+  breadcrumb?: { label: string; href: string }[];
   title: string;
   description: string;
   bgImage: string;
@@ -11,6 +11,8 @@ interface HeroSectionProps {
   btnText?: string;
   btnHref?: string;
 }
+
+
 
 export default function HeroSection({ breadcrumb, title, description, bgImage, hasBtn, btnText, btnHref }: HeroSectionProps) {
   return (
@@ -24,7 +26,13 @@ export default function HeroSection({ breadcrumb, title, description, bgImage, h
       />
       <div className={styles.heroOverlay}></div>
       <div className={styles.heroContent}>
-          <div className={styles.breadcrumb}>{breadcrumb}</div>
+          <div className={styles.breadcrumb}>
+            {breadcrumb && breadcrumb?.map((crumb: { href: string; label: string; }, index: number) => (
+              <Link key={index} href={crumb.href} className={styles.crumb}>
+                {crumb.label} { index < breadcrumb.length - 1 && ' > '}
+              </Link>
+            ))}
+          </div>
         <h1 className={styles.heroTitle}>{title}</h1>
         <p className={styles.heroDesc}>{description}</p>
 

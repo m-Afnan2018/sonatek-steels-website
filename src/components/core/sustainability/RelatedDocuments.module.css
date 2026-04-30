@@ -37,6 +37,9 @@
   transition: all 0.3s ease;
   group: itemGroup; /* To use hover logic */
 }
+.item:hover{
+  background-color: #7f7f7f1e;
+}
 
 .itemTitle {
   font-size: 1.1rem;
