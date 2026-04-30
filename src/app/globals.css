@@ -14,11 +14,24 @@ html {
 
 body {
   background: #060c1a;
-  font-family: "Barlow", sans-serif;
+  font-family: var(--font-pilat-narrow), "Barlow", sans-serif;
   color: #ffffff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6,
+.title, [class*="Title"], [class*="title"],
+.headline, [class*="Headline"], [class*="headline"],
+.heading, [class*="Heading"], [class*="heading"] {
+  font-family: var(--font-pilat-wide), "Barlow", sans-serif !important;
+}
+
+p, span, div,
+.desc, [class*="Desc"], [class*="desc"],
+.sub, [class*="Sub"], [class*="sub"] {
+  font-family: var(--font-pilat-narrow), "Barlow", sans-serif;
 }
 
 a {
