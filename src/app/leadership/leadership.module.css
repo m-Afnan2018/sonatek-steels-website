@@ -1,0 +1,214 @@
+.section {
+  padding: 80px 24px;
+  background-color: #ffffff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.filterBar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.selectWrapper {
+  position: relative;
+  min-width: 200px;
+}
+
+.select {
+  width: 100%;
+  padding: 10px 16px;
+  border: 1px solid #e5e5e5;
+  background-color: #fff;
+  font-family: var(--font-pilat-narrow), sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  appearance: none;
+  cursor: pointer;
+  border-radius: 0; /* Match the sharp look */
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+}
+
+.resetBtn {
+  font-family: var(--font-pilat-narrow), sans-serif;
+  font-size: 14px;
+  color: #3b82f6; /* Blueish color for reset usually */
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.resetBtn:hover {
+  text-decoration: underline;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px 40px;
+  margin-bottom: 80px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.imageWrapper {
+  width: 100%;
+  aspect-ratio: 1 / 1.1; /* Slightly taller than wide */
+  background-color: #f2f2f2;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.image {
+  object-fit: cover; /* Professional portraits often show full person on grey */
+  object-position: bottom;
+  width: 100%;
+  height: 100%;
+}
+
+.card:hover .image {
+  transform: scale(1.02);
+  transition: transform 0.4s ease;
+}
+.card:hover .name{
+  color:#3b82f6;
+  transition: all 0.4s ease;
+}
+
+.name {
+  font-family: var(--font-pilat-wide), sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.title {
+  font-family: var(--font-pilat-narrow), sans-serif;
+  font-size: 14px;
+  color: #777;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.loadMoreWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.loadMoreBtn {
+  padding: 10px 24px;
+  border: 1px solid #e0e0e0;
+  border-radius: 20px;
+  background-color: #fff;
+  font-family: var(--font-pilat-narrow), sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.loadMoreBtn:hover {
+  border-color: #333;
+  background-color: #f9f9f9;
+}
+
+/* ================================
+   JOIN TEAM SECTION
+   ================================ */
+.joinTeam {
+    padding: 6rem 5%;
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    max-width: 100%;
+}
+
+.joinTeamInner {
+    max-width: 1300px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+}
+
+.joinTitle {
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    font-weight: 800;
+    color: #111111;
+    flex: 1;
+    max-width: 600px;
+}
+
+.joinContent {
+    flex: 1;
+    max-width: 500px;
+}
+
+.joinDesc {
+    font-size: 1.125rem;
+    color: #555555;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+.outlineBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1;
+    background-color: transparent;
+    color: #3d37b0;
+    padding: .875rem 2.1rem 1rem 2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 50px;
+    border: 2px solid #3d37b0;
+    transition: all 0.3s ease;
+}
+
+.outlineBtn:hover {
+    background-color: #3d37b0;
+    color: #ffffff;
+}
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .title {
+    font-size: 48px; /* Assuming this is for page titles, but inside leadership it should be smaller */
+  }
+}
