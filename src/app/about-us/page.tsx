@@ -66,7 +66,8 @@ export default function AboutUsPage() {
                 <div className={styles.heroOverlay}></div>
                 <div className={styles.heroContent}>
                     <div>
-                        <div className={styles.breadcrumb}>Home &gt; About us</div>
+                        <div className={styles.breadcrumb}>
+                         <a href="/">Home</a>&gt; About us</div>
                         <h1 className={styles.heroTitle}>Connecting Worlds</h1>
                         <p className={styles.heroDesc}>
                             We are building a more sustainable and efficient global trade ecosystem,

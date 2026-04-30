@@ -3,7 +3,6 @@
    ================================ */
 
 .main {
-    font-family: "Barlow", "DM Sans", -apple-system, sans-serif;
     color: #111111;
     background: #ffffff;
     overflow-x: hidden;
@@ -64,7 +63,7 @@
 }
 
 .heroTitle {
-    font-size: clamp(3rem, 5vw, 4.5rem);
+    font-size: clamp(2.3rem, 5vw, 4.5rem);
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: 1.5rem;
@@ -379,5 +378,9 @@
     .playIcon {
         width: 20px;
         height: 20px;
+    }
+    .heroContent{
+        flex-direction: column;
+        align-items: start;
     }
 }

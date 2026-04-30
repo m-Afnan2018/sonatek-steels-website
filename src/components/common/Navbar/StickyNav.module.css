@@ -7,13 +7,14 @@
 
 .stickyNav {
   width: 100%;
-  background: rgba(11, 11, 11, 0.9);
+  background: #FFFFFF;
   /* Deep dark blue / slate */
   /* backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px); */
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  padding: 0 3.5rem;
 }
 
 .navContainer {
@@ -25,24 +26,23 @@
 
 .navItem {
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.6);
+  color: black;
   padding: 14px 16px;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 12px;
   letter-spacing: 0.5px;
   transition: color 0.3s ease;
-  font-family: 'Inter', system-ui, sans-serif;
   text-transform: uppercase;
   position: relative;
   z-index: 2;
 }
 
 .navItem:hover {
-  color: #fff;
+  color: #3f3e3e;
 }
 
 .navItem.active {
-  color: #fff;
+  color: #5b45ea;
 }
 
 .strip {
@@ -80,15 +80,15 @@
     -webkit-mask-image: linear-gradient(
       to right,
       transparent,
-      black 50px,
-      black calc(100% - 50px),
+      black 35px,
+      black calc(100% - 35px),
       transparent
     );
     mask-image: linear-gradient(
       to right,
       transparent,
-      black 50px,
-      black calc(100% - 50px),
+      black 35px,
+      black calc(100% - 35px),
       transparent
     );
   }
@@ -103,5 +103,8 @@
     font-size: 10px;
     white-space: nowrap;
     /* Prevent wrapping on small screens */
+  }
+  .stickyNav {
+  padding: 0;
   }
 }

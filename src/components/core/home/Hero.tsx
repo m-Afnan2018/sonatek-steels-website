@@ -3,7 +3,17 @@
 import { useRef, useEffect } from "react";
 import styles from "./Hero.module.css";
 
-export default function Hero() {
+interface HeroProps {
+    title?: string;
+    description?: string;
+    btnText?: string;
+    btnLink?: string;
+    videoUrl?: string;
+    posterUrl?: string;
+    paragraph?: string;
+}
+
+export default function Hero({ title = "Evolving Global", description = "Trade", paragraph = "Future-ready supply chain solutions across sectors and borders.", btnText = "Explore What We Do", btnLink = "#", videoUrl = "https://cdn.pixabay.com/video/2021/02/05/64212-509543056_large.mp4", posterUrl = "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1920&q=80" }: HeroProps) {
     const videoRef = useRef<HTMLVideoElement>(null);
 
     useEffect(() => {
@@ -26,7 +36,7 @@ export default function Hero() {
                     muted
                     loop
                     playsInline
-                    poster="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1920&q=80"
+                    poster={posterUrl}
                     aria-hidden="true"
                 >
                     {/*
@@ -34,7 +44,7 @@ export default function Hero() {
             Using a free sample port/logistics video for demo.
           */}
                     <source
-                        src="https://cdn.pixabay.com/video/2021/02/05/64212-509543056_large.mp4"
+                        src={videoUrl}
                         type="video/mp4"
                     />
                 </video>
@@ -50,14 +60,13 @@ export default function Hero() {
                     <div className={styles.left}>
                         <h1 className={styles.headline}>
                             <span className={styles.headlineLine}>
-                                Evolving Global
+                                {title}
                             </span>
-                            <span className={styles.headlineLine}>Trade</span>
+                            <span className={styles.headlineLine}>{description}</span>
                         </h1>
 
                         <p className={styles.sub}>
-                            Future-ready supply chain solutions across sectors
-                            and borders.
+                           {paragraph}
                         </p>
 
                         <div className={styles.rule} />
