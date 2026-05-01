@@ -5,12 +5,17 @@
   width: 100%;
   border: 1px solid #cac8c8;
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 160px);
+  overflow: hidden;
 }
 
 .floatingContainer:hover {
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
   border-color: #e5e7eb;
 }
+
 
 .title {
   font-family: var(--font-pilat-wide), sans-serif;
@@ -27,7 +32,29 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  overflow-y: auto;
+  padding-right: 8px;
+  margin-right: -8px;
 }
+
+/* Custom Scrollbar */
+.tagList::-webkit-scrollbar {
+  width: 4px;
+}
+
+.tagList::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.tagList::-webkit-scrollbar-thumb {
+  background: #eee;
+  border-radius: 10px;
+}
+
+.tagList:hover::-webkit-scrollbar-thumb {
+  background: #ddd;
+}
+
 
 .tagItem {
   display: flex;
@@ -81,7 +108,9 @@
     border: none;
     border-bottom: 1px solid #f0f0f0;
     border-radius: 0;
+    max-height: none;
   }
+
 
   .title {
     margin-bottom: 16px;
@@ -93,10 +122,13 @@
     flex-wrap: nowrap;
     gap: 10px;
     overflow-x: auto;
+    overflow-y: visible;
     padding: 0 16px 4px;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+    margin-right: 0;
   }
+
 
   .tagList::-webkit-scrollbar {
     display: none;

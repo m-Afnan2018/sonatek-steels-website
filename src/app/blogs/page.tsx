@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './page.module.css';
-import NewsCard from '@/components/core/news/NewsCard/NewsCard';
-import FeaturedNewsCard from '@/components/core/news/FeaturedNewsCard/FeaturedNewsCard';
-import FloatingTags from '@/components/core/news/FloatingTags/FloatingTags';
+import NewsCard from '@/components/core/blogs/NewsCard/NewsCard';
+import FeaturedNewsCard from '@/components/core/blogs/FeaturedNewsCard/FeaturedNewsCard';
+import FloatingTags from '@/components/core/blogs/FloatingTags/FloatingTags';
 
 export default function NewsPage() {
   const featuredArticle1 = {
