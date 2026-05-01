@@ -153,7 +153,7 @@
     }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
     .section {
         height: auto;
         min-height: 320px;
@@ -176,7 +176,9 @@
     .ctaBtn {
         width: 100%;
         justify-content: center;
-        max-width: 280px;
+        max-width: 350px;
+        margin: auto;
+        margin-top: 2rem;
     }
 }
 

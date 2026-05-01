@@ -11,9 +11,10 @@ interface HeroProps {
     videoUrl?: string;
     posterUrl?: string;
     paragraph?: string;
+    id?: string;
 }
 
-export default function Hero({ title = "Evolving Global", description = "Trade", paragraph = "Future-ready supply chain solutions across sectors and borders.", btnText = "Explore What We Do", btnLink = "#", videoUrl = "https://cdn.pixabay.com/video/2021/02/05/64212-509543056_large.mp4", posterUrl = "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1920&q=80" }: HeroProps) {
+export default function Hero({ title = "Your Partner in", description = "Flat Steel", paragraph = "Established in 2014, Sonatek Steels Pvt. Ltd. are the leading distributors of flat steel products in Northern India.", btnText = "Explore Our Products", btnLink = "#", videoUrl = "https://cdn.pixabay.com/video/2021/02/05/64212-509543056_large.mp4", posterUrl = "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1920&q=80", ...props }: HeroProps) {
     const videoRef = useRef<HTMLVideoElement>(null);
 
     useEffect(() => {
@@ -26,7 +27,7 @@ export default function Hero({ title = "Evolving Global", description = "Trade",
     }, []);
 
     return (
-        <section className={styles.hero}>
+        <section className={styles.hero} {...props}>
             {/* ── Video background ── */}
             <div className={styles.videoWrap}>
                 <video
@@ -75,7 +76,7 @@ export default function Hero({ title = "Evolving Global", description = "Trade",
                     {/* Right: CTA button */}
                     <div className={styles.right}>
                         <a href="#" className={styles.ctaBtn}>
-                            Explore What We Do
+                            Explore Our Products
                             <svg
                                 width="18"
                                 height="18"

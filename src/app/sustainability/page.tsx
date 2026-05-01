@@ -23,12 +23,12 @@ export default function page() {
 
   const initiativesCards = [
     {
-      title: 'OUR CLIMATE JOURNEY',
-      imageUrl: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&q=80',
+      title: 'HEALTH & SAFETY FIRST',
+      imageUrl: 'https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?w=800&q=80',
       url: '#'
     },
     {
-      title: 'SUSTAINABILITY REPORTING',
+      title: 'SUSTAINABLE SOURCING',
       imageUrl: 'https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=800&q=80',
       url: '#'
     }
@@ -36,64 +36,67 @@ export default function page() {
 
   const focusAreas = [
     {
-      id: 'energy-transition',
-      tabLabel: 'Energy Transition',
-      cardTitle: 'ENERGY TRANSITION',
-      cardDescription: 'We are investing heavily in renewable energy to power our ports and terminals. By integrating solar panels and wind turbines into our infrastructure, we are significantly reducing our reliance on fossil fuels. This transition not only cuts our carbon footprint but also demonstrates our commitment to a sustainable energy future.',
-      image: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=1200&q=80'
+      id: 'health-safety',
+      tabLabel: 'Health & Safety',
+      cardTitle: 'HEALTH & SAFETY',
+      cardDescription: 'Safety is the utmost priority at Sonatek Steels. Everyone adheres to the policies and guidelines to ensure their well-being and the welfare of other people, property and environment. We maintain Occupation Health Centers (OHC) and strictly comply with applicable legislation, protocols and regulations.',
+      image: 'https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=1200&q=80'
     },
     {
-      id: 'sustainability-reporting',
-      tabLabel: 'Sustainability Reporting',
-      cardTitle: 'SUSTAINABILITY REPORTING',
-      cardDescription: 'Transparency is key to our sustainability journey. We regularly publish comprehensive sustainability reports that detail our environmental impact, goals, and progress. These reports follow international standards and frameworks, ensuring accountability and continuous improvement.',
+      id: 'sustainable-sourcing',
+      tabLabel: 'Sustainable Sourcing',
+      cardTitle: 'SUSTAINABLE SOURCING',
+      cardDescription: 'As a leading MOU dealer of SAIL, we prioritize sourcing steel from producers who follow eco-friendly manufacturing processes. Our supply chain is optimized for minimal environmental impact, ensuring that quality steel is delivered with responsibility and local technical assistance.',
       image: 'https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=1200&q=80'
     },
     {
-      id: 'development-impact',
-      tabLabel: 'Development Impact',
-      cardTitle: 'DEVELOPMENT IMPACT',
-      cardDescription: 'Our operations extend beyond business to create a positive social impact. We invest in local communities, supporting education, healthcare, and infrastructure development. By empowering communities, we aim to foster long-term economic growth and resilience.',
+      id: 'technical-excellence',
+      tabLabel: 'Technical Excellence',
+      cardTitle: 'TECHNICAL EXCELLENCE',
+      cardDescription: 'Our mission is to maintain customer satisfaction through constant improvement and modernization of our products. Through our team of experienced and qualified professionals, we aim to engineer excellence in everything we do, ensuring high-performance solutions for all industrial segments.',
       image: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1200&q=80'
     }
   ];
 
   const partners = [
-    { name: 'Partner 1', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg' },
     { name: 'Partner 2', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg' },
     { name: 'Partner 3', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg' },
     { name: 'Partner 4', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg' },
+    { name: 'Partner 5', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg' },
+    { name: 'Partner 6', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg' },
+    { name: 'Partner 7', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg' },
+    { name: 'Partner 8', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg' },
   ];
 
   const keyDocuments = [
     {
-      title: '2023 SUSTAINABILITY REPORT',
+      title: 'SAFETY PROTOCOL 2024',
       type: 'KEY DOCUMENT',
       imageUrl: 'https://images.unsplash.com/photo-1593113630400-ea4288922497?w=800&q=80',
       downloadUrl: '#'
     },
     {
-      title: 'OUR CLIMATE JOURNEY',
-      type: 'REPORT',
+      title: 'HEALTH & SAFETY POLICY',
+      type: 'POLICY',
       imageUrl: 'https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=800&q=80',
       downloadUrl: '#'
     },
     {
-      title: 'ENVIRONMENTAL POLICY',
-      type: 'POLICY',
+      title: 'ENVIRONMENTAL STEWARDSHIP',
+      type: 'REPORT',
       imageUrl: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&q=80',
       downloadUrl: '#'
     },
     {
-      title: 'SOCIAL IMPACT OVERVIEW',
-      type: 'OVERVIEW',
+      title: 'SUPPLIER CODE OF CONDUCT',
+      type: 'CONDUCT',
       imageUrl: 'https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=800&q=80',
       downloadUrl: '#'
     }
   ];
 
   const relatedDocuments = [
-    { title: 'DP World Sustainability Strategy', url: '#' },
+    { title: 'Sonatek Steels Sustainability Strategy', url: '#' },
     { title: 'Net Zero by 2050 Commitment', url: '#' },
     { title: 'Community Investment Guidelines', url: '#' },
     { title: 'Supplier Code of Conduct', url: '#' },
@@ -101,19 +104,19 @@ export default function page() {
 
   const faqs = [
     {
-      question: 'How is DP World reaching net zero across all operations?',
-      answer: <p>We have developed a comprehensive decarbonization roadmap that targets net zero emissions by 2050. This involves transitioning to renewable energy, electrifying our equipment, and improving operational efficiency across all our terminals.</p>
+      question: 'What are the safety standards at Sonatek Steels?',
+      answer: <p>Safety is our utmost priority. We strictly comply with applicable legislation, protocols, and regulations. We maintain fire protection systems, Occupational Health Centers (OHC), and conduct regular checks of international safety standards and procedures.</p>
     },
     {
-      question: 'What are DP World\'s shipping targets?',
-      answer: <p>Our shipping targets include significantly reducing carbon intensity by optimizing vessel routes and adopting alternative fuels. We aim to support the global transition to sustainable maritime transport.</p>
+      question: 'How does Sonatek Steels ensure sustainable sourcing?',
+      answer: <p>As an MOU dealer of SAIL, we ensure that our products come from producers committed to sustainable manufacturing. We also optimize our logistics in Northern India to minimize environmental impact during distribution.</p>
     }
   ];
 
   const featureCards = [
     {
       title: 'DEVELOPMENT IMPACT',
-      description: 'Our Development Impact Catalogue explores how DP World supports sustainable development through its global operations. By combining smart logistics with infrastructure investment, we create long-term value for communities, supporting jobs, growth, and access, and helping to build a more inclusive global economy.',
+      description: 'Our Development Impact Catalogue explores how Sonatek Steels supports sustainable development through its global operations. By combining smart logistics with infrastructure investment, we create long-term value for communities, supporting jobs, growth, and access, and helping to build a more inclusive global economy.',
       image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&q=80',
       link: '#'
     },
@@ -142,8 +145,8 @@ export default function page() {
       
       <StickyNav navItems={navItems} />
 
-      <MissionSection label="Our Mission" title={<>LEADING TRADE<br/>TO NET ZERO</>}>
-        <p>We are driving the logistics industry towards a more sustainable future through our global initiatives that deliver lasting benefits for communities today and for generations to come.</p>
+      <MissionSection label="Our Mission" title={<>ENGINEERING<br/>EXCELLENCE IN STEEL</>}>
+        <p>Our mission is to maintain customer satisfaction through constant improvement and modernization of our products. Through our team of experienced and qualified professionals, we aim to engineer excellence in everything we do.</p>
       </MissionSection>
 
       <BeyondBusiness heading='OUR INITIATIVES'/>
@@ -151,6 +154,7 @@ export default function page() {
         title="OUR JOURNEY" 
         description="We are committed to sustainable development and environmental responsibility through our core focus areas."
         areas={focusAreas}
+        id="initiatives"
       />
 
       {featureCards.map((card, index) => (
@@ -164,16 +168,16 @@ export default function page() {
         />
       ))}
 
-      <SustainabilityPartners partners={partners} />
+      <SustainabilityPartners id="partnerships" partners={partners} />
 
-      <KeyDocuments documents={keyDocuments} />
+      <KeyDocuments id="documents" documents={keyDocuments} />
 
-      <RelatedDocuments documents={relatedDocuments} />
+      <RelatedDocuments id="related-documents" documents={relatedDocuments} />
 
-      <SustainabilityFaqs faqs={faqs} />
+      <SustainabilityFaqs id="faqs" faqs={faqs} />
 
       <CtaSection
-        title="SUSTAINABILITY AT DP WORLD"
+        title="SUSTAINABILITY AT SONATEK STEELS"
         description="Making a positive impact on the world."
         buttonText="Read More"
         buttonLink="#"

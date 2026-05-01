@@ -13,7 +13,7 @@
 .label {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #0055ff;
+  color: var(--brand-blue);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 16px;
@@ -31,7 +31,7 @@
 }
 
 .title span {
-  color: #0055ff;
+  color: var(--brand-blue);
 }
 
 .description {
@@ -46,7 +46,7 @@
   align-items: center;
   gap: 8px;
   font-weight: 600;
-  color: #0055ff;
+  color: var(--brand-blue);
   text-decoration: none;
   font-size: 0.95rem;
   transition: all 0.3s ease;
@@ -59,7 +59,7 @@
 }
 
 .link:hover {
-  color: #0033cc;
+  color: var(--brand-blue-dark);
 }
 
 .link:hover svg {
@@ -158,7 +158,7 @@
 .playIcon {
   width: 32px;
   height: 32px;
-  background: #0055ff;
+  background: var(--brand-blue);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -169,7 +169,7 @@
 
 .card:hover .playIcon {
   background: white;
-  color: #0055ff;
+  color: var(--brand-blue);
 }
 
 .playIcon svg {

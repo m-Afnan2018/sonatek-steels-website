@@ -5,12 +5,12 @@ export const termsData = {
     {
       id: 1,
       heading: "1. What's In These Terms?",
-      content: "These Terms of Use (the \"Terms\") tell you the rules for using our website web.dpworld.com (\"Our Website\")."
+      content: "These Terms of Use (the \"Terms\") tell you the rules for using our website sonateksteels.com (\"Our Website\")."
     },
     {
       id: 2,
       heading: "2. Who We Are and How To Contact Us",
-      content: "web.dpworld.com is a website operated by DP World (\"we\", \"us\", \"our\", the \"Company\"). We are a company registered in United Arab Emirates.\n\nTo contact us, please email website@dpworld.com."
+      content: "sonateksteels.com is a website operated by Sonatek Steels (\"we\", \"us\", \"our\", the \"Company\"). We are a company registered in Delhi, India.\n\nTo contact us, please email info@sonateksteels.com."
     },
     {
       id: 3,
@@ -40,7 +40,7 @@ export const termsData = {
     {
       id: 8,
       heading: "8. You Must Keep Your Account Details Safe",
-      content: "If you choose, or you are provided with, a user identification code, password or any other piece of information as part of our security procedures, you must treat such information as confidential. You must not disclose it to any third party.\n\nWe have the right to disable any user identification code or password, whether chosen by you or allocated by us, at any time, if in our reasonable opinion you have failed to comply with any of the provisions of these Terms of Use.\n\nIf you know or suspect that anyone other than you knows your user identification code or password, you must promptly notify us at website@dpworld.com."
+      content: "If you choose, or you are provided with, a user identification code, password or any other piece of information as part of our security procedures, you must treat such information as confidential. You must not disclose it to any third party.\n\nWe have the right to disable any user identification code or password, whether chosen by you or allocated by us, at any time, if in our reasonable opinion you have failed to comply with any of the provisions of these Terms of Use.\n\nIf you know or suspect that anyone other than you knows your user identification code or password, you must promptly notify us at info@sonateksteels.com."
     },
     {
       id: 9,
@@ -60,7 +60,7 @@ export const termsData = {
     {
       id: 12,
       heading: "12. User-Generated Content Is Not Approved By Us",
-      content: "This website may include information and materials uploaded by other users of the site, including to bulletin boards and chat rooms. This information and these materials have not been verified or approved by us. The views expressed by other users on Our Website do not represent our views or values.\n\nIf you wish to complain about information and materials uploaded by other users please contact us on website@dpworld.com."
+      content: "This website may include information and materials uploaded by other users of the site, including to bulletin boards and chat rooms. This information and these materials have not been verified or approved by us. The views expressed by other users on Our Website do not represent our views or values.\n\nIf you wish to complain about information and materials uploaded by other users please contact us on info@sonateksteels.com."
     },
     {
       id: 13,
@@ -80,17 +80,18 @@ export const termsData = {
     {
       id: 16,
       heading: "16. Rules About Linking To Our Website",
-      content: "You may link to our home page, provided you do so in a way that is fair and legal and does not damage our reputation or take advantage of it.\n\nYou must not establish a link in such a way as to suggest any form of association, approval or endorsement on our part where none exists.\n\nYou must not establish a link to Our Website in any website that is not owned by you.\n\nOur Website must not be framed on any other site, nor may you create a link to any part of Our Website other than the home page.\n\nWe reserve the right to withdraw linking permission without notice.\n\nIf you wish to link to or make any use of content on Our Website other than that set out above, please contact website@dpworld.com."
+      content: "You may link to our home page, provided you do so in a way that is fair and legal and does not damage our reputation or take advantage of it.\n\nYou must not establish a link in such a way as to suggest any form of association, approval or endorsement on our part where none exists.\n\nYou must not establish a link to Our Website in any website that is not owned by you.\n\nOur Website must not be framed on any other site, nor may you create a link to any part of Our Website other than the home page.\n\nWe reserve the right to withdraw linking permission without notice.\n\nIf you wish to link to or make any use of content on Our Website other than that set out above, please contact info@sonateksteels.com."
     },
     {
       id: 17,
       heading: "17. Which Country's Laws Apply To Any Disputes?",
-      content: "If you are a consumer, please note that these Terms of Use, their subject matter and their formation, are governed by the laws of the United Arab Emirates. You and we both agree that the courts of the United Arab Emirates will have exclusive jurisdiction.\n\nIf you are a business, these Terms of Use, their subject matter and their formation (and any non-contractual disputes or claims) are governed by the laws of the United Arab Emirates. We both agree to the exclusive jurisdiction of the courts of the United Arab Emirates."
+      content: "If you are a consumer, please note that these Terms of Use, their subject matter and their formation, are governed by the laws of India. You and we both agree that the courts of Delhi will have exclusive jurisdiction.\n\nIf you are a business, these Terms of Use, their subject matter and their formation (and any non-contractual disputes or claims) are governed by the laws of India. We both agree to the exclusive jurisdiction of the courts of Delhi."
     },
     {
       id: 18,
       heading: "18. Our Trade Marks Are Registered",
-      content: "\"DP World\" and the DP World logo are registered trade marks of DP World. You are not permitted to use them without our approval, unless they are part of material you are using as permitted under How you may use material on our website."
+      content: "\"Sonatek Steels\" and the Sonatek Steels logo are registered trade marks of Sonatek Steels. You are not permitted to use them without our approval, unless they are part of material you are using as permitted under How you may use material on our website."
     }
   ]
 };
+

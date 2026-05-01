@@ -26,7 +26,8 @@ const pilatNarrow = localFont({
     variable: "--font-pilat-narrow",
 });
 import Navbar from "@/components/common/Navbar/Navbar";
-import Footer from "@/components/core/home - old/Footer";
+// import Footer from "@/components/core/home - old/Footer";
+import Footer from "@/components/common/Footer/Footer"
 
 export const metadata: Metadata = {
     title: "DP World — We Make Trade Flow",

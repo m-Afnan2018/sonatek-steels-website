@@ -41,6 +41,13 @@
   width: auto;
 }
 
+.logo img {
+  cursor: pointer;
+  height:auto;
+  width: 160px;
+  margin-top: 5px;
+}
+
 .navLinks {
   display: flex;
   align-items: center;

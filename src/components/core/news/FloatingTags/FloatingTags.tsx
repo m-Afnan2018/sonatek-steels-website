@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './FloatingTags.module.css';
-import { tagsData } from '@/app/news/tags-data';
+import { tagsData } from '@/app/blogs/tags-data';
 
 const ChevronIcon = () => (
   <svg 

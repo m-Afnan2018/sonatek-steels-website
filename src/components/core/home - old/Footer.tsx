@@ -4,19 +4,49 @@ import { useState } from "react";
 import styles from "./Footer.module.css";
 
 const WHAT_WE_DO = [
-  "Ports & Terminals",
-  "Logistics & Services",
-  "Maritime Services",
-  "Freezone",
-  "Technology",
+  {
+    title: "Ports & Terminals",
+    link: "/"
+  },
+  {
+    title: "Logistics & Services",
+    link: "/"
+  },
+  {
+    title: "Maritime Services",
+    link: "/"
+  },
+  {
+    title: "Freezone",
+    link: "/"
+  },
+  {
+    title: "Technology",
+    link: "/"
+  }
 ];
 
 const WHO_WE_ARE = [
-  "Our Story",
-  "Leadership",
-  "Sustainability",
-  "Innovation",
-  "Investor Relations",
+  {
+    title: "About Us",
+    link: "/about-us"
+  },
+  {
+    title: "Leadership",
+    link: "/leadership"
+  },
+  {
+    title: "Sustainability",
+    link: "/sustainability"
+  },
+  {
+    title: "Innovation",
+    link: "/temp"
+  },
+  {
+    title: "Investor Relations",
+    link: "/"
+  }
 ];
 
 export default function Footer() {
@@ -92,10 +122,10 @@ export default function Footer() {
           <div className={styles.linkCol}>
             <h4 className={styles.colHeading}>What We Do</h4>
             <ul className={styles.linkList}>
-              {WHAT_WE_DO.map((link) => (
-                <li key={link}>
-                  <a href="#" className={styles.footLink}>
-                    {link}
+              {WHAT_WE_DO.map((link, i) => (
+                <li key={i}>
+                  <a href={link.link} className={styles.footLink}>
+                    {link.title}
                   </a>
                 </li>
               ))}
@@ -106,10 +136,10 @@ export default function Footer() {
           <div className={styles.linkCol}>
             <h4 className={styles.colHeading}>Who We Are</h4>
             <ul className={styles.linkList}>
-              {WHO_WE_ARE.map((link) => (
-                <li key={link}>
-                  <a href="#" className={styles.footLink}>
-                    {link}
+              {WHO_WE_ARE.map((link, i) => (
+                <li key={i}>
+                  <a href={link.link} className={styles.footLink}>
+                    {link.title}
                   </a>
                 </li>
               ))}

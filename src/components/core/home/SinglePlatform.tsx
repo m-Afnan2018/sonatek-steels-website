@@ -29,16 +29,16 @@ export default function SinglePlatform() {
 
                 {/* Headline */}
                 <h2 className={styles.headline}>
-                    One Partner. Every
+                    One Partner. Total
                     <br />
-                    Solution.
+                    Steel Solutions.
                 </h2>
 
                 {/* Subtext */}
                 <p className={styles.sub}>
-                    Whatever your cargo, whatever your challenge, we have
-                    end-to-end solutions across the entire supply chain.
-                    That&apos;s the DP World advantage.
+                    Whatever your project, whatever your requirement, we have
+                    the complete range of flat steel products and custom 
+                    processing solutions. That&apos;s the Sonatek Steels advantage.
                 </p>
 
                 {/* Outlined pill CTA */}

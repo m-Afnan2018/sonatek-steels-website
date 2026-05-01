@@ -61,11 +61,11 @@ export default function GlobalNetwork({ videoUrl = 'https://cdn.pixabay.com/vide
             <div className={styles.inner}>
                 {/* ── Header ── */}
                 <div className={styles.header}>
-                    <p className={styles.label}>Our Global Network</p>
+                    <p className={styles.label}>Our Distribution Network</p>
                     <h2 className={styles.headline}>
-                        Connected Across
+                        Strong Presence Across
                         <br />
-                        Continents
+                        Northern India
                     </h2>
                 </div>
 
@@ -100,8 +100,8 @@ export default function GlobalNetwork({ videoUrl = 'https://cdn.pixabay.com/vide
                 {/* ── Footer text ── */}
                 <div className={styles.footer}>
                     <p className={styles.sub}>
-                        Our global footprint means fewer handovers, faster
-                        decision-making, and tailored solutions delivered
+                        Our extensive network means fewer handovers, faster
+                        local delivery, and tailored solutions delivered
                         through a single trusted partner.
                     </p>
                     <a href="#" className={styles.cta}>

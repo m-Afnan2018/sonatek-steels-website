@@ -13,9 +13,10 @@ export interface SustainabilityDocument {
 
 interface Props {
   documents: SustainabilityDocument[];
+  id?: string;
 }
 
-export default function KeyDocuments({ documents }: Props) {
+export default function KeyDocuments({ documents, id }: Props) {
   const sliderRef = useRef<HTMLDivElement>(null);
 
   const scrollLeft = () => {
@@ -31,7 +32,7 @@ export default function KeyDocuments({ documents }: Props) {
   };
 
   return (
-    <section className={styles.section} id="documents">
+    <section className={styles.section} id={id}>
       <div className={styles.container}>
         <div className={styles.header}>
           <h2 className={styles.title}>KEY SUSTAINABILITY<br/>DOCUMENTS</h2>

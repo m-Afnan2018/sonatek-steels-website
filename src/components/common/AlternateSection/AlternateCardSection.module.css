@@ -68,18 +68,18 @@
   align-items: center;
   gap: 12px;
   padding: 14px 28px;
-  border: 1px solid #3c3489;
+  border: 1px solid var(--brand-blue);
   border-radius: 100px;
   font-family: var(--font-pilat-narrow), sans-serif;
   font-size: 14px;
   font-weight: 600;
-  color: #3c3489;
+  color: var(--brand-blue);
   text-decoration: none;
   transition: all 0.3s ease;
 }
 
 .btn:hover {
-  background-color: #3c3489;
+  background-color: var(--brand-blue-dark);
   color: #fff;
 }
 

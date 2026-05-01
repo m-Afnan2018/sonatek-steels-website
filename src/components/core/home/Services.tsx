@@ -6,46 +6,46 @@ import Image from "next/image";
 
 const SERVICES = [
     {
-        title: "Contract Logistics",
+        title: "Cold Rolled (CR) Coils",
         description:
-            "Our Contract Logistics solutions are built for you. Combining industry expertise with sustainable practices, we optimise operations, reduce costs, and give you the flexibility to grow with confidence.",
+            "Our CR Coils are produced to exacting standards, offering superior surface finish and dimensional accuracy for automotive and high-end engineering applications.",
         image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80",
-        href: "#",
+        href: "/products/cr-coils",
     },
     {
-        title: "Freight Forwarding",
+        title: "Hot Rolled (HR) Coils",
         description:
-            "We offer end-to-end freight forwarding services across air, ocean, and road — connecting your cargo to markets around the world with precision and care.",
+            "We supply high-strength HR coils suitable for structural, manufacturing, and industrial projects, ensuring durability and performance across all conditions.",
         image: "https://images.unsplash.com/photo-1494961104209-3c223057bd26?w=800&q=80",
-        href: "#",
+        href: "/products/hr-coils",
     },
     {
-        title: "Economic Zones",
+        title: "CR & HR Sheets",
         description:
-            "Our world-class economic zones and freezones provide businesses with the infrastructure, incentives, and connectivity needed to thrive in global trade.",
+            "Precision-cut sheets in both Cold Rolled and Hot Rolled formats, available in various thicknesses and grades to meet your specific industrial requirements.",
         image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800&q=80",
-        href: "#",
+        href: "/products/hr-sheets",
     },
     {
-        title: "Ports & Terminals",
+        title: "Chequered Plates",
         description:
-            "We operate a global network of marine and inland terminals, handling millions of containers every year with industry-leading efficiency and safety standards.",
+            "Anti-slip chequered plates designed for industrial flooring, stairs, and transportation hubs, combining aesthetic appeal with essential safety features.",
         image: "https://images.unsplash.com/photo-1504904126298-3fde501c9b31?w=800&q=80",
-        href: "#",
+        href: "/products/chequered-plates",
     },
     {
-        title: "Maritime Services",
+        title: "Custom Processing",
         description:
-            "From vessel chartering to maritime logistics, our comprehensive maritime solutions keep your supply chain moving seamlessly across every ocean.",
+            "Our state-of-the-art processing facilities provide slitting, shearing, and pickling services to deliver steel in the exact dimensions your project demands.",
         image: "https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=800&q=80",
-        href: "#",
+        href: "/services/processing",
     },
     {
-        title: "Technology & Innovation",
+        title: "Supply Chain Solutions",
         description:
-            "Our digital platforms give you real-time visibility and control across your entire supply chain — powered by data, AI, and decades of trade expertise.",
+            "Leveraging our strategic location in Northern India, we provide reliable distribution and inventory management for corporate clients and OEMs.",
         image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
-        href: "#",
+        href: "/services/distribution",
     },
 ];
 

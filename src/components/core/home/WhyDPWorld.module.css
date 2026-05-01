@@ -43,7 +43,7 @@
 
 /* ── Headline ── */
 .headline {
-    font-size: clamp(3rem, 7.5vw, 7rem);
+    font-size: clamp(3rem, 5vw, 5rem);
     font-weight: 800;
     color: #5b55cc;
     text-transform: uppercase;

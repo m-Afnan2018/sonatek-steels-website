@@ -10,9 +10,10 @@ export interface Faq {
 
 interface Props {
   faqs: Faq[];
+  id?: string;
 }
 
-export default function SustainabilityFaqs({ faqs }: Props) {
+export default function SustainabilityFaqs({ faqs, id }: Props) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggleOpen = (index: number) => {
@@ -20,7 +21,7 @@ export default function SustainabilityFaqs({ faqs }: Props) {
   };
 
   return (
-    <section className={styles.section} id="faqs">
+    <section className={styles.section} id={id}>
       <div className={styles.container}>
         <div className={styles.header}>
           <h2 className={styles.title}>SUSTAINABILITY<br/>FAQs</h2>

@@ -6,25 +6,25 @@ import Image from "next/image";
 
 const NEWS = [
     {
-        date: "23 Apr 2026",
-        title: "DP World Joins Clean Seas Initiative to Cut Maritime Plastic Waste",
-        href: "#",
-        image: null, // First item uses logo placeholder (dark bg)
-        isLogo: true,
-    },
-    {
-        date: "21 Apr 2026",
-        title: "DP World Announces US$ 500,000 Investment to Expand Abuja Eye Hospital in Nigeria",
-        href: "#",
-        image: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=600&q=80",
+        date: "10 May 2025",
+        title: "BASICALLY STEEL: AN ALLOY OF IRON AND CARBON FOR INDUSTRIAL STRENGTH",
+        href: "/news/basic",
+        image: "https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?w=800&q=80",
         isLogo: false,
     },
     {
-        date: "20 Apr 2026",
-        title: "DP World Launches First Port-Based Carbon Insets at Southampton",
-        href: "#",
-        image: "https://images.unsplash.com/photo-1504214208698-ea1916a2195a?w=600&q=80",
+        date: "08 May 2025",
+        title: "HOT ROLLING: DEFORMING AT HIGH TEMPERATURE FOR SUPERIOR QUALITY",
+        href: "/news/temp",
+        image: "https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=800&q=80",
         isLogo: false,
+    },
+    {
+        date: "01 May 2025",
+        title: "SONATEK STEELS MARKS NEW MILESTONE IN NORTHERN INDIA INFRASTRUCTURE",
+        href: "#",
+        image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1200&q=80",
+        isLogo: true, // We'll keep one logo placeholder but update it to Sonatek
     },
 ];
 
@@ -109,7 +109,6 @@ export default function LatestNews() {
                                 {/* Right: image or logo placeholder */}
                                 <div className={styles.imgWrap}>
                                     {item.isLogo ? (
-                                        /* Dark bg with DP World logo — matches screenshot item 1 */
                                         <div className={styles.logoPlaceholder}>
                                             {/* Swoosh */}
                                             <svg
@@ -119,30 +118,21 @@ export default function LatestNews() {
                                                 fill="none"
                                             >
                                                 <path
-                                                    d="M2 24 C10 17, 22 15, 34 19 C39 21, 43 23, 46 21"
-                                                    stroke="#3DB87A"
+                                                    d="M12 8 C5 8 2 13 2 18 C2 23 7 26 14 26 C19 26 22 21 22 16"
+                                                    stroke="#E3003F"
                                                     strokeWidth="3.5"
                                                     strokeLinecap="round"
-                                                    fill="none"
                                                 />
                                                 <path
-                                                    d="M2 17 C10 10, 22 8, 34 12 C39 14, 43 17, 46 14"
-                                                    stroke="#5DD49A"
-                                                    strokeWidth="2.5"
+                                                    d="M15 8 C22 8 25 13 25 18 C25 23 20 26 12 26"
+                                                    stroke="#00C1D5"
+                                                    strokeWidth="3.5"
                                                     strokeLinecap="round"
-                                                    fill="none"
                                                     opacity="0.85"
-                                                />
-                                                <path
-                                                    d="M6 9 C13 2, 24 1, 35 6 C40 9, 43 13, 46 10"
-                                                    stroke="#D94068"
-                                                    strokeWidth="3.2"
-                                                    strokeLinecap="round"
-                                                    fill="none"
                                                 />
                                             </svg>
                                             <span className={styles.logoText}>
-                                                DP WORLD
+                                                SONATEK STEELS
                                             </span>
                                         </div>
                                     ) : (

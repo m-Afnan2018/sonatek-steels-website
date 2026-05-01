@@ -1,4 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap");
+
+:root {
+  --brand-blue: #021450;
+  --brand-blue-dark: #021450;
+  --brand-blue-light: #e6efff;
+  --brand-blue-accent: #021450;
+}
+
+
 
 *,
 *::before,

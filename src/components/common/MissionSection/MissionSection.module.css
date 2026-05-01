@@ -32,7 +32,7 @@
 }
 
 .titleVisible {
-  color: #2a68cc;
+  color: var(--brand-blue);
 }
 
 .content {

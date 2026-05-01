@@ -2,6 +2,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import styles from './Navbar.module.css';
+import Image from 'next/image';
+import Logo from '@/assets/images/logo.png';
+
 
 // SVG Icons
 const MapPinIcon = () => (
@@ -145,40 +148,30 @@ const NAV_DATA = [
     ],
     sections: [
       {
-        title: 'SUPPLY CHAIN',
+        title: 'FLAT STEEL PRODUCTS',
         links: [
-          { label: 'End-to-End Services', href: '/solutions/end-to-end' },
-          {
-            label: 'Freight Forwarding',
-            href: '/solutions/freight-forwarding',
-          },
-          {
-            label: 'Contract Logistics',
-            href: '/solutions/contract-logistics',
-          },
-          { label: 'Market Access', href: '/solutions/market-access' },
-          { label: 'Marine Services', href: '/solutions/marine-services' },
+          { label: 'Cold Rolled (CR) Coils', href: '/products/cr-coils' },
+          { label: 'CR Sheets', href: '/products/cr-sheets' },
+          { label: 'Hot Rolled (HR) Coils', href: '/products/hr-coils' },
+          { label: 'HR Sheets/Plates', href: '/products/hr-sheets' },
+          { label: 'Chequered Plates', href: '/products/chequered-plates' },
         ],
       },
       {
-        title: 'INDUSTRIES',
+        title: 'INDUSTRIAL SEGMENTS',
         links: [
           { label: 'Automotive', href: '/industries/automotive' },
-          { label: 'Chemicals', href: '/industries/chemicals' },
-          { label: 'FMCG', href: '/industries/fmcg' },
-          { label: 'Healthcare', href: '/industries/healthcare' },
-          { label: 'Industrial', href: '/industries/industrial' },
+          { label: 'OEMs', href: '/industries/oems' },
+          { label: 'Construction', href: '/industries/construction' },
+          { label: 'General Engineering', href: '/industries/engineering' },
         ],
       },
       {
-        title: 'PORTS & TERMINALS',
+        title: 'SERVICES',
         links: [
-          { label: 'Our Port Services', href: '/ports/services' },
-          { label: 'Our Port Network', href: '/ports/network' },
-          {
-            label: 'Port Technology & Innovation',
-            href: '/ports/innovation',
-          },
+          { label: 'Custom Processing', href: '/services/processing' },
+          { label: 'Distribution', href: '/services/distribution' },
+          { label: 'Technical Assistance', href: '/services/technical' },
         ],
       },
     ],
@@ -218,8 +211,8 @@ const NAV_DATA = [
       },
     ],
   },
-  { label: 'Our Company', href: '/company' },
-  { label: 'News', href: '/news' },
+  { label: 'Sustainability', href: '/sustainability' },
+  { label: 'Blogs', href: '/blogs' },
 ];
 
 export default function Navbar() {
@@ -310,9 +303,12 @@ export default function Navbar() {
         <div className={styles.navContainer}>
           {/* Logo */}
           <div className={styles.logo}>
-            <LogoIcon />
-            <a href="/">LOGO.</a>
+            <a href="/">
+              <Image src={Logo} alt="Sonatek Steels Logo" width={160} height={40} priority />
+            </a>
           </div>
+
+
 
           {/* Desktop Nav Links */}
           <div className={styles.navLinks}>

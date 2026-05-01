@@ -5,29 +5,29 @@ import styles from './BeyondBusiness.module.css';
 
 const DEFAULT_DATA = [
   {
-    img: 'https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=800&q=80',
-    title: 'DP World Foundation',
-    des: 'Every individual should have the opportunity to lead a healthy and productive life, regardless of where they were born.',
+    img: 'https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?w=800&q=80',
+    title: 'Sustainable Sourcing',
+    des: 'We partner with leading steel producers who prioritize eco-friendly manufacturing processes and resource efficiency.',
   },
   {
     img: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&q=80',
-    title: 'Our Climate Journey',
-    des: "We're committed to understanding and reducing our environmental impact until we reach net zero emissions across all operations.",
+    title: 'Green Logistics',
+    des: "We optimize our distribution networks in Northern India to reduce transit times and minimize our carbon footprint.",
   },
   {
     img: 'https://images.unsplash.com/photo-1593113630400-ea4288922497?w=800&q=80',
     title: 'Empowering Communities',
-    des: 'We focus on improving the lives of people in the communities where we operate through inclusive economic opportunity.',
+    des: 'We invest in local vocational training programs to help prepare the workforce for the evolving industrial sector.',
   },
   {
     img: 'https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=800&q=80',
-    title: 'Clean Energy Future',
-    des: 'Investing in renewable infrastructure and sustainable logistics networks that power global trade without the carbon cost.',
+    title: 'Industrial Excellence',
+    des: 'Our commitment to technical innovation ensures that we provide the highest quality steel solutions to our partners.',
   },
   {
     img: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80',
-    title: 'Global Education',
-    des: 'Partnering with schools and universities worldwide to prepare the next generation for careers in sustainable global trade.',
+    title: 'Health & Safety First',
+    des: 'We adhere to rigorous safety protocols across all our storage and distribution facilities to protect our team.',
   },
 ];
 
@@ -37,12 +37,25 @@ const DEFAULT_BG =
 const CARD_WIDTH = 400;
 const CARD_GAP = 24;
 
+interface BeyondBusinessProps {
+  data?: {
+    img: string;
+    title: string;
+    des: string;
+  }[];
+  bgImage?: string;
+  heading?: string;
+  subheading?: string;
+  id?: string;
+}
+
 export default function BeyondBusiness({
   data = DEFAULT_DATA,
   bgImage = DEFAULT_BG,
   heading = 'BEYOND BUSINESS',
-  subheading = 'Our sustainability, education, and social impact initiatives ensure that global trade leaves a positive footprint.',
-}) {
+  subheading = 'Our sustainability, technical excellence, and community initiatives ensure that our steel distribution leaves a positive footprint.',
+  id,
+}: BeyondBusinessProps) {
   const containerRef = useRef(null);
 
   const [isMobile, setIsMobile] = useState(false);
@@ -102,6 +115,7 @@ export default function BeyondBusiness({
       ref={containerRef}
       className={styles.outerContainer}
       style={{ '--sections': totalScrollSections } as React.CSSProperties}
+      id={id}
     >
       <div className={styles.stickyContainer}>
         {/* Background image with opacity animation */}

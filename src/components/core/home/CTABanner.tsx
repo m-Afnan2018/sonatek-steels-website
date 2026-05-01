@@ -40,13 +40,13 @@ export default function CTABanner() {
                 className={`${styles.content} ${visible ? styles.visible : ""}`}
             >
                 <h2 className={styles.headline}>
-                    Talk to a Logistics
+                    Talk to a Steel
                     <br />
                     Expert
                 </h2>
                 <p className={styles.sub}>
-                    Get solutions that fit your business needs. Talk to a supply
-                    chain expert today.
+                    Get solutions that fit your industrial needs. Talk to a flat 
+                    steel product expert today.
                 </p>
                 <a href="#" className={styles.ctaBtn}>
                     Contact Us
