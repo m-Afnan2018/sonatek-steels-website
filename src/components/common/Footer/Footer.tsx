@@ -1,74 +1,49 @@
 import styles from "./Footer.module.css";
+import Image from "next/image";
+import Logo from "@/assets/images/logo.png";
+
 
 const COLUMNS = [
     {
-        heading: "Solutions",
+        heading: "Buy Online",
         links: [
-            { label: "End to End Services", href: "#" },
-            { label: "Freight Forwarding", href: "#" },
-            { label: "Contract Logistics", href: "#" },
-            { label: "Market Access", href: "#" },
-            { label: "Economic Zones", href: "#" },
-            { label: "Marine Services", href: "#" },
-            { label: "Ports & Terminals", href: "#" },
+            { label: "Hot Rolled Sheets", href: "/hrsheets" },
+            { label: "Hot Rolled Coils", href: "/hrcoils" },
+            { label: "Cold Rolled Sheets", href: "/crsheets" },
+            { label: "Cold Rolled Coils", href: "/crcoils" },
         ],
     },
     {
-        heading: "Industries",
+        heading: "Sonatek",
         links: [
-            { label: "Automotive", href: "#" },
-            { label: "Chemicals", href: "#" },
-            { label: "FMCG", href: "#" },
-            { label: "Healthcare", href: "#" },
-            { label: "Industrials", href: "#" },
-            { label: "Perishables", href: "#" },
-            { label: "Retail", href: "#" },
-            { label: "Technology", href: "#" },
+            { label: "About Us", href: "/about-us" },
+            { label: "Our Leadership", href: "/leadership" },
+            { label: "Blogs", href: "/blogs" },
+            { label: "Sustainability", href: "/sustainability" },
         ],
     },
     {
-        heading: "Quick Links",
+        heading: "Policy",
         links: [
-            { label: "Sustainability", href: "#" },
-            { label: "Case Studies", href: "#" },
-            { label: "Insights", href: "#" },
-            { label: "News", href: "#" },
-            { label: "Self-service Tools", href: "#" },
+            { label: "Terms & Conditions", href: "/terms-conditions" },
+            { label: "Privacy Policy", href: "/privacy" },
+            { label: "Return Policy", href: "#" },
         ],
     },
     {
-        heading: "Company",
+        heading: "Support",
         links: [
-            { label: "About Us", href: "#" },
-            { label: "Our Leadership", href: "#" },
-            { label: "Our Governance", href: "#" },
-            { label: "Our Locations", href: "#" },
-            { label: "Investors", href: "#" },
-            { label: "Partnerships", href: "#" },
-            { label: "Careers", href: "#" },
-            { label: "Contact & Support", href: "#" },
-        ],
-    },
-    {
-        heading: "Connected",
-        links: [
-            { label: "World Logistics Passport", href: "#" },
-            { label: "Freight Forwarding Alliance", href: "#" },
-            { label: "DryDocks.gov.ae", href: "#" },
-            { label: "Trade Finance", href: "#" },
-            { label: "Digital Solutions", href: "#" },
+            { label: "+91-9891998846", href: "tel:+919891998846" },
+            { label: "sonateksteels@gmail.com", href: "mailto:sonateksteels@gmail.com" },
+            { label: "X-7, Loha Mandi, Naraina, New Delhi - 110028", href: "#" },
         ],
     },
 ];
 
 const LEGAL_LINKS = [
     { label: "Sitemap", href: "#" },
-    { label: "Terms & Conditions", href: "#" },
-    { label: "Privacy Notice", href: "#" },
-    { label: "Cookie Preferences", href: "#" },
-    { label: "Whistleblowing Hotline", href: "#" },
-    { label: "Modern Slavery Act", href: "#" },
-    { label: "Vulnerability Disclosure", href: "#" },
+    { label: "Terms & Conditions", href: "/terms-conditions" },
+    { label: "Privacy Policy", href: "/privacy" },
 ];
 
 // Social icon SVGs
@@ -132,40 +107,9 @@ export default function Footer() {
                 <div className={styles.inner}>
                     {/* Logo column */}
                     <div className={styles.logoCol}>
-                        {/* Swoosh SVG — large version */}
-                        <svg
-                            width="80"
-                            height="64"
-                            viewBox="0 0 48 40"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                            className={styles.swoosh}
-                        >
-                            <path
-                                d="M4 32 C14 22, 28 19, 42 25 C47 27, 50 30, 54 27"
-                                stroke="#3DB87A"
-                                strokeWidth="3.2"
-                                strokeLinecap="round"
-                                fill="none"
-                            />
-                            <path
-                                d="M3 23 C13 14, 28 11, 42 17 C47 19, 50 23, 54 19"
-                                stroke="#5DD49A"
-                                strokeWidth="2.2"
-                                strokeLinecap="round"
-                                fill="none"
-                                opacity="0.85"
-                            />
-                            <path
-                                d="M8 13 C17 4, 29 2, 41 8 C47 11, 50 16, 54 12"
-                                stroke="#D94068"
-                                strokeWidth="3"
-                                strokeLinecap="round"
-                                fill="none"
-                            />
-                        </svg>
-                        <span className={styles.logoText}>DP WORLD</span>
+                        <Image src={Logo} alt="Sonatek Steels Logo" width={200} height={50} />
                     </div>
+
 
                     {/* Link columns */}
                     <div className={styles.cols}>

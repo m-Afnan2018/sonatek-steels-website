@@ -20,6 +20,7 @@ export interface Partner {
 interface Props {
   partners: Partner[];
   baseVelocity?: number;
+  id?: string;
 }
 
 const wrap = (min: number, max: number, v: number) => {
@@ -27,7 +28,7 @@ const wrap = (min: number, max: number, v: number) => {
   return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min;
 };
 
-export default function SustainabilityPartners({ partners, baseVelocity = -2 }: Props) {
+export default function SustainabilityPartners({ partners, baseVelocity = -2, id }: Props) {
   const baseX = useMotionValue(0);
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
@@ -57,7 +58,7 @@ export default function SustainabilityPartners({ partners, baseVelocity = -2 }: 
   });
   
   return (
-    <section className={styles.section} id="partnerships">
+    <section className={styles.section} id={id}>
       <div className={styles.container}>
         <p className={styles.label}>OUR GLOBAL</p>
         <h2 className={styles.title}>SUSTAINABILITY<br/>PARTNERS</h2>

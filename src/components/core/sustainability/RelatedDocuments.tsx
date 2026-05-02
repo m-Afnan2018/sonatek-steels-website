@@ -8,11 +8,12 @@ export interface RelatedDoc {
 
 interface Props {
   documents: RelatedDoc[];
+  id?: string;
 }
 
-export default function RelatedDocuments({ documents }: Props) {
+export default function RelatedDocuments({ documents, id }: Props) {
   return (
-    <section className={styles.section} id="related-documents">
+    <section className={styles.section} id={id}>
       <div className={styles.container}>
         <h2 className={styles.title}>RELATED<br/>DOCUMENTS</h2>
         <div className={styles.list}>

@@ -17,9 +17,10 @@ interface FocusAreasSectionProps {
   title: string;
   description: string;
   areas: FocusArea[];
+  id?: string;
 }
 
-export default function FocusAreasSection({ title, description, areas }: FocusAreasSectionProps) {
+export default function FocusAreasSection({ title, description, areas ,...props}: FocusAreasSectionProps) {
   const [activeTab, setActiveTab] = useState(areas[0]?.id);
 
   const activeArea = areas.find(a => a.id === activeTab) || areas[0];
@@ -27,7 +28,7 @@ export default function FocusAreasSection({ title, description, areas }: FocusAr
   if (!areas || areas.length === 0) return null;
 
   return (
-    <section className={styles.section}>
+    <section className={styles.section} {...props}>
       <div className={styles.container}>
         <div className={styles.header}>
           <h2 className={styles.title}>{title}</h2>

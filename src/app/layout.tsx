@@ -26,12 +26,13 @@ const pilatNarrow = localFont({
     variable: "--font-pilat-narrow",
 });
 import Navbar from "@/components/common/Navbar/Navbar";
-import Footer from "@/components/core/home - old/Footer";
+// import Footer from "@/components/core/home - old/Footer";
+import Footer from "@/components/common/Footer/Footer"
 
 export const metadata: Metadata = {
-    title: "DP World — We Make Trade Flow",
+    title: "Sonatek Steels",
     description:
-        "DP World is a leading enabler of global trade. We operate across 78 marine and inland terminals in 40+ countries.",
+        "Sonatek Steels is a leading producer of high-quality steel products. We operate across 78 marine and inland terminals in 40+ countries.",
 };
 
 export default function RootLayout({

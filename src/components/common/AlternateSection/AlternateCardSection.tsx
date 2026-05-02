@@ -10,10 +10,11 @@ interface AlternateCardSectionProps {
   description: string;
   image: string;
   link: string;
+  linkText?: string;
   isReversed?: boolean;
 }
 
-export default function AlternateCardSection({ title, description, image, link, isReversed = false }: AlternateCardSectionProps) {
+export default function AlternateCardSection({ title, description, image, link, linkText = "Read More", isReversed = false }: AlternateCardSectionProps) {
   return (
     <section className={`${styles.section} ${isReversed ? styles.reversed : ''}`}>
       <div className={styles.container}>
@@ -45,7 +46,7 @@ export default function AlternateCardSection({ title, description, image, link, 
           <h2 className={styles.title}>{title}</h2>
           <p className={styles.description}>{description}</p>
           <a href={link} className={styles.btn}>
-            Read More
+            {linkText}
             <svg 
               className={styles.icon} 
               width="20" 

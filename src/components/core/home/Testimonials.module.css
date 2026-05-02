@@ -1,0 +1,137 @@
+.section {
+  width: 100%;
+  padding: 6rem 0;
+  background: #f8f9fa;
+  overflow: hidden;
+  position: relative;
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.heading {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: #111111;
+  text-align: center;
+  margin-bottom: 4rem;
+  text-transform: uppercase;
+  font-family: "Barlow", sans-serif;
+}
+
+/* Marquee track */
+.marqueeContainer {
+  display: flex;
+  position: relative;
+  width: 100%;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+}
+
+.track {
+  display: flex;
+  gap: 2rem;
+  animation: marquee 40s linear infinite;
+  white-space: nowrap;
+}
+
+.track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50% - 1rem));
+  }
+}
+
+.card {
+      white-space: normal;
+    background: #fff;
+    border: 1px solid #0000000d;
+    border-radius: 5px;
+    flex-direction: column;
+    flex-shrink: 0;
+    gap: 1rem;
+    width: 380px;
+    padding: 2rem;
+    display: flex;
+    box-shadow: 0 10px 24px #0000000d;
+    margin: 1rem 0;
+}
+
+.stars {
+  display: flex;
+  gap: 0.25rem;
+  color: #fbbf24;
+}
+
+.quote {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #444444;
+  font-style: italic;
+  flex-grow: 1;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand-blue-dark);
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: 2px solid #e2e8f0;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  font-weight: 700;
+  color: #111111;
+  font-size: 1.1rem;
+}
+
+.designation {
+  font-size: 0.85rem;
+  color: #888888;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 4rem 0;
+  }
+  .card {
+    width: 320px;
+    padding: 1.75rem;
+  }
+  .heading {
+    margin-bottom: 2.5rem;
+  }
+}

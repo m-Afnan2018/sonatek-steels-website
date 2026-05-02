@@ -7,8 +7,8 @@
 .footer {
     font-family: "Barlow", "DM Sans", -apple-system, sans-serif;
     background: linear-gradient(135deg,
-            #1e1a6e 0%,
-            #2d2a8e 30%,
+            #19165c 0%,
+            #35178d 30%,
             #3535a8 60%,
             #2a2d9e 80%,
             #232070 100%);
@@ -41,6 +41,10 @@
     gap: 0.6rem;
     width: 140px;
     padding-top: 0.25rem;
+}
+
+.logoCol img {
+    filter: brightness(0) invert(1);
 }
 
 .swoosh {
@@ -215,6 +219,8 @@
         flex-direction: row;
         align-items: center;
         gap: 0.75rem;
+        margin-left: -2rem;
+        height: 45px;
     }
 
     .cols {

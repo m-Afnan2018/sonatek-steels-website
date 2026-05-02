@@ -1,0 +1,46 @@
+.page {
+  width: 100%;
+}
+
+.carouselSection {
+    background-color: #f8f9fa;
+}
+
+.sectionHeader {
+    max-width: 1300px;
+    margin: 0 auto 40px;
+    padding: 0 40px;
+    text-align: left;
+}
+
+.sectionTitle {
+    font-family: var(--font-pilat-wide), sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.sectionSubtitle {
+    font-family: var(--font-pilat-narrow), sans-serif;
+    font-size: 18px;
+    color: #666;
+    max-width: 600px;
+}
+
+@media (max-width: 768px) {
+    .sectionHeader {
+        padding: 0 20px;
+        text-align: center;
+    }
+    
+    .sectionTitle {
+        font-size: 24px;
+    }
+    
+    .sectionSubtitle {
+        font-size: 16px;
+        margin: 0 auto;
+    }
+}

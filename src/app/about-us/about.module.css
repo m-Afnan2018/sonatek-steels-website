@@ -83,7 +83,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: #3d37b0;
+    background-color: var(--brand-blue);
     color: #ffffff;
     padding: 1rem 2rem;
     font-weight: 600;
@@ -96,7 +96,7 @@
 }
 
 .primaryBtn:hover {
-    background-color: #2a2490;
+    background-color: var(--brand-blue-dark);
     transform: translateY(-2px);
 }
 
@@ -140,18 +140,18 @@
     align-items: center;
     justify-content: center;
     background-color: transparent;
-    color: #3d37b0;
+    color: var(--brand-blue);
     padding: 0.875rem 2rem;
     font-weight: 600;
     font-size: 1rem;
     text-decoration: none;
     border-radius: 50px;
-    border: 2px solid #3d37b0;
+    border: 2px solid var(--brand-blue);
     transition: all 0.3s ease;
 }
 
 .outlineBtn:hover {
-    background-color: #3d37b0;
+    background-color: var(--brand-blue-dark);
     color: #ffffff;
 }
 

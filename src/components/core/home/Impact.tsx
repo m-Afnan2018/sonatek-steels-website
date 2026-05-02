@@ -6,27 +6,27 @@ import styles from "./Impact.module.css";
 const STATS = [
     {
         prefix: "",
-        value: 110,
-        suffix: "M",
-        label: "TEU global capacity",
+        value: 11,
+        suffix: "+",
+        label: "Years of excellence",
     },
     {
         prefix: "",
-        value: 84,
-        suffix: "",
-        label: "Countries worldwide",
-    },
-    {
-        prefix: "$",
-        value: 10,
-        suffix: "B",
-        label: "Invested in global logistics network",
+        value: 500,
+        suffix: "K+",
+        label: "Tons of steel delivered",
     },
     {
         prefix: "",
-        value: 65,
+        value: 120,
+        suffix: "+",
+        label: "Industries helped",
+    },
+    {
+        prefix: "",
+        value: 95,
         suffix: "%",
-        label: "Electricity sourced from renewable energy projects in 2024",
+        label: "Repeat customers",
     },
 ];
 
@@ -118,14 +118,12 @@ export default function Impact() {
                 >
                     <p className={styles.label}>Make an Impact</p>
                     <h2 className={styles.headline}>
-                        We Move 10% of Global
+                        Engineering Excellence
                         <br />
-                        Trade Daily
+                        in Steel Distribution
                     </h2>
                     <p className={styles.sub}>
-                        DP World plays a vital role in keeping global trade
-                        moving by connecting economies, industries and
-                        businesses worldwide.
+                        Sonatek Steels plays a vital role in Northern India's industrial growth by providing high-quality flat steel products to OEMs and corporate clients.
                     </p>
                 </div>
 

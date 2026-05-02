@@ -1,0 +1,277 @@
+.section {
+  padding: 100px 24px;
+  background: #ffffff;
+  color: #111;
+}
+
+.container {
+  max-width: 1340px;
+  margin: 0 auto;
+  display: flex;
+  gap: 80px;
+  align-items: flex-start;
+}
+
+.leftSide {
+  flex: 0 0 400px;
+  position: sticky;
+  top: 100px;
+}
+
+.label {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #000;
+  margin-bottom: 24px;
+}
+
+.headline {
+  font-family: var(--font-pilat-wide), sans-serif;
+  font-size: 56px;
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 32px;
+  letter-spacing: -0.02em;
+}
+
+.subtext {
+  font-size: 20px;
+  line-height: 1.5;
+  color: #555;
+  max-width: 360px;
+}
+
+.rightSide {
+  flex: 1;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111;
+}
+
+.field label span {
+  color: #e11d48;
+  margin-left: 4px;
+}
+
+.input, .textarea, .select {
+  padding: 14px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  font-size: 16px;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+
+.input:focus, .textarea:focus, .select:focus {
+  outline: none;
+  border-color: var(--brand-blue);
+  box-shadow: 0 0 0 3px rgba(2, 20, 80, 0.1);
+}
+
+.input.error, .textarea.error, .select.error {
+  border-color: #e11d48;
+}
+
+.errorMessage {
+  color: #e11d48;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.phoneInputWrapper {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  padding: 0 16px;
+}
+
+.phoneInputWrapper:focus-within {
+  border-color: var(--brand-blue);
+  box-shadow: 0 0 0 3px rgba(2, 20, 80, 0.1);
+}
+
+.countryCode {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+  padding-right: 12px;
+  border-right: 1px solid #e5e7eb;
+}
+
+.phoneInput {
+  flex: 1;
+  border: none;
+  padding: 14px 0;
+  font-size: 16px;
+  font-family: inherit;
+}
+
+.phoneInput:focus {
+  outline: none;
+}
+
+.textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.consentWrapper {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-top: 8px;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  cursor: pointer;
+}
+
+.consentText {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #555;
+}
+
+.consentText a {
+  color: var(--brand-blue);
+  text-decoration: underline;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.captchaPlaceholder {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  padding: 12px 16px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  color: #555;
+}
+
+.submitBtn {
+  background: var(--brand-blue);
+  color: white;
+  padding: 14px 40px;
+  border-radius: 100px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+  font-family: var(--font-pilat-wide);
+}
+
+.submitBtn:hover {
+  background: var(--brand-blue-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(2, 20, 80, 0.2);
+}
+
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+    gap: 60px;
+  }
+
+  .leftSide {
+    flex: none;
+    position: static;
+    max-width: 100%;
+  }
+
+  .headline {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  .submitBtn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.successMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 24px;
+  width: 100%;
+}
+
+.successIcon {
+  width: 80px;
+  height: 80px;
+  background: #ecfdf5;
+  color: #10b981;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.successIcon svg {
+  width: 40px;
+  height: 40px;
+}
+

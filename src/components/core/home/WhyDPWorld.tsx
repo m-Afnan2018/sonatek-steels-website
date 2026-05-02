@@ -25,17 +25,17 @@ export default function WhyDPWorld() {
         <section className={styles.section} ref={ref}>
             <div className={`${styles.inner} ${visible ? styles.visible : ""}`}>
                 {/* Label */}
-                <p className={styles.label}>Why DP World?</p>
+                <p className={styles.label}>Why Sonatek Steels?</p>
 
                 {/* Big headline */}
-                <h2 className={styles.headline}>Anything. Anywhere.</h2>
+                <h2 className={styles.headline}>Precision. Reliability.</h2>
 
                 {/* Body */}
                 <p className={styles.body}>
-                    No matter your size or sector, we can help you scale your
-                    trade through our global end-to-end infrastructure. From
-                    local entrepreneurs to global enterprises, we connect you to
-                    the markets, resources, and opportunities that matter most.
+                    As MOU Dealers of SAIL and leading stockists in Northern India, 
+                    we provide a comprehensive range of flat steel products tailored 
+                    to your industrial needs. From OEMs to corporate clients, we 
+                    deliver quality and excellence in every coil and sheet.
                 </p>
 
                 {/* CTA text link */}
