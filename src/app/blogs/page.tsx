@@ -10,7 +10,7 @@ export default function NewsPage() {
     title: 'BASICALLY STEEL',
     excerpt: 'Steel is an alloy primarily composed of iron and a small percentage of carbon, which enhances its strength and fracture resistance.',
     imageUrl: 'https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?w=800&q=80',
-    link: '/news/basic'
+    link: '/blogs/basic'
   };
 
   const gridArticles1 = [
@@ -19,14 +19,14 @@ export default function NewsPage() {
       title: 'TEMPERATURE',
       excerpt: 'Hot rolling primarily involves deforming the slab/bloom at high temperature & roll pressure.',
       imageUrl: 'https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=800&q=80',
-      link: '/news/temp'
+      link: '/blogs/tech'
     },
     {
       date: '05 May 2025',
       title: 'SMOOTH SURFACE',
       excerpt: 'Cold rolling in performed to produce sheets & strips with smooth surfaces, having a better surface finish with accurate dimensions.',
       imageUrl: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80',
-      link: '/news/smooth'
+      link: '/blogs/smooth'
     }
   ];
 
@@ -55,13 +55,13 @@ export default function NewsPage() {
         {/* Header Section */}
         <section className={styles.header}>
           <div className={styles.breadcrumb}>
-            <a href="/">Home</a> <span>›</span> News
+            <a href="/">Home</a> <span>›</span> Blogs
           </div>
-          <h1 className={styles.title}>NEWSROOM</h1>
+          <h1 className={styles.title}>INSIGHTS & BLOGS</h1>
           <p className={styles.description}>
-            Keep up with our latest company news, announcements and 
-            events from across our operations. For media 
-            enquiries please contact: <a href="mailto:info@sonateksteels.com" className={styles.contactLink}>info@sonateksteels.com</a>
+            Stay informed with our latest articles, industry insights, and 
+            expert perspectives on the steel industry and supply chain excellence. 
+            For inquiries please contact: <a href="mailto:info@sonateksteels.com" className={styles.contactLink}>info@sonateksteels.com</a>
           </p>
         </section>
 

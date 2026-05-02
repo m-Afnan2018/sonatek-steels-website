@@ -1,0 +1,142 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import styles from "./StatsSection.module.css";
+
+interface Stat {
+  prefix?: string;
+  value: number;
+  suffix?: string;
+  label: string;
+}
+
+interface StatsSectionProps {
+  label: string;
+  title: string;
+  description: string;
+  stats: Stat[];
+  link?: { label: string; href: string };
+  theme?: "dark" | "light";
+}
+
+function useCountUp(target: number, duration: number, started: boolean) {
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        if (!started) return;
+        let startTime: number | null = null;
+
+        const step = (timestamp: number) => {
+            if (!startTime) startTime = timestamp;
+            const elapsed = timestamp - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            // Ease out expo
+            const eased = 1 - Math.pow(1 - progress, 4);
+            setCount(Math.floor(eased * target));
+            if (progress < 1) requestAnimationFrame(step);
+            else setCount(target);
+        };
+
+        requestAnimationFrame(step);
+    }, [target, duration, started]);
+
+    return count;
+}
+
+function StatItem({
+    stat,
+    index,
+    started,
+}: {
+    stat: Stat;
+    index: number;
+    started: boolean;
+}) {
+    const count = useCountUp(stat.value, 1600 + index * 150, started);
+
+    return (
+        <div className={styles.statItem}>
+            {/* Vertical divider — left of every item except first */}
+            {index > 0 && <div className={styles.divider} />}
+
+            <div
+                className={styles.statContent}
+                style={{ animationDelay: `${0.1 + index * 0.1}s` }}
+            >
+                <div className={styles.statNumber}>
+                    {stat.prefix && (
+                        <span className={styles.prefix}>{stat.prefix}</span>
+                    )}
+                    <span className={styles.count}>{count}</span>
+                    {stat.suffix && (
+                        <span className={styles.suffix}>{stat.suffix}</span>
+                    )}
+                </div>
+                <p className={styles.statLabel}>{stat.label}</p>
+            </div>
+        </div>
+    );
+}
+
+export default function StatsSection({ label, title, description, stats, link, theme = "dark" }: StatsSectionProps) {
+    const [started, setStarted] = useState(false);
+    const [visible, setVisible] = useState(false);
+    const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+                    setTimeout(() => setStarted(true), 200);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 },
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section className={styles.section} data-theme={theme} ref={ref}>
+      <div className={styles.inner}>
+                {/* ── Header block ── */}
+                <div
+                    className={`${styles.header} ${visible ? styles.visible : ""}`}
+                >
+                    <p className={styles.label}>{label}</p>
+                    <h2 className={styles.headline}>
+                        {title}
+                    </h2>
+                    <p className={styles.sub}>
+                        {description}
+                    </p>
+                    {link && (
+                        <a href={link.href} className={styles.link}>
+                            {link.label}
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
+                        </a>
+                    )}
+                </div>
+
+                {/* ── Stats row ── */}
+                <div
+                    className={`${styles.statsRow} ${visible ? styles.statsVisible : ""}`}
+                >
+                    {stats.map((stat, i) => (
+                        <StatItem
+                            key={i}
+                            stat={stat}
+                            index={i}
+                            started={started}
+                        />
+                    ))}
+                </div>
+      </div>
+    </section>
+  );
+}

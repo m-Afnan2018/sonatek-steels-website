@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import styles from './Navbar.module.css';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import Logo from '@/assets/images/logo.png';
 
 
@@ -103,30 +104,6 @@ const ChevronDownIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const LogoIcon = () => (
-  <svg
-    className={styles.logoIcon}
-    viewBox="0 0 200 100"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    {/* A simple abstraction of the logo icon */}
-    <path
-      d="M50 20 C20 20 10 40 10 60 C10 80 30 90 60 90 C80 90 90 70 90 50"
-      stroke="#E3003F"
-      strokeWidth="8"
-      strokeLinecap="round"
-    />
-    <path
-      d="M60 20 C90 20 100 40 100 60 C100 80 80 90 50 90"
-      stroke="#00C1D5"
-      strokeWidth="8"
-      strokeLinecap="round"
-      style={{ mixBlendMode: 'screen' }}
-    />
-  </svg>
-);
-
 const NAV_DATA = [
   {
     label: 'Solutions',
@@ -160,10 +137,20 @@ const NAV_DATA = [
       {
         title: 'INDUSTRIAL SEGMENTS',
         links: [
-          { label: 'Automotive', href: '/industries/automotive' },
-          { label: 'OEMs', href: '/industries/oems' },
           { label: 'Construction', href: '/industries/construction' },
-          { label: 'General Engineering', href: '/industries/engineering' },
+          { label: 'Automotive', href: '/industries/automotive' },
+          { label: 'Oil & Gas', href: '/industries/oil-gas' },
+          { label: 'Shipbuilding', href: '/industries/shipbuilding' },
+          { label: 'Heavy Engineering', href: '/industries/heavy-engineering' },
+          { label: 'Fabricators & OEMs', href: '/industries/fabricators-oems' },
+        ],
+      },
+      {
+        title: 'PORTS & TERMINALS',
+        links: [
+          { label: 'Our Port Services', href: '/services/port-services' },
+          { label: 'Our Port Network', href: '/services/port-network' },
+          { label: 'Port Technology & Innovation', href: '/services/port-technology' },
         ],
       },
       {
@@ -180,46 +167,27 @@ const NAV_DATA = [
     label: "About Us",
     href: "/about-us"
   },
-  {
-    label: 'Tools & Insights',
-    href: '#',
-    hasMegaMenu: true,
-    sections: [
-      {
-        title: 'RESOURCES',
-        links: [
-          { label: 'Knowledge Hub', href: '/insights/knowledge' },
-          { label: 'Whitepapers', href: '/insights/whitepapers' },
-          { label: 'Case Studies', href: '/insights/case-studies' },
-        ],
-      },
-      {
-        title: 'TOOLS',
-        links: [
-          { label: 'Track & Trace', href: '/tools/track' },
-          { label: 'Schedules', href: '/tools/schedules' },
-          { label: 'Request a Quote', href: '/tools/quote' },
-        ],
-      },
-    ],
-    featured: [
-      {
-        img: 'https://images.unsplash.com/photo-1777195680731-454a40402349?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        title: 'See how we deliver for our customers.',
-        cta: 'Case Studies',
-        href: '/case-studies/insights',
-      },
-    ],
-  },
   { label: 'Sustainability', href: '/sustainability' },
   { label: 'Blogs', href: '/blogs' },
+  { label: 'Contact', href: '/contact-us' },
 ];
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeMobileMenu, setActiveMobileMenu] = useState<string | null>(null);
   const [isMobile, setIsMobile] = useState(false);
+
+  const isActive = (item: any) => {
+    if (item.href !== '#' && pathname === item.href) return true;
+    if (item.sections) {
+      return item.sections.some((section: any) => 
+        section.links.some((link: any) => pathname === link.href)
+      );
+    }
+    return false;
+  };
 
   const navRef = useRef<HTMLDivElement>(null);
 
@@ -317,7 +285,7 @@ export default function Navbar() {
                 <button
                   key={item.label}
                   className={`${styles.navLink} ${
-                    activeMenu === item.label ? styles.active : ''
+                    activeMenu === item.label || isActive(item) ? styles.active : ''
                   }`}
                   onClick={() =>
                     setActiveMenu(activeMenu === item.label ? null : item.label)
@@ -326,7 +294,11 @@ export default function Navbar() {
                   {item.label}
                 </button>
               ) : (
-                <a key={item.label} href={item.href} className={styles.navLink}>
+                <a 
+                  key={item.label} 
+                  href={item.href} 
+                  className={`${styles.navLink} ${isActive(item) ? styles.active : ''}`}
+                >
                   {item.label}
                 </a>
               )
@@ -385,7 +357,7 @@ export default function Navbar() {
                   <React.Fragment key={item.label}>
                     <button
                       className={`${styles.mobileNavLink} ${
-                        activeMobileMenu === item.label ? styles.active : ''
+                        activeMobileMenu === item.label || isActive(item) ? styles.active : ''
                       }`}
                       onClick={() =>
                         setActiveMobileMenu(
@@ -419,7 +391,7 @@ export default function Navbar() {
                   <a
                     key={item.label}
                     href={item.href}
-                    className={styles.mobileNavLink}
+                    className={`${styles.mobileNavLink} ${isActive(item) ? styles.active : ''}`}
                   >
                     {item.label}
                   </a>

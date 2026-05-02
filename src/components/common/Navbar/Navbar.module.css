@@ -15,6 +15,7 @@
 
 .navContainer {
   width: 100%;
+  height: 100%;
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 24px;
@@ -27,6 +28,8 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  height: 45px;
+  overflow: hidden;
   color: white;
   font-weight: 800;
   font-size: 20px;
@@ -43,9 +46,10 @@
 
 .logo img {
   cursor: pointer;
-  height:auto;
+  height: auto;
   width: 160px;
   margin-top: 5px;
+  filter: brightness(0) invert(1);
 }
 
 .navLinks {
@@ -323,7 +327,9 @@
   }
 
   .mobileNavLink.active {
-    color: #a0a0a0;
+    color: #ffffff;
+    font-weight: 900;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
   }
 
   .chevron {
