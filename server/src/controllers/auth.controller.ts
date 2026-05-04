@@ -23,7 +23,7 @@ export async function login(req: Request, res: Response): Promise<void> {
     return;
   }
 
-  const token = signToken(admin._id as string);
+  const token = signToken(admin._id.toString());
   res.json({
     token,
     admin: {
