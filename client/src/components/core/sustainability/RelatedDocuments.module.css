@@ -1,0 +1,64 @@
+.section {
+  padding: 60px 0;
+  background-color: #fff;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.title {
+  font-family: var(--font-pilat-wide, 'Inter', sans-serif);
+  font-size: 2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #111;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #eee;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+  border-bottom: 1px solid #eee;
+  text-decoration: none;
+  color: #111;
+  transition: all 0.3s ease;
+  group: itemGroup; /* To use hover logic */
+}
+.item:hover{
+  background-color: #7f7f7f1e;
+}
+
+.itemTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #0055ff;
+  transition: color 0.3s ease;
+}
+
+.item:hover .itemTitle {
+  color: #0033cc;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  color: #0055ff;
+  transition: transform 0.3s ease;
+}
+
+.item:hover .icon {
+  transform: translateX(4px);
+}

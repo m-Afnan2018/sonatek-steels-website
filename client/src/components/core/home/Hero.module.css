@@ -1,0 +1,224 @@
+/* ================================
+   HERO — exact dpworld.com match
+   Full-viewport video background
+   ================================ */
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 500px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    /* content sits at the bottom */
+    font-family: "Barlow", "DM Sans", -apple-system, sans-serif;
+}
+
+/* ── Video wrap ── */
+.videoWrap {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+}
+
+/* 
+  Overlay — matches screenshot exactly:
+  - Strong dark on the bottom-left (where text sits)
+  - Lighter on the top-right (so the DP World branding on 
+    the container shows through naturally)
+*/
+.overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        /* Bottom-left dark pool */
+        radial-gradient(ellipse 70% 60% at 15% 90%,
+            rgba(0, 0, 0, 0.82) 0%,
+            rgba(0, 0, 0, 0.45) 55%,
+            transparent 100%),
+        /* General dark vignette */
+        linear-gradient(to top,
+            rgba(0, 0, 0, 0.65) 0%,
+            rgba(0, 0, 0, 0.1) 50%,
+            rgba(0, 0, 0, 0.05) 100%);
+}
+
+/* ── Content ── */
+.content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    padding-bottom: 3.5rem;
+}
+
+.contentInner {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 3rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+/* ── Left: headline block ── */
+.left {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 680px;
+}
+
+.headline {
+    margin: 0 0 0.6rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    line-height: 1.0;
+}
+
+.headlineLine {
+    display: block;
+    font-size: clamp(2.5rem, 6vw, 5.5rem);
+    font-weight: 800;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    font-family: "Barlow", "Barlow Condensed", sans-serif;
+    /* Animate in */
+    animation: fadeUp 0.7s ease both;
+}
+
+.headlineLine:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.sub {
+    margin: 0 0 1.1rem 0;
+    font-size: clamp(0.875rem, 1.3vw, 1rem);
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 400;
+    line-height: 1.55;
+    letter-spacing: 0.01em;
+    animation: fadeUp 0.7s 0.2s ease both;
+}
+
+/* Thin horizontal rule below subtext */
+.rule {
+    width: 100%;
+    max-width: 520px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.25);
+    animation: fadeUp 0.7s 0.3s ease both;
+}
+
+/* ── Right: CTA ── */
+.right {
+    flex-shrink: 0;
+    animation: fadeUp 0.7s 0.25s ease both;
+}
+
+/* 
+  Purple/indigo pill button — matches screenshot exactly.
+  Not red — it's a muted purple/indigo (#5a4fcf ish)
+*/
+.ctaBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.85rem 1.75rem;
+    background: var(--brand-blue);
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 50px;
+    /* full pill */
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    transition: background 0.25s ease, transform 0.2s ease, gap 0.2s ease;
+    box-shadow: 0 4px 24px rgba(91, 80, 214, 0.4);
+}
+
+.ctaBtn:hover {
+    background: var(--brand-blue-dark);
+    transform: translateY(-2px);
+    gap: 0.95rem;
+    box-shadow: 0 8px 32px rgba(91, 80, 214, 0.55);
+}
+
+.ctaBtn svg {
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+}
+
+.ctaBtn:hover svg {
+    transform: translateX(3px);
+}
+
+/* ── Animations ── */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================================
+   RESPONSIVE
+   ================================ */
+
+@media (max-width: 768px) {
+    .contentInner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+        padding: 0 1.5rem;
+    }
+
+    .right {
+        width: 100%;
+    }
+
+    .ctaBtn {
+        width: 100%;
+        justify-content: center;
+        padding: 1rem 1.5rem;
+    }
+
+    .content {
+        padding-bottom: 2.5rem;
+    }
+
+    .rule {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .headlineLine {
+        font-size: clamp(1.4rem, 9vw, 3rem);
+    }
+
+    .contentInner {
+        padding: 0 1.25rem;
+    }
+
+    .content {
+        padding-bottom: 2rem;
+    }
+}

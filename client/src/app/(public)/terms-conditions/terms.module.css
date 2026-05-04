@@ -1,0 +1,88 @@
+.pageWrapper {
+  background-color: #ffffff;
+  color: #1a1a1a;
+  min-height: 100vh;
+  padding: 160px 24px 120px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.breadcrumb {
+  font-family: var(--font-pilat-narrow), sans-serif;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 60px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.breadcrumb a {
+  color: #000;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.breadcrumb span {
+  color: #888;
+}
+
+.title {
+  font-family: var(--font-pilat-wide), sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: #1a1a1a;
+}
+
+.intro {
+  font-family: var(--font-pilat-narrow), sans-serif;
+  font-size: 19px;
+  margin-bottom: 48px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.section {
+  margin-bottom: 56px;
+}
+
+.sectionHeading {
+  font-family: var(--font-pilat-narrow), sans-serif;
+  font-size: 21px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #1a1a1a;
+}
+
+.sectionContent {
+  font-family: var(--font-pilat-narrow), sans-serif;
+  font-size: 19px;
+  line-height: 1.7;
+  color: #444;
+  white-space: pre-line;
+}
+
+@media (max-width: 768px) {
+  .pageWrapper {
+    padding: 120px 20px 80px;
+  }
+  
+  .title {
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+  
+  .breadcrumb {
+    margin-bottom: 40px;
+  }
+  
+  .intro, .sectionContent {
+    font-size: 17px;
+  }
+}

@@ -1,0 +1,256 @@
+/* ================================
+   IMPACT / STATS — exact match
+   Deep purple bg, white type,
+   count-up numbers, vertical dividers
+   ================================ */
+
+.section {
+    background: #3d3daa;
+    width: 100%;
+    padding: 5rem 2rem 5.5rem;
+    font-family: "Barlow", "DM Sans", -apple-system, sans-serif;
+    overflow: hidden;
+}
+
+/* ── Inner container ── */
+.inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+}
+
+/* ================================
+   HEADER BLOCK
+   ================================ */
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Label */
+.label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.75);
+    margin: 0 0 1rem 0;
+}
+
+/* Big headline */
+.headline {
+    font-size: clamp(2.4rem, 5.5vw, 4.5rem);
+    font-weight: 800;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+    margin: 0 0 1.25rem 0;
+    font-family: "Barlow", sans-serif;
+    text-align: center;
+}
+
+/* Sub */
+.sub {
+    font-size: clamp(0.875rem, 1.3vw, 1rem);
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.65;
+    max-width: 580px;
+    margin: 0;
+    font-weight: 400;
+    text-align: center;
+}
+
+/* ================================
+   STATS ROW
+   ================================ */
+
+.statsRow {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+    position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s 0.25s ease, transform 0.6s 0.25s ease;
+}
+
+.statsVisible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Each stat cell */
+.statItem {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+}
+
+/* Vertical divider */
+.divider {
+    width: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    flex-shrink: 0;
+    align-self: stretch;
+    margin: 0.5rem 0;
+}
+
+/* Stat content */
+.statContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 1.5rem;
+    gap: 0.85rem;
+    animation: fadeUp 0.5s ease both;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Number row: prefix + count + suffix */
+.statNumber {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.05em;
+    line-height: 1;
+    color: #ffffff;
+}
+
+.prefix {
+    font-size: clamp(2.2rem, 4vw, 4rem);
+    font-weight: 800;
+    font-family: "Barlow", sans-serif;
+    line-height: 1;
+    margin-bottom: 0.05em;
+}
+
+.count {
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 800;
+    font-family: "Barlow", sans-serif;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+/* Suffix — smaller, baseline-aligned, like a superscript visually */
+.suffix {
+    font-size: clamp(1.2rem, 2.2vw, 2rem);
+    font-weight: 800;
+    font-family: "Barlow", sans-serif;
+    margin-bottom: 0.3em;
+    /* lifts it slightly above baseline */
+    letter-spacing: 0;
+}
+
+/* Label below number */
+.statLabel {
+    font-size: clamp(0.78rem, 1.1vw, 0.9rem);
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 400;
+    line-height: 1.5;
+    max-width: 180px;
+    margin: 0;
+    text-align: center;
+}
+
+/* ================================
+   RESPONSIVE
+   ================================ */
+
+@media (max-width: 900px) {
+    .statsRow {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0;
+    }
+
+    /* Remove dividers on mobile — use border instead */
+    .divider {
+        display: none;
+    }
+
+    .statContent {
+        padding: 1.75rem 1rem;
+        border-right: 1px solid rgba(255, 255, 255, 0.15);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    /* Remove right border from 2nd column */
+    .statItem:nth-child(2n) .statContent,
+    .statItem:nth-child(4n) .statContent {
+        border-right: none;
+    }
+
+    /* Remove bottom border from last row */
+    .statItem:nth-last-child(-n+2) .statContent {
+        border-bottom: none;
+    }
+}
+
+@media (max-width: 560px) {
+    .section {
+        padding: 3.5rem 1.25rem 4rem;
+    }
+
+    .inner {
+        gap: 3rem;
+    }
+
+    .statsRow {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .statContent {
+        padding: 1.5rem 0.75rem;
+    }
+
+    .headline {
+        font-size: clamp(2rem, 9vw, 3rem);
+    }
+}
+
+@media (max-width: 380px) {
+    .statsRow {
+        grid-template-columns: 1fr;
+    }
+
+    .statItem:nth-child(2n) .statContent {
+        border-right: none;
+    }
+
+    .statContent {
+        border-right: none !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .statItem:last-child .statContent {
+        border-bottom: none;
+    }
+}

@@ -1,0 +1,114 @@
+/* ===========================
+   PARTNERS — dpworld.com style
+   =========================== */
+
+.partners {
+  background: #0d1526;
+  padding: 4.5rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+.inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 4vw, 3rem);
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  font-family: "Barlow Condensed", sans-serif;
+}
+
+/* ── Marquee ── */
+
+.marqueeWrap {
+  position: relative;
+  overflow: hidden;
+  /* Fade edges */
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #fff 10%,
+    #fff 90%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #fff 10%,
+    #fff 90%,
+    transparent 100%
+  );
+}
+
+.marquee {
+  display: flex;
+  gap: 0;
+  width: max-content;
+  animation: marqueeScroll 30s linear infinite;
+}
+
+.marqueeWrap:hover .marquee {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.logoItem {
+  flex-shrink: 0;
+  width: 180px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 2px;
+  margin: 0 0.6rem;
+  background: rgba(255, 255, 255, 0.02);
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.logoItem:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.logoText {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  transition: color 0.3s;
+}
+
+.logoItem:hover .logoText {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 640px) {
+  .partners {
+    padding: 3.5rem 0;
+  }
+
+  .logoItem {
+    width: 140px;
+    height: 52px;
+  }
+}

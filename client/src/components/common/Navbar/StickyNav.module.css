@@ -1,0 +1,110 @@
+.stickyWrapper {
+  position: sticky;
+  top: 60px;
+  z-index: 100;
+  width: 100%;
+}
+
+.stickyNav {
+  width: 100%;
+  background: #FFFFFF;
+  /* Deep dark blue / slate */
+  /* backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px); */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  padding: 0 3.5rem;
+}
+
+.navContainer {
+  position: relative;
+  display: flex;
+  gap: 15px;
+  padding: 0 24px;
+}
+
+.navItem {
+  text-decoration: none;
+  color: black;
+  padding: 14px 16px;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 2;
+}
+
+.navItem:hover {
+  color: #3f3e3e;
+}
+
+.navItem.active {
+  color: var(--brand-blue);
+}
+
+.strip {
+  position: absolute;
+  bottom: 0;
+  height: 3px;
+  background: var(--brand-blue);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.1, 1.3);
+  z-index: 1;
+}
+
+/* Glow effect for the strip */
+.strip::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  filter: blur(6px);
+  opacity: 0.8;
+}
+
+/* Responsive adjust for mobile */
+@media (max-width: 768px) {
+  .navContainer {
+    gap: 16px;
+    padding: 0 20px;
+    overflow-x: auto;
+    /* Allow horizontal scroll if needed */
+    scrollbar-width: none;
+    /* Hide scrollbar for Firefox */
+    /* Fade mask effect for scrollable edges */
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 35px,
+      black calc(100% - 35px),
+      transparent
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 35px,
+      black calc(100% - 35px),
+      transparent
+    );
+  }
+
+  .navContainer::-webkit-scrollbar {
+    display: none;
+    /* Hide scrollbar for Chrome/Safari */
+  }
+
+  .navItem {
+    padding: 14px 8px;
+    font-size: 10px;
+    white-space: nowrap;
+    /* Prevent wrapping on small screens */
+  }
+  .stickyNav {
+  padding: 0;
+  }
+}

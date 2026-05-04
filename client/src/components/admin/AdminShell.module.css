@@ -1,0 +1,124 @@
+.layout {
+    display: flex;
+    min-height: 100vh;
+    background: var(--a-bg);
+    font-family: var(--font-admin-body, 'Barlow', sans-serif);
+    color: var(--a-text);
+}
+
+/* ── Sidebar ── */
+.sidebar {
+    width: 260px;
+    min-height: 100vh;
+    background: var(--a-bg-sidebar);
+    border-right: 1px solid var(--a-border);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0; left: 0;
+    z-index: 100;
+}
+
+.logo { padding: 24px 20px 20px; border-bottom: 1px solid var(--a-border); }
+.logoTitle {
+    font-family: var(--font-admin-heading, 'Barlow Condensed', sans-serif);
+    font-size: 18px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--a-text);
+}
+.logoSub { font-size: 10px; letter-spacing: 0.18em; color: var(--a-accent-light); text-transform: uppercase; margin-top: 3px; }
+
+.nav { flex: 1; padding: 16px 12px; overflow-y: auto; }
+
+.sectionLabel {
+    font-size: 10px; letter-spacing: 0.15em;
+    color: var(--a-text-muted); text-transform: uppercase;
+    padding: 12px 8px 6px;
+}
+
+.navItem {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 12px; border-radius: 6px;
+    font-size: 14px; font-weight: 500;
+    color: var(--a-text-secondary);
+    transition: background 0.18s, color 0.18s;
+    margin-bottom: 2px;
+    border: 1px solid transparent;
+    text-decoration: none;
+    cursor: pointer;
+}
+.navItem:hover { background: var(--a-bg-hover); color: var(--a-text); }
+.navItem.active { background: var(--a-accent-glow); color: var(--a-accent-light); border-color: var(--a-border-accent); }
+.navItem.disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
+
+.badge {
+    margin-left: auto;
+    font-size: 10px; font-weight: 600;
+    padding: 2px 7px; border-radius: 99px;
+    background: var(--a-accent-glow); color: var(--a-accent-light);
+    border: 1px solid var(--a-border-accent); letter-spacing: 0.06em;
+}
+
+/* ── Bottom ── */
+.bottom { padding: 16px; border-top: 1px solid var(--a-border); }
+.user {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 12px; border-radius: 6px;
+    background: var(--a-bg-card);
+    border: 1px solid var(--a-border);
+    margin-bottom: 8px;
+}
+.avatar {
+    width: 34px; height: 34px; border-radius: 50%;
+    background: var(--a-accent); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-admin-heading, 'Barlow Condensed', sans-serif);
+    font-weight: 700; font-size: 14px; flex-shrink: 0;
+}
+.userInfo { flex: 1; min-width: 0; }
+.userName { font-size: 13px; font-weight: 600; color: var(--a-text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.userRole { font-size: 11px; color: var(--a-accent-light); text-transform: uppercase; letter-spacing: 0.08em; }
+
+.logoutBtn {
+    display: flex; align-items: center; gap: 8px;
+    width: 100%; padding: 9px 12px; border-radius: 6px;
+    font-size: 13px; font-weight: 500; color: var(--a-text-secondary);
+    transition: background 0.18s, color 0.18s;
+    cursor: pointer; border: none; background: none; font-family: inherit;
+}
+.logoutBtn:hover { background: var(--a-error-bg); color: var(--a-error); }
+
+/* ── Main ── */
+.main { flex: 1; margin-left: 260px; display: flex; flex-direction: column; min-height: 100vh; }
+
+.topbar {
+    height: 64px; background: var(--a-bg-sidebar);
+    border-bottom: 1px solid var(--a-border);
+    display: flex; align-items: center;
+    padding: 0 32px; gap: 12px;
+    position: sticky; top: 0; z-index: 50;
+}
+.topbarLeft { display: flex; align-items: center; gap: 12px; flex: 1; }
+.topbarTitle {
+    font-family: var(--font-admin-heading, 'Barlow Condensed', sans-serif);
+    font-size: 16px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--a-text);
+}
+.topbarDivider { width: 1px; height: 20px; background: var(--a-border); }
+.topbarBreadcrumb { font-size: 13px; color: var(--a-text-muted); }
+
+/* ── Theme toggle ── */
+.themeToggle {
+    display: flex; align-items: center; gap: 7px;
+    padding: 7px 14px; border-radius: 99px;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.05em;
+    color: var(--a-text-secondary);
+    background: var(--a-bg-card);
+    border: 1px solid var(--a-border);
+    cursor: pointer; transition: all 0.18s;
+    font-family: var(--font-admin-body, 'Barlow', sans-serif);
+    white-space: nowrap;
+}
+.themeToggle:hover { border-color: var(--a-border-accent); color: var(--a-accent-light); background: var(--a-accent-glow); }
+
+.content { flex: 1; padding: 32px; max-width: 1400px; width: 100%; }

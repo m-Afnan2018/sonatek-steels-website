@@ -1,0 +1,461 @@
+/* ===========================
+   NAVBAR — dpworld.com style
+   =========================== */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  overflow: visible;
+  transition: box-shadow 0.3s ease;
+}
+
+.header.scrolled .navSection {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.5);
+}
+
+/* ── Top Bar ── */
+
+.topBar {
+  height: 36px;
+  background: #0a0f1e;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+}
+
+.topInner {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 4vw, 3rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tagline {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  font-family: "Barlow Condensed", sans-serif;
+}
+
+.topLinks {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.topLink {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.04em;
+  transition: color 0.2s;
+}
+
+.topLink:hover {
+  color: #fff;
+}
+
+.topLang {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.08em;
+  transition: color 0.2s;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 2px;
+}
+
+.topLang:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ── Main Nav Row ── */
+
+.navSection {
+  position: relative;
+  height: 68px;
+  background: #0d1526;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.navInner {
+  max-width: 1400px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 4vw, 3rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+/* ── Logo ── */
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-shrink: 0;
+  transition: opacity 0.2s;
+}
+
+.logo:hover {
+  opacity: 0.85;
+}
+
+.logoBadge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e4002b;
+  padding: 0.3rem 0.6rem;
+  border-radius: 2px;
+  line-height: 1;
+}
+
+.logoDP {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+.logoWorld {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.18em;
+  line-height: 1;
+}
+
+/* ── Desktop Nav Links ── */
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.navItem {
+  position: relative;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.5rem 0.85rem;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  transition: color 0.2s;
+  border-radius: 2px;
+}
+
+.navLink:hover,
+.navItemActive .navLink {
+  color: #fff;
+}
+
+.navItemActive .navLink::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0.85rem;
+  right: 0.85rem;
+  height: 2px;
+  background: #e4002b;
+  border-radius: 2px 2px 0 0;
+}
+
+.chevron {
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+  opacity: 1;
+}
+
+/* ── Desktop CTA ── */
+
+.ctaBtn {
+  flex-shrink: 0;
+  padding: 0.6rem 1.4rem;
+  background: #e4002b;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: background 0.2s, transform 0.2s;
+  white-space: nowrap;
+}
+
+.ctaBtn:hover {
+  background: #c40025;
+  transform: translateY(-1px);
+}
+
+/* ── Hamburger ── */
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  width: 28px;
+  flex-shrink: 0;
+  padding: 4px 0;
+}
+
+.bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+
+.hamburgerOpen .bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburgerOpen .bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.hamburgerOpen .bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Mega Menu ── */
+
+.megaMenu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  background: #0d1526;
+  border-top: 2px solid #e4002b;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: megaFadeIn 0.2s ease forwards;
+  z-index: 100;
+}
+
+@keyframes megaFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.megaInner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2.5rem clamp(1.5rem, 4vw, 3rem);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.megaCol {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.megaHeading {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #e4002b;
+  font-family: "Barlow Condensed", sans-serif;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  margin-bottom: 0.25rem;
+}
+
+.megaList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.megaLink {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.55);
+  transition: color 0.2s, gap 0.2s;
+}
+
+.megaLink:hover {
+  color: #fff;
+  gap: 0.6rem;
+}
+
+.megaArrow {
+  opacity: 0;
+  transition: opacity 0.2s;
+  flex-shrink: 0;
+  color: #e4002b;
+}
+
+.megaLink:hover .megaArrow {
+  opacity: 1;
+}
+
+/* ── Mobile Drawer ── */
+
+.mobileDrawer {
+  display: none;
+  background: #0a0f1e;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.mobileDrawerOpen {
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0 2rem;
+}
+
+.mobileItem {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mobileBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem clamp(1.5rem, 4vw, 2rem);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  text-align: left;
+  transition: color 0.2s;
+  cursor: pointer;
+}
+
+.mobileBtn:hover {
+  color: #fff;
+}
+
+.mobileSubmenu {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.5rem 0 1rem;
+}
+
+.mobileSubLink {
+  padding: 0.6rem clamp(2rem, 5vw, 3.5rem);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.2s;
+}
+
+.mobileSubLink:hover {
+  color: #fff;
+}
+
+.mobileCta {
+  margin: 1.5rem clamp(1.5rem, 4vw, 2rem) 0;
+  padding: 0.85rem 1.5rem;
+  background: #e4002b;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+  border-radius: 2px;
+  transition: background 0.2s;
+}
+
+.mobileCta:hover {
+  background: #c40025;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 1024px) {
+  .navLinks,
+  .ctaBtn {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .mobileDrawer {
+    display: block;
+  }
+}
+
+@media (max-width: 640px) {
+  .topLinks {
+    gap: 1rem;
+  }
+
+  .topLink:nth-child(1) {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .tagline {
+    display: none;
+  }
+
+  .topInner {
+    justify-content: flex-end;
+  }
+}

@@ -1,0 +1,130 @@
+/* ================================
+   SINGLE PLATFORM — exact match
+   Light grey bg, black headline,
+   outlined pill CTA, centered
+   ================================ */
+
+.section {
+    background: #f0f0f0;
+    width: 100%;
+    padding: 6.5rem 2rem 6rem;
+    font-family: "Barlow", "DM Sans", -apple-system, sans-serif;
+}
+
+/* ── Inner — centered column ── */
+.inner {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0;
+
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── Label ── */
+.label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #2a2a2a;
+    margin: 0 0 1.1rem 0;
+}
+
+/* ── Headline ── */
+.headline {
+    font-size: clamp(2.8rem, 5vw, 4rem);
+    font-weight: 800;
+    color: #111111;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 1.0;
+    margin: 0 0 1.6rem 0;
+    font-family: "Barlow", sans-serif;
+}
+
+/* ── Subtext ── */
+.sub {
+    font-size: clamp(0.9rem, 1.3vw, 1rem);
+    color: #444444;
+    line-height: 1.7;
+    max-width: 560px;
+    margin: 0 0 2.75rem 0;
+    font-weight: 400;
+}
+
+/* ── Outlined pill button ── */
+/* Matches screenshot: border outline, no fill, dark text, full pill radius */
+.ctaBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.85rem 2rem;
+    background: transparent;
+    color: #2a2460;
+    border: 1.5px solid #2a2460;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    transition: background 0.25s ease, color 0.25s ease, gap 0.2s ease,
+        transform 0.2s ease;
+}
+
+.ctaBtn:hover {
+    background: #2a2460;
+    color: #ffffff;
+    gap: 0.95rem;
+    transform: translateY(-2px);
+}
+
+.ctaBtn svg {
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+}
+
+.ctaBtn:hover svg {
+    transform: translateX(3px);
+}
+
+/* ================================
+   RESPONSIVE
+   ================================ */
+
+@media (max-width: 768px) {
+    .section {
+        padding: 4.5rem 1.5rem 4.5rem;
+    }
+
+    .headline {
+        font-size: clamp(2.4rem, 9vw, 4rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .section {
+        padding: 3.5rem 1.25rem 3.5rem;
+    }
+
+    .headline {
+        font-size: clamp(2rem, 10vw, 3rem);
+        letter-spacing: -0.02em;
+    }
+
+    .ctaBtn {
+        width: 100%;
+        justify-content: center;
+    }
+}

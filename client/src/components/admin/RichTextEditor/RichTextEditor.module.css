@@ -1,0 +1,99 @@
+/* ── Wrapper ── */
+.wrapper { border: 1px solid var(--a-border); border-radius: 10px; overflow: hidden; background: var(--a-bg-card); display: flex; flex-direction: column; }
+.wrapper:focus-within { border-color: var(--a-accent); }
+
+/* ── Toolbar ── */
+.toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 2px; padding: 8px 12px; border-bottom: 1px solid var(--a-border); background: var(--a-bg-row); position: sticky; top: 0; z-index: 10; }
+.toolbarGroup { display: flex; align-items: center; gap: 2px; }
+.divider { width: 1px; height: 22px; background: var(--a-border); margin: 0 5px; flex-shrink: 0; }
+
+.toolbarBtn { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 6px; border: 1px solid transparent; background: none; color: var(--a-text-secondary); cursor: pointer; padding: 0; font-family: inherit; font-size: 13px; font-weight: 600; transition: all 0.15s; flex-shrink: 0; }
+.toolbarBtn:hover { background: var(--a-bg-hover); color: var(--a-text); border-color: var(--a-border); }
+.toolbarBtnActive { background: var(--a-accent-glow) !important; color: var(--a-accent-light) !important; border-color: var(--a-border-accent) !important; }
+.toolbarBtn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+.headingSelect { height: 32px; padding: 0 8px; border-radius: 6px; border: 1px solid var(--a-border); background: var(--a-bg-input); color: var(--a-text-secondary); font-size: 12px; font-weight: 600; font-family: inherit; cursor: pointer; outline: none; min-width: 114px; }
+.headingSelect:focus { border-color: var(--a-accent); }
+
+/* ── Editor scroll area ── */
+.editorScroll { flex: 1; overflow-y: auto; background: #fff; }
+
+/* ProseMirror base */
+.editorScroll :global(.ProseMirror) { min-height: 480px; padding: 32px 40px; outline: none; font-size: 15px; line-height: 1.85; color: #1a1a1a; font-family: Georgia, 'Times New Roman', serif; }
+
+/* Placeholder */
+.editorScroll :global(.ProseMirror p.is-editor-empty:first-child::before) { content: attr(data-placeholder); color: #bbb; pointer-events: none; float: left; height: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-style: italic; }
+
+/* Headings */
+.editorScroll :global(.ProseMirror h1) { font-size: 2em; font-weight: 800; line-height: 1.2; margin: 1.4em 0 0.5em; color: #111; border-bottom: 2px solid #e5e7eb; padding-bottom: 0.3em; }
+.editorScroll :global(.ProseMirror h2) { font-size: 1.5em; font-weight: 700; line-height: 1.3; margin: 1.2em 0 0.4em; color: #111; }
+.editorScroll :global(.ProseMirror h3) { font-size: 1.2em; font-weight: 700; line-height: 1.4; margin: 1em 0 0.3em; color: #222; }
+
+/* Paragraph */
+.editorScroll :global(.ProseMirror p) { margin: 0 0 1em; }
+
+/* Lists */
+.editorScroll :global(.ProseMirror ul), .editorScroll :global(.ProseMirror ol) { padding-left: 2em; margin: 0.6em 0 1em; }
+.editorScroll :global(.ProseMirror li) { margin: 0.25em 0; }
+.editorScroll :global(.ProseMirror ul) { list-style-type: disc; }
+.editorScroll :global(.ProseMirror ol) { list-style-type: decimal; }
+.editorScroll :global(.ProseMirror li p) { margin: 0; }
+
+/* Blockquote */
+.editorScroll :global(.ProseMirror blockquote) { border-left: 4px solid #2f63c4; margin: 1.2em 0; padding: 0.8em 1.2em; background: #f0f4ff; border-radius: 0 6px 6px 0; color: #444; font-style: italic; }
+.editorScroll :global(.ProseMirror blockquote p) { margin: 0; }
+
+/* Inline code */
+.editorScroll :global(.ProseMirror code) { background: #f3f4f6; border: 1px solid #e5e7eb; border-radius: 4px; padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 0.88em; color: #d63384; }
+
+/* Code block */
+.editorScroll :global(.ProseMirror pre) { background: #1e1e2e; color: #cdd6f4; border-radius: 8px; padding: 16px 20px; margin: 1.2em 0; overflow-x: auto; font-family: 'Courier New', Courier, monospace; font-size: 13px; line-height: 1.6; }
+.editorScroll :global(.ProseMirror pre code) { background: none; border: none; padding: 0; color: inherit; font-size: inherit; }
+
+/* Links */
+.editorScroll :global(.ProseMirror a) { color: #2f63c4; text-decoration: underline; cursor: pointer; }
+
+/* Images */
+.editorScroll :global(.ProseMirror img) { max-width: 100%; height: auto; border-radius: 8px; margin: 1em 0; display: block; }
+.editorScroll :global(.ProseMirror img.ProseMirror-selectednode) { outline: 3px solid #2f63c4; outline-offset: 2px; }
+
+/* HR */
+.editorScroll :global(.ProseMirror hr) { border: none; border-top: 2px solid #e5e7eb; margin: 2em 0; }
+
+/* Highlight */
+.editorScroll :global(.ProseMirror mark) { background: #fef08a; color: inherit; border-radius: 2px; padding: 0 2px; }
+
+/* Selection */
+.editorScroll :global(.ProseMirror ::selection) { background: #bfdbfe; }
+
+/* Text-align */
+.editorScroll :global(.ProseMirror [style*="text-align: center"]) { text-align: center; }
+.editorScroll :global(.ProseMirror [style*="text-align: right"]) { text-align: right; }
+.editorScroll :global(.ProseMirror [style*="text-align: justify"]) { text-align: justify; }
+
+/* ── Status bar ── */
+.statusBar { display: flex; align-items: center; justify-content: flex-end; gap: 16px; padding: 5px 16px; border-top: 1px solid var(--a-border); background: var(--a-bg-row); font-size: 11px; color: var(--a-text-muted); flex-shrink: 0; }
+
+/* ── Built-in image picker modal ── */
+.imgOverlay { position: fixed; inset: 0; background: rgba(0,0,0,0.65); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 20px; }
+.imgModal { background: var(--a-bg); border: 1px solid var(--a-border); border-radius: 14px; width: 100%; max-width: 860px; max-height: 80vh; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 24px 80px rgba(0,0,0,0.4); }
+.imgModalHeader { display: flex; align-items: center; justify-content: space-between; padding: 16px 22px; border-bottom: 1px solid var(--a-border); flex-shrink: 0; }
+.imgModalTitle { font-size: 15px; font-weight: 700; color: var(--a-text); }
+.imgModalClose { width: 30px; height: 30px; border-radius: 7px; background: none; border: none; color: var(--a-text-muted); cursor: pointer; font-size: 17px; display: flex; align-items: center; justify-content: center; }
+.imgModalClose:hover { background: var(--a-bg-hover); }
+.imgModalBody { flex: 1; overflow-y: auto; padding: 18px 22px; display: flex; flex-direction: column; gap: 14px; }
+.imgUploadZone { border: 2px dashed var(--a-border); border-radius: 8px; padding: 18px; text-align: center; cursor: pointer; color: var(--a-text-muted); font-size: 13px; font-weight: 600; transition: all 0.15s; }
+.imgUploadZone:hover { border-color: var(--a-accent); color: var(--a-accent-light); background: var(--a-accent-glow); }
+.imgGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 8px; }
+.imgItemWrap { position: relative; }
+.imgItem { border: 2px solid var(--a-border); border-radius: 7px; overflow: hidden; cursor: pointer; transition: border-color 0.15s; background: var(--a-bg-hover); }
+.imgItem:hover { border-color: var(--a-accent); }
+.imgItemSelected { border-color: var(--a-accent) !important; }
+.imgThumb { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+.imgItemName { display: block; padding: 4px 6px; font-size: 9px; color: var(--a-text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.imgCheckmark { position: absolute; top: 4px; right: 4px; width: 18px; height: 18px; background: var(--a-accent); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; }
+.imgEmpty { text-align: center; color: var(--a-text-muted); font-size: 13px; padding: 30px 0; }
+.imgModalFooter { display: flex; justify-content: flex-end; gap: 8px; padding: 12px 22px; border-top: 1px solid var(--a-border); flex-shrink: 0; }
+.imgCancelBtn { padding: 8px 18px; border-radius: 6px; background: none; border: 1px solid var(--a-border); color: var(--a-text-secondary); font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit; }
+.imgSelectBtn { padding: 8px 18px; border-radius: 6px; background: var(--a-accent); border: none; color: #fff; font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit; }
+.imgSelectBtn:disabled { opacity: 0.4; cursor: not-allowed; }
