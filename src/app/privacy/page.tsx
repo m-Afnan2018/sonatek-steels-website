@@ -88,13 +88,13 @@ const PrivacyPage = () => {
         </div>
 
         {/* Annexes */}
-        {privacyData.annexes.map((annex, annexIndex) => (
+        {privacyData?.annexes?.map((annex: any, annexIndex: number) => (
           <div key={annexIndex} className={styles.annexContainer}>
             <div className={styles.annexHeader}>
-              <h2 className={styles.annexTitle}>{annex.title}</h2>
+              <h2 className={styles.annexTitle}>{annex?.title}</h2>
             </div>
             <div className={styles.accordion}>
-              {annex.sections.map((section) => (
+              {annex?.sections?.map((section: any) => (
                 <AccordionItem
                   key={section.id}
                   title={section.title}
