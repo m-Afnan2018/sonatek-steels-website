@@ -52,6 +52,6 @@ export const privacyData = {
       content: "If you have any questions about this Privacy Policy, You can contact us by visiting our website: https://sonateksteels.com/ or by email at sonateksteels@gmail.com"
     }
   ],
-  annexes: []
+  annexes: [] as { title: string; sections: { id: number; title: string; content: string }[] }[]
 };
 
