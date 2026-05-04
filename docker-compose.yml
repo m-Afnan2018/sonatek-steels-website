@@ -1,6 +1,8 @@
 version: '3.9'
 
 services:
+
+  # ── MongoDB ──────────────────────────────────────────────────────────────────
   mongo:
     image: mongo:7
     container_name: sonatek_mongo
@@ -12,6 +14,7 @@ services:
     environment:
       MONGO_INITDB_DATABASE: sonatek-steels
 
+  # ── Express API ───────────────────────────────────────────────────────────────
   server:
     build:
       context: ./server
@@ -25,17 +28,34 @@ services:
     volumes:
       - uploads_data:/app/uploads
     environment:
-      NODE_ENV: production
-      PORT: 5000
-      MONGODB_URI: mongodb://mongo:27017/sonatek-steels
-      JWT_SECRET: ${JWT_SECRET}
+      NODE_ENV:       production
+      PORT:           5000
+      MONGODB_URI:    mongodb://mongo:27017/sonatek-steels
+      JWT_SECRET:     ${JWT_SECRET}
       JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-7d}
-      CLIENT_URL: ${CLIENT_URL:-http://localhost:3000}
-      SMTP_HOST: ${SMTP_HOST:-}
-      SMTP_PORT: ${SMTP_PORT:-587}
-      SMTP_USER: ${SMTP_USER:-}
-      SMTP_PASS: ${SMTP_PASS:-}
-      ADMIN_EMAIL: ${ADMIN_EMAIL:-}
+      CLIENT_URL:     ${CLIENT_URL:-http://localhost:3000}
+      SMTP_HOST:      ${SMTP_HOST:-}
+      SMTP_PORT:      ${SMTP_PORT:-587}
+      SMTP_USER:      ${SMTP_USER:-}
+      SMTP_PASS:      ${SMTP_PASS:-}
+      ADMIN_EMAIL:    ${ADMIN_EMAIL:-}
+
+  # ── Next.js frontend ──────────────────────────────────────────────────────────
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+      args:
+        # NEXT_PUBLIC_* is baked into the JS bundle at build time
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:5000}
+    container_name: sonatek_client
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    depends_on:
+      - server
+    environment:
+      NODE_ENV: production
 
 volumes:
   mongo_data:
