@@ -42,7 +42,7 @@ export default function ProductForm({ initial }: { initial?: Partial<ProductData
         thicknesses: initial?.thicknesses ?? [], widths: initial?.widths ?? [],
         overview: {
             description:     initial?.overview?.description ?? '',
-            bulletPoints:    (initial?.overview?.bulletPoints ?? []).join('\n'),
+            bulletPoints:    ((initial?.overview?.bulletPoints as unknown as string[]) ?? []).join('\n'),
             brandName:       initial?.overview?.brandName ?? '',
             sheetWeight:     initial?.overview?.sheetWeight ?? '',
             supplyCondition: initial?.overview?.supplyCondition ?? '',

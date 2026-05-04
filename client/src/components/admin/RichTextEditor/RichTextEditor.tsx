@@ -71,7 +71,7 @@ export default function RichTextEditor({ value, onChange, placeholder }: Props) 
     useEffect(() => {
         if (!editor || editor.isFocused) return;
         const cur = editor.getHTML();
-        if (cur !== value && value !== undefined) editor.commands.setContent(value || '', false);
+        if (cur !== value && value !== undefined) editor.commands.setContent(value || '', { emitUpdate: false });
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [value]);
 
@@ -84,9 +84,10 @@ export default function RichTextEditor({ value, onChange, placeholder }: Props) 
     useEffect(() => { if (imgOpen) { setSelImg(''); loadMedia(); } }, [imgOpen, loadMedia]);
 
     if (!editor) return null;
+    const ed = editor; // narrowed const — TypeScript won't complain inside closures
 
-    const words = editor.getText().trim().split(/\s+/).filter(Boolean).length;
-    const chars = editor.getText().length;
+    const words = ed.getText().trim().split(/\s+/).filter(Boolean).length;
+    const chars = ed.getText().length;
 
     /* Icons live inside the function so JSX is unambiguously parsed */
     const IcBold      = <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 4h8a4 4 0 010 8H6z"/><path d="M6 12h9a4 4 0 010 8H6z"/></svg>;
@@ -111,23 +112,23 @@ export default function RichTextEditor({ value, onChange, placeholder }: Props) 
     const IcEraser    = <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 20H7L3 16l13-13 7 7-3 3"/><line x1="6" y1="20" x2="6" y2="14"/></svg>;
 
     function headingVal() {
-        if (editor.isActive('heading', { level: 1 })) return 'h1';
-        if (editor.isActive('heading', { level: 2 })) return 'h2';
-        if (editor.isActive('heading', { level: 3 })) return 'h3';
+        if (ed.isActive('heading', { level: 1 })) return 'h1';
+        if (ed.isActive('heading', { level: 2 })) return 'h2';
+        if (ed.isActive('heading', { level: 3 })) return 'h3';
         return 'p';
     }
 
     function applyHeading(v: string) {
-        if (v === 'p') editor.chain().focus().setParagraph().run();
-        else editor.chain().focus().toggleHeading({ level: Number(v[1]) as 1 | 2 | 3 }).run();
+        if (v === 'p') ed.chain().focus().setParagraph().run();
+        else ed.chain().focus().toggleHeading({ level: Number(v[1]) as 1 | 2 | 3 }).run();
     }
 
     function handleLink() {
-        const prev = editor.getAttributes('link').href ?? '';
+        const prev = ed.getAttributes('link').href ?? '';
         const url  = window.prompt('Enter URL (blank to remove):', prev);
         if (url === null) return;
-        if (!url) { editor.chain().focus().unsetLink().run(); return; }
-        editor.chain().focus().setLink({ href: url, target: '_blank' }).run();
+        if (!url) { ed.chain().focus().unsetLink().run(); return; }
+        ed.chain().focus().setLink({ href: url, target: '_blank' }).run();
     }
 
     async function handleImgUpload(e: React.ChangeEvent<HTMLInputElement>) {
@@ -148,7 +149,7 @@ export default function RichTextEditor({ value, onChange, placeholder }: Props) 
     function insertImage() {
         if (!selImg) return;
         const full = selImg.startsWith('http') ? selImg : `${API_URL}${selImg}`;
-        editor.chain().focus().setImage({ src: full }).run();
+        ed.chain().focus().setImage({ src: full }).run();
         setImgOpen(false);
     }
 
@@ -166,46 +167,46 @@ export default function RichTextEditor({ value, onChange, placeholder }: Props) 
 
                     <div className={styles.divider} />
                     <div className={styles.toolbarGroup}>
-                        <Btn title="Bold (Ctrl+B)"      active={editor.isActive('bold')}      onClick={() => editor.chain().focus().toggleBold().run()}>{IcBold}</Btn>
-                        <Btn title="Italic (Ctrl+I)"    active={editor.isActive('italic')}    onClick={() => editor.chain().focus().toggleItalic().run()}>{IcItalic}</Btn>
-                        <Btn title="Underline (Ctrl+U)" active={editor.isActive('underline')} onClick={() => editor.chain().focus().toggleUnderline().run()}>{IcUnderline}</Btn>
-                        <Btn title="Strikethrough"      active={editor.isActive('strike')}    onClick={() => editor.chain().focus().toggleStrike().run()}>{IcStrike}</Btn>
-                        <Btn title="Inline code"        active={editor.isActive('code')}      onClick={() => editor.chain().focus().toggleCode().run()}>{IcCode}</Btn>
-                        <Btn title="Highlight"          active={editor.isActive('highlight')} onClick={() => editor.chain().focus().toggleHighlight().run()}>{IcHL}</Btn>
+                        <Btn title="Bold (Ctrl+B)"      active={ed.isActive('bold')}      onClick={() => ed.chain().focus().toggleBold().run()}>{IcBold}</Btn>
+                        <Btn title="Italic (Ctrl+I)"    active={ed.isActive('italic')}    onClick={() => ed.chain().focus().toggleItalic().run()}>{IcItalic}</Btn>
+                        <Btn title="Underline (Ctrl+U)" active={ed.isActive('underline')} onClick={() => ed.chain().focus().toggleUnderline().run()}>{IcUnderline}</Btn>
+                        <Btn title="Strikethrough"      active={ed.isActive('strike')}    onClick={() => ed.chain().focus().toggleStrike().run()}>{IcStrike}</Btn>
+                        <Btn title="Inline code"        active={ed.isActive('code')}      onClick={() => ed.chain().focus().toggleCode().run()}>{IcCode}</Btn>
+                        <Btn title="Highlight"          active={ed.isActive('highlight')} onClick={() => ed.chain().focus().toggleHighlight().run()}>{IcHL}</Btn>
                     </div>
 
                     <div className={styles.divider} />
                     <div className={styles.toolbarGroup}>
-                        <Btn title="Align left"   active={editor.isActive({ textAlign: 'left' })}   onClick={() => editor.chain().focus().setTextAlign('left').run()}>{IcAlignL}</Btn>
-                        <Btn title="Align center" active={editor.isActive({ textAlign: 'center' })} onClick={() => editor.chain().focus().setTextAlign('center').run()}>{IcAlignC}</Btn>
-                        <Btn title="Align right"  active={editor.isActive({ textAlign: 'right' })}  onClick={() => editor.chain().focus().setTextAlign('right').run()}>{IcAlignR}</Btn>
+                        <Btn title="Align left"   active={ed.isActive({ textAlign: 'left' })}   onClick={() => ed.chain().focus().setTextAlign('left').run()}>{IcAlignL}</Btn>
+                        <Btn title="Align center" active={ed.isActive({ textAlign: 'center' })} onClick={() => ed.chain().focus().setTextAlign('center').run()}>{IcAlignC}</Btn>
+                        <Btn title="Align right"  active={ed.isActive({ textAlign: 'right' })}  onClick={() => ed.chain().focus().setTextAlign('right').run()}>{IcAlignR}</Btn>
                     </div>
 
                     <div className={styles.divider} />
                     <div className={styles.toolbarGroup}>
-                        <Btn title="Bullet list"  active={editor.isActive('bulletList')}  onClick={() => editor.chain().focus().toggleBulletList().run()}>{IcUL}</Btn>
-                        <Btn title="Ordered list" active={editor.isActive('orderedList')} onClick={() => editor.chain().focus().toggleOrderedList().run()}>{IcOL}</Btn>
+                        <Btn title="Bullet list"  active={ed.isActive('bulletList')}  onClick={() => ed.chain().focus().toggleBulletList().run()}>{IcUL}</Btn>
+                        <Btn title="Ordered list" active={ed.isActive('orderedList')} onClick={() => ed.chain().focus().toggleOrderedList().run()}>{IcOL}</Btn>
                     </div>
 
                     <div className={styles.divider} />
                     <div className={styles.toolbarGroup}>
-                        <Btn title="Blockquote"       active={editor.isActive('blockquote')} onClick={() => editor.chain().focus().toggleBlockquote().run()}>{IcQuote}</Btn>
-                        <Btn title="Code block"       active={editor.isActive('codeBlock')}  onClick={() => editor.chain().focus().toggleCodeBlock().run()}>{IcCB}</Btn>
-                        <Btn title="Horizontal rule"                                         onClick={() => editor.chain().focus().setHorizontalRule().run()}>{IcHR}</Btn>
+                        <Btn title="Blockquote"       active={ed.isActive('blockquote')} onClick={() => ed.chain().focus().toggleBlockquote().run()}>{IcQuote}</Btn>
+                        <Btn title="Code block"       active={ed.isActive('codeBlock')}  onClick={() => ed.chain().focus().toggleCodeBlock().run()}>{IcCB}</Btn>
+                        <Btn title="Horizontal rule"                                         onClick={() => ed.chain().focus().setHorizontalRule().run()}>{IcHR}</Btn>
                     </div>
 
                     <div className={styles.divider} />
                     <div className={styles.toolbarGroup}>
-                        <Btn title="Insert / edit link" active={editor.isActive('link')}    onClick={handleLink}>{IcLink}</Btn>
-                        <Btn title="Remove link"        disabled={!editor.isActive('link')} onClick={() => editor.chain().focus().unsetLink().run()}>{IcUnlink}</Btn>
+                        <Btn title="Insert / edit link" active={ed.isActive('link')}    onClick={handleLink}>{IcLink}</Btn>
+                        <Btn title="Remove link"        disabled={!ed.isActive('link')} onClick={() => ed.chain().focus().unsetLink().run()}>{IcUnlink}</Btn>
                         <Btn title="Insert image"                                           onClick={() => setImgOpen(true)}>{IcImg}</Btn>
                     </div>
 
                     <div className={styles.divider} />
                     <div className={styles.toolbarGroup}>
-                        <Btn title="Undo (Ctrl+Z)"    disabled={!editor.can().undo()} onClick={() => editor.chain().focus().undo().run()}>{IcUndo}</Btn>
-                        <Btn title="Redo (Ctrl+Y)"    disabled={!editor.can().redo()} onClick={() => editor.chain().focus().redo().run()}>{IcRedo}</Btn>
-                        <Btn title="Clear formatting"                                  onClick={() => editor.chain().focus().clearNodes().unsetAllMarks().run()}>{IcEraser}</Btn>
+                        <Btn title="Undo (Ctrl+Z)"    disabled={!ed.can().undo()} onClick={() => ed.chain().focus().undo().run()}>{IcUndo}</Btn>
+                        <Btn title="Redo (Ctrl+Y)"    disabled={!ed.can().redo()} onClick={() => ed.chain().focus().redo().run()}>{IcRedo}</Btn>
+                        <Btn title="Clear formatting"                                  onClick={() => ed.chain().focus().clearNodes().unsetAllMarks().run()}>{IcEraser}</Btn>
                     </div>
                 </div>
 
