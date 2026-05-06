@@ -5,7 +5,7 @@ import styles from './NewsCard.module.css';
 interface NewsCardProps {
   date: string;
   title: string;
-  excerpt: string;
+  excerpt?: string;
   imageUrl: string;
   link: string;
 }

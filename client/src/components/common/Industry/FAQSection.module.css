@@ -18,7 +18,7 @@
 
 .title {
   font-family: var(--font-pilat-wide), sans-serif;
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2rem, 4vw, 2.4rem);
   font-weight: 800;
   text-transform: uppercase;
   color: #111;
