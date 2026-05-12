@@ -8,7 +8,7 @@
     background: #f0f0f0;
     width: 100%;
     padding: 0 2rem 5rem;
-    font-family: "Barlow", "DM Sans", -apple-system, sans-serif;
+    font-family: var(--font-pilat-narrow), sans-serif;
 }
 
 /* ── 3-column grid ── */
@@ -136,9 +136,9 @@
 .description {
     font-size: 0.875rem;
     color: #555555;
-    line-height: 1.65;
+    line-height: 1.4;
     margin: 0;
-    font-weight: 400;
+    font-weight: 300;
 }
 
 /* Explore — inside slide content (hover) */
@@ -146,6 +146,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
+    font-family: var(--font-pilat-wide), "Barlow", sans-serif !important;
     font-size: 0.9rem;
     font-weight: 600;
     color: #3d37b0;
@@ -174,6 +175,7 @@
     align-items: center;
     gap: 0.45rem;
     font-size: 0.9rem;
+    font-family: var(--font-pilat-wide), "Barlow", sans-serif !important;
     font-weight: 600;
     color: #3d37b0;
     text-decoration: none;
@@ -187,13 +189,36 @@
     pointer-events: none;
 } */
 
-.exploreDefault svg {
-    flex-shrink: 0;
-    transition: transform 0.2s ease;
+.exploreDefault .arrowContainer {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease, border-radius 0.3s ease;
 }
 
-.exploreDefault:hover svg {
-    transform: translateX(3px);
+.exploreDefault .arrow1,
+.exploreDefault .arrow2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.exploreDefault .arrow2 {
+    transform: translate(-200%, -50%);
+}
+
+.exploreDefault:hover .arrow1 {
+    transform: translate(150%, -50%);
+}
+
+.exploreDefault:hover .arrow2 {
+    transform: translate(-50%, -50%);
 }
 
 /* ================================

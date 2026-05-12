@@ -65,7 +65,7 @@ export default async function BlogsPage() {
     return (
         <main className={styles.main}>
             <div className={styles.container}>
-                <h1 className={styles.pageTitle}>Insights &amp; News</h1>
+                <h1 className={styles.pageTitle}>Insights &amp; Blogs</h1>
                 <div className={styles.layout}>
                     <div className={styles.content}>
                         {f1 && <FeaturedNewsCard {...toCard(f1)} />}

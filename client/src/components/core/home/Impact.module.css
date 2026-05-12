@@ -8,7 +8,7 @@
     background: #3d3daa;
     width: 100%;
     padding: 5rem 2rem 5.5rem;
-    font-family: "Barlow", "DM Sans", -apple-system, sans-serif;
+    font-family: "Barlow", var(--font-pilat-narrow), sans-serif;
     overflow: hidden;
 }
 
@@ -44,40 +44,40 @@
 
 /* Label */
 .label {
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.22em;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.097em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.75);
-    font-family: var(--font-pilat-wide);
-    margin: 0 0 1rem 0;
-}
-
-.label p {
+    color: rgba(255, 255, 255);
     font-family: var(--font-pilat-wide), "Barlow", sans-serif !important;
+    margin: 0 0 1rem 0;
 }
 
 /* Big headline */
 .headline {
-    font-size: clamp(2.4rem, 5.5vw, 4.5rem);
-    font-weight: 800;
+    font-size: clamp(2.4rem, 5.5vw, 3.5rem);
     color: #ffffff;
     text-transform: uppercase;
     letter-spacing: -0.01em;
     line-height: 1.05;
     margin: 0 0 1.25rem 0;
-    font-family: var(--font-pilat-wide), "Barlow", sans-serif !important;
     text-align: center;
+}
+
+.headline span {
+    font-family: var(--font-pilat-wide), "Barlow", sans-serif !important;
+    font-weight: 700;
 }
 
 /* Sub */
 .sub {
-    font-size: clamp(0.875rem, 1.3vw, 1rem);
-    color: rgba(255, 255, 255, 0.75);
-    line-height: 1.65;
+    font-size: clamp(0.875rem, 1.3vw, 1.9rem);
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.5;
     max-width: 580px;
     margin: 0;
-    font-weight: 400;
+    font-weight: 300;
     text-align: center;
 }
 
@@ -159,8 +159,8 @@
 
 .count {
     font-size: clamp(3rem, 6vw, 5.5rem);
-    font-weight: 800;
-    font-family: "Barlow", sans-serif;
+    font-family: var(--font-pilat-wide), "Barlow", sans-serif;
+    font-weight: 700;
     line-height: 1;
     letter-spacing: -0.02em;
 }
@@ -177,9 +177,10 @@
 
 /* Label below number */
 .statLabel {
-    font-size: clamp(0.78rem, 1.1vw, 0.9rem);
-    color: rgba(255, 255, 255, 0.75);
-    font-weight: 400;
+    font-size: clamp(0.78rem, 2vw, 1rem);
+    color: rgba(255, 255, 255, 0.9);
+    font-family: var(--font-pilat-wide);
+    font-weight: 300;
     line-height: 1.5;
     max-width: 180px;
     margin: 0;

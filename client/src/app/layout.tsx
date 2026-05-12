@@ -1,30 +1,38 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Barlow } from "next/font/google";
 import "./globals.css";
+
+const barlow = Barlow({
+    subsets: ["latin"],
+    weight: ["400", "600", "700"],
+    variable: "--font-barlow",
+});
 
 const pilatWide = localFont({
     src: [
         { path: "../../public/fonts/PilatWide-Thin.ttf", weight: "100", style: "normal" },
         { path: "../../public/fonts/PilatWide-Light.ttf", weight: "300", style: "normal" },
         { path: "../../public/fonts/PilatWide-Book.ttf", weight: "350", style: "normal" },
-        { path: "../../public/fonts/PilatWide-Regular.ttf", weight: "400", style: "normal" },
-        { path: "../../public/fonts/PilatWide-DemiBold.ttf", weight: "600", style: "normal" },
-        { path: "../../public/fonts/PilatWide-Bold.ttf", weight: "700", style: "normal" },
+        { path: "../../public/fonts/Pilat-Wide-Regular.woff", weight: "400", style: "normal" },
+        { path: "../../public/fonts/Pilat-Wide-Demi.woff", weight: "600", style: "normal" },
+        { path: "../../public/fonts/Pilat-Wide-Bold.woff2", weight: "700", style: "normal" },
         { path: "../../public/fonts/PilatWide-Heavy.ttf", weight: "800", style: "normal" },
         { path: "../../public/fonts/PilatWide-Black.ttf", weight: "900", style: "normal" },
     ],
     variable: "--font-pilat-wide",
+    display: "swap",
 });
 
 const pilatNarrow = localFont({
     src: [
-        { path: "../../public/fonts/PilatNarrow-Thin.ttf", weight: "100", style: "normal" },
-        { path: "../../public/fonts/PilatNarrow-Light.ttf", weight: "300", style: "normal" },
-        { path: "../../public/fonts/PilatNarrow-Regular.ttf", weight: "400", style: "normal" },
-        { path: "../../public/fonts/PilatNarrow-DemiBold.ttf", weight: "600", style: "normal" },
+        { path: "../../public/fonts/Pilat-Light.woff2", weight: "300" },
+        { path: "../../public/fonts/Pilat-Regular.woff2", weight: "400" },
     ],
     variable: "--font-pilat-narrow",
+    display: "swap",
 });
+
 export const metadata: Metadata = {
     title: "Sonatek Steels",
     description:
@@ -37,8 +45,12 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" suppressHydrationWarning>
-            <body className={`${pilatWide.variable} ${pilatNarrow.variable}`}>
+        <html
+            lang="en"
+            className={`${pilatWide.variable} ${pilatNarrow.variable} ${barlow.variable}`}
+            suppressHydrationWarning
+        >
+            <body>
                 {children}
             </body>
         </html>

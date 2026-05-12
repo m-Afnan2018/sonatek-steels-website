@@ -88,8 +88,8 @@
 
 .headlineLine {
     display: block;
-    font-size: clamp(2.5rem, 6vw, 5.5rem);
-    font-weight: 800;
+    font-size: clamp(2.5rem, 6vw, 4.6rem);
+    font-weight: 700;
     color: #ffffff;
     text-transform: uppercase;
     letter-spacing: -0.01em;
@@ -104,9 +104,9 @@
 
 .sub {
     margin: 0 0 1.1rem 0;
-    font-size: clamp(0.875rem, 1.3vw, 1rem);
+    font-size: clamp(0.875rem, 1.5vw, 1.4rem);
     color: rgba(255, 255, 255, 0.75);
-    font-weight: 400;
+    font-weight: 300;
     line-height: 1.55;
     letter-spacing: 0.01em;
     animation: fadeUp 0.7s 0.2s ease both;
@@ -138,31 +138,58 @@
     padding: 0.85rem 1.75rem;
     background: var(--brand-blue);
     color: #ffffff;
+    font-family: var(--font-pilat-wide), "Barlow", sans-serif;
     font-size: 0.9rem;
-    font-weight: 700;
+    font-weight: 600;
     text-decoration: none;
     border-radius: 50px;
     /* full pill */
     letter-spacing: 0.02em;
     white-space: nowrap;
     transition: background 0.25s ease, transform 0.2s ease, gap 0.2s ease;
-    box-shadow: 0 4px 24px rgba(91, 80, 214, 0.4);
 }
 
 .ctaBtn:hover {
     background: var(--brand-blue-dark);
-    transform: translateY(-2px);
-    gap: 0.95rem;
-    box-shadow: 0 8px 32px rgba(91, 80, 214, 0.55);
+    /* transform: translateY(-2px); */
+    gap: 0.65rem;
 }
 
-.ctaBtn svg {
-    flex-shrink: 0;
-    transition: transform 0.2s ease;
+.ctaBtn .arrowContainer {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease, border-radius 0.3s ease;
 }
 
-.ctaBtn:hover svg {
-    transform: translateX(3px);
+.ctaBtn:hover .arrowContainer {
+    background: #3E3C90;
+    border-radius: 50%;
+}
+
+.ctaBtn .arrow1,
+.ctaBtn .arrow2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ctaBtn .arrow2 {
+    transform: translate(-200%, -50%);
+}
+
+.ctaBtn:hover .arrow1 {
+    transform: translate(150%, -50%);
+}
+
+.ctaBtn:hover .arrow2 {
+    transform: translate(-50%, -50%);
 }
 
 /* ── Animations ── */
