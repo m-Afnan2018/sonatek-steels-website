@@ -52,15 +52,17 @@ export default async function Home() {
             <Services />
             <GlobalNetwork />
             <BeyondBusiness />
-            <LatestNews />
-            <Testimonials items={testimonials} />
-            <CTABanner
-                headline={hc?.cta?.headline}
-                sub={hc?.cta?.sub}
-                btnText={hc?.cta?.btnText}
-                btnLink={hc?.cta?.btnLink}
-                bgImage={hc?.cta?.bgImage}
-            />
+            <div style={{ position: "relative", zIndex: 2, marginTop: "-100vh" }}>
+                <LatestNews />
+                <Testimonials items={testimonials} />
+                <CTABanner
+                    headline={hc?.cta?.headline}
+                    sub={hc?.cta?.sub}
+                    btnText={hc?.cta?.btnText}
+                    btnLink={hc?.cta?.btnLink}
+                    bgImage={hc?.cta?.bgImage}
+                />
+            </div>
         </main>
     );
 }

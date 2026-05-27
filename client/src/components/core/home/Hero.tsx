@@ -67,7 +67,7 @@ export default function Hero({ title = "Your Partner in", description = "Flat St
                         </h1>
 
                         <p className={styles.sub}>
-                           {paragraph}
+                            {paragraph}
                         </p>
 
                         <div className={styles.rule} />

@@ -1,11 +1,19 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "motion/react";
 import styles from "./WhySonatek.module.css";
 
 export default function WhySonatek() {
     const [visible, setVisible] = useState(false);
     const ref = useRef<HTMLDivElement>(null);
+
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start end", "end start"],
+    });
+
+    const opacity = useTransform(scrollYProgress, [0.15, 0.45, 0.55, 0.85], [0.2, 1, 1, 0.2]);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -28,7 +36,9 @@ export default function WhySonatek() {
                 <p className={styles.label}>Why Sonatek Steels?</p>
 
                 {/* Big headline */}
-                <h2 className={styles.headline}>Precision. Reliability.</h2>
+                <motion.h2 className={styles.headline} transition={{ duration: 0.4 }} style={{ opacity }}>
+                    Precision. Reliability.
+                </motion.h2>
 
                 {/* Body */}
                 <p className={styles.body}>

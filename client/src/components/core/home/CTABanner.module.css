@@ -8,7 +8,7 @@
 .section {
     position: relative;
     width: 100%;
-    height: 400px;
+    height: 450px;
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -46,8 +46,8 @@
     inset: 0;
     background:
         linear-gradient(to right,
-            rgba(0, 0, 0, 0.88) 0%,
-            rgba(0, 0, 0, 0.72) 28%,
+            rgba(0, 0, 0, 0.98) 0%,
+            rgba(0, 0, 0, 0.82) 28%,
             rgba(0, 0, 0, 0.35) 55%,
             rgba(0, 0, 0, 0.05) 100%);
 }
@@ -77,16 +77,19 @@
 
 /* ── Headline ── */
 .headline {
-    font-size: clamp(1.8rem, 3.2vw, 2.8rem);
-    font-weight: 700;
-    font-family: var(--font-pilat-wide), "Barlow", sans-serif !important;
+    font-size: clamp(1.8rem, 5vw, 3rem);
     color: #ffffff;
     text-transform: uppercase;
     letter-spacing: 0.02em;
-    line-height: 1.05;
+    line-height: 1.07;
     margin: 0;
-    font-family: "Barlow", sans-serif;
-    max-width: 480px;
+    max-width: 600px;
+}
+
+.headline span {
+    font-weight: 700;
+    font-family: var(--font-pilat-wide), "Barlow", sans-serif !important;
+
 }
 
 /* ── Subtext ── */
@@ -95,9 +98,9 @@
     font-family: var(--font-pilat-wide), "Barlow", sans-serif;
     color: rgba(255, 255, 255, 0.9);
     line-height: 1.5;
-    margin: 0;
+    margin: 1rem 0;
     font-weight: 300;
-    max-width: 460px;
+    max-width: 560px;
 }
 
 /* ── Outlined white pill button ── */
@@ -107,12 +110,12 @@
     gap: 0.55rem;
     margin-top: 0.35rem;
     padding: 0.7rem 1.6rem;
-    background: transparent;
-    color: #ffffff;
+    background: #fff;
+    color: #271356;
     border: 1.5px solid rgba(255, 255, 255, 0.75);
     font-family: var(--font-pilat-wide), "Barlow", sans-serif;
     font-size: 0.875rem;
-    font-weight: 400;
+    font-weight: 600;
     text-decoration: none;
     letter-spacing: 0.02em;
     border-radius: 999px;
@@ -192,7 +195,7 @@
 @media (max-width: 768px) {
     .section {
         height: auto;
-        min-height: 320px;
+        min-height: 500px;
         padding: 3rem 0;
     }
 
@@ -212,9 +215,8 @@
     .ctaBtn {
         width: 100%;
         justify-content: center;
-        max-width: 350px;
-        margin: auto;
-        margin-top: 2rem;
+        max-width: fit-content;
+        margin-top: 1rem;
     }
 }
 

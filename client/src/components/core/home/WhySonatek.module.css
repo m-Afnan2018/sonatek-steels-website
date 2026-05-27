@@ -12,7 +12,7 @@
 
 /* ── Inner — centered column ── */
 .inner {
-    max-width: 780px;
+    max-width: 900px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -38,35 +38,37 @@
     /* letter-spacing: 0.2em; */
     text-transform: uppercase;
     color: #2d2d3a;
-    margin: 0 0 1.1rem 0;
+    margin: 0 0 20px 0;
     font-family: var(--font-pilat-wide);
 }
 
 /* ── Headline ── */
 .headline {
-    font-size: clamp(3rem, 5vw, 4.2rem);
+    font-size: clamp(2.5rem, 4vw, 3rem);
     font-weight: 700;
-    color: #5b55cc;
     text-transform: uppercase;
     letter-spacing: -0.01em;
-    line-height: 1.0;
-    margin: 0 0 1.75rem 0;
+    line-height: 1.05;
+    margin: 0 0 2.5rem 0;
     font-family: var(--font-pilat-wide);
-
+    background: linear-gradient(135deg, #5f58e1 0%, #211a6b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     /* Slight delay for stagger feel */
     transition-delay: 0.08s;
 }
 
 /* ── Body ── */
 .body {
-    font-size: clamp(0.925rem, 1.4vw, 1.1rem);
+    font-size: 20px;
+    line-height: 29px;
     color: black;
-    line-height: 1.6;
-    max-width: 620px;
-    margin: 0 0 2.25rem 0;
+    max-width: 760px;
+    margin: 0 0 2.2rem 0;
     font-weight: 300;
     transition-delay: 0.14s;
-    font-family: var(--font-pilat-wide);
+    font-family: var(--font-pilat);
 }
 
 /* ── CTA text link ── */
@@ -77,7 +79,7 @@
     font-size: 0.95rem;
     font-family: var(--font-pilat-wide), "Barlow", sans-serif;
     font-weight: 600;
-    color: #5b55cc;
+    color: #3e3c90;
     text-decoration: none;
     letter-spacing: 0.01em;
     transition: color 0.2s ease;
@@ -130,27 +132,45 @@
    RESPONSIVE
    ================================ */
 
+@media (max-width: 1225px) {
+    .inner {
+        padding: 0 3rem;
+    }
+}
+
 @media (max-width: 768px) {
+    .inner {
+        padding: 0 3rem;
+    }
+
     .section {
         padding: 4.5rem 1.5rem 4rem;
     }
 
     .headline {
-        font-size: clamp(2.6rem, 11vw, 4.5rem);
+        font-size: clamp(2rem, 3.8vw, 3rem);
+    }
+
+    .body {
+        line-height: 22px;
     }
 }
 
 @media (max-width: 480px) {
+    .inner {
+        padding: 0;
+    }
+
     .section {
         padding: 3.5rem 1.25rem 3rem;
     }
 
     .headline {
-        font-size: clamp(2.2rem, 12vw, 3.5rem);
+        /* font-size: clamp(2.2rem, 10vw, 3rem); */
         letter-spacing: -0.02em;
     }
 
     .body {
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
 }

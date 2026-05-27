@@ -13,7 +13,7 @@
 
 /* ── 3-column grid ── */
 .grid {
-    max-width: 1320px;
+    max-width: 1220px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -30,7 +30,7 @@
     flex-direction: column;
     overflow: hidden;
     cursor: pointer;
-    height: 380px;
+    height: 420px;
 
     /* Scroll-in animation */
     opacity: 0;
@@ -46,9 +46,6 @@
     transform: translateY(0);
 }
 
-.card:hover {
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
-}
 
 /* ── Image ── */
 .imageWrap {
@@ -113,9 +110,9 @@
     max-height: 0;
     overflow: hidden;
     transition:
-        transform 0.42s cubic-bezier(0.4, 0, 0.2, 1.1),
-        opacity 0.48s ease,
-        max-height 0.62s cubic-bezier(0.4, 0, 0.2, 1.1);
+        transform 0.42s cubic-bezier(0.4, 0.3, 0.56, 1),
+        opacity 0.42s ease,
+        max-height 0.56s cubic-bezier(0.4, 0.3, 0.56, 1);
 }
 
 .card:hover .slideContent {
@@ -247,7 +244,7 @@
     }
 
     .imageWrap {
-        aspect-ratio: 16 / 10;
+        aspect-ratio: 5 / 4;
         flex: none;
     }
 
@@ -256,9 +253,5 @@
         transform: translateY(0);
         opacity: 1;
         max-height: 300px;
-    }
-
-    .exploreDefault {
-        display: none;
     }
 }

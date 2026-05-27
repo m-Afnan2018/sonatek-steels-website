@@ -33,11 +33,11 @@ export default function IndustryPageContent({ slug }: IndustryPageContentProps) 
   ];
 
   return (
-    <main>
+    <main style={{ overflow: 'clip' }}>
       <div id="hero">
         <IndustryHero {...data.hero} />
       </div>
-      
+
       <StickyNav navItems={navItems} />
 
       <div id="mission">
@@ -47,17 +47,17 @@ export default function IndustryPageContent({ slug }: IndustryPageContentProps) 
       </div>
 
       <div id="stats">
-        <StatsSection 
+        <StatsSection
           label={data.stats.label}
           title={data.stats.title}
           description={data.stats.description}
           stats={data.stats.items}
         />
-        
+
       </div>
 
       <div id="solutions">
-        <HowWeCanHelp 
+        <HowWeCanHelp
           title={data.howHelp.title}
           subtitle={data.howHelp.subtitle}
           items={data.howHelp.items}
@@ -65,7 +65,7 @@ export default function IndustryPageContent({ slug }: IndustryPageContentProps) 
       </div>
 
       <div id="capabilities">
-        <BuiltToDeliver 
+        <BuiltToDeliver
           title={data.builtToDeliver.title}
           subtitle={data.builtToDeliver.subtitle}
           points={data.builtToDeliver.points}
@@ -73,7 +73,7 @@ export default function IndustryPageContent({ slug }: IndustryPageContentProps) 
       </div>
 
       <div id="video">
-        <VideoTeaserSection 
+        <VideoTeaserSection
           label={data.video.label}
           title={data.video.title}
           description={data.video.description}
@@ -82,7 +82,7 @@ export default function IndustryPageContent({ slug }: IndustryPageContentProps) 
       </div>
 
       <div id="services">
-        <ServicesSection 
+        <ServicesSection
           title={data.services.title}
           subtitle={data.services.subtitle}
           services={data.services.items}
@@ -90,7 +90,7 @@ export default function IndustryPageContent({ slug }: IndustryPageContentProps) 
       </div>
 
       <div id="faqs">
-        <FAQSection 
+        <FAQSection
           title={data.faqs.title}
           items={data.faqs.items}
         />

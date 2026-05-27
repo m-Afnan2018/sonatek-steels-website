@@ -1,6 +1,6 @@
 'use client';
 import React, { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, useSpring } from 'motion/react';
+import { motion, useScroll, useTransform, useSpring, animate } from 'motion/react';
 import styles from './BeyondBusiness.module.css';
 
 const DEFAULT_DATA = [
@@ -18,17 +18,7 @@ const DEFAULT_DATA = [
     img: 'https://images.unsplash.com/photo-1593113630400-ea4288922497?w=800&q=80',
     title: 'Empowering Communities',
     des: 'We invest in local vocational training programs to help prepare the workforce for the evolving industrial sector.',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=800&q=80',
-    title: 'Industrial Excellence',
-    des: 'Our commitment to technical innovation ensures that we provide the highest quality steel solutions to our partners.',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80',
-    title: 'Health & Safety First',
-    des: 'We adhere to rigorous safety protocols across all our storage and distribution facilities to protect our team.',
-  },
+  }
 ];
 
 const DEFAULT_BG =
@@ -76,21 +66,25 @@ export default function BeyondBusiness({
 
   const smoothProgress = useSpring(scrollYProgress, {
     stiffness: 300,
-    damping: 30,
-    restDelta: 0.001,
+    damping: 50,
+    duration: .2
   });
 
-  const totalTravel = (data.length - 2) * (CARD_WIDTH + CARD_GAP);
+  const cardWidth = isMobile ? 290 : 400;
+  const cardGap = 24;
+  const totalTravel = isMobile
+    ? (data.length - 1) * (cardWidth + cardGap)
+    : (data.length - 2) * (cardWidth + cardGap);
 
   const translateX = useTransform(
     smoothProgress,
-    [0.05, 0.95],
+    [0.15, 0.99],
     [0, -totalTravel]
   );
 
   const bgOpacity = useTransform(
     smoothProgress,
-    [0, 0.15, 0.8],
+    [0, 0.15, 0.75],
     [1, 0.35, 0.75]
   );
 
@@ -104,17 +98,11 @@ export default function BeyondBusiness({
   );
   const textOpacity = useTransform(smoothProgress, [0, 0.15, 0.5], [1, 1, 0.7]);
 
-  const progressWidth = useTransform(
-    smoothProgress,
-    [0.05, 0.95],
-    ['0%', '100%']
-  );
-
   return (
     <div
       ref={containerRef}
       className={styles.outerContainer}
-      style={{ '--sections': totalScrollSections } as React.CSSProperties}
+      style={{ '--sections': 1.5 } as React.CSSProperties}
       id={id}
     >
       <div className={styles.stickyContainer}>
@@ -140,14 +128,17 @@ export default function BeyondBusiness({
 
         {/* Cards slider */}
         <div className={styles.sliderContainer}>
-          <motion.div className={styles.cardsTrack} style={{ x: translateX }}>
+          <motion.div className={styles.cardsTrack}
+            initial={{ x: -100 }}
+            transition={{ duration: .3 }}
+            style={{ x: isMobile ? 0 : translateX }}>
             {data.map((item, i) => (
               <motion.div
                 key={i}
                 className={styles.card}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 1, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: i * 0.08 }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
                 viewport={{ once: true, margin: '-80px' }}
                 whileHover={{ y: -6, transition: { duration: 0.25 } }}
               >
@@ -171,19 +162,12 @@ export default function BeyondBusiness({
           </motion.div>
         </div>
 
-        {/* Scroll progress bar */}
-        <div className={styles.progressBar}>
-          <motion.div
-            className={styles.progressFill}
-            style={{ width: progressWidth }}
-          />
-        </div>
 
         {/* Dot indicators */}
         <div className={styles.dots}>
           {data.map((_, i) => {
-            const start = i / data.length;
-            const end = (i + 1) / data.length;
+            const start = (i / data.length) * 0.75;
+            const end = ((i + 1) / data.length) * 0.75;
             const dotOpacity = useTransform(
               smoothProgress,
               [start, (start + end) / 2, end],
