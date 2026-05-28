@@ -51,8 +51,11 @@ export default async function Home() {
             <SinglePlatform />
             <Services />
             <GlobalNetwork />
-            <BeyondBusiness />
-            <div style={{ position: "relative", zIndex: 2, marginTop: "-100vh" }}>
+            {/* Sticky-pin wrapper: BeyondBusiness sticks at top while bottom sections scroll over it */}
+            <div style={{ position: "sticky", top: 0, zIndex: 1 }}>
+                <BeyondBusiness />
+            </div>
+            <div style={{ position: "relative", zIndex: 2 }}>
                 <LatestNews />
                 <Testimonials items={testimonials} />
                 <CTABanner
