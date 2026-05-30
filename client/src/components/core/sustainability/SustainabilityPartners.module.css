@@ -17,13 +17,15 @@
   color: var(--brand-blue);
   text-transform: uppercase;
   margin-bottom: 12px;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.2em;
+  font-family: var(--font-pilat-wide);
+  font-weight: 600;
 }
 
 .title {
   font-family: var(--font-pilat-wide, 'Inter', sans-serif);
   font-size: clamp(2rem, 8vw, 2.5rem);
-  font-weight: 800;
+  font-weight: 700;
   text-transform: uppercase;
   margin-bottom: 24px;
   letter-spacing: -0.02em;
@@ -34,7 +36,8 @@
 .description {
   font-size: 1.1rem;
   color: #666;
-  line-height: 1.6;
+  line-height: 1.4;
+  font-weight: 300;
 }
 
 .parallax {

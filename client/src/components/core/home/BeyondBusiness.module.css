@@ -1,19 +1,15 @@
 .outerContainer {
-  /* total scroll space: (n cards + 1) × 100vh so pin releases after last card */
-  height: calc((var(--sections, 5) + 1.2) * 100vh);
   position: relative;
-}
-
-/* ── Sticky viewport ── */
-.stickyContainer {
-  position: sticky;
-  top: 0;
   height: 100vh;
+  height: 100dvh;
   width: 100%;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: stretch;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 100px clamp(32px, 5vw, 80px) 80px;
 }
 
 /* ── Background ── */
@@ -21,7 +17,6 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  will-change: opacity;
 }
 
 .bgImage {
@@ -32,87 +27,86 @@
   display: block;
 }
 
+/* ── Dark overlay ── */
 .overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: #000;
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.75) 0%,
+      rgba(0, 0, 0, 0.35) 45%,
+      rgba(0, 0, 0, 0.45) 60%,
+      rgba(0, 0, 0, 0.9) 100%);
   pointer-events: none;
+}
+
+/* ── Content wrapper ── */
+.contentWrapper {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40px;
+  flex-grow: 1;
+  padding: 1rem;
 }
 
 /* ── Text block ── */
 .textBlock {
-  position: absolute;
-  bottom: clamp(120px, 17vh, 190px);
-  left: clamp(32px, 5vw, 80px);
-  z-index: 10;
-  max-width: 420px;
-  will-change: transform, opacity;
+  max-width: 650px;
   text-align: left;
+  margin-top: 2.1rem;
 }
 
 .heading {
   font-family: var(--font-pilat-wide), 'Barlow Condensed', 'Arial Narrow', sans-serif !important;
-  font-size: clamp(48px, 6vw, 65px);
+  font-size: clamp(44px, 5.5vw, 48px);
   font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
   color: #fff;
   text-transform: uppercase;
-  margin: 0 0 18px;
-  text-shadow: 0 2px 32px rgba(0, 0, 0, 0.4);
+  margin: 0 0 24px;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
 }
 
 .subheading {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
-  font-size: clamp(13px, 1.2vw, 15px);
-  font-weight: 400;
-  line-height: 1.65;
-  color: rgba(255, 255, 255, 0.75);
+  font-family: var(--font-pilat), 'Inter', 'Helvetica Neue', sans-serif !important;
+  font-size: 20px;
+  font-weight: 300 !important;
+  line-height: 29px;
+  color: rgba(255, 255, 255, 0.95);
   margin: 0;
-  max-width: 340px;
-  letter-spacing: 0.01em;
+  max-width: 580px;
+  letter-spacing: 0.015em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
 }
 
-/* ── Cards slider ── */
-.sliderContainer {
-  position: absolute;
-  bottom: 0;
-  /* start from ~55% across, so first card appears partially out of frame */
-  left: clamp(280px, 38vw, 560px);
-  right: 0;
-  height: 62vh;
-  overflow: visible;
-  z-index: 10;
-  display: flex;
-  align-items: flex-end;
-}
-
-.cardsTrack {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  gap: 24px;
-  padding-bottom: 0;
-  will-change: transform;
-  /* enough width to hold all cards */
-  width: max-content;
-  margin-bottom: 2.2rem;
+/* ── Cards Grid ── */
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+  margin-top: auto;
 }
 
 /* ── Card ── */
 .card {
-  width: 400px;
-  min-height: 240px;
-  max-height: 540px;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
+  position: relative;
+  height: 221px;
   overflow: hidden;
   background: #0d1117;
   cursor: pointer;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .cardImgWrapper {
@@ -120,8 +114,8 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
   z-index: 1;
+  overflow: hidden;
 }
 
 .cardImg {
@@ -129,190 +123,120 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .card:hover .cardImg {
-  transform: scale(1.04);
+  transform: scale(1.06);
 }
 
 .cardImgOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom,
-      transparent 30%,
-      rgba(0, 0, 0, 0.9) 100%);
-  z-index: 1;
-}
-
-.cardBody {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 20px 24px 5px;
-  background: transparent;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+  background: linear-gradient(to top,
+      rgba(0, 0, 0, 0.45) 0%,
+      rgba(0, 0, 0, 0.5) 45%,
+      rgba(0, 0, 0, 0.1) 80%,
+      transparent 100%);
   z-index: 2;
 }
 
-.cardIndex {
-  font-family: 'Courier New', monospace;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  color: rgba(255, 255, 255, 0.3);
-  text-transform: uppercase;
-  line-height: 1;
+.cardBody {
+  position: relative;
+  z-index: 3;
+  padding: 20px 20px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .cardTitle {
-  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
-  font-size: 22px;
+  font-family: var(--font-pilat-wide), 'Barlow Condensed', sans-serif !important;
+  font-size: clamp(20px, 1.5vw, 24px);
   font-weight: 700;
   letter-spacing: 0.01em;
   color: #fff;
-  margin: 4px 0 0;
-  line-height: 1.15;
+  margin: 0;
+  line-height: 1.25;
 }
 
 .cardDes {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
-  font-size: 12.5px;
-  font-weight: 400;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.85);
-  margin: 2px 0 12px;
-}
-
-.cardCta {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
-  transition: color 0.2s ease;
-}
-
-.cardCta:hover {
-  color: #fff;
-}
-
-/* ── Progress bar ── */
-.progressBar {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.1);
-  z-index: 20;
-}
-
-.progressFill {
-  height: 100%;
-  background: rgba(255, 255, 255, 0.7);
-  will-change: width;
-}
-
-/* ── Dot indicators ── */
-.dots {
-  position: absolute;
-  bottom: 18px;
-  right: clamp(24px, 4vw, 60px);
-  z-index: 20;
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
-.dot {
-  display: block;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #fff;
-  will-change: opacity;
-}
-
-/* ── Scroll hint ── */
-.scrollHint {
-  position: absolute;
-  right: clamp(24px, 4vw, 60px);
-  bottom: 80px;
-  z-index: 20;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
-
-.scrollHintLine {
-  display: block;
-  width: 1px;
-  height: 40px;
-  background: rgba(255, 255, 255, 0.35);
-  animation: lineGrow 1.5s ease infinite;
-  transform-origin: top;
-}
-
-.scrollHintText {
-  font-family: 'Courier New', monospace;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.4);
-  writing-mode: vertical-lr;
-}
-
-@keyframes lineGrow {
-  0% {
-    transform: scaleY(0);
-    opacity: 0;
-  }
-
-  50% {
-    transform: scaleY(1);
-    opacity: 1;
-  }
-
-  100% {
-    transform: scaleY(1);
-    opacity: 0;
-  }
+  font-family: var(--font-pilat), 'Inter', sans-serif !important;
+  font-size: clamp(13px, 0.85vw, 14.5px);
+  font-weight: 300;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 5px 0 0;
 }
 
 /* ── Responsive ── */
-@media (max-width: 768px) {
-  .textBlock {
-    bottom: auto;
-    top: clamp(80px, 12vh, 120px);
-    left: 20px;
-    right: 20px;
-    max-width: 100%;
-  }
-
-  .sliderContainer {
-    left: 0;
-    bottom: 0;
-    height: 50vh;
-    padding-left: 20px;
+@media (max-width: 1024px) {
+  .cardsGrid {
+    gap: 20px;
   }
 
   .card {
-    width: 280px;
-    height: 46vh;
-    min-height: 280px;
+    height: 380px;
+  }
+
+  .cardBody {
+    padding: 24px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .outerContainer {
+    padding: 60px 0 40px;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .contentWrapper {
+    justify-content: center;
+    gap: 20px;
+    flex-grow: 1;
+  }
+
+  .textBlock {
+    margin-bottom: 0;
+  }
+
+  .heading {
+    font-size: 32px;
+    line-height: 36px;
+  }
+
+  .subheading {
+    font-size: 16px;
+    line-height: 20px;
+    max-width: 100%;
+  }
+
+  .cardsGrid {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 16px;
+    scroll-padding-left: 24px;
+    width: 100%;
+    margin: 0;
+  }
+
+  .cardsGrid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .card {
+    max-width: 300px;
+    height: 171px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
   }
 }

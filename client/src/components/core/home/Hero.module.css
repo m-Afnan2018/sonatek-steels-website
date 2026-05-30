@@ -6,7 +6,7 @@
 .hero {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 90vh;
     min-height: 500px;
     overflow: hidden;
     display: flex;
@@ -57,13 +57,13 @@
     position: relative;
     z-index: 10;
     width: 100%;
-    padding-bottom: 3.5rem;
+    padding-bottom: 4rem;
 }
 
 .contentInner {
     max-width: 1440px;
     margin: 0 auto;
-    padding: 0 3rem;
+    padding: 0 6.5rem;
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
@@ -88,11 +88,13 @@
 
 .headlineLine {
     display: block;
-    font-size: clamp(2.5rem, 6vw, 5.5rem);
-    font-weight: 800;
+    font-size: clamp(2.5rem, 5vw, 3rem);
+    font-weight: 700;
     color: #ffffff;
     text-transform: uppercase;
     letter-spacing: -0.01em;
+    margin-bottom: 20px;
+    line-height: .8;
     font-family: "Barlow", "Barlow Condensed", sans-serif;
     /* Animate in */
     animation: fadeUp 0.7s ease both;
@@ -104,9 +106,9 @@
 
 .sub {
     margin: 0 0 1.1rem 0;
-    font-size: clamp(0.875rem, 1.3vw, 1rem);
+    font-size: clamp(0.875rem, 1.5vw, 1.275rem);
     color: rgba(255, 255, 255, 0.75);
-    font-weight: 400;
+    font-weight: 300;
     line-height: 1.55;
     letter-spacing: 0.01em;
     animation: fadeUp 0.7s 0.2s ease both;
@@ -117,7 +119,7 @@
     width: 100%;
     max-width: 520px;
     height: 1px;
-    background: rgba(255, 255, 255, 0.25);
+    background: linear-gradient(to Right, rgba(255, 255, 255, 0.942), rgba(88, 88, 88, 0.597));
     animation: fadeUp 0.7s 0.3s ease both;
 }
 
@@ -136,33 +138,60 @@
     align-items: center;
     gap: 0.65rem;
     padding: 0.85rem 1.75rem;
-    background: var(--brand-blue);
+    background: #3E3C90;
     color: #ffffff;
+    font-family: var(--font-pilat-wide), "Barlow", sans-serif;
     font-size: 0.9rem;
-    font-weight: 700;
+    font-weight: 600;
     text-decoration: none;
     border-radius: 50px;
     /* full pill */
     letter-spacing: 0.02em;
     white-space: nowrap;
     transition: background 0.25s ease, transform 0.2s ease, gap 0.2s ease;
-    box-shadow: 0 4px 24px rgba(91, 80, 214, 0.4);
 }
 
 .ctaBtn:hover {
     background: var(--brand-blue-dark);
-    transform: translateY(-2px);
-    gap: 0.95rem;
-    box-shadow: 0 8px 32px rgba(91, 80, 214, 0.55);
+    /* transform: translateY(-2px); */
+    gap: 0.65rem;
 }
 
-.ctaBtn svg {
-    flex-shrink: 0;
-    transition: transform 0.2s ease;
+.ctaBtn .arrowContainer {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease, border-radius 0.3s ease;
 }
 
-.ctaBtn:hover svg {
-    transform: translateX(3px);
+.ctaBtn:hover .arrowContainer {
+    background: #3E3C90;
+    border-radius: 50%;
+}
+
+.ctaBtn .arrow1,
+.ctaBtn .arrow2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ctaBtn .arrow2 {
+    transform: translate(-200%, -50%);
+}
+
+.ctaBtn:hover .arrow1 {
+    transform: translate(150%, -50%);
+}
+
+.ctaBtn:hover .arrow2 {
+    transform: translate(-50%, -50%);
 }
 
 /* ── Animations ── */
@@ -187,7 +216,7 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 1.5rem;
-        padding: 0 1.5rem;
+        padding: 0 2.5rem;
     }
 
     .right {
@@ -195,9 +224,9 @@
     }
 
     .ctaBtn {
-        width: 100%;
+        /* width: 100%; */
         justify-content: center;
-        padding: 1rem 1.5rem;
+        padding: .6rem 1.1rem;
     }
 
     .content {
@@ -211,12 +240,13 @@
 
 @media (max-width: 480px) {
     .headlineLine {
-        font-size: clamp(1.4rem, 9vw, 3rem);
+        font-size: clamp(1.4rem, 8vw, 3rem);
     }
 
     .contentInner {
         padding: 0 1.25rem;
     }
+
 
     .content {
         padding-bottom: 2rem;

@@ -12,17 +12,19 @@
 
 .label {
   display: block;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.07em;
   color: #000;
   margin-bottom: 20px;
+  font-family: var(--font-pilat-wide);
+  font-weight: 600;
 }
 
 .title {
-  font-size: 56px;
-  font-weight: 800;
+  font-size: 48px;
+  font-weight: 700;
   text-transform: uppercase;
   margin-bottom: 40px;
   letter-spacing: 0.02em;
@@ -36,10 +38,11 @@
 }
 
 .content {
-  font-size: 18px;
-  line-height: 1.8;
-  color: #333;
+  font-size: 20px;
+  line-height: 1.6;
+  color: #050505da;
   margin-bottom: 24px;
+  font-weight: 300;
 }
 
 .content p {

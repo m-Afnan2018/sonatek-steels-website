@@ -51,16 +51,21 @@ export default async function Home() {
             <SinglePlatform />
             <Services />
             <GlobalNetwork />
-            <BeyondBusiness />
-            <LatestNews />
-            <Testimonials items={testimonials} />
-            <CTABanner
-                headline={hc?.cta?.headline}
-                sub={hc?.cta?.sub}
-                btnText={hc?.cta?.btnText}
-                btnLink={hc?.cta?.btnLink}
-                bgImage={hc?.cta?.bgImage}
-            />
+            {/* Sticky-pin wrapper: BeyondBusiness sticks at top while bottom sections scroll over it */}
+            <div style={{ position: "sticky", top: 0, zIndex: 1 }}>
+                <BeyondBusiness />
+            </div>
+            <div style={{ position: "relative", zIndex: 2 }}>
+                <LatestNews />
+                <Testimonials items={testimonials} />
+                <CTABanner
+                    headline={hc?.cta?.headline}
+                    sub={hc?.cta?.sub}
+                    btnText={hc?.cta?.btnText}
+                    btnLink={hc?.cta?.btnLink}
+                    bgImage={hc?.cta?.bgImage}
+                />
+            </div>
         </main>
     );
 }

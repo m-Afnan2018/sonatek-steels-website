@@ -30,7 +30,25 @@ const NEWS = [
 
 export default function LatestNews() {
     const [visible, setVisible] = useState(false);
+    const [activeIndex, setActiveIndex] = useState(0);
+    const [isMobile, setIsMobile] = useState(false);
     const ref = useRef<HTMLDivElement>(null);
+
+    // Touch gesture tracking for mobile swipe-to-scroll
+    const touchStartX = useRef<number | null>(null);
+    const touchStartY = useRef<number | null>(null);
+    const touchEndX = useRef<number | null>(null);
+    const touchEndY = useRef<number | null>(null);
+    const minSwipeDistance = 50;
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth <= 640);
+        };
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+        return () => window.removeEventListener("resize", checkMobile);
+    }, []);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -46,6 +64,47 @@ export default function LatestNews() {
         return () => observer.disconnect();
     }, []);
 
+    const handlePrev = () => {
+        setActiveIndex((prev) => (prev > 0 ? prev - 1 : NEWS.length - 1));
+    };
+
+    const handleNext = () => {
+        setActiveIndex((prev) => (prev < NEWS.length - 1 ? prev + 1 : 0));
+    };
+
+    const onTouchStart = (e: React.TouchEvent) => {
+        if (!isMobile) return;
+        touchEndX.current = null;
+        touchEndY.current = null;
+        touchStartX.current = e.targetTouches[0].clientX;
+        touchStartY.current = e.targetTouches[0].clientY;
+    };
+
+    const onTouchMove = (e: React.TouchEvent) => {
+        if (!isMobile) return;
+        touchEndX.current = e.targetTouches[0].clientX;
+        touchEndY.current = e.targetTouches[0].clientY;
+    };
+
+    const onTouchEnd = () => {
+        if (!isMobile) return;
+        if (!touchStartX.current || !touchEndX.current || !touchStartY.current || !touchEndY.current) return;
+
+        const diffX = touchStartX.current - touchEndX.current;
+        const diffY = touchStartY.current - touchEndY.current;
+
+        // Verify the gesture is horizontal swipe rather than vertical scroll
+        if (Math.abs(diffX) > Math.abs(diffY)) {
+            if (Math.abs(diffX) > minSwipeDistance) {
+                if (diffX > 0) {
+                    handleNext();
+                } else {
+                    handlePrev();
+                }
+            }
+        }
+    };
+
     return (
         <section className={styles.section}>
             <div className={styles.inner} ref={ref}>
@@ -57,98 +116,174 @@ export default function LatestNews() {
                 </h2>
 
                 {/* News rows */}
-                <div className={styles.list}>
-                    {NEWS.map((item, i) => (
-                        <article
-                            key={i}
-                            className={`${styles.row} ${visible ? styles.rowVisible : ""}`}
-                            style={{ transitionDelay: `${i * 0.12}s` }}
-                        >
-                            {/* Divider above rows 2 and 3 */}
-                            {i > 0 && <div className={styles.divider} />}
+                <div
+                    className={styles.carouselContainer}
+                    onTouchStart={onTouchStart}
+                    onTouchMove={onTouchMove}
+                    onTouchEnd={onTouchEnd}
+                >
+                    <div
+                        className={styles.list}
+                        style={isMobile ? { transform: `translateX(calc(-${activeIndex * 100}% - ${activeIndex}rem))` } : undefined}
+                    >
+                        {NEWS.map((item, i) => (
+                            <article
+                                key={i}
+                                className={`${styles.row} ${visible ? styles.rowVisible : ""}`}
+                                style={{ transitionDelay: `${i * 0.12}s` }}
+                            >
+                                {/* Divider above rows 2 and 3 */}
+                                {i > 0 && <div className={styles.divider} />}
 
-                            <div className={styles.rowInner}>
-                                {/* Left: date + title + cta */}
-                                <div className={styles.left}>
-                                    <time className={styles.date}>
-                                        {item.date}
-                                    </time>
-                                    <a
-                                        href={item.href}
-                                        className={styles.title}
-                                    >
-                                        {item.title.toUpperCase()}
-                                    </a>
-                                    <a
-                                        href={item.href}
-                                        className={styles.readMore}
-                                    >
-                                        Read More
-                                        <svg
-                                            width="16"
-                                            height="16"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            strokeWidth="2.5"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            aria-hidden="true"
+                                <div className={styles.rowInner}>
+                                    {/* Left: date + title + cta */}
+                                    <div className={styles.left}>
+                                        <time className={styles.date}>
+                                            {item.date}
+                                        </time>
+                                        <a
+                                            href={item.href}
+                                            className={styles.title}
                                         >
-                                            <line
-                                                x1="5"
-                                                y1="12"
-                                                x2="19"
-                                                y2="12"
-                                            />
-                                            <polyline points="12 5 19 12 12 19" />
-                                        </svg>
-                                    </a>
-                                </div>
+                                            {item.title.substring(0, 50) + '...'}
+                                        </a>
+                                        <a
+                                            href={item.href}
+                                            className={styles.readMore}
+                                        >
+                                            Read More
+                                            <div className={styles.arrowContainer}>
+                                                <svg
+                                                    width="16"
+                                                    height="16"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    strokeWidth="2.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                    aria-hidden="true"
+                                                    className={styles.arrow1}
+                                                >
+                                                    <line
+                                                        x1="5"
+                                                        y1="12"
+                                                        x2="19"
+                                                        y2="12"
+                                                    />
+                                                    <polyline points="12 5 19 12 12 19" />
+                                                </svg>
+                                                <svg
+                                                    width="16"
+                                                    height="16"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    strokeWidth="2.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                    aria-hidden="true"
+                                                    className={styles.arrow2}
+                                                >
+                                                    <line
+                                                        x1="5"
+                                                        y1="12"
+                                                        x2="19"
+                                                        y2="12"
+                                                    />
+                                                    <polyline points="12 5 19 12 12 19" />
+                                                </svg>
+                                            </div>
+                                        </a>
+                                    </div>
 
-                                {/* Right: image or logo placeholder */}
-                                <div className={styles.imgWrap}>
-                                    {item.isLogo ? (
-                                        <div className={styles.logoPlaceholder}>
-                                            {/* Swoosh */}
-                                            <svg
-                                                width="52"
-                                                height="34"
-                                                viewBox="0 0 48 32"
-                                                fill="none"
-                                            >
-                                                <path
-                                                    d="M12 8 C5 8 2 13 2 18 C2 23 7 26 14 26 C19 26 22 21 22 16"
-                                                    stroke="#E3003F"
-                                                    strokeWidth="3.5"
-                                                    strokeLinecap="round"
-                                                />
-                                                <path
-                                                    d="M15 8 C22 8 25 13 25 18 C25 23 20 26 12 26"
-                                                    stroke="#00C1D5"
-                                                    strokeWidth="3.5"
-                                                    strokeLinecap="round"
-                                                    opacity="0.85"
-                                                />
-                                            </svg>
-                                            <span className={styles.logoText}>
-                                                SONATEK STEELS
-                                            </span>
-                                        </div>
-                                    ) : (
-                                        <Image
-                                            width={500}
-                                            height={500}
-                                            src={item.image!}
-                                            alt={item.title}
-                                            className={styles.img}
-                                            loading="lazy"
-                                        />
-                                    )}
+                                    {/* Right: image or logo placeholder */}
+                                    <div className={styles.imgWrap}>
+                                        {item.isLogo ? (
+                                            <div className={styles.logoPlaceholder}>
+                                                {/* Swoosh */}
+                                                <svg
+                                                    width="52"
+                                                    height="34"
+                                                    viewBox="0 0 48 32"
+                                                    fill="none"
+                                                >
+                                                    <path
+                                                        d="M12 8 C5 8 2 13 2 18 C2 23 7 26 14 26 C19 26 22 21 22 16"
+                                                        stroke="#E3003F"
+                                                        strokeWidth="3.5"
+                                                        strokeLinecap="round"
+                                                    />
+                                                    <path
+                                                        d="M15 8 C22 8 25 13 25 18 C25 23 20 26 12 26"
+                                                        stroke="#00C1D5"
+                                                        strokeWidth="3.5"
+                                                        strokeLinecap="round"
+                                                        opacity="0.85"
+                                                    />
+                                                </svg>
+                                                <span className={styles.logoText}>
+                                                    SONATEK STEELS
+                                                </span>
+                                            </div>
+                                        ) : (
+                                            <Image
+                                                width={500}
+                                                height={500}
+                                                src={item.image!}
+                                                alt={item.title}
+                                                className={styles.img}
+                                                loading="lazy"
+                                            />
+                                        )}
+                                    </div>
                                 </div>
-                            </div>
-                        </article>
-                    ))}
+                            </article>
+                        ))}
+                    </div>
+
+                    {isMobile && (
+                        <div className={styles.mobileNav}>
+                            <button
+                                onClick={handlePrev}
+                                className={styles.navBtn}
+                                aria-label="Previous news"
+                            >
+                                <svg
+                                    width="18"
+                                    height="18"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2.5"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                >
+                                    <line x1="19" y1="12" x2="5" y2="12" />
+                                    <polyline points="12 19 5 12 12 5" />
+                                </svg>
+                            </button>
+                            <button
+                                onClick={handleNext}
+                                className={styles.navBtn}
+                                aria-label="Next news"
+                            >
+                                <svg
+                                    width="18"
+                                    height="18"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2.5"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                >
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                    <polyline points="12 5 19 12 12 19" />
+                                </svg>
+                            </button>
+                        </div>
+                    )}
                 </div>
             </div>
         </section>

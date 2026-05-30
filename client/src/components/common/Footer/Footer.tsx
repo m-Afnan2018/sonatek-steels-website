@@ -1,9 +1,23 @@
 import styles from "./Footer.module.css";
 import Image from "next/image";
 import Logo from "@/assets/images/logo.png";
+import Link from "next/link";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
-const COLUMNS = [
+async function fetchProducts() {
+    try {
+        const res = await fetch(`${API_URL}/api/products`, { next: { revalidate: 3600 } });
+        if (!res.ok) return [];
+        const data = await res.json();
+        return data.products || [];
+    } catch (error) {
+        console.error('Error fetching products for footer:', error);
+        return [];
+    }
+}
+
+const STATIC_COLUMNS = [
     {
         heading: "Solutions",
         links: [
@@ -14,17 +28,9 @@ const COLUMNS = [
             { label: "Custom Steel Processing", href: "/custom-steel-processing" },
         ],
     },
-    {
-        heading: "Products",
-        links: [
-            { label: "Hot Rolled Sheets", href: "/products/hr-sheets" },
-            { label: "Hot Rolled Coils", href: "/products/hr-coils" },
-            { label: "Cold Rolled Sheets", href: "/products/cr-sheets" },
-            { label: "Cold Rolled Coils", href: "/products/cr-coils" },
-            { label: "Chequered Plates", href: "/products/chequered-plates" },
-            { label: "Heavy Plates", href: "/products/heavy-plates" },
-        ],
-    },
+];
+
+const OTHER_COLUMNS = [
     {
         heading: "Sonatek",
         links: [
@@ -111,7 +117,33 @@ const SocialIcons = () => (
     </div>
 );
 
-export default function Footer() {
+export default async function Footer() {
+    const products = await fetchProducts();
+
+    // Fallback if API fails
+    const displayProducts = products.length > 0 ? products.slice(0, 6) : [
+        { name: "Hot Rolled Sheets", slug: "hr-sheets" },
+        { name: "Hot Rolled Coils", slug: "hr-coils" },
+        { name: "Cold Rolled Sheets", slug: "cr-sheets" },
+        { name: "Cold Rolled Coils", slug: "cr-coils" },
+        { name: "Chequered Plates", slug: "chequered-plates" },
+        { name: "Heavy Plates", slug: "heavy-plates" },
+    ];
+
+    const productColumn = {
+        heading: "Products",
+        links: displayProducts.map((p: any) => ({
+            label: p.name,
+            href: `/products/${p.slug}`
+        }))
+    };
+
+    const ALL_COLUMNS = [
+        ...STATIC_COLUMNS,
+        productColumn,
+        ...OTHER_COLUMNS
+    ];
+
     return (
         <footer className={styles.footer}>
             {/* ── Main footer area ── */}
@@ -125,20 +157,20 @@ export default function Footer() {
 
                     {/* Link columns */}
                     <div className={styles.cols}>
-                        {COLUMNS.map((col) => (
+                        {ALL_COLUMNS.map((col) => (
                             <div key={col.heading} className={styles.col}>
                                 <h3 className={styles.colHeading}>
                                     {col.heading}
                                 </h3>
                                 <ul className={styles.linkList}>
-                                    {col.links.map((link) => (
+                                    {col.links.map((link: { label: string, href: string }) => (
                                         <li key={link.label}>
-                                            <a
+                                            <Link
                                                 href={link.href}
                                                 className={styles.link}
                                             >
                                                 {link.label}
-                                            </a>
+                                            </Link>
                                         </li>
                                     ))}
                                 </ul>
@@ -158,12 +190,12 @@ export default function Footer() {
                                 {i > 0 && (
                                     <span className={styles.pipe}>|</span>
                                 )}
-                                <a
+                                <Link
                                     href={link.href}
                                     className={styles.legalLink}
                                 >
                                     {link.label}
-                                </a>
+                                </Link>
                             </span>
                         ))}
                     </nav>

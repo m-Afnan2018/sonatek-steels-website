@@ -5,10 +5,10 @@
    ================================ */
 
 .section {
-    background: #3d3daa;
+    background: #3E3C90;
     width: 100%;
     padding: 5rem 2rem 5.5rem;
-    font-family: "Barlow", "DM Sans", -apple-system, sans-serif;
+    font-family: "Barlow", var(--font-pilat-narrow), sans-serif;
     overflow: hidden;
 }
 
@@ -34,6 +34,7 @@
     gap: 0;
     opacity: 0;
     transform: translateY(24px);
+    max-width: 750px;
     transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
@@ -44,40 +45,40 @@
 
 /* Label */
 .label {
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.22em;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.75);
-    font-family: var(--font-pilat-wide);
-    margin: 0 0 1rem 0;
-}
-
-.label p {
+    color: rgba(255, 255, 255);
     font-family: var(--font-pilat-wide), "Barlow", sans-serif !important;
+    margin: 0 0 1rem 0;
 }
 
 /* Big headline */
 .headline {
-    font-size: clamp(2.4rem, 5.5vw, 4.5rem);
-    font-weight: 800;
+    font-size: 48px;
+    line-height: 56px;
     color: #ffffff;
     text-transform: uppercase;
-    letter-spacing: -0.01em;
-    line-height: 1.05;
+    letter-spacing: 0.015em;
     margin: 0 0 1.25rem 0;
-    font-family: var(--font-pilat-wide), "Barlow", sans-serif !important;
     text-align: center;
+}
+
+.headline span {
+    font-family: var(--font-pilat-wide), "Barlow", sans-serif !important;
+    font-weight: 700;
 }
 
 /* Sub */
 .sub {
-    font-size: clamp(0.875rem, 1.3vw, 1rem);
-    color: rgba(255, 255, 255, 0.75);
-    line-height: 1.65;
+    font-size: clamp(1rem, 1.6vw, 1.3rem);
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 22px;
     max-width: 580px;
     margin: 0;
-    font-weight: 400;
+    font-family: var(--font-pilat) !important;
+    font-weight: 300;
     text-align: center;
 }
 
@@ -159,8 +160,8 @@
 
 .count {
     font-size: clamp(3rem, 6vw, 5.5rem);
-    font-weight: 800;
-    font-family: "Barlow", sans-serif;
+    font-family: var(--font-pilat-wide), "Barlow", sans-serif;
+    font-weight: 700;
     line-height: 1;
     letter-spacing: -0.02em;
 }
@@ -177,9 +178,10 @@
 
 /* Label below number */
 .statLabel {
-    font-size: clamp(0.78rem, 1.1vw, 0.9rem);
-    color: rgba(255, 255, 255, 0.75);
-    font-weight: 400;
+    font-size: clamp(0.78rem, 2vw, 1.1rem);
+    color: rgba(255, 255, 255);
+    font-family: var(--font-pilat);
+    font-weight: 300;
     line-height: 1.5;
     max-width: 180px;
     margin: 0;
@@ -219,43 +221,78 @@
     }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 640px) {
     .section {
-        padding: 3.5rem 1.25rem 4rem;
+        padding: 3.5rem 1.65rem 4rem;
     }
 
     .inner {
         gap: 3rem;
     }
 
+    .label {
+        font-size: 12px;
+    }
+
     .statsRow {
-        grid-template-columns: repeat(2, 1fr);
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+    }
+
+    .statItem {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    /* Horizontal divider between items on mobile */
+    .divider {
+        display: block;
+        width: 100%;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.15);
+        margin: 0;
+        flex-shrink: 0;
+        align-self: auto;
     }
 
     .statContent {
-        padding: 1.5rem 0.75rem;
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        align-items: center;
+        text-align: left;
+        padding: 1.75rem 0;
+        gap: 2rem;
+        border-right: none !important;
+        border-bottom: none !important;
+        width: 100%;
+    }
+
+    .statNumber {
+        justify-content: flex-start;
+        align-items: flex-end;
+    }
+
+    .count {
+        font-size: clamp(2.4rem, 7vw, 3rem);
+    }
+
+    .suffix {
+        font-size: clamp(1.1rem, 3vw, 1.4rem);
+        margin-bottom: 0.12em;
+    }
+
+    .statLabel {
+        font-size: 1rem;
+        line-height: 1.4;
+        text-align: left;
+        max-width: none;
     }
 
     .headline {
-        font-size: clamp(2rem, 9vw, 3rem);
-    }
-}
-
-@media (max-width: 380px) {
-    .statsRow {
-        grid-template-columns: 1fr;
-    }
-
-    .statItem:nth-child(2n) .statContent {
-        border-right: none;
-    }
-
-    .statContent {
-        border-right: none !important;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    }
-
-    .statItem:last-child .statContent {
-        border-bottom: none;
+        font-size: clamp(1.8rem, 8vw, 2.5rem);
+        line-height: 38px;
     }
 }
