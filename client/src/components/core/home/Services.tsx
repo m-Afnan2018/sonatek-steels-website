@@ -6,46 +6,46 @@ import Image from "next/image";
 
 const SERVICES = [
     {
-        title: "Cold Rolled (CR) Coils",
+        title: "Steel Procurement",
         description:
-            "Our CR Coils are produced to exacting standards, offering superior surface finish and dimensional accuracy for automotive and high-end engineering applications.",
+            "Reliable, certified, and cost-effective sourcing of CR/HR coils, sheets, plates, and chequered plates directly from trusted primary mills like SAIL.",
         image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80",
-        href: "/products/cr-coils",
+        href: "/steel-procurement",
     },
     {
-        title: "Hot Rolled (HR) Coils",
+        title: "Infrastructure & Industrial Projects",
         description:
-            "We supply high-strength HR coils suitable for structural, manufacturing, and industrial projects, ensuring durability and performance across all conditions.",
+            "Certified flat steel supply, custom processing, and dependable distribution for infrastructure, construction, heavy engineering, and industrial project requirements.",
         image: "https://images.unsplash.com/photo-1494961104209-3c223057bd26?w=800&q=80",
-        href: "/products/hr-coils",
+        href: "/infrastructure-industrial-project",
     },
     {
-        title: "CR & HR Sheets",
+        title: "Technical Steel Selection",
         description:
-            "Precision-cut sheets in both Cold Rolled and Hot Rolled formats, available in various thicknesses and grades to meet your specific industrial requirements.",
-        image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800&q=80",
-        href: "/products/hr-sheets",
+            "Precision starts before production. We help you choose the exact grade, thickness, surface finish, and mechanical properties required to guarantee the success of your application.",
+        image: "https://images.unsplash.com/photo-1671404910386-8c2a9ae40efd?q=80",
+        href: "/technical-steel-selection",
     },
     {
-        title: "Chequered Plates",
+        title: "Freight Forwarding Services",
         description:
-            "Anti-slip chequered plates designed for industrial flooring, stairs, and transportation hubs, combining aesthetic appeal with essential safety features.",
-        image: "https://images.unsplash.com/photo-1504904126298-3fde501c9b31?w=800&q=80",
-        href: "/products/chequered-plates",
+            "Seamless freight forwarding solutions combining global reach with on-ground expertise. We optimize your steel dispatches via air, ocean, rail, or road.",
+        image: "https://images.unsplash.com/photo-1699588999949-e25959a59550?q=80",
+        href: "/freight-forwarding",
     },
     {
-        title: "Custom Processing",
+        title: "Custom Steel Processing",
         description:
             "Our state-of-the-art processing facilities provide slitting, shearing, and pickling services to deliver steel in the exact dimensions your project demands.",
-        image: "https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=800&q=80",
-        href: "/services/processing",
+        image: "https://images.unsplash.com/photo-1474674556023-efef886fa147?q=80",
+        href: "/custom-steel-processing",
     },
     {
         title: "Supply Chain Solutions",
         description:
             "Leveraging our strategic location in Northern India, we provide reliable distribution and inventory management for corporate clients and OEMs.",
-        image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
-        href: "/services/distribution",
+        image: "https://images.unsplash.com/photo-1713127563314-5163b052cf8b?q=80",
+        href: "/supply-chain",
     },
 ];
 

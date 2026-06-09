@@ -104,6 +104,16 @@ const ChevronDownIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+
+const FALLBACK_PRODUCTS = [
+  { label: 'Cold Rolled (CR) Coils', href: '/products/cr-coils' },
+  { label: 'CR Sheets', href: '/products/cr-sheets' },
+  { label: 'Hot Rolled (HR) Coils', href: '/products/hr-coils' },
+  { label: 'HR Sheets/Plates', href: '/products/hr-sheets' },
+  { label: 'Chequered Plates', href: '/products/chequered-plates' },
+];
+
 const NAV_DATA = [
   {
     label: 'Solutions',
@@ -120,13 +130,7 @@ const NAV_DATA = [
     sections: [
       {
         title: 'FLAT STEEL PRODUCTS',
-        links: [
-          { label: 'Cold Rolled (CR) Coils', href: '/products' },
-          { label: 'CR Sheets', href: '/products' },
-          { label: 'Hot Rolled (HR) Coils', href: '/products' },
-          { label: 'HR Sheets/Plates', href: '/products' },
-          { label: 'Chequered Plates', href: '/products' },
-        ],
+        links: FALLBACK_PRODUCTS,
       },
       {
         title: 'INDUSTRIAL SEGMENTS',
@@ -179,6 +183,50 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeMobileMenu, setActiveMobileMenu] = useState<string | null>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [navProducts, setNavProducts] = useState<{ label: string; href: string }[]>(FALLBACK_PRODUCTS);
+
+  useEffect(() => {
+    const fetchNavbarProducts = async () => {
+      try {
+        const res = await fetch(`${API_URL}/api/products`);
+        if (res.ok) {
+          const data = await res.json();
+          if (data.products && data.products.length > 0) {
+            const mapped = data.products.slice(0, 5).map((p: any) => ({
+              label: p.name,
+              href: `/products/${p.slug}`,
+            }));
+            setNavProducts(mapped);
+          }
+        }
+      } catch (err) {
+        console.error('Failed to load products for Navbar:', err);
+      }
+    };
+    fetchNavbarProducts();
+  }, []);
+
+  const getNavData = () => {
+    return NAV_DATA.map(item => {
+      if (item.label === 'Solutions' && item.sections) {
+        return {
+          ...item,
+          sections: item.sections.map(section => {
+            if (section.title === 'FLAT STEEL PRODUCTS') {
+              return {
+                ...section,
+                links: navProducts,
+              };
+            }
+            return section;
+          }),
+        };
+      }
+      return item;
+    });
+  };
+
+  const navData = getNavData();
 
   const isActive = (item: any) => {
     // Direct match for the item itself
@@ -189,7 +237,7 @@ export default function Navbar() {
       return item.sections.some((section: any) =>
         section.links.some((link: any) => {
           if (pathname !== link.href) return false;
-          const isPrimaryTopLevelMatch = NAV_DATA.some(navItem =>
+          const isPrimaryTopLevelMatch = navData.some(navItem =>
             navItem !== item && navItem.href === pathname
           );
 
@@ -291,7 +339,7 @@ export default function Navbar() {
 
           {/* Desktop Nav Links */}
           <div className={styles.navLinks}>
-            {NAV_DATA.map((item) =>
+            {navData.map((item) =>
               item.hasMegaMenu ? (
                 <button
                   key={item.label}
@@ -345,7 +393,7 @@ export default function Navbar() {
             transition={{ duration: 0.2 }}
           >
             <MegaMenuContent
-              item={NAV_DATA.find((i) => i.label === activeMenu)}
+              item={navData.find((i) => i.label === activeMenu)}
             />
           </motion.div>
         )}
@@ -362,7 +410,7 @@ export default function Navbar() {
             transition={{ duration: 0.2 }}
           >
             <div className={styles.mobileNavLinks}>
-              {NAV_DATA.map((item) =>
+              {navData.map((item) =>
                 item.hasMegaMenu ? (
                   <React.Fragment key={item.label}>
                     <button

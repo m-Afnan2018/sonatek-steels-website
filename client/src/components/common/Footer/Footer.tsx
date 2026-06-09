@@ -174,6 +174,20 @@ export default async function Footer() {
                                         </li>
                                     ))}
                                 </ul>
+                                {col.heading === "Support" && (
+                                    <div className={styles.footerMapWrapper}>
+                                        <iframe
+                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.4428054452033!2d77.13524957616641!3d28.646452975657375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d031f41d3f835%3A0x83ddffc0dd8683a1!2sSonatek%20Steels!5e0!3m2!1sen!2sin!4v1717900000000!5m2!1sen!2sin"
+                                            width="100%"
+                                            height="130"
+                                            style={{ border: 0 }}
+                                            allowFullScreen={false}
+                                            loading="lazy"
+                                            referrerPolicy="no-referrer-when-downgrade"
+                                            title="Sonatek Steels Footer Location Map"
+                                        ></iframe>
+                                    </div>
+                                )}
                             </div>
                         ))}
                     </div>

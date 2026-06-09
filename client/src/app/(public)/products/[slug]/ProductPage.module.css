@@ -351,11 +351,116 @@
   color: #555;
 }
 
+.ctaSection {
+  margin-top: 80px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.ctaContent {
+  padding: 60px 40px;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  color: white;
+}
+
+.ctaTitle {
+  font-family: var(--font-pilat-wide), sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.ctaDescription {
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 32px;
+}
+
+.ctaButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.ctaPrimaryBtn {
+  background: var(--brand-blue);
+  color: white;
+  padding: 14px 32px;
+  border-radius: 100px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  font-family: var(--font-pilat-wide);
+  text-decoration: none;
+  border: 2px solid var(--brand-blue);
+}
+
+.ctaPrimaryBtn:hover {
+  background: var(--brand-blue-dark);
+  border-color: var(--brand-blue-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(2, 20, 80, 0.3);
+}
+
+.ctaWhatsappBtn {
+  background: #25d366;
+  color: white;
+  padding: 14px 32px;
+  border-radius: 100px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  border: 2px solid #25d366;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.ctaWhatsappBtn:hover {
+  background: #128c7e;
+  border-color: #128c7e;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+}
+
+.ctaPhoneBtn {
+  background: transparent;
+  color: white;
+  padding: 14px 32px;
+  border-radius: 100px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  border: 2px solid white;
+  text-decoration: none;
+}
+
+.ctaPhoneBtn:hover {
+  background: white;
+  color: #111;
+  transform: translateY(-2px);
+}
+
 @media (max-width: 1024px) {
   .productContainer {
     flex-direction: column;
   }
-  
+
   .imageSection {
     position: static;
   }
@@ -365,30 +470,57 @@
   .productContainer {
     padding-top: 80px;
   }
-  
+
   .title {
     font-size: 24px;
   }
-  
+
   .chips {
     gap: 8px;
   }
-  
+
   .chip {
     padding: 8px 16px;
     font-size: 13px;
   }
-  
+
   .gridInfo {
     grid-template-columns: 1fr;
     gap: 20px;
   }
-  
+
   .tabItem {
     padding: 12px 16px;
     font-size: 12px;
   }
-  .overviewBox{
+
+  .overviewBox {
     padding: 20px;
+  }
+
+  .ctaTitle {
+    font-size: 28px;
+  }
+
+  .ctaDescription {
+    font-size: 12;
+  }
+
+  .ctaContent {
+    padding: 40px 20px;
+  }
+
+  .ctaButtons {
+    flex-direction: column;
+    width: 100%;
+    align-items: stretch;
+  }
+
+  .ctaPrimaryBtn,
+  .ctaWhatsappBtn,
+  .ctaPhoneBtn {
+    font-size: 12px;
+    width: 100%;
+    justify-content: center;
   }
 }

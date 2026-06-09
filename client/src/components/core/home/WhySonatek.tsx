@@ -49,7 +49,7 @@ export default function WhySonatek() {
                 </p>
 
                 {/* CTA text link */}
-                <a href="#" className={styles.cta}>
+                <a href="/supply-chain" className={styles.cta}>
                     Explore Our Solutions
                     <div className={styles.arrowContainer}>
                         <svg

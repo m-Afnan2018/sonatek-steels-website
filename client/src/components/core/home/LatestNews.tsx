@@ -4,27 +4,29 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./LatestNews.module.css";
 import Image from "next/image";
 
-const NEWS = [
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+
+const FALLBACK_NEWS = [
     {
         date: "10 May 2025",
         title: "BASICALLY STEEL: AN ALLOY OF IRON AND CARBON FOR INDUSTRIAL STRENGTH",
-        href: "/news/basic",
+        href: "/blogs/basically-steel",
         image: "https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?w=800&q=80",
         isLogo: false,
     },
     {
         date: "08 May 2025",
         title: "HOT ROLLING: DEFORMING AT HIGH TEMPERATURE FOR SUPERIOR QUALITY",
-        href: "/news/temp",
+        href: "/blogs/temperature",
         image: "https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=800&q=80",
         isLogo: false,
     },
     {
         date: "01 May 2025",
         title: "SONATEK STEELS MARKS NEW MILESTONE IN NORTHERN INDIA INFRASTRUCTURE",
-        href: "#",
+        href: "/blogs/milestone",
         image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1200&q=80",
-        isLogo: true, // We'll keep one logo placeholder but update it to Sonatek
+        isLogo: true,
     },
 ];
 
@@ -33,6 +35,31 @@ export default function LatestNews() {
     const [activeIndex, setActiveIndex] = useState(0);
     const [isMobile, setIsMobile] = useState(false);
     const ref = useRef<HTMLDivElement>(null);
+    const [news, setNews] = useState<any[]>(FALLBACK_NEWS);
+
+    useEffect(() => {
+        const fetchNews = async () => {
+            try {
+                const res = await fetch(`${API_URL}/api/blogs?limit=3`);
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.blogs && data.blogs.length > 0) {
+                        const mapped = data.blogs.map((b: any) => ({
+                            date: new Date(b.publishedAt || b.createdAt).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }),
+                            title: b.title.toUpperCase(),
+                            href: `/blogs/${b.slug}`,
+                            image: b.coverImage ? (b.coverImage.startsWith('http') ? b.coverImage : `${API_URL}${b.coverImage}`) : 'https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?w=800&q=80',
+                            isLogo: false,
+                        }));
+                        setNews(mapped);
+                    }
+                }
+            } catch (err) {
+                console.error("Failed to fetch latest news:", err);
+            }
+        };
+        fetchNews();
+    }, []);
 
     // Touch gesture tracking for mobile swipe-to-scroll
     const touchStartX = useRef<number | null>(null);
@@ -65,11 +92,11 @@ export default function LatestNews() {
     }, []);
 
     const handlePrev = () => {
-        setActiveIndex((prev) => (prev > 0 ? prev - 1 : NEWS.length - 1));
+        setActiveIndex((prev) => (prev > 0 ? prev - 1 : news.length - 1));
     };
 
     const handleNext = () => {
-        setActiveIndex((prev) => (prev < NEWS.length - 1 ? prev + 1 : 0));
+        setActiveIndex((prev) => (prev < news.length - 1 ? prev + 1 : 0));
     };
 
     const onTouchStart = (e: React.TouchEvent) => {
@@ -126,7 +153,7 @@ export default function LatestNews() {
                         className={styles.list}
                         style={isMobile ? { transform: `translateX(calc(-${activeIndex * 100}% - ${activeIndex}rem))` } : undefined}
                     >
-                        {NEWS.map((item, i) => (
+                        {news.map((item, i) => (
                             <article
                                 key={i}
                                 className={`${styles.row} ${visible ? styles.rowVisible : ""}`}
@@ -145,7 +172,7 @@ export default function LatestNews() {
                                             href={item.href}
                                             className={styles.title}
                                         >
-                                            {item.title.substring(0, 50) + '...'}
+                                            {item.title.length > 50 ? item.title.substring(0, 50) + '...' : item.title}
                                         </a>
                                         <a
                                             href={item.href}
@@ -234,6 +261,7 @@ export default function LatestNews() {
                                                 alt={item.title}
                                                 className={styles.img}
                                                 loading="lazy"
+                                                unoptimized={!item.image!.startsWith('https')}
                                             />
                                         )}
                                     </div>
