@@ -37,12 +37,12 @@ export default function SinglePlatform() {
                 {/* Subtext */}
                 <p className={styles.sub}>
                     Whatever your project, whatever your requirement, we have
-                    the complete range of flat steel products and custom 
+                    the complete range of flat steel products and custom
                     processing solutions. That&apos;s the Sonatek Steels advantage.
                 </p>
 
                 {/* Outlined pill CTA */}
-                <a href="#" className={styles.ctaBtn}>
+                <a href="/supply-chain" className={styles.ctaBtn}>
                     Find Your Solution
                     <div className={styles.arrowContainer}>
                         <svg

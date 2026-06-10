@@ -193,6 +193,15 @@
     border-color: rgba(255, 255, 255, 0.25);
 }
 
+.footerMapWrapper {
+    width: 100%;
+    margin-top: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
 /* ================================
    RESPONSIVE
    ================================ */

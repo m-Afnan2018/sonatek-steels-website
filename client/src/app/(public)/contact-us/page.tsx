@@ -1,5 +1,6 @@
 import HeroSection from "@/components/common/HeroSection/HeroSection";
 import ContactForm from "./ContactForm";
+import LocationSection from "./LocationSection";
 
 export default function ContactUs() {
   return (
@@ -7,7 +8,7 @@ export default function ContactUs() {
       <HeroSection
         title="Let&apos;s Talk"
         description="Our team of experts is always ready to assist you with your needs."
-        bgImage="https://images.unsplash.com/photo-1740560051533-3acef26ace95?q=80&w=1170&auto=format&fit=crop"
+        bgImage="https://images.unsplash.com/photo-1613993995046-07bce4b0bfed?q=80&w=1170&auto=format"
         breadcrumb={[
           {
             label: "Home",
@@ -20,6 +21,7 @@ export default function ContactUs() {
         ]}
       />
       <ContactForm />
+      <LocationSection />
     </main>
   );
 }

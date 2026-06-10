@@ -13,8 +13,6 @@ const ABOUT_SECTIONS = [
         id: "mission",
         title: "Our Mission",
         description: "Our mission is to maintain customer satisfaction through constant improvement and modernization of our products. Through our team of experienced and qualified professionals, we aim to engineer excellence in everything we do.",
-        buttonText: "Our Mission",
-        buttonHref: "#mission",
         image: "https://images.unsplash.com/photo-1504904126298-3fde501c9b31?w=800&q=80",
         imageAlt: "Our People working at port",
         reverse: false,
@@ -34,7 +32,7 @@ const ABOUT_SECTIONS = [
         title: "Our Management",
         description: "Our team works as a partner to develop the relationship and at the same time delivering results. We have highly qualified management, using a time and timely product delivery based model. We are also specialized in providing personalized service to our customers in this area. Our team is a mix of one of the strongest leaders in this industry.",
         buttonText: "Our Leadership",
-        buttonHref: "#management",
+        buttonHref: "/leadership",
         image: "https://images.unsplash.com/photo-1761839258753-85d8eecbbc29?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         imageAlt: "Leadership panel discussion",
         reverse: false,
@@ -67,16 +65,16 @@ export default function AboutUsPage() {
                 <div className={styles.heroContent}>
                     <div>
                         <div className={styles.breadcrumb}>
-                         <a href="/">Home</a> &gt; About us</div>
+                            <a href="/">Home</a> &gt; About us</div>
                         <h1 className={styles.heroTitle}>About Us</h1>
                         <p className={styles.heroDesc}>
                             Made for Life, Your Supplier of Choice. By selecting Sonatek Steels as your supplier, you make the choice of innovative and high-performance solutions.
                         </p>
                     </div>
-                    <a href="#video" className={styles.primaryBtn}>
+                    {/* <a href="#video" className={styles.primaryBtn}>
                         Watch our video
-                    </a>
-                    
+                    </a> */}
+
                 </div>
             </section>
 
@@ -93,7 +91,7 @@ export default function AboutUsPage() {
             </section>
 
             {/* VIDEO SECTION */}
-            <GlobalNetwork/>
+            <GlobalNetwork />
 
             {/* ALTERNATING SECTIONS */}
             {ABOUT_SECTIONS.map((section) => (
@@ -105,9 +103,9 @@ export default function AboutUsPage() {
                     <div className={styles.altContent}>
                         <h3 className={styles.altTitle}>{section.title}</h3>
                         <p className={styles.altDesc}>{section.description}</p>
-                        <a href={section.buttonHref} className={styles.outlineBtn}>
+                        {section.buttonText && <a href={section.buttonHref} className={styles.outlineBtn}>
                             {section.buttonText}
-                        </a>
+                        </a>}
                     </div>
                     <div className={styles.altImageWrap}>
                         <Image
@@ -129,10 +127,10 @@ export default function AboutUsPage() {
                     </h2>
                     <div className={styles.joinContent}>
                         <p className={styles.joinDesc}>
-                            Discover career opportunities that challenge you to think differently, 
+                            Discover career opportunities that challenge you to think differently,
                             act boldly, and create a lasting impact on a global scale.
                         </p>
-                        <a href="#careers" className={styles.outlineBtn}>
+                        <a href="/leadership" className={styles.outlineBtn}>
                             Join our team
                         </a>
                     </div>

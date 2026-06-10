@@ -14,7 +14,7 @@ interface HeroProps {
     id?: string;
 }
 
-export default function Hero({ title = "Your Partner in", description = "Flat Steel", paragraph = "Established in 2014, Sonatek Steels Pvt. Ltd. are the leading distributors of flat steel products in Northern India.", btnText = "Explore Our Products", btnLink = "#", videoUrl = "https://cdn.pixabay.com/video/2021/02/05/64212-509543056_large.mp4", posterUrl = "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1920&q=80", ...props }: HeroProps) {
+export default function Hero({ title = "Your Partner in", description = "Flat Steel", paragraph = "Established in 2014, Sonatek Steels Pvt. Ltd. are the leading distributors of flat steel products in Northern India.", btnText = "Explore Our Products", btnLink = "/products", videoUrl = "https://cdn.pixabay.com/video/2021/02/05/64212-509543056_large.mp4", posterUrl = "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1920&q=80", ...props }: HeroProps) {
     const videoRef = useRef<HTMLVideoElement>(null);
 
     useEffect(() => {

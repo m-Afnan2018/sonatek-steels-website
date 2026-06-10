@@ -19,7 +19,7 @@ export default function GlobalNetwork({ videoUrl = 'https://cdn.pixabay.com/vide
         if (video) {
             setIsPlaying(!video.paused);
             setIsMuted(video.muted);
-            
+
             const handlePlayState = () => setIsPlaying(true);
             const handlePauseState = () => setIsPlaying(false);
             const handleVolumeState = () => setIsMuted(video.muted);
@@ -115,7 +115,7 @@ export default function GlobalNetwork({ videoUrl = 'https://cdn.pixabay.com/vide
             if (isPlaying) {
                 videoRef.current.pause();
             } else {
-                videoRef.current.play().catch(() => {});
+                videoRef.current.play().catch(() => { });
             }
         }
     };
@@ -228,7 +228,7 @@ export default function GlobalNetwork({ videoUrl = 'https://cdn.pixabay.com/vide
                         local delivery, and tailored solutions delivered
                         through a single trusted partner.
                     </p>
-                    <a href="#" className={styles.cta}>
+                    <a href="/contact-us#location" className={styles.cta}>
                         Our Locations
                         <div className={styles.arrowContainer}>
                             <svg
