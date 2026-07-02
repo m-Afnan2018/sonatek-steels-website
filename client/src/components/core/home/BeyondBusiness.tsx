@@ -5,13 +5,13 @@ import styles from './BeyondBusiness.module.css';
 
 const DEFAULT_DATA = [
   {
-    img: 'https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=800&q=80',
-    title: 'DP World Foundation',
+    img: 'https://aagamshreefoundation.org/wp-content/uploads/2026/01/Donate.svg',
+    title: 'Aagamshree Foundation',
     des: 'Every individual should have the opportunity to lead a healthy and productive life.',
   },
   {
-    img: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&q=80',
-    title: 'Our Climate Journey',
+    img: 'https://cdn.prod.website-files.com/6938169ca88035d1476d6905/69fdba2a2e78b0e42257cd78_780x1000%20mobile.jpg',
+    title: 'Using Sustainable Transporation',
     des: "We're committed to understanding and reducing our environmental impact until we reach net zero.",
   },
   {

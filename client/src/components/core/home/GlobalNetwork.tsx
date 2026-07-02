@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./GlobalNetwork.module.css";
 
-export default function GlobalNetwork({ videoUrl = 'https://cdn.pixabay.com/video/2025/09/22/305657_large.mp4' }: { videoUrl?: string }) {
+export default function GlobalNetwork({ videoUrl = 'https://www.pexels.com/download/video/8829606' }: { videoUrl?: string }) {
     const sectionRef = useRef<HTMLDivElement>(null);
     const videoWrapRef = useRef<HTMLDivElement>(null);
     const videoRef = useRef<HTMLVideoElement>(null);

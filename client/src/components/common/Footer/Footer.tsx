@@ -68,7 +68,7 @@ const LEGAL_LINKS = [
 const SocialIcons = () => (
     <div className={styles.socials}>
         {/* LinkedIn */}
-        <a href="#" className={styles.socialBtn} aria-label="LinkedIn">
+        <a href="https://www.linkedin.com/company/107192641" className={styles.socialBtn} aria-label="LinkedIn">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
                 <rect x="2" y="9" width="4" height="12" />
@@ -76,13 +76,13 @@ const SocialIcons = () => (
             </svg>
         </a>
         {/* Facebook */}
-        <a href="#" className={styles.socialBtn} aria-label="Facebook">
+        <a href="https://www.facebook.com/p/Sonatek-Steels-Private-Limited-61558543310042/" className={styles.socialBtn} aria-label="Facebook">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
             </svg>
         </a>
         {/* Instagram */}
-        <a href="#" className={styles.socialBtn} aria-label="Instagram">
+        <a href="https://www.instagram.com/sonateksteelsolutions" className={styles.socialBtn} aria-label="Instagram">
             <svg
                 width="16"
                 height="16"
@@ -98,14 +98,14 @@ const SocialIcons = () => (
                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
             </svg>
         </a>
-        {/* X / Twitter */}
+        {/* X / Twitter 
         <a href="#" className={styles.socialBtn} aria-label="X (Twitter)">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
             </svg>
-        </a>
+        </a>*/}
         {/* YouTube */}
-        <a href="#" className={styles.socialBtn} aria-label="YouTube">
+        <a href="https://www.youtube.com/@SonatekSteels" className={styles.socialBtn} aria-label="YouTube">
             <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" />
                 <polygon
