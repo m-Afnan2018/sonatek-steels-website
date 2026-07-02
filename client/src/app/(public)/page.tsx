@@ -27,8 +27,20 @@ async function fetchTestimonials() {
     } catch { return []; }
 }
 
+async function fetchProducts() {
+    try {
+        const res = await fetch(`${API_URL}/api/products`, { next: { revalidate: 60 } });
+        if (!res.ok) return [];
+        return (await res.json()).products ?? [];
+    } catch { return []; }
+}
+
 export default async function Home() {
-    const [hc, testimonials] = await Promise.all([fetchHomeContent(), fetchTestimonials()]);
+    const [hc, testimonials, products] = await Promise.all([
+        fetchHomeContent(),
+        fetchTestimonials(),
+        fetchProducts(),
+    ]);
 
     return (
         <main>
@@ -49,7 +61,7 @@ export default async function Home() {
                 stats={hc?.impact?.stats}
             />
             <SinglePlatform />
-            <Services />
+            <Services products={products} />
             <GlobalNetwork />
             {/* Sticky-pin wrapper: BeyondBusiness sticks at top while bottom sections scroll over it */}
             <div style={{ position: "sticky", top: 0, zIndex: 1 }}>

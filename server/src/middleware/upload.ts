@@ -26,7 +26,7 @@ export function createUpload(subfolder: string) {
         else cb(new Error('Only jpg, jpeg, png, webp files are allowed'));
     }
 
-    return multer({ storage, fileFilter, limits: { fileSize: 5 * 1024 * 1024 } });
+    return multer({ storage, fileFilter, limits: { fileSize: 1024 * 1024 * 1024 } });
 }
 
 // Default export keeps backward compatibility with product.routes.ts

@@ -4,7 +4,18 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./Services.module.css";
 import Image from "next/image";
 
-const SERVICES = [
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+
+export interface HomeProduct {
+    _id: string;
+    name: string;
+    slug: string;
+    image?: string;
+    overview?: { description?: string };
+}
+
+// Used only if fewer than 3 products come back from the API.
+const FALLBACK_PRODUCT_SERVICES = [
     {
         title: "Steel Procurement",
         description:
@@ -26,6 +37,10 @@ const SERVICES = [
         image: "https://images.unsplash.com/photo-1671404910386-8c2a9ae40efd?q=80",
         href: "/technical-steel-selection",
     },
+];
+
+// Last three cards — left untouched, custom linking added manually.
+const OTHER_SERVICES = [
     {
         title: "Freight Forwarding Services",
         description:
@@ -49,12 +64,19 @@ const SERVICES = [
     },
 ];
 
+interface ServiceCardData {
+    title: string;
+    description: string;
+    image: string;
+    href: string;
+}
+
 function ServiceCard({
     service,
     index,
     visible,
 }: {
-    service: (typeof SERVICES)[0];
+    service: ServiceCardData;
     index: number;
     visible: boolean;
 }) {
@@ -126,7 +148,20 @@ function ServiceCard({
     );
 }
 
-export default function Services() {
+function toServiceCard(product: HomeProduct): ServiceCardData {
+    return {
+        title: product.name,
+        description:
+            product.overview?.description ||
+            `Premium ${product.name}, sourced and supplied to exact industrial specifications.`,
+        image: product.image
+            ? (product.image.startsWith("http") ? product.image : `${API_URL}${product.image}`)
+            : "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80",
+        href: `/products/${product.slug}`,
+    };
+}
+
+export default function Services({ products = [] }: { products?: HomeProduct[] }) {
     const [visible, setVisible] = useState(false);
     const ref = useRef<HTMLDivElement>(null);
 
@@ -144,10 +179,17 @@ export default function Services() {
         return () => observer.disconnect();
     }, []);
 
+    const productCards: ServiceCardData[] =
+        products.length >= 3
+            ? products.slice(0, 3).map(toServiceCard)
+            : FALLBACK_PRODUCT_SERVICES;
+
+    const allServices = [...productCards, ...OTHER_SERVICES];
+
     return (
         <section className={styles.section} ref={ref}>
             <div className={styles.grid}>
-                {SERVICES.map((service, i) => (
+                {allServices.map((service, i) => (
                     <ServiceCard
                         key={service.title}
                         service={service}
