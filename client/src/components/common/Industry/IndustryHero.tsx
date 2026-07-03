@@ -21,10 +21,9 @@ export default function IndustryHero({
   description,
   image,
   ctaText = "Get in Touch",
-  ctaHref = "#contact",
+  ctaHref = "/contact-us",
   breadcrumbs = [
-    { label: "Home", href: "/" },
-    { label: "Industries", href: "/industries" }
+    { label: "Home", href: "/" }
   ]
 }: IndustryHeroProps) {
   const [isVisible, setIsVisible] = useState(false);

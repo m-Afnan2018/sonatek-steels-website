@@ -18,7 +18,7 @@ export default function ServiceHero({
   description,
   image,
   ctaText = "Read More",
-  ctaHref = "#"
+  ctaHref = "/contact-us"
 }: ServiceHeroProps) {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -44,7 +44,7 @@ export default function ServiceHero({
           <div className={styles.breadcrumb}>
             <Link href="/" className={styles.crumb}>Home</Link>
             <span className={styles.separator}> &gt; </span>
-            <Link href="/services" className={styles.crumb}>Our Services</Link>
+            <Link href="/services/port-services" className={styles.crumb}>Our Services</Link>
             <span className={styles.separator}> &gt; </span>
             <span className={styles.current}>{title}</span>
           </div>

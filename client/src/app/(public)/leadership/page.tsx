@@ -88,9 +88,6 @@ export default function LeadershipPage() {
                         ))}
                     </div>
 
-                    <div className={styles.loadMoreWrapper}>
-                        <button className={styles.loadMoreBtn}>Load More</button>
-                    </div>
                 </div>
             </section>
 
@@ -104,7 +101,7 @@ export default function LeadershipPage() {
                             Discover career opportunities that challenge you to think differently,
                             act boldly, and create a lasting impact on a global scale.
                         </p>
-                        <Link href="#" className={styles.outlineBtn}>Learn More</Link>
+                        <Link href="/contact-us" className={styles.outlineBtn}>Learn More</Link>
                     </div>
                 </div>
             </section>

@@ -110,6 +110,18 @@ export default function page() {
     {
       question: 'How does Sonatek Steels ensure sustainable sourcing?',
       answer: <p>As an MOU dealer of SAIL, we ensure that our products come from producers committed to sustainable manufacturing. We also optimize our logistics in Northern India to minimize environmental impact during distribution.</p>
+    },
+    {
+      question: 'What is Sonatek Steels doing to reduce its environmental impact?',
+      answer: <p>We implement rigorous environmental management practices, including waste reduction and water conservation initiatives, to minimize our impact on biodiversity and local ecosystems across our operations.</p>
+    },
+    {
+      question: 'Does Sonatek Steels have a supplier code of conduct?',
+      answer: <p>Yes, our Supplier Code of Conduct sets clear expectations for ethical business practices, environmental responsibility, and fair labor standards across our sourcing and distribution network.</p>
+    },
+    {
+      question: 'How does Sonatek Steels support the communities it operates in?',
+      answer: <p>Through our community empowerment programs, we invest in education, vocational training, and entrepreneurship initiatives that help local communities grow alongside our business.</p>
     }
   ];
 
@@ -118,19 +130,19 @@ export default function page() {
       title: 'DEVELOPMENT IMPACT',
       description: 'Our Development Impact Catalogue explores how Sonatek Steels supports sustainable development through its global operations. By combining smart logistics with infrastructure investment, we create long-term value for communities, supporting jobs, growth, and access, and helping to build a more inclusive global economy.',
       image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&q=80',
-      link: '#'
+      link: '/contact-us'
     },
     {
       title: 'ENVIRONMENTAL STEWARDSHIP',
       description: 'Protecting the planet is at the heart of our mission. We implement rigorous environmental management systems to minimize our impact on biodiversity and ecosystems. From waste reduction to water conservation, we are committed to leaving a healthier planet for future generations.',
       image: 'https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=800&q=80',
-      link: '#'
+      link: '/contact-us'
     },
     {
       title: 'COMMUNITY EMPOWERMENT',
       description: 'We believe that our success is linked to the prosperity of the communities we serve. Our social investment programs focus on education, vocational training, and entrepreneurship, providing individuals with the tools they need to succeed and thrive in a rapidly changing world.',
       image: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&q=80',
-      link: '#'
+      link: '/contact-us'
     }
   ];
 
@@ -180,7 +192,7 @@ export default function page() {
         title="SUSTAINABILITY AT SONATEK STEELS"
         description="Making a positive impact on the world."
         buttonText="Read More"
-        buttonLink="#"
+        buttonLink="/contact-us"
         bgImage="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1800&q=80"
       />
     </main>

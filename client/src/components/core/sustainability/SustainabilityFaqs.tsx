@@ -24,8 +24,9 @@ export default function SustainabilityFaqs({ faqs, id }: Props) {
     <section className={styles.section} id={id}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.title}>SUSTAINABILITY<br/>FAQs</h2>
-          <a href="#contact" className={styles.btn}>
+          {/* Pretext (hidden): "SUSTAINABILITY" */}
+          <h2 className={styles.title}>FAQs</h2>
+          <a href="/contact-us" className={styles.btn}>
             View all
           </a>
         </div>

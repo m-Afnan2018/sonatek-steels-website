@@ -117,6 +117,14 @@ const FAQS_DATA = [
   {
     question: "What happens if we need a highly specific or rare steel grade?",
     answer: "Through our strong mill relationships, we can facilitate custom rolling or special procurement for highly specific grades, provided the volume meets mill minimums."
+  },
+  {
+    question: "How do I know which steel grade is right for my application?",
+    answer: "Our technical team reviews your load, forming, and environmental requirements against grade-specific mechanical and chemical properties to recommend the best-fit, cost-effective option."
+  },
+  {
+    question: "Can wrong grade selection really cause structural failures?",
+    answer: "Yes. Using the wrong grade or thickness can lead to cracking, premature wear, or structural failure. Our advisory process is designed to prevent these costly and potentially dangerous mistakes."
   }
 ];
 
@@ -202,8 +210,9 @@ export default function TechnicalSteelSelectionPage() {
       </div>
 
       <div id="faqs">
+        {/* Pretext (hidden): "TECHNICAL SUPPORT FAQs" */}
         <FAQSection
-          title="TECHNICAL SUPPORT FAQs"
+          title="FAQs"
           items={FAQS_DATA}
         />
       </div>

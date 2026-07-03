@@ -365,12 +365,22 @@ export default function Navbar() {
 
           {/* Right Icons */}
           <div className={styles.navIcons}>
-            <button className={styles.iconBtn}>
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Sonatek+Steels+X-7+Loha+Mandi+Naraina+New+Delhi+110028"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.iconBtn}
+              aria-label="View our location on Google Maps"
+            >
               <MapPinIcon />
-            </button>
-            <button className={styles.iconBtn}>
+            </a>
+            <a
+              href="tel:+919891998846"
+              className={styles.iconBtn}
+              aria-label="Call us"
+            >
               <PhoneIcon />
-            </button>
+            </a>
             {/* Mobile menu toggle */}
             <button
               className={styles.mobileToggle}

@@ -107,7 +107,7 @@ const INDUSTRY_EXPERTISE_DATA = [
 
 const FAQS_DATA = [
     {
-        question: "How does DP World ensure efficient handling and tracking of shipments?",
+        question: "How does Sonatek Steels ensure efficient handling and tracking of shipments?",
         answer: "We use state-of-the-art digital platforms and real-time tracking systems to provide end-to-end visibility and ensure every shipment is handled with precision and care."
     },
     {
@@ -121,6 +121,14 @@ const FAQS_DATA = [
     {
         question: "What are the benefits of using a single partner for all freight routes?",
         answer: "Working with a single partner provides consistency, better coordination, simplified communication, and often more competitive pricing through consolidated volumes."
+    },
+    {
+        question: "Can you handle urgent or time-sensitive steel deliveries?",
+        answer: "Yes, our urgent material movement service prioritizes time-sensitive maintenance, fabrication, and production requirements to keep your operations running."
+    },
+    {
+        question: "Do you support multimodal transport for steel shipments?",
+        answer: "Yes, we combine road, rail, and ocean freight options to move coils, sheets, plates, and project steel efficiently across origin and destination points."
     }
 ];
 
@@ -193,8 +201,9 @@ export default function FreightForwardingPage() {
             </div>
 
             <div id="faqs">
+                {/* Pretext (hidden): "FREIGHT FORWARDING SOLUTIONS FAQs" */}
                 <FAQSection
-                    title="FREIGHT FORWARDING SOLUTIONS FAQs"
+                    title="FAQs"
                     items={FAQS_DATA}
                 />
             </div>

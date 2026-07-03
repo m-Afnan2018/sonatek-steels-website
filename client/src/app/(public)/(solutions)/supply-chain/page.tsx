@@ -113,6 +113,14 @@ const FAQS_DATA = [
   {
     question: "Do you provide real-time visibility into shipments?",
     answer: "Yes, our digital platforms provide end-to-end visibility, allowing you to track your cargo and manage exceptions in real-time."
+  },
+  {
+    question: "Can you manage vendor inventory on our behalf?",
+    answer: "Yes, our vendor-managed inventory and stock availability solutions help you maintain optimal stock levels without tying up your own warehouse space and working capital."
+  },
+  {
+    question: "How do you support recurring, high-volume steel requirements?",
+    answer: "We align stock availability, requirement planning, and distribution scheduling around your consumption pattern, ensuring dependable, repeat supply for OEMs and fabricators."
   }
 ];
 
@@ -120,7 +128,6 @@ export default function SupplyChainPage() {
   const navItems = [
     { id: "overview", label: "Overview" },
     { id: "solutions", label: "Solutions" },
-    { id: "services", label: "Services" },
     { id: "expertise", label: "Expertise" },
     { id: "sectors", label: "Sectors" },
     { id: "insights", label: "Insights" },
@@ -186,8 +193,9 @@ export default function SupplyChainPage() {
       </div>
 
       <div id="faqs">
+        {/* Pretext (hidden): "SUPPLY CHAIN SOLUTIONS FAQs" */}
         <FAQSection
-          title="SUPPLY CHAIN SOLUTIONS FAQs"
+          title="FAQs"
           items={FAQS_DATA}
         />
       </div>

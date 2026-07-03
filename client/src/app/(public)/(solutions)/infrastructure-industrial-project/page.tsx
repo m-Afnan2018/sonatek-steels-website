@@ -130,6 +130,16 @@ const FAQS_DATA = [
     answer:
       "Yes, orders can be supplied with manufacturer test certificates and relevant documentation to support project approvals, quality checks, and traceability.",
   },
+  {
+    question: "Can you coordinate delivery across multiple project phases?",
+    answer:
+      "Yes, we plan staged dispatches aligned with your construction or plant expansion milestones, helping teams avoid both site congestion and material shortages.",
+  },
+  {
+    question: "Do you support both infrastructure and industrial project requirements?",
+    answer:
+      "Yes, our flat steel supply, processing, and distribution capability covers infrastructure builds, plant expansions, machinery fabrication, and large-scale industrial development alike.",
+  },
 ];
 
 export default function InfrastructureIndustrialProjectPage() {
@@ -219,8 +229,9 @@ export default function InfrastructureIndustrialProjectPage() {
       </div>
 
       <div id="faqs">
+        {/* Pretext (hidden): "INFRASTRUCTURE & INDUSTRIAL PROJECT FAQs" */}
         <FAQSection
-          title="INFRASTRUCTURE & INDUSTRIAL PROJECT FAQs"
+          title="FAQs"
           items={FAQS_DATA}
         />
       </div>

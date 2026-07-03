@@ -53,13 +53,13 @@ const OTHER_COLUMNS = [
         links: [
             { label: "+91-9891998846", href: "tel:+919891998846" },
             { label: "sonateksteels@gmail.com", href: "mailto:sonateksteels@gmail.com" },
-            { label: "X-7, Loha Mandi, Naraina, New Delhi - 110028", href: "#" },
+            { label: "X-7, Loha Mandi, Naraina, New Delhi - 110028", href: "https://www.google.com/maps/search/?api=1&query=Sonatek+Steels+X-7+Loha+Mandi+Naraina+New+Delhi+110028" },
         ],
     },
 ];
 
 const LEGAL_LINKS = [
-    { label: "Sitemap", href: "#" },
+    { label: "Sitemap", href: "/sitemap.xml" },
     { label: "Terms & Conditions", href: "/terms-conditions" },
     { label: "Privacy Policy", href: "/privacy" },
 ];

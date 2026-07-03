@@ -25,12 +25,12 @@ export const INDUSTRIES_DATA = {
       title: "HOW WE CAN HELP",
       subtitle: "A selection of our services for the Automotive industry.",
       items: [
-        { title: "Supply Chain Management", image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80", href: "#" },
-        { title: "Digital Solutions & Integrations", image: "https://images.unsplash.com/photo-1494961104209-3c223057bd26?w=800&q=80", href: "#" },
-        { title: "Production Logistics Management", image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800&q=80", href: "#" },
-        { title: "Finished Vehicle Logistics", image: "https://images.unsplash.com/photo-1504904126298-3fde501c9b31?w=800&q=80", href: "#" },
-        { title: "In-plant Logistics", image: "https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=800&q=80", href: "#" },
-        { title: "Aftermarket Logistics", image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80", href: "#" },
+        { title: "Supply Chain Management", image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80", href: "/supply-chain" },
+        { title: "Digital Solutions & Integrations", image: "https://images.unsplash.com/photo-1494961104209-3c223057bd26?w=800&q=80", href: "/contact-us" },
+        { title: "Production Logistics Management", image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800&q=80", href: "/freight-forwarding" },
+        { title: "Finished Vehicle Logistics", image: "https://images.unsplash.com/photo-1504904126298-3fde501c9b31?w=800&q=80", href: "/freight-forwarding" },
+        { title: "In-plant Logistics", image: "https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=800&q=80", href: "/supply-chain" },
+        { title: "Aftermarket Logistics", image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80", href: "/freight-forwarding" },
       ]
     },
     builtToDeliver: {
@@ -52,17 +52,20 @@ export const INDUSTRIES_DATA = {
       title: "OUR SERVICES",
       subtitle: "Our end-to-end automotive logistics toolbox gives you the flexibility to choose only what works best for your business, with customised supply chain solutions built around your cargo specifications, regulatory needs, and global markets.",
       items: [
-        { title: "End-to-end logistics", description: "We manage the full journey of automotive supply chains, from inbound parts to finished vehicle delivery, using our global network, multimodal transport, and real-time visibility.", image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80", href: "#" },
-        { title: "Ports & Terminals", description: "With 60+ ports worldwide, including 22 RoRo-enabled, we move finished vehicles and automotive components safely and efficiently, supporting your supply chain across key global trade routes with speed, scale, and reliability.", image: "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?w=800&q=80", href: "#" },
-        { title: "Contract Logistics", description: "Our contract logistics solutions support the automotive industry through every stage of the lifecycle. From warehousing, in-plant services, and inventory management, we provide the visibility and agility to support just-in-sequence delivery.", image: "https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=800&q=80", href: "#" },
+        { title: "End-to-end logistics", description: "We manage the full journey of automotive supply chains, from inbound parts to finished vehicle delivery, using our global network, multimodal transport, and real-time visibility.", image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80", href: "/supply-chain" },
+        { title: "Ports & Terminals", description: "With 60+ ports worldwide, including 22 RoRo-enabled, we move finished vehicles and automotive components safely and efficiently, supporting your supply chain across key global trade routes with speed, scale, and reliability.", image: "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?w=800&q=80", href: "/services/port-services" },
+        { title: "Contract Logistics", description: "Our contract logistics solutions support the automotive industry through every stage of the lifecycle. From warehousing, in-plant services, and inventory management, we provide the visibility and agility to support just-in-sequence delivery.", image: "https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=800&q=80", href: "/supply-chain" },
       ]
     },
     faqs: {
-      title: "AUTOMOTIVE STEEL FAQS",
+      // Pretext (hidden): "AUTOMOTIVE STEEL FAQS"
+      title: "FAQs",
       items: [
         { question: "What grades of steel do you provide for the automotive industry?", answer: "We provide high-strength Cold Rolled and Hot Rolled steel grades specifically certified for automotive body parts, chassis, and structural components." },
         { question: "Do you offer custom slitting and shearing for automotive OEMs?", answer: "Yes, our state-of-the-art processing facility offers precision slitting and shearing to meet the exact dimensional requirements of automotive production lines." },
         { question: "How do you ensure the quality of steel for safety-critical parts?", answer: "All our products are sourced directly from SAIL and undergo rigorous quality checks. We provide test certificates for every batch to ensure full traceability and compliance." },
+        { question: "Can you support just-in-sequence (JIS) delivery for OEM production lines?", answer: "Yes, we coordinate in-plant and production logistics to align steel and component delivery with your assembly schedule, minimizing line-stoppage risk." },
+        { question: "What is the typical lead time for automotive-grade steel orders?", answer: "Standard grades held in stock can dispatch within days, while custom-processed or bulk OEM orders are scheduled around your production calendar for reliable, on-time delivery." },
       ]
     },
     cta: {
@@ -99,12 +102,12 @@ export const INDUSTRIES_DATA = {
       title: "CONSTRUCTION SOLUTIONS",
       subtitle: "Durable steel products for every build phase.",
       items: [
-        { title: "Structural Steel Supply", image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80", href: "#" },
-        { title: "Industrial Flooring Solutions", image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&q=80", href: "#" },
-        { title: "Custom Fabrication Support", image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80", href: "#" },
-        { title: "Site Delivery Logistics", image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80", href: "#" },
-        { title: "Quality Assurance", image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80", href: "#" },
-        { title: "Sustainable Building", image: "https://images.unsplash.com/photo-1518005020951-ecc84916723c?w=800&q=80", href: "#" },
+        { title: "Structural Steel Supply", image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80", href: "/steel-procurement" },
+        { title: "Industrial Flooring Solutions", image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&q=80", href: "/steel-procurement" },
+        { title: "Custom Fabrication Support", image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80", href: "/custom-steel-processing" },
+        { title: "Site Delivery Logistics", image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80", href: "/freight-forwarding" },
+        { title: "Quality Assurance", image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80", href: "/technical-steel-selection" },
+        { title: "Sustainable Building", image: "https://images.unsplash.com/photo-1518005020951-ecc84916723c?w=800&q=80", href: "/sustainability" },
       ]
     },
     builtToDeliver: {
@@ -126,17 +129,20 @@ export const INDUSTRIES_DATA = {
         title: "OUR SERVICES",
         subtitle: "Specialized steel products for construction professionals.",
         items: [
-          { title: "HR Plates", description: "Heavy-duty plates for structural and industrial applications.", image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80", href: "#" },
-          { title: "Chequered Plates", description: "Anti-slip flooring solutions for safety and durability.", image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&q=80", href: "#" },
-          { title: "Project Management", description: "End-to-end supply chain support for large-scale builds.", image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80", href: "#" },
+          { title: "HR Plates", description: "Heavy-duty plates for structural and industrial applications.", image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80", href: "/steel-procurement" },
+          { title: "Chequered Plates", description: "Anti-slip flooring solutions for safety and durability.", image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&q=80", href: "/steel-procurement" },
+          { title: "Project Management", description: "End-to-end supply chain support for large-scale builds.", image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80", href: "/infrastructure-industrial-project" },
         ]
       },
       faqs: {
-        title: "CONSTRUCTION STEEL FAQS",
+        // Pretext (hidden): "CONSTRUCTION STEEL FAQS"
+        title: "FAQs",
         items: [
           { question: "What is the standard thickness of chequered plates you offer?", answer: "We offer chequered plates in various thicknesses ranging from 3mm to 12mm, suitable for different load requirements." },
           { question: "Do you provide bulk discounts for large infrastructure projects?", answer: "Yes, we offer competitive bulk pricing and dedicated supply chains for large-scale government and private infrastructure projects." },
           { question: "Are your steel products BIS certified?", answer: "Yes, all our steel products comply with BIS standards and come with manufacturer test certificates from SAIL." },
+          { question: "Which steel grades are recommended for structural framing?", answer: "For load-bearing structures, high-tensile HR plates and sheets, such as IS 2062 grade, are recommended for their strength and weldability in beams, columns, and trusses." },
+          { question: "Can you deliver steel directly to active construction sites?", answer: "Yes, we coordinate staged site delivery logistics so material arrives in sequence with your build schedule, reducing on-site storage and handling constraints." },
         ]
       },
       cta: {
@@ -173,12 +179,12 @@ export const INDUSTRIES_DATA = {
       title: "ENERGY SOLUTIONS",
       subtitle: "Specialized steel for the Oil & Gas value chain.",
       items: [
-        { title: "Pipeline Steel Supply", image: "https://images.unsplash.com/photo-1543165737-1422b512e0e0?w=800&q=80", href: "#" },
-        { title: "Storage Tank Materials", image: "https://images.unsplash.com/photo-1565345758117-9191d8481309?w=800&q=80", href: "#" },
-        { title: "Refinery Support", image: "https://images.unsplash.com/photo-1533106497176-45ae19e68ba2?w=800&q=80", href: "#" },
-        { title: "Corrosion Protection", image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&q=80", href: "#" },
-        { title: "Offshore Capabilities", image: "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?w=800&q=80", href: "#" },
-        { title: "Safety Compliance", image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80", href: "#" },
+        { title: "Pipeline Steel Supply", image: "https://images.unsplash.com/photo-1543165737-1422b512e0e0?w=800&q=80", href: "/steel-procurement" },
+        { title: "Storage Tank Materials", image: "https://images.unsplash.com/photo-1565345758117-9191d8481309?w=800&q=80", href: "/steel-procurement" },
+        { title: "Refinery Support", image: "https://images.unsplash.com/photo-1533106497176-45ae19e68ba2?w=800&q=80", href: "/infrastructure-industrial-project" },
+        { title: "Corrosion Protection", image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&q=80", href: "/technical-steel-selection" },
+        { title: "Offshore Capabilities", image: "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?w=800&q=80", href: "/infrastructure-industrial-project" },
+        { title: "Safety Compliance", image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80", href: "/sustainability" },
       ]
     },
     builtToDeliver: {
@@ -200,17 +206,20 @@ export const INDUSTRIES_DATA = {
         title: "OUR SERVICES",
         subtitle: "Specialized products for the energy sector.",
         items: [
-          { title: "API Grade Steel", description: "Certified steel for pipeline and pressure vessel applications.", image: "https://images.unsplash.com/photo-1543165737-1422b512e0e0?w=800&q=80", href: "#" },
-          { title: "Custom Processing", description: "Precision cutting and beveling for pipeline segments.", image: "https://images.unsplash.com/photo-1516198116318-7b944983058a?w=800&q=80", href: "#" },
-          { title: "Inventory Management", description: "Dedicated stock for emergency maintenance and shutdowns.", image: "https://images.unsplash.com/photo-1533106497176-45ae19e68ba2?w=800&q=80", href: "#" },
+          { title: "API Grade Steel", description: "Certified steel for pipeline and pressure vessel applications.", image: "https://images.unsplash.com/photo-1543165737-1422b512e0e0?w=800&q=80", href: "/steel-procurement" },
+          { title: "Custom Processing", description: "Precision cutting and beveling for pipeline segments.", image: "https://images.unsplash.com/photo-1516198116318-7b944983058a?w=800&q=80", href: "/custom-steel-processing" },
+          { title: "Inventory Management", description: "Dedicated stock for emergency maintenance and shutdowns.", image: "https://images.unsplash.com/photo-1533106497176-45ae19e68ba2?w=800&q=80", href: "/supply-chain" },
         ]
       },
       faqs: {
-        title: "OIL & GAS STEEL FAQS",
+        // Pretext (hidden): "OIL & GAS STEEL FAQS"
+        title: "FAQs",
         items: [
           { question: "Do you supply steel for offshore applications?", answer: "Yes, we provide specialized high-strength, corrosion-resistant steel grades suitable for offshore platforms and marine environments." },
           { question: "What certifications do you provide with Oil & Gas steel?", answer: "We provide full material traceability with EN 10204 3.1/3.2 certificates and third-party inspection reports where required." },
           { question: "Can you handle fast-track delivery for refinery maintenance?", answer: "Yes, we maintain a buffer stock of critical energy-grade steel to support rapid-response maintenance and shutdown requirements." },
+          { question: "Do you supply API-grade steel for pipeline projects?", answer: "Yes, we source API-grade plates and coils suited for pipeline and pressure vessel fabrication, backed by full mill certification." },
+          { question: "How is steel protected against sour service and HIC failure?", answer: "We supply HIC and SSCC resistant grades tested for sour service environments, ensuring long-term integrity in pipelines, tanks, and refinery equipment." },
         ]
       },
       cta: {
@@ -247,12 +256,12 @@ export const INDUSTRIES_DATA = {
       title: "MARITIME SOLUTIONS",
       subtitle: "Comprehensive steel for naval and commercial vessels.",
       items: [
-        { title: "Hull Plate Supply", image: "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?w=800&q=80", href: "#" },
-        { title: "Deck Steel Solutions", image: "https://images.unsplash.com/photo-1504904126298-3fde501c9b31?w=800&q=80", href: "#" },
-        { title: "Offshore Structures", image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800&q=80", href: "#" },
-        { title: "Marine Logistics", image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80", href: "#" },
-        { title: "Surface Treatment", image: "https://images.unsplash.com/photo-1518005020951-ecc84916723c?w=800&q=80", href: "#" },
-        { title: "Certified Sourcing", image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80", href: "#" },
+        { title: "Hull Plate Supply", image: "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?w=800&q=80", href: "/steel-procurement" },
+        { title: "Deck Steel Solutions", image: "https://images.unsplash.com/photo-1504904126298-3fde501c9b31?w=800&q=80", href: "/steel-procurement" },
+        { title: "Offshore Structures", image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800&q=80", href: "/infrastructure-industrial-project" },
+        { title: "Marine Logistics", image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80", href: "/freight-forwarding" },
+        { title: "Surface Treatment", image: "https://images.unsplash.com/photo-1518005020951-ecc84916723c?w=800&q=80", href: "/custom-steel-processing" },
+        { title: "Certified Sourcing", image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80", href: "/steel-procurement" },
       ]
     },
     builtToDeliver: {
@@ -274,17 +283,20 @@ export const INDUSTRIES_DATA = {
         title: "OUR SERVICES",
         subtitle: "Marine-specific steel products and services.",
         items: [
-          { title: "Hull Plates", description: "Grade A, B, D, and E ship plates for hull and structure.", image: "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?w=800&q=80", href: "#" },
-          { title: "Shot Blasting & Priming", description: "Pre-treated steel plates ready for immediate shipyard use.", image: "https://images.unsplash.com/photo-1518005020951-ecc84916723c?w=800&q=80", href: "#" },
-          { title: "Marine Engineering Support", description: "Technical consultation for marine-grade steel selection.", image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80", href: "#" },
+          { title: "Hull Plates", description: "Grade A, B, D, and E ship plates for hull and structure.", image: "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?w=800&q=80", href: "/steel-procurement" },
+          { title: "Shot Blasting & Priming", description: "Pre-treated steel plates ready for immediate shipyard use.", image: "https://images.unsplash.com/photo-1518005020951-ecc84916723c?w=800&q=80", href: "/custom-steel-processing" },
+          { title: "Marine Engineering Support", description: "Technical consultation for marine-grade steel selection.", image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80", href: "/technical-steel-selection" },
         ]
       },
       faqs: {
-        title: "SHIPBUILDING STEEL FAQS",
+        // Pretext (hidden): "SHIPBUILDING STEEL FAQS"
+        title: "FAQs",
         items: [
           { question: "Do you offer shot-blasted and primed plates?", answer: "Yes, we can provide steel plates that are shot-blasted and primed with shop-primer to prevent corrosion during shipyard storage." },
           { question: "Which classification society certificates do you provide?", answer: "We can provide certification from ABS, Lloyd's Register (LR), DNV, and IRS, depending on your project requirements." },
           { question: "What is the maximum plate width you can supply for hulls?", answer: "We can supply hull plates up to 3000mm in width, allowing for more efficient welding and construction." },
+          { question: "What marine steel grades do you stock for hull and deck plates?", answer: "We stock Grade A, B, D, and E ship plates suited to hull, deck, and structural applications across varying strength and toughness requirements." },
+          { question: "Can you support offshore structure fabrication with certified plates?", answer: "Yes, we supply class-certified plates and technical support for offshore platforms, deck structures, and marine engineering projects." },
         ]
       },
       cta: {
@@ -321,12 +333,12 @@ export const INDUSTRIES_DATA = {
       title: "ENGINEERING SOLUTIONS",
       subtitle: "Robust steel products for heavy-duty industrial applications.",
       items: [
-        { title: "High-Thickness Plate Supply", image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80", href: "#" },
-        { title: "Custom Profile Cutting", image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&q=80", href: "#" },
-        { title: "Stress-Relieved Alloys", image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80", href: "#" },
-        { title: "Specialized Logistics", image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80", href: "#" },
-        { title: "Non-Destructive Testing", image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80", href: "#" },
-        { title: "Bulk Inventory Support", image: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&q=80", href: "#" },
+        { title: "High-Thickness Plate Supply", image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80", href: "/steel-procurement" },
+        { title: "Custom Profile Cutting", image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&q=80", href: "/custom-steel-processing" },
+        { title: "Stress-Relieved Alloys", image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80", href: "/custom-steel-processing" },
+        { title: "Specialized Logistics", image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80", href: "/freight-forwarding" },
+        { title: "Non-Destructive Testing", image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80", href: "/technical-steel-selection" },
+        { title: "Bulk Inventory Support", image: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&q=80", href: "/supply-chain" },
       ]
     },
     builtToDeliver: {
@@ -348,17 +360,20 @@ export const INDUSTRIES_DATA = {
         title: "OUR SERVICES",
         subtitle: "Specialized steel for heavy engineering professionals.",
         items: [
-          { title: "Heavy HR Plates", description: "Large-format plates for power plants and heavy machinery.", image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80", href: "#" },
-          { title: "Forging Quality Steel", description: "High-grade ingots and billets for heavy-duty forging applications.", image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&q=80", href: "#" },
-          { title: "Consulting & Testing", description: "Expert technical support for material selection and weldability.", image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80", href: "#" },
+          { title: "Heavy HR Plates", description: "Large-format plates for power plants and heavy machinery.", image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80", href: "/steel-procurement" },
+          { title: "Forging Quality Steel", description: "High-grade ingots and billets for heavy-duty forging applications.", image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&q=80", href: "/steel-procurement" },
+          { title: "Consulting & Testing", description: "Expert technical support for material selection and weldability.", image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80", href: "/technical-steel-selection" },
         ]
       },
       faqs: {
-        title: "HEAVY ENGINEERING FAQS",
+        // Pretext (hidden): "HEAVY ENGINEERING FAQS"
+        title: "FAQs",
         items: [
           { question: "What is the maximum thickness of HR plates you can supply?", answer: "We can supply HR plates up to 150mm thickness, sourced from SAIL’s specialized mills." },
           { question: "Do you provide ultrasonic testing for heavy plates?", answer: "Yes, we provide UT (Ultrasonic Testing) reports to ensure internal soundness for high-pressure applications." },
           { question: "Can you provide customized profiles for earthmoving parts?", answer: "Yes, we offer precision CNC flame and plasma cutting services to provide near-net-shape blanks." },
+          { question: "Do you supply wear-resistant steel for mining machinery?", answer: "Yes, we offer high-tensile, wear-resistant alloys engineered for the abrasive demands of mining, earthmoving, and heavy equipment applications." },
+          { question: "Can you maintain consistent supply for continuous production lines?", answer: "Yes, we hold bulk inventory of specialized heavy-engineering grades to ensure your production schedules are never disrupted by material shortages." },
         ]
       },
       cta: {
@@ -395,12 +410,12 @@ export const INDUSTRIES_DATA = {
       title: "MANUFACTURING SOLUTIONS",
       subtitle: "Tailored steel processing for fabricators and manufacturers.",
       items: [
-        { title: "Just-In-Time Delivery", image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80", href: "#" },
-        { title: "Precision Slitting", image: "https://images.unsplash.com/photo-1494961104209-3c223057bd26?w=800&q=80", href: "#" },
-        { title: "Cut-To-Length Sheets", image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800&q=80", href: "#" },
-        { title: "Value-Added Blanks", image: "https://images.unsplash.com/photo-1504904126298-3fde501c9b31?w=800&q=80", href: "#" },
-        { title: "Inventory Consignment", image: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&q=80", href: "#" },
-        { title: "Material Traceability", image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80", href: "#" },
+        { title: "Just-In-Time Delivery", image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80", href: "/freight-forwarding" },
+        { title: "Precision Slitting", image: "https://images.unsplash.com/photo-1494961104209-3c223057bd26?w=800&q=80", href: "/custom-steel-processing" },
+        { title: "Cut-To-Length Sheets", image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800&q=80", href: "/custom-steel-processing" },
+        { title: "Value-Added Blanks", image: "https://images.unsplash.com/photo-1504904126298-3fde501c9b31?w=800&q=80", href: "/custom-steel-processing" },
+        { title: "Inventory Consignment", image: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&q=80", href: "/supply-chain" },
+        { title: "Material Traceability", image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80", href: "/technical-steel-selection" },
       ]
     },
     builtToDeliver: {
@@ -422,17 +437,20 @@ export const INDUSTRIES_DATA = {
         title: "OUR SERVICES",
         subtitle: "Ready-to-use steel for fabricators and OEMs.",
         items: [
-          { title: "Slit Coils", description: "Precision slitting for continuous manufacturing lines.", image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80", href: "#" },
-          { title: "Custom Blanks", description: "Ready-to-weld blanks to reduce your in-house processing time.", image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&q=80", href: "#" },
-          { title: "Material Planning", description: "Dedicated support to help you optimize your steel usage.", image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80", href: "#" },
+          { title: "Slit Coils", description: "Precision slitting for continuous manufacturing lines.", image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80", href: "/custom-steel-processing" },
+          { title: "Custom Blanks", description: "Ready-to-weld blanks to reduce your in-house processing time.", image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&q=80", href: "/custom-steel-processing" },
+          { title: "Material Planning", description: "Dedicated support to help you optimize your steel usage.", image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80", href: "/technical-steel-selection" },
         ]
       },
       faqs: {
-        title: "FABRICATION FAQS",
+        // Pretext (hidden): "FABRICATION FAQS"
+        title: "FAQs",
         items: [
           { question: "What is your minimum order quantity for fabricators?", answer: "We support both small-scale fabricators and large OEMs with flexible order quantities tailored to your project needs." },
           { question: "Do you provide test certificates for small sheet orders?", answer: "Yes, every order, regardless of size, comes with original manufacturer test certificates for quality assurance." },
           { question: "Can you provide precision tolerances for sheet thickness?", answer: "All our products meet the standard IS/SAIL tolerances, and we can select specific batches for tighter requirements." },
+          { question: "Do you offer just-in-time delivery for fabrication workshops?", answer: "Yes, we support JIT and inventory consignment programs so fabricators can maintain lean stock while avoiding production delays." },
+          { question: "Can you supply ready-to-weld blanks and slit coils?", answer: "Yes, our precision slitting and cut-to-length services provide ready-to-use blanks and slit coils that reduce in-house processing time for fabricators and OEMs." },
         ]
       },
       cta: {

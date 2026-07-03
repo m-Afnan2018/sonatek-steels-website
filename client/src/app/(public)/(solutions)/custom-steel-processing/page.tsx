@@ -117,6 +117,14 @@ const FAQS_DATA = [
   {
     question: "Do you offer Just-In-Time (JIT) delivery for processed steel?",
     answer: "Absolutely. We can process your master coils into blanks or slit coils, warehouse them, and deliver them to your assembly line exactly when your production schedule demands it."
+  },
+  {
+    question: "What is edge trimming and when is it needed?",
+    answer: "Edge trimming removes the uneven mill edge from coils to produce a uniform, burr-free edge that is safe to handle and feeds reliably into automated production lines."
+  },
+  {
+    question: "Can you match processed steel dimensions to my exact drawing specifications?",
+    answer: "Yes, our CNC-controlled slitting and shearing lines are calibrated to your exact length, width, and thickness specifications, minimizing scrap and rework on your production floor."
   }
 ];
 const INDUSTRY_EXPERTISE_DATA = [
@@ -162,7 +170,6 @@ export default function CustomSteelProcessingPage() {
   const navItems = [
     { id: "overview", label: "Overview" },
     { id: "solutions", label: "Solutions" },
-    { id: "capabilities", label: "Capabilities" },
     { id: "benefits", label: "Benefits" },
     { id: "industries", label: "Industries" },
     { id: "insights", label: "Insights" },
@@ -242,8 +249,9 @@ export default function CustomSteelProcessingPage() {
       </div>
 
       <div id="faqs">
+        {/* Pretext (hidden): "PROCESSING FAQs" */}
         <FAQSection
-          title="PROCESSING FAQs"
+          title="FAQs"
           items={FAQS_DATA}
         />
       </div>

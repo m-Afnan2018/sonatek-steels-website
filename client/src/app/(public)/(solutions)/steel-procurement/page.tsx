@@ -136,6 +136,14 @@ const FAQS_DATA = [
   {
     question: "Do you offer credit facilities for regular procurement?",
     answer: "We offer flexible commercial terms and trade finance options for our long-term, continuous procurement partners, subject to standard financial approvals."
+  },
+  {
+    question: "What is the minimum order quantity for steel procurement?",
+    answer: "We accommodate both small trial orders and large bulk requirements, with ready stock availability helping us serve urgent as well as recurring procurement needs."
+  },
+  {
+    question: "How quickly can you fulfill a bulk steel procurement order?",
+    answer: "Thanks to our extensive ready-stock inventory and direct mill relationships, standard grades can typically be dispatched within days, while custom or high-volume orders are scheduled around mill production timelines."
   }
 ];
 
@@ -229,8 +237,9 @@ export default function SteelProcurementPage() {
       </div>
 
       <div id="faqs">
+        {/* Pretext (hidden): "PROCUREMENT FAQs" */}
         <FAQSection
-          title="PROCUREMENT FAQs"
+          title="FAQs"
           items={FAQS_DATA}
         />
       </div>

@@ -20,14 +20,14 @@ const FALLBACK_PRODUCT_SERVICES = [
         title: "Steel Procurement",
         description:
             "Reliable, certified, and cost-effective sourcing of CR/HR coils, sheets, plates, and chequered plates directly from trusted primary mills like SAIL.",
-        image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80",
+        image: "/steel-procurement.png",
         href: "/steel-procurement",
     },
     {
         title: "Infrastructure & Industrial Projects",
         description:
             "Certified flat steel supply, custom processing, and dependable distribution for infrastructure, construction, heavy engineering, and industrial project requirements.",
-        image: "https://images.unsplash.com/photo-1494961104209-3c223057bd26?w=800&q=80",
+        image: "/infrastructure.png",
         href: "/infrastructure-industrial-project",
     },
     {

@@ -61,9 +61,11 @@ export default function ProductClient({ product }: { product: Product }) {
 
     const handleReset = () => { setThickness(''); setWidth(''); setLength(''); setQuantity(''); };
 
+    const contactNumber = product.whatsappNumber || '919891998846';
+
     const handleEnquiry = () => {
         const msg = `I am interested in ${product.name} with following specs:\nThickness: ${thickness}mm\nWidth: ${width}mm\nLength: ${length}mm\nQuantity: ${quantity} sheets`;
-        window.open(`https://wa.me/${product.whatsappNumber}?text=${encodeURIComponent(msg)}`, '_blank');
+        window.open(`https://wa.me/${contactNumber}?text=${encodeURIComponent(msg)}`, '_blank');
     };
 
     const activeTabs = (Object.keys(product.specs) as SpecKey[]).filter((t) => product.specs[t]?.length > 0);
@@ -128,7 +130,7 @@ export default function ProductClient({ product }: { product: Product }) {
                     <div className={styles.actions}>
                         <p style={{ fontSize: '13px', color: '#555' }}>Send all details on WhatsApp</p>
                         <button className={styles.whatsappBtn} onClick={handleEnquiry}><WhatsappIcon /> Enquire On Whatsapp</button>
-                        <button className={styles.callBtn} onClick={() => window.open(`tel:+${product.whatsappNumber}`)}><PhoneIcon /> Call Now</button>
+                        <button className={styles.callBtn} onClick={() => window.open(`tel:+${contactNumber}`)}><PhoneIcon /> Call Now</button>
                     </div>
                 </div>
             </div>
@@ -202,7 +204,7 @@ export default function ProductClient({ product }: { product: Product }) {
                         <button className={styles.ctaWhatsappBtn} onClick={handleEnquiry}>
                             <WhatsappIcon /> WhatsApp Enquiry
                         </button>
-                        <a href={`tel:+${product.whatsappNumber}`} className={styles.ctaPhoneBtn}>
+                        <a href={`tel:+${contactNumber}`} className={styles.ctaPhoneBtn}>
                             <PhoneIcon /> Call Now
                         </a>
                     </div>
