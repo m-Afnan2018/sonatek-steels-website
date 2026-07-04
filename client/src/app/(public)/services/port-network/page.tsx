@@ -14,22 +14,22 @@ const MAPS_LINK = "https://www.google.com/maps/search/?api=1&query=Sonatek+Steel
 
 export default function PortNetworkPage() {
   const stats = [
-    { value: 84, label: "terminals worldwide" },
-    { value: 110, suffix: "m", label: "TEUs handled annually" },
-    { value: 10, suffix: "%", label: "of global trade handled" },
+    { value: 10, suffix: "+", label: "states covered across Northern India" },
+    { value: 200, suffix: "k+", label: "tons distributed annually" },
+    { value: 24, suffix: "/7", label: "dispatch & enquiry support" },
   ];
 
   const navItems = [
     { id: 'network', label: 'Our Network' },
-    { id: 'flagship', label: 'Flagship Port' },
-    { id: 'impact', label: 'Global Impact' },
+    { id: 'flagship', label: 'Flagship Hub' },
+    { id: 'impact', label: 'Regional Impact' },
     { id: 'faq', label: 'FAQ' },
   ];
 
   const articles = [
-    { title: "Transforming trade in sub-saharan Africa", image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80", href: "/contact-us", description: "" },
-    { title: "Revolutionising trade in Romania", image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&q=80", href: "/contact-us", description: "" },
-    { title: "Transforming the Caribbean's supply chain", image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80", href: "/contact-us", description: "" },
+    { title: "Powering Northern India's construction boom", image: "https://images.unsplash.com/photo-1541888946425-d81bb19480c5?w=800&q=80", href: "/industries/construction", description: "Structural steel and chequered plates dispatched to keep bridges, high-rises, and infrastructure projects on schedule." },
+    { title: "Supporting the NCR automotive manufacturing belt", image: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=80", href: "/industries/automotive", description: "Just-in-time CR and HR coil supply for OEMs and component manufacturers across the Delhi-NCR corridor." },
+    { title: "Strengthening India's energy infrastructure", image: "https://images.unsplash.com/photo-1543165737-1422b512e0e0?w=800&q=80", href: "/industries/oil-gas", description: "Reliable steel movement for pipeline, refinery, and storage tank projects across Northern India's energy hubs." },
   ];
 
   return (
@@ -38,20 +38,20 @@ export default function PortNetworkPage() {
         label=""
         breadcrumbs={[
           { label: "Home", href: "/" },
-          { label: "Ports and Terminals", href: "/services/port-services" },
-          { label: "Port Network", href: "/services/port-network" }
+          { label: "Distribution Network", href: "/services/port-services" },
+          { label: "Regional Network", href: "/services/port-network" }
         ]}
-        title="OUR GLOBAL PORT NETWORK"
-        description="Our world-class infrastructure and expertise mean we are a partner you can trust."
+        title="OUR REGIONAL DISTRIBUTION NETWORK"
+        description="Our Delhi warehouse and rail-and-road distribution network mean we are a partner you can trust across Northern India."
         image="https://images.unsplash.com/photo-1597334948330-38795f25d05d?q=80&w=1171"
-        ctaText="Our Port Network"
+        ctaText="Our Distribution Network"
       />
 
       <StatsSection
-        label="PORTS AND TERMINALS"
-        title="CONNECTING YOU TO THE WORLD"
-        description="Our global network connects our customers to key hubs across the world."
-        link={{ label: "Explore our map", href: "#network" }}
+        label="DISTRIBUTION NETWORK"
+        title="CONNECTING SAIL'S PLANTS TO YOUR SITE"
+        description="Our warehousing and dispatch network keeps certified flat steel moving from SAIL's plants to customers across Northern India."
+        link={{ label: "Explore our network", href: "#network" }}
         theme="light"
         stats={stats}
       />
@@ -61,25 +61,25 @@ export default function PortNetworkPage() {
       <div id="network">
         <MapSection
           title="HOW OUR NETWORK WORKS FOR YOU"
-          description="Our strategically located port terminals are the perfect way to optimize your supply chain."
+          description="Our Naraina warehouse and regional dispatch planning are built to optimize your steel supply chain."
           mapImage="https://images.unsplash.com/photo-1521295121783-8a321d551ad2?w=1200&q=80"
-          link={{ label: "View the global map", href: MAPS_LINK }}
+          link={{ label: "View our location", href: MAPS_LINK }}
         />
       </div>
 
       <div id="flagship">
         <div style={{ padding: '80px 40px 0', maxWidth: '1400px', margin: '0 auto', textAlign: 'left' }}>
-          <h2 style={{ fontFamily: 'var(--font-pilat-wide)', fontSize: 'clamp(28px, 4vw, 42px)', marginBottom: '16px', textTransform: 'uppercase', color: '#111' }}>OUR FLAGSHIP PORT</h2>
+          <h2 style={{ fontFamily: 'var(--font-pilat-wide)', fontSize: 'clamp(28px, 4vw, 42px)', marginBottom: '16px', textTransform: 'uppercase', color: '#111' }}>OUR FLAGSHIP HUB</h2>
           <p style={{ fontFamily: 'var(--font-pilat-narrow)', fontSize: '18px', color: '#555', marginBottom: '60px', maxWidth: '800px' }}>
-            Our global network connects our customers to key hubs across the world.
+            Our flagship hub anchors dispatch planning and stock availability for the entire regional network.
           </p>
         </div>
         <AlternateCardSection
-          title="JEBEL ALI PORT"
-          description="DP World's flagship Jebel Ali Port is the largest man-made harbour and the biggest port in the Middle East."
+          title="LOHA MANDI, NARAINA"
+          description="Our flagship warehouse sits in Naraina's Loha Mandi, Delhi's established steel trading hub, giving us fast access to road and rail links across Northern India for prompt, reliable dispatch."
           image="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=800&q=80"
           link="/contact-us"
-          linkText="Learn About Jebel Ali Port and Free Zone"
+          linkText="Get Directions to Our Warehouse"
         />
       </div>
 
@@ -88,28 +88,28 @@ export default function PortNetworkPage() {
           <FAQSection
             title="FAQs"
             items={[
-              { question: "What services do you offer?", answer: "We offer comprehensive end-to-end logistics solutions, from port operations to inland transportation." },
-              { question: "Where are you located?", answer: "We have an extensive network of over 80 terminals across 6 continents." },
-              { question: "How can I track my shipment?", answer: "Our advanced digital tracking systems provide real-time updates for all your shipments." },
-              { question: "Do you handle specialized cargo?", answer: "Yes, we handle everything from standard containers to oversized breakbulk and temperature-controlled cargo." },
-              { question: "How many ports are part of your global network?", answer: "Our network spans 84 terminals worldwide, handling over 110 million TEUs annually across major global trade routes." },
-              { question: "Can you support steel and industrial cargo through port operations?", answer: "Yes, our port network handles bulk, break-bulk, and project cargo, making it well-suited for steel, machinery, and other industrial shipments." }
+              { question: "What services do you offer?", answer: "We offer comprehensive end-to-end logistics solutions, from our Delhi warehouse to inland transportation across Northern India." },
+              { question: "Where are your warehouse and dispatch hubs located?", answer: "Our flagship warehouse is located in Loha Mandi, Naraina, New Delhi, with dispatch coverage spanning Delhi NCR, Punjab, Haryana, Uttar Pradesh, and Rajasthan." },
+              { question: "How can I track my shipment?", answer: "Our team provides direct updates on dispatch status and expected delivery timelines for all orders." },
+              { question: "Do you handle specialized cargo?", answer: "Yes, we handle standard coils and sheets as well as oversized plates and project cargo for infrastructure and industrial sites." },
+              { question: "How many states does your distribution network cover?", answer: "Our network reaches 10+ states across Northern India, supported by consistent rail and road dispatch scheduling." },
+              { question: "Can you support steel and industrial cargo through your network?", answer: "Yes, our distribution network handles bulk, break-bulk, and project cargo, making it well-suited for steel, machinery, and other industrial shipments." }
             ]}
           />
       </div>
 
       <div id="impact" style={{ backgroundColor: '#fff', padding: '80px 0', borderTop: '1px solid #eaeaea' }}>
         <ServicesSection
-          title="GLOBAL REACH. LOCAL IMPACT."
-          subtitle="We are transforming global trade while supporting the communities we operate in."
+          title="REGIONAL REACH. LOCAL IMPACT."
+          subtitle="We are supporting Northern India's industrial growth while strengthening the communities we operate in."
           services={articles}
           topLink={{ label: "Learn more", href: "/contact-us" }}
         />
       </div>
 
       <CTABanner
-        title="CONNECT WITH ECONOMIC ZONES"
-        description="Find out how our economic zones can help your business streamline operations."
+        title="PARTNER WITH OUR DISTRIBUTION NETWORK"
+        description="Find out how our warehousing and dispatch network can help your business streamline steel procurement."
         btnText="Contact Us"
         btnHref="/contact-us"
         bgImage="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1920&q=80"

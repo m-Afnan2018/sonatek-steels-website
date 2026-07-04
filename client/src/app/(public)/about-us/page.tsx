@@ -12,7 +12,7 @@ const ABOUT_SECTIONS = [
     {
         id: "mission",
         title: "Our Mission",
-        description: "Our mission is to maintain customer satisfaction through constant improvement and modernization of our products. Through our team of experienced and qualified professionals, we aim to engineer excellence in everything we do.",
+        description: "Our mission is to maintain customer satisfaction through constant improvement and modernization of our products. Through our team of experienced and qualified professionals, we aim to engineer excellence in everything we do. Since 2014, that mission has meant building long-term relationships with corporate clients, OEMs, and industrial buyers who need dependable flat steel supply, not just a one-time transaction. We measure our success by how reliably we keep our customers' production lines and project sites running.",
         image: "https://images.unsplash.com/photo-1504904126298-3fde501c9b31?w=800&q=80",
         imageAlt: "Our People working at port",
         reverse: false,
@@ -20,7 +20,7 @@ const ABOUT_SECTIONS = [
     {
         id: "what-we-do",
         title: "What We Do",
-        description: "We provide a comprehensive range of steel products. We supply the complete product range of SAIL, including Cold Rolled (CR) Coils/Sheets, Hot Rolled (HR) Coils & Sheet/Plates, HSM Plates and Chequered Plates of any grade/specification. We pride ourselves on being the largest stockists in Northern India who have the entire range of Flat Steel Products in their product portfolio.",
+        description: "We provide a comprehensive range of steel products. We supply the complete product range of SAIL, including Cold Rolled (CR) Coils/Sheets, Hot Rolled (HR) Coils & Sheet/Plates, HSM Plates and Chequered Plates of any grade/specification. We pride ourselves on being the largest stockists in Northern India who have the entire range of Flat Steel Products in their product portfolio. Beyond stocking and supply, we offer custom slitting, shearing, and cut-to-length processing, so customers receive material in the exact dimensions their production or project requires, backed by full manufacturer test certificates for every batch.",
         buttonText: "View Products",
         buttonHref: "/products",
         image: "https://images.unsplash.com/photo-1776549821469-e8aab812dba0?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -30,7 +30,7 @@ const ABOUT_SECTIONS = [
     {
         id: "management",
         title: "Our Management",
-        description: "Our team works as a partner to develop the relationship and at the same time delivering results. We have highly qualified management, using a time and timely product delivery based model. We are also specialized in providing personalized service to our customers in this area. Our team is a mix of one of the strongest leaders in this industry.",
+        description: "Our team works as a partner to develop the relationship and at the same time delivering results. We have highly qualified management, using a time and timely product delivery based model. We are also specialized in providing personalized service to our customers in this area. Our team is a mix of one of the strongest leaders in this industry. Each account is guided by people who understand steel grades, tolerances, and production schedules firsthand, so customers get informed advice rather than generic sales support.",
         buttonText: "Our Leadership",
         buttonHref: "/leadership",
         image: "https://images.unsplash.com/photo-1761839258753-85d8eecbbc29?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -40,9 +40,9 @@ const ABOUT_SECTIONS = [
     {
         id: "health-safety",
         title: "Health & Safety",
-        description: "Safety is the utmost priority at Sonatek Steels. Everyone adheres to the policies and guidelines to ensure their well-being and the welfare of other people, property, and environment. We comply with applicable legislation, protocols, and regulations to maintain fire protection and other emergency systems.",
-        buttonText: "Our Guidelines",
-        buttonHref: "#health-safety",
+        description: "Safety is the utmost priority at Sonatek Steels. Everyone adheres to the policies and guidelines to ensure their well-being and the welfare of other people, property, and environment. We comply with applicable legislation, protocols, and regulations to maintain fire protection and other emergency systems. From warehouse handling of heavy coils and plates to loading and dispatch, our teams follow structured safety procedures designed to protect our people and yours at every handover point.",
+        buttonText: "Our Sustainability Approach",
+        buttonHref: "/sustainability",
         image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
         imageAlt: "Business person looking at city skyline",
         reverse: true,
@@ -123,12 +123,12 @@ export default function AboutUsPage() {
             <section className={styles.joinTeam}>
                 <div className={styles.joinTeamInner}>
                     <h2 className={styles.joinTitle}>
-                        Join a global team shaping the future of global trade.
+                        Join the team building Northern India's steel supply chain.
                     </h2>
                     <div className={styles.joinContent}>
                         <p className={styles.joinDesc}>
                             Discover career opportunities that challenge you to think differently,
-                            act boldly, and create a lasting impact on a global scale.
+                            act boldly, and create a lasting impact across the industries we serve.
                         </p>
                         <a href="/leadership" className={styles.outlineBtn}>
                             Join our team

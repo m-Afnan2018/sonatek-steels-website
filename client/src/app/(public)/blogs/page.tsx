@@ -66,6 +66,10 @@ export default async function BlogsPage() {
         <main className={styles.main}>
             <div className={styles.container}>
                 <h1 className={styles.pageTitle}>Insights &amp; Blogs</h1>
+                <p className={styles.pageSubtitle}>
+                    Practical guidance on steel grades, processing, and supply chain planning from the Sonatek
+                    Steels team, along with updates on our products, projects, and the Northern Indian steel market.
+                </p>
                 <div className={styles.layout}>
                     <div className={styles.content}>
                         {f1 && <FeaturedNewsCard {...toCard(f1)} />}

@@ -12,110 +12,110 @@ import CTABanner from '@/components/common/Industry/CTABanner';
 
 export default function PortServicesPage() {
   const heroData = {
-    title: "Ports & Terminals",
-    description: "Our ports and terminals are at the heart of our global network, providing efficient and reliable connections to world markets.",
+    title: "Warehousing & Distribution",
+    description: "Our Naraina warehouse and regional distribution network are at the heart of our operation, providing efficient and reliable steel supply across Northern India.",
     image: "https://images.unsplash.com/photo-1597334948330-38795f25d05d?q=80&w=1171",
     ctaText: "Read More",
     ctaHref: "#intro"
   };
 
   const introPoints = [
-    { icon: "Globe", title: "Global Reach", description: "Access to over 60 ports across 6 continents." },
-    { icon: "Zap", title: "Fast Processing", description: "Efficient turnaround times for all types of cargo." },
-    { icon: "Shield", title: "Secure Storage", description: "State-of-the-art facilities for safe storage." },
-    { icon: "Anchor", title: "Marine Services", description: "Full suite of marine and port support services." },
+    { icon: "Globe", title: "Regional Reach", description: "Dispatch coverage across Delhi NCR, Punjab, Haryana, Uttar Pradesh, and Rajasthan." },
+    { icon: "Zap", title: "Fast Processing", description: "Efficient turnaround from warehouse to dispatch for urgent orders." },
+    { icon: "Shield", title: "Secure Storage", description: "Weatherproof, high-capacity warehousing for coils, sheets, and plates." },
+    { icon: "Truck", title: "Rail & Road Logistics", description: "Coordinated rail and road transport connecting SAIL's plants to our stockyards." },
   ];
 
   const cargoItems = [
-    { title: "Container Services", image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80", href: "/contact-us" },
-    { title: "Automotive", image: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=80", href: "/industries/automotive" },
-    { title: "Dry Bulk & Salt", image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80", href: "/contact-us" },
-    { title: "Refrigerated Cargo", image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&q=80", href: "/contact-us" },
-    { title: "Chemicals & Liquids", image: "https://images.unsplash.com/photo-1543165737-1422b512e0e0?w=800&q=80", href: "/industries/oil-gas" },
+    { title: "HR Coils & Plates", image: "https://images.unsplash.com/photo-1494961104209-3c223057bd26?w=800&q=80", href: "/products" },
+    { title: "CR Coils & Sheets", image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80", href: "/products" },
+    { title: "Chequered Plates", image: "https://images.unsplash.com/photo-1504904126298-3fde501c9b31?w=800&q=80", href: "/products" },
+    { title: "Automotive-Grade Steel", image: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=80", href: "/industries/automotive" },
+    { title: "Custom Processed Steel", image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80", href: "/custom-steel-processing" },
     { title: "Project Cargo", image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80", href: "/infrastructure-industrial-project" },
   ];
 
   const carouselItems = [
-    { title: "South Asia", description: "Strategic locations across the Indian subcontinent.", image: "https://images.unsplash.com/photo-1506461883276-5d4a3ef93d1b?w=800&q=80", href: "/contact-us" },
-    { title: "Middle East", description: "The gateway to the GCC and Central Asia.", image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80", href: "/contact-us" },
-    { title: "Europe", description: "Modern terminals at the heart of European trade.", image: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=800&q=80", href: "/contact-us" },
-    { title: "Africa", description: "Driving growth in the world's fastest growing markets.", image: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=800&q=80", href: "/contact-us" },
+    { title: "Delhi NCR", description: "Our flagship warehouse hub, serving OEMs, fabricators, and corporate clients across the capital region.", image: "https://images.unsplash.com/photo-1506461883276-5d4a3ef93d1b?w=800&q=80", href: "/contact-us" },
+    { title: "Punjab & Haryana", description: "Dependable dispatch to the automotive and manufacturing belts of Punjab and Haryana.", image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80", href: "/industries/automotive" },
+    { title: "Uttar Pradesh", description: "Steel supply for construction, fabrication, and industrial projects across the state.", image: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=800&q=80", href: "/industries/construction" },
+    { title: "Rajasthan", description: "Supporting heavy engineering and infrastructure development with reliable regional dispatch.", image: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=800&q=80", href: "/industries/heavy-engineering" },
   ];
 
   const faqs = [
-    { question: "What types of cargo do you handle?", answer: "We handle all types of cargo including containerized, bulk, break-bulk, and specialized project cargo." },
-    { question: "Where are your main hubs located?", answer: "Our main hubs are strategically located across 6 continents, with major presence in Asia, Middle East, and Europe." },
-    { question: "Do you offer value-added services?", answer: "Yes, we offer a range of value-added services including warehousing, distribution, and in-port processing." },
-    { question: "Can your ports and terminals handle steel and industrial cargo?", answer: "Yes, our terminals are equipped to handle project cargo, dry bulk, and oversized shipments, making them well-suited for steel coils, plates, and industrial machinery." },
-    { question: "How fast is cargo turnaround at your terminals?", answer: "Our facilities are built for fast processing, with efficient turnaround times across container, bulk, and project cargo to keep your supply chain moving." },
+    { question: "What types of steel do you handle through your warehouse?", answer: "We handle all flat steel forms including HR coils and plates, CR coils and sheets, chequered plates, and custom-processed and project cargo." },
+    { question: "Where are your main hubs located?", answer: "Our flagship warehouse is in Loha Mandi, Naraina, New Delhi, with dispatch coverage spanning Delhi NCR, Punjab, Haryana, Uttar Pradesh, and Rajasthan." },
+    { question: "Do you offer value-added services?", answer: "Yes, we offer a range of value-added services including warehousing, custom processing, and coordinated distribution scheduling." },
+    { question: "Can your warehouse handle large or oversized steel shipments?", answer: "Yes, our facility is equipped to handle project cargo, heavy plates, and oversized shipments, making it well-suited for steel coils, plates, and industrial machinery." },
+    { question: "How fast is dispatch turnaround from your warehouse?", answer: "Our facility is built for fast processing, with efficient turnaround from stock availability to dispatch to keep your supply chain moving." },
   ];
 
   return (
     <div className={styles.page}>
       <ServiceHero {...heroData} />
-      
+
       <div id="intro">
-        <IconIntro 
-          title="YOUR GATEWAY TO GLOBAL TRADE"
-          subtitle="Connecting you to world markets with precision and reliability."
+        <IconIntro
+          title="YOUR GATEWAY TO NORTHERN INDIA"
+          subtitle="Connecting SAIL's steel plants to your project site with precision and reliability."
           items={introPoints}
         />
       </div>
 
-      <MapSection 
+      <MapSection
         title="HOW OUR NETWORK WORKS FOR YOU"
-        description="Our global footprint spans across key trade corridors, ensuring your cargo moves seamlessly."
+        description="Our Naraina warehouse anchors a regional dispatch network, ensuring your steel moves seamlessly across Northern India."
         mapImage="https://images.unsplash.com/photo-1521295121783-8a321d551ad2?w=1200&q=80"
       />
 
-      <HowWeCanHelp 
+      <HowWeCanHelp
         label="OUR CAPABILITIES"
-        title="BUILT FOR ALL CARGO"
-        subtitle="We have the expertise and infrastructure to handle any cargo, regardless of size or complexity."
+        title="BUILT FOR ALL FLAT STEEL"
+        subtitle="We have the expertise and infrastructure to handle any flat steel product, regardless of size or complexity."
         items={cargoItems}
       />
 
       <div className={styles.carouselSection}>
-        <ServicesSection 
-          title="CONNECTING CONTINENTS"
-          subtitle="Explore our global presence across major trade routes."
+        <ServicesSection
+          title="CONNECTING NORTHERN INDIA"
+          subtitle="Explore our regional presence across major distribution corridors."
           services={carouselItems}
-          topLink={{ label: "Explore our global network", href: "/contact-us" }}
+          topLink={{ label: "Explore our regional network", href: "/contact-us" }}
         />
       </div>
 
-      <InnovationSection 
-        title="LEADING PORT INNOVATION"
-        subtitle="Investing in the future of port technology and sustainability."
+      <InnovationSection
+        title="LEADING DISTRIBUTION INNOVATION"
+        subtitle="Investing in the future of warehousing technology and sustainability."
         topLink={{ label: "View all innovation", href: "/blogs" }}
         items={[
-          { title: "Digital Terminals", image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80", description: "Real-time visibility and automated processing." },
-          { title: "Smart Infrastructure", image: "https://images.unsplash.com/photo-1473876637954-4b493d59fd97?w=800&q=80", description: "Sustainable energy and AI-driven logistics." },
+          { title: "Digital Order Tracking", image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80", description: "Real-time visibility and streamlined dispatch processing." },
+          { title: "Warehouse Modernization", image: "https://images.unsplash.com/photo-1473876637954-4b493d59fd97?w=800&q=80", description: "Sustainable energy and efficient inventory management." },
         ]}
       />
 
-      <InnovationSection 
+      <InnovationSection
         title="INSIGHTS"
-        subtitle="The latest trends and perspectives from our global port network."
+        subtitle="The latest trends and perspectives from our regional distribution network."
         topLink={{ label: "View all insights", href: "/blogs" }}
         items={[
-          { title: "The Future of Smart Ports", image: "https://images.unsplash.com/photo-1574169208507-84376144848b?w=800&q=80", description: "How AI and automation are transforming cargo handling." },
-          { title: "Sustainable Port Operations", image: "https://images.unsplash.com/photo-1542601906990-b4d3fb773b09?w=800&q=80", description: "Reducing the carbon footprint of global trade hubs." },
+          { title: "The Future of Smart Warehousing", image: "https://images.unsplash.com/photo-1574169208507-84376144848b?w=800&q=80", description: "How digital tools are transforming steel dispatch and inventory management." },
+          { title: "Sustainable Distribution Operations", image: "https://images.unsplash.com/photo-1542601906990-b4d3fb773b09?w=800&q=80", description: "Reducing the environmental footprint of regional steel logistics." },
         ]}
       />
 
-      <InnovationSection 
-        title="PORTS WITH PURPOSE"
+      <InnovationSection
+        title="DISTRIBUTION WITH PURPOSE"
         subtitle="Creating positive impact in the communities where we operate."
         items={[
-          { title: "Environmental Stewardship", image: "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=800&q=80", description: "Decarbonizing our operations and protecting marine life." },
+          { title: "Environmental Stewardship", image: "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=800&q=80", description: "Reducing waste and optimizing logistics to lower our environmental footprint." },
           { title: "Community Development", image: "https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=800&q=80", description: "Supporting local economies and education initiatives." },
         ]}
       />
 
-      <CTABanner 
-        title="EXPLORE OUR ECONOMIC ZONES"
-        description="Discover how our integrated logistics solutions can drive your business growth."
+      <CTABanner
+        title="PARTNER WITH OUR DISTRIBUTION NETWORK"
+        description="Discover how our integrated warehousing and dispatch network can drive your business growth."
         btnText="Contact Us"
         btnHref="/contact-us"
         bgImage="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1920&q=80"

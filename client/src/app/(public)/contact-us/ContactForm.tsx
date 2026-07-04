@@ -152,6 +152,8 @@ export default function ContactForm() {
           <span className={styles.label}>How can we help?</span>
           <h2 className={styles.headline}>Customer Enquiries</h2>
           <p className={styles.subtext}>
+            Whether you need a quote on CR or HR coils, want to check stock availability for a bulk order,
+            or need help selecting the right grade for your application, our team is ready to help.
             Complete the form alongside and we&apos;ll get in touch with you shortly.
           </p>
         </div>

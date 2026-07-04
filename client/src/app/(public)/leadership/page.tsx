@@ -94,12 +94,12 @@ export default function LeadershipPage() {
             <section className={styles.joinTeam}>
                 <div className={styles.joinTeamInner}>
                     <h2 className={styles.joinTitle}>
-                        Join a global team shaping the future of global trade.
+                        Join the team building Northern India's steel supply chain.
                     </h2>
                     <div className={styles.joinContent}>
                         <p className={styles.joinDesc}>
                             Discover career opportunities that challenge you to think differently,
-                            act boldly, and create a lasting impact on a global scale.
+                            act boldly, and create a lasting impact across the industries we serve.
                         </p>
                         <Link href="/contact-us" className={styles.outlineBtn}>Learn More</Link>
                     </div>

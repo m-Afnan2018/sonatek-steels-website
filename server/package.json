@@ -5,7 +5,9 @@
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "build": "tsc",
     "start": "node dist/index.js",
-    "seed": "ts-node src/utils/seed.ts"
+    "seed": "ts-node src/utils/seed.ts",
+    "seed:cr-products": "ts-node src/utils/seedCrProducts.ts",
+    "seed:hr-products": "ts-node src/utils/seedHrProducts.ts"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

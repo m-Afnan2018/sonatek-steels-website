@@ -55,7 +55,11 @@ export default async function ProductListingPage() {
                     <div className={styles.header}>
                         <h2 className={styles.title}>All Products</h2>
                         <p className={styles.subtitle}>
-                            Discover high-quality steel solutions tailored to your infrastructure and industrial needs.
+                            As MOU Dealers of SAIL, we stock the complete range of flat steel products, including
+                            Cold Rolled (CR) Coils &amp; Sheets, Hot Rolled (HR) Coils &amp; Plates, and Chequered
+                            Plates across all standard grades and specifications. Every product ships with full
+                            manufacturer test certificates, and our team can advise on the right grade, thickness,
+                            and processing for your automotive, construction, or industrial application.
                         </p>
                     </div>
 

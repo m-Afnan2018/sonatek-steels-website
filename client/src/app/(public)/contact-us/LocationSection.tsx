@@ -13,7 +13,9 @@ export default function LocationSection() {
           <span className={styles.label}>Our Location</span>
           <h2 className={styles.headline}>Visit Our Office &amp; Warehouse</h2>
           <p className={styles.subtext}>
-            We are located in Delhi's prominent steel trading hub. Stop by or reach out to discuss your requirements.
+            We are located in Loha Mandi, Naraina, Delhi's prominent steel trading hub, with warehousing that
+            supports dispatch across Delhi NCR, Punjab, Haryana, Uttar Pradesh, and Rajasthan. Stop by our
+            office and warehouse or reach out to discuss your requirements.
           </p>
 
           <div className={styles.infoBlock}>

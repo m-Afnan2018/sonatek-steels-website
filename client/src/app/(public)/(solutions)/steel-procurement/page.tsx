@@ -13,15 +13,15 @@ import { SOLUTIONS_DATA } from "@/constants/solutions";
 
 const PROCUREMENT_PRODUCTS_DATA = [
   {
-    title: "HR Coils & Sheets",
-    description: "Premium Hot Rolled steel from trusted sources like SAIL, ensuring structural integrity and longevity.",
-    image: "https://images.unsplash.com/photo-1494961104209-3c223057bd26?w=800&q=80",
+    title: "CR Coils & Sheets",
+    description: "Our core stock: Cold Rolled steel providing superior surface finish, tight tolerances, and excellent formability, available in full-hard, skin-passed, and annealed conditions.",
+    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80",
     href: "/products"
   },
   {
-    title: "CR Coils & Sheets",
-    description: "Cold Rolled steel providing superior surface finish, tight tolerances, and excellent formability.",
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80",
+    title: "HR Coils & Sheets",
+    description: "Also available on request: premium Hot Rolled steel from trusted sources like SAIL, ensuring structural integrity and longevity for select project and fabrication needs.",
+    image: "https://images.unsplash.com/photo-1494961104209-3c223057bd26?w=800&q=80",
     href: "/products"
   },
   {
@@ -126,8 +126,8 @@ const FAQS_DATA = [
     answer: "Yes, we are authorized distributors and source our materials directly from primary producers like Steel Authority of India Limited (SAIL), ensuring you receive authentic, high-quality steel."
   },
   {
-    question: "What grades of HR and CR coils/sheets do you stock?",
-    answer: "We stock a wide variety of commercial, structural, and drawing grades (e.g., IS 2062, IS 513). We can also procure specific grades based on your project requirements."
+    question: "Do you mainly supply CR or HR steel?",
+    answer: "CR coils and sheets are our core, always-in-stock range across commercial, drawing, and deep-drawing grades (IS 513). We also supply HR coils and sheets (IS 2062) for select project and structural requirements, sourced on request through our SAIL relationship."
   },
   {
     question: "Can I get Manufacturer Test Certificates (MTC) with my order?",
@@ -164,7 +164,7 @@ export default function SteelProcurementPage() {
       <div id="overview">
         <SolutionHero
           title="Steel Procurement Solution"
-          description="Reliable, certified, and cost-effective sourcing of CR/HR coils, sheets, plates, and chequered plates directly from trusted primary mills like SAIL."
+          description="Reliable, certified, and cost-effective sourcing of CR coils, sheets, and plates, our core stock, along with HR coils and sheets and chequered plates on request, directly from trusted primary mills like SAIL."
           image="https://images.unsplash.com/photo-1697698532602-ccf880036281?q=80&w=1170&auto=format"
           ctaText="Request a Quote"
           ctaHref="/contact-us"

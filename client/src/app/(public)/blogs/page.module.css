@@ -21,6 +21,15 @@
   line-height: 1;
   text-transform: uppercase;
   color: #000;
+  margin-bottom: 16px;
+}
+
+.pageSubtitle {
+  font-family: var(--font-pilat-narrow), sans-serif;
+  font-size: 18px;
+  color: #555;
+  max-width: 720px;
+  line-height: 1.6;
   margin-bottom: 56px;
 }
 

@@ -14,13 +14,13 @@ import { SOLUTIONS_DATA } from "@/constants/solutions";
 
 const PROCESSING_CAPABILITIES_DATA = [
   {
-    title: "Precision Slitting",
+    title: "Slit Cutting",
     description: "High-speed coil slitting to produce narrow width coils (slit baby coils) with tight dimensional tolerances and burr-free edges.",
     image: "https://images.unsplash.com/photo-1504904126298-3fde501c9b31?w=800&q=80",
     href: "/contact-us"
   },
   {
-    title: "Cut-to-Length / Shearing",
+    title: "Sheet Cutting",
     description: "Converting master coils into perfectly flat sheets and blanks, cut to your exact length specifications to eliminate in-house scrap.",
     image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80",
     href: "/contact-us"
