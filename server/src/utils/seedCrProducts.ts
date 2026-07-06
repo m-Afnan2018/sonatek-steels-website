@@ -53,7 +53,7 @@ const products = [
       packaging: 'Coils are edge-protected, strapped with steel or PP straps, wrapped in waterproof VCI paper, and mounted on wooden coil skids or pallets to prevent corrosion and edge damage during transit.',
     },
     specs: { composition: COMPOSITION, mechanical: MECHANICAL, tolerance: TOLERANCE },
-    whatsappNumber: '919891998846',
+    whatsappNumber: '918447083822',
     isActive: true,
   },
   {
@@ -79,7 +79,7 @@ const products = [
       packaging: 'Sheets are stacked and bundled with edge protectors, strapped securely, and wrapped in waterproof packaging on pallets for safe handling and damage-free delivery.',
     },
     specs: { composition: COMPOSITION, mechanical: MECHANICAL, tolerance: TOLERANCE },
-    whatsappNumber: '919891998846',
+    whatsappNumber: '918447083822',
     isActive: true,
   },
 ];

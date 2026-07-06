@@ -375,7 +375,7 @@ export default function Navbar() {
               <MapPinIcon />
             </a>
             <a
-              href="tel:+919891998846"
+              href="tel:+918447083822"
               className={styles.iconBtn}
               aria-label="Call us"
             >

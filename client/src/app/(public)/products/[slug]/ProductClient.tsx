@@ -61,7 +61,7 @@ export default function ProductClient({ product }: { product: Product }) {
 
     const handleReset = () => { setThickness(''); setWidth(''); setLength(''); setQuantity(''); };
 
-    const contactNumber = product.whatsappNumber || '919891998846';
+    const contactNumber = product.whatsappNumber || '918447083822';
 
     const handleEnquiry = () => {
         const msg = `I am interested in ${product.name} with following specs:\nThickness: ${thickness}mm\nWidth: ${width}mm\nLength: ${length}mm\nQuantity: ${quantity} sheets`;

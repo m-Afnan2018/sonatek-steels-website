@@ -48,7 +48,7 @@ const products = [
       packaging: 'Coils are edge-protected, strapped with steel straps, and mounted on wooden coil skids for safe transit.',
     },
     specs: { composition: COMPOSITION, mechanical: MECHANICAL, tolerance: TOLERANCE },
-    whatsappNumber: '919891998846',
+    whatsappNumber: '918447083822',
     isActive: true,
   },
   {
@@ -72,7 +72,7 @@ const products = [
       packaging: 'Sheets are stacked and bundled with edge protectors, strapped securely, and palleted for safe handling.',
     },
     specs: { composition: COMPOSITION, mechanical: MECHANICAL, tolerance: TOLERANCE },
-    whatsappNumber: '919891998846',
+    whatsappNumber: '918447083822',
     isActive: true,
   },
 ];

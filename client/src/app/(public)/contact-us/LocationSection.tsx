@@ -30,7 +30,7 @@ export default function LocationSection() {
             <div className={styles.infoItem}>
               <h4 className={styles.infoTitle}>Phone</h4>
               <p className={styles.infoText}>
-                <a href="tel:+919891998846">+91 98919 98846</a>
+                <a href="tel:+918447083822">+91 84470 83822</a>
               </p>
             </div>
 

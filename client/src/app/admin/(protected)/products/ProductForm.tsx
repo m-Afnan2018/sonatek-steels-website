@@ -168,7 +168,7 @@ export default function ProductForm({ initial }: { initial?: Partial<ProductData
                     </div>
                     <div className={styles.formGroup}>
                         <label className={styles.formLabel}>WhatsApp Number</label>
-                        <input className={styles.formInput} value={form.whatsappNumber} onChange={(e) => setForm((p) => ({ ...p, whatsappNumber: e.target.value }))} placeholder="919891998846 (no +)" />
+                        <input className={styles.formInput} value={form.whatsappNumber} onChange={(e) => setForm((p) => ({ ...p, whatsappNumber: e.target.value }))} placeholder="918447083822 (no +)" />
                     </div>
                     <div className={styles.formGroup}>
                         <label className={styles.formLabel}>Status</label>
