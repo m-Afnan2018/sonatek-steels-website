@@ -5,7 +5,8 @@ import { motion, AnimatePresence } from 'motion/react';
 
 export interface Faq {
   question: string;
-  answer: React.ReactNode;
+  answer?: React.ReactNode;
+  answerText?: string;
 }
 
 interface Props {
@@ -65,7 +66,7 @@ export default function SustainabilityFaqs({ faqs, id }: Props) {
                       className={styles.answerWrap}
                     >
                       <div className={styles.answerContent}>
-                        {faq.answer}
+                        {faq.answerText ? <p>{faq.answerText}</p> : faq.answer}
                       </div>
                     </motion.div>
                   )}

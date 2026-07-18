@@ -1,114 +1,23 @@
-'use client';
+import { fetchCmsPage, cmsMetadata, renderCmsBlocks } from "@/lib/cmsPage";
+import Legacy from "./page.legacy";
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { privacyData } from './privacy-data';
-import styles from './privacy.module.css';
+// One-line restore: set to false to instantly revert to the original
+// hardcoded page (page.legacy.tsx, untouched). Metadata for this route
+// comes from layout.tsx (static) merged with cmsMetadata() below when
+// the CMS page has SEO data set.
+const CMS_ENABLED = true;
 
-const ChevronIcon = ({ className }: { className?: string }) => (
-  <svg
-    className={className}
-    width="20"
-    height="20"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <polyline points="6 9 12 15 18 9"></polyline>
-  </svg>
-);
+async function getPage() {
+  if (!CMS_ENABLED) return null;
+  return fetchCmsPage("privacy");
+}
 
-const AccordionItem = ({ 
-  title, 
-  content, 
-  isOpen, 
-  onToggle 
-}: { 
-  title: string; 
-  content: string; 
-  isOpen: boolean; 
-  onToggle: () => void; 
-}) => {
-  return (
-    <div className={styles.accordionItem}>
-      <button 
-        className={styles.accordionHeader} 
-        onClick={onToggle}
-        aria-expanded={isOpen}
-      >
-        <span className={styles.sectionTitle}>{title}</span>
-        <ChevronIcon className={`${styles.chevron} ${isOpen ? styles.chevronActive : ''}`} />
-      </button>
-      <div className={`${styles.accordionContent} ${isOpen ? styles.accordionContentActive : ''}`}>
-        <div className={styles.contentText}>
-          {content}
-        </div>
-      </div>
-    </div>
-  );
-};
+export async function generateMetadata() {
+  return cmsMetadata(await getPage());
+}
 
-const PrivacyPage = () => {
-  const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
-
-  const toggleSection = (id: string | number) => {
-    setOpenSections(prev => ({
-      ...prev,
-      [id]: !prev[id]
-    }));
-  };
-
-  return (
-    <main className={styles.pageWrapper}>
-      <div className={styles.container}>
-        {/* Breadcrumbs */}
-        <nav className={styles.breadcrumb}>
-          <Link href="/">Home</Link>
-          <span>&gt;</span>
-          <span>Privacy notice</span>
-        </nav>
-
-        {/* Page Title */}
-        <h1 className={styles.title}>{privacyData.title}</h1>
-
-        {/* Main Sections */}
-        <div className={styles.accordion}>
-          {privacyData.sections.map((section) => (
-            <AccordionItem
-              key={section.id}
-              title={section.title}
-              content={section.content}
-              isOpen={!!openSections[section.id]}
-              onToggle={() => toggleSection(section.id)}
-            />
-          ))}
-        </div>
-
-        {/* Annexes */}
-        {privacyData.annexes.map((annex, annexIndex) => (
-          <div key={annexIndex} className={styles.annexContainer}>
-            <div className={styles.annexHeader}>
-              <h2 className={styles.annexTitle}>{annex.title}</h2>
-            </div>
-            <div className={styles.accordion}>
-              {annex.sections.map((section) => (
-                <AccordionItem
-                  key={section.id}
-                  title={section.title}
-                  content={section.content}
-                  isOpen={!!openSections[section.id]}
-                  onToggle={() => toggleSection(section.id)}
-                />
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-    </main>
-  );
-};
-
-export default PrivacyPage;
+export default async function Page() {
+  const page = await getPage();
+  if (!page) return <Legacy />;
+  return <main>{renderCmsBlocks(page)}</main>;
+}

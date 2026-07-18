@@ -24,6 +24,7 @@ export default function MediaPage() {
     const [loading, setLoading]       = useState(true);
     const [filter, setFilter]         = useState<Filter>('all');
     const [uploading, setUploading]   = useState(false);
+    const [uploadProgress, setUploadProgress] = useState<{ done: number; total: number } | null>(null);
     const [deletingId, setDeletingId] = useState<string | null>(null);
     const fileRef = useRef<HTMLInputElement>(null);
 
@@ -35,17 +36,37 @@ export default function MediaPage() {
 
     useEffect(() => { fetchMedia(); }, [fetchMedia]);
 
+    const BATCH_SIZE = 10;
+
     async function handleUpload(e: React.ChangeEvent<HTMLInputElement>) {
-        const file = e.target.files?.[0];
-        if (!file) return;
+        const files = Array.from(e.target.files ?? []);
+        if (!files.length) return;
         if (fileRef.current) fileRef.current.value = '';
+
         setUploading(true);
+        setUploadProgress({ done: 0, total: files.length });
         try {
-            const fd = new FormData();
-            fd.append('file', file);
-            await adminApi.post('/media', fd, { headers: { 'Content-Type': 'multipart/form-data' } });
+            if (files.length === 1) {
+                const fd = new FormData();
+                fd.append('file', files[0]);
+                await adminApi.post('/media', fd, { headers: { 'Content-Type': 'multipart/form-data' } });
+                setUploadProgress({ done: 1, total: 1 });
+            } else {
+                for (let i = 0; i < files.length; i += BATCH_SIZE) {
+                    const batch = files.slice(i, i + BATCH_SIZE);
+                    const fd = new FormData();
+                    batch.forEach((f) => fd.append('files', f));
+                    try {
+                        await adminApi.post('/media/bulk', fd, { headers: { 'Content-Type': 'multipart/form-data' } });
+                    } catch { /* keep going with remaining batches */ }
+                    setUploadProgress({ done: Math.min(i + batch.length, files.length), total: files.length });
+                }
+            }
             fetchMedia();
-        } catch { } finally { setUploading(false); }
+        } finally {
+            setUploading(false);
+            setUploadProgress(null);
+        }
     }
 
     async function handleDelete(id: string, name: string) {
@@ -69,9 +90,9 @@ export default function MediaPage() {
                     <p className={styles.subtitle}>{items.length} file{items.length !== 1 ? 's' : ''} total</p>
                 </div>
                 <button className={styles.addBtn} onClick={() => fileRef.current?.click()} disabled={uploading}>
-                    <IconPlus /> {uploading ? 'Uploading…' : 'Upload Media'}
+                    <IconPlus /> {uploadProgress ? `Uploading ${uploadProgress.done}/${uploadProgress.total}…` : 'Upload Media'}
                 </button>
-                <input ref={fileRef} type="file" accept="image/*,video/*" style={{ display: 'none' }} onChange={handleUpload} />
+                <input ref={fileRef} type="file" accept="image/*,video/*" multiple style={{ display: 'none' }} onChange={handleUpload} />
             </div>
 
             <div className={mStyles.filterRow}>

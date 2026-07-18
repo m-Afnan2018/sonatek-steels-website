@@ -3,7 +3,7 @@ import fs from 'fs';
 import { Router } from 'express';
 import multer from 'multer';
 import { protect } from '../middleware/auth';
-import { getMedia, uploadMedia, deleteMedia } from '../controllers/media.controller';
+import { getMedia, uploadMedia, uploadMediaBulk, deleteMedia } from '../controllers/media.controller';
 
 const uploadDir = path.join(__dirname, '../../uploads/media');
 if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
@@ -31,6 +31,7 @@ const router = Router();
 
 router.get('/',       protect, getMedia);
 router.post('/',      protect, upload.single('file'), uploadMedia);
+router.post('/bulk',  protect, upload.array('files', 30), uploadMediaBulk);
 router.delete('/:id', protect, deleteMedia);
 
 export default router;

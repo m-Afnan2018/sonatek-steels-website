@@ -1,9 +1,10 @@
 'use client';
 
-import { useState, KeyboardEvent, useRef } from 'react';
+import { useState, KeyboardEvent } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { adminApi } from '@/lib/adminApi';
+import MediaPicker from '@/components/admin/MediaPicker/MediaPicker';
 import styles from './products.module.css';
 
 interface SpecRow { label: string; value: string; }
@@ -18,7 +19,6 @@ export interface ProductData {
     specs: Specs;
 }
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 const emptySpec = (): SpecRow => ({ label: '', value: '' });
 const SPEC_LABELS: Record<keyof Specs, string> = {
     composition: 'Chemical Composition',
@@ -29,10 +29,16 @@ const SPEC_LABELS: Record<keyof Specs, string> = {
 function slugify(s: string) {
     return s.toLowerCase().trim().replace(/[^\w\s-]/g, '').replace(/[\s_-]+/g, '-').replace(/^-+|-+$/g, '');
 }
+// Keystroke-safe variant for the Slug field's own input: normalizes case and
+// disallowed characters without trimming or collapsing hyphens, so a
+// trailing "-" or space mid-typing isn't erased before the user can
+// continue composing a multi-word slug. Full slugify() runs on blur/submit.
+function slugifyLive(s: string) {
+    return s.toLowerCase().replace(/[^\w\s-]/g, '').replace(/[\s_]+/g, '-');
+}
 
 export default function ProductForm({ initial }: { initial?: Partial<ProductData> }) {
     const router = useRouter();
-    const fileRef = useRef<HTMLInputElement>(null);
     const isEdit  = !!initial?._id;
 
     const [form, setForm] = useState<ProductData>({
@@ -55,9 +61,12 @@ export default function ProductForm({ initial }: { initial?: Partial<ProductData
         },
     });
 
+    // Tracks whether the user has manually edited the Slug field directly —
+    // until then, it auto-derives from the Name field on every keystroke.
+    // (Using `!!form.slug` instead would freeze auto-generation after the
+    // first typed character, since slug becomes non-empty immediately.)
+    const [slugTouched, setSlugTouched] = useState(isEdit || !!initial?.slug);
     const [chipInputs, setChipInputs] = useState({ thicknesses: '', widths: '' });
-    const [imageFile, setImageFile]   = useState<File | null>(null);
-    const [preview, setPreview]       = useState<string | null>(null);
     const [saving, setSaving]         = useState(false);
     const [error, setError]           = useState('');
     const [success, setSuccess]       = useState('');
@@ -99,33 +108,34 @@ export default function ProductForm({ initial }: { initial?: Partial<ProductData
     async function handleSubmit() {
         if (!form.name.trim()) { setError('Product name is required.'); return; }
         if (!form.slug.trim()) { setError('Slug is required.'); return; }
+        const slug = slugify(form.slug);
         setSaving(true); setError(''); setSuccess('');
         try {
-            const fd = new FormData();
-            fd.append('name', form.name);
-            fd.append('slug', form.slug);
-            fd.append('brand', form.brand);
-            fd.append('whatsappNumber', form.whatsappNumber);
-            fd.append('isActive', String(form.isActive));
-            fd.append('thicknesses', JSON.stringify(form.thicknesses));
-            fd.append('widths',      JSON.stringify(form.widths));
-            fd.append('overview', JSON.stringify({
-                ...form.overview,
-                bulletPoints: form.overview.bulletPoints.split('\n').map((s) => s.trim()).filter(Boolean),
-            }));
-            fd.append('specs', JSON.stringify({
-                composition: form.specs.composition.filter((r) => r.label || r.value),
-                mechanical:  form.specs.mechanical.filter((r)  => r.label || r.value),
-                tolerance:   form.specs.tolerance.filter((r)   => r.label || r.value),
-            }));
-            if (imageFile) fd.append('image', imageFile);
+            const payload = {
+                name: form.name,
+                slug,
+                brand: form.brand,
+                whatsappNumber: form.whatsappNumber,
+                isActive: form.isActive,
+                image: form.image ?? '',
+                thicknesses: form.thicknesses,
+                widths: form.widths,
+                overview: {
+                    ...form.overview,
+                    bulletPoints: form.overview.bulletPoints.split('\n').map((s) => s.trim()).filter(Boolean),
+                },
+                specs: {
+                    composition: form.specs.composition.filter((r) => r.label || r.value),
+                    mechanical:  form.specs.mechanical.filter((r)  => r.label || r.value),
+                    tolerance:   form.specs.tolerance.filter((r)   => r.label || r.value),
+                },
+            };
 
-            const cfg = { headers: { 'Content-Type': 'multipart/form-data' } };
             if (isEdit) {
-                await adminApi.put(`/products/${initial!._id}`, fd, cfg);
+                await adminApi.put(`/products/${initial!._id}`, payload);
                 setSuccess('Product updated successfully.');
             } else {
-                await adminApi.post('/products', fd, cfg);
+                await adminApi.post('/products', payload);
                 setSuccess('Product created. Redirecting…');
                 setTimeout(() => router.push('/admin/products'), 1200);
             }
@@ -134,9 +144,6 @@ export default function ProductForm({ initial }: { initial?: Partial<ProductData
             setError(msg || 'Something went wrong. Please try again.');
         } finally { setSaving(false); }
     }
-
-    const currentImgUrl = preview
-        ?? (form.image ? (form.image.startsWith('http') ? form.image : `${API_URL}${form.image}`) : null);
 
     return (
         <div className={styles.formPage}>
@@ -152,13 +159,21 @@ export default function ProductForm({ initial }: { initial?: Partial<ProductData
                     <div className={styles.formGroup}>
                         <label className={styles.formLabel}>Product Name *</label>
                         <input className={styles.formInput} value={form.name}
-                            onChange={(e) => setForm((p) => ({ ...p, name: e.target.value, slug: p.slug || slugify(e.target.value) }))}
+                            onChange={(e) => {
+                                const name = e.target.value;
+                                setForm((p) => ({ ...p, name, slug: slugTouched ? p.slug : slugify(name) }));
+                            }}
                             placeholder="e.g. GR2 Hot Rolled Steel Sheet" />
                     </div>
                     <div className={styles.formGroup}>
                         <label className={styles.formLabel}>Slug *</label>
                         <input className={styles.formInput} value={form.slug}
-                            onChange={(e) => setForm((p) => ({ ...p, slug: slugify(e.target.value) }))}
+                            onChange={(e) => {
+                                setSlugTouched(true);
+                                const val = e.target.value;
+                                setForm((p) => ({ ...p, slug: slugifyLive(val) }));
+                            }}
+                            onBlur={() => setForm((p) => ({ ...p, slug: slugify(p.slug) }))}
                             placeholder="auto-generated" />
                         <span className={styles.formHint}>URL: /product/{form.slug || '…'}</span>
                     </div>
@@ -168,7 +183,7 @@ export default function ProductForm({ initial }: { initial?: Partial<ProductData
                     </div>
                     <div className={styles.formGroup}>
                         <label className={styles.formLabel}>WhatsApp Number</label>
-                        <input className={styles.formInput} value={form.whatsappNumber} onChange={(e) => setForm((p) => ({ ...p, whatsappNumber: e.target.value }))} placeholder="918447083822 (no +)" />
+                        <input className={styles.formInput} value={form.whatsappNumber} onChange={(e) => setForm((p) => ({ ...p, whatsappNumber: e.target.value }))} placeholder="919015416940 (no +)" />
                     </div>
                     <div className={styles.formGroup}>
                         <label className={styles.formLabel}>Status</label>
@@ -185,19 +200,11 @@ export default function ProductForm({ initial }: { initial?: Partial<ProductData
             {/* Image */}
             <div className={styles.section}>
                 <div className={styles.sectionTitle}>Product Image</div>
-                <div className={styles.imageUploadWrap}>
-                    {currentImgUrl
-                        ? <img src={currentImgUrl} alt="preview" className={styles.imagePreview} />
-                        : <div className={styles.imagePlaceholder}>No image</div>
-                    }
-                    <input ref={fileRef} type="file" accept=".jpg,.jpeg,.png,.webp" className={styles.fileInput}
-                        onChange={(e) => {
-                            const f = e.target.files?.[0] ?? null;
-                            setImageFile(f);
-                            setPreview(f ? URL.createObjectURL(f) : null);
-                        }} />
-                    <span className={styles.formHint}>Max 5 MB · jpg, jpeg, png, webp</span>
-                </div>
+                <MediaPicker
+                    accept="image"
+                    value={form.image || undefined}
+                    onChange={(url) => setForm((p) => ({ ...p, image: url }))}
+                />
             </div>
 
             {/* Dimensions */}

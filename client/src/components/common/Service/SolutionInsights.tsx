@@ -37,11 +37,17 @@ function resolveImage(image?: string) {
   return `${apiBase}${image}`;
 }
 
-export default function SolutionInsights() {
-  const [blogs, setBlogs] = useState<ApiBlog[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+interface SolutionInsightsProps {
+  items?: ApiBlog[];
+}
+
+export default function SolutionInsights({ items }: SolutionInsightsProps = {}) {
+  const [blogs, setBlogs] = useState<ApiBlog[]>(items && items.length > 0 ? items : []);
+  const [isLoading, setIsLoading] = useState(!(items && items.length > 0));
 
   useEffect(() => {
+    // Explicit content (e.g. from the page builder) wins — don't clobber it with a live fetch.
+    if (items && items.length > 0) return;
     let active = true;
 
     async function loadBlogs() {
@@ -61,7 +67,7 @@ export default function SolutionInsights() {
     return () => {
       active = false;
     };
-  }, []);
+  }, [items]);
 
   return (
     <section className={styles.section}>

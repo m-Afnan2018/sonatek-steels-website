@@ -1,0 +1,153 @@
+/* AdminShell's own content area has no bounded height (flex:1 inside a
+   min-height:100vh chain, no overflow), so height:100% here would resolve
+   against an unconstrained ancestor and never actually cap anything — the
+   whole browser page would grow instead of the panes below scrolling
+   internally. Pin to the viewport directly instead: 64px admin topbar +
+   32px top/bottom content padding = 128px of chrome above/around this. */
+.page { display: flex; flex-direction: column; gap: 16px; height: calc(100vh - 128px); }
+
+.topRow {
+    display: flex;
+    align-items: flex-end;
+    gap: 16px;
+    flex-wrap: wrap;
+    background: var(--a-bg-card);
+    border: 1px solid var(--a-border);
+    border-radius: 10px;
+    padding: 16px 20px;
+}
+.topField { display: flex; flex-direction: column; gap: 5px; }
+.topField label { font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--a-text-muted); }
+.topField input, .topField select {
+    background: var(--a-bg-input); border: 1px solid var(--a-border); border-radius: 6px;
+    padding: 9px 12px; font-size: 13.5px; color: var(--a-text); font-family: inherit; min-width: 180px;
+}
+.slugField input { font-family: monospace; }
+.spacer { flex: 1; }
+.backLink { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--a-text-muted); text-decoration: none; }
+.backLink:hover { color: var(--a-accent-light); }
+
+.actions { display: flex; align-items: center; gap: 10px; }
+.previewBtn, .saveBtn {
+    padding: 10px 20px; border-radius: 6px; font-size: 13px; font-weight: 700; letter-spacing: 0.03em;
+    cursor: pointer; font-family: inherit; border: 1px solid var(--a-border);
+}
+.previewBtn { background: none; color: var(--a-text-secondary); }
+.previewBtn:hover { border-color: var(--a-border-accent); color: var(--a-accent-light); }
+.previewBtn.active { background: var(--a-accent-glow); color: var(--a-accent-light); border-color: var(--a-border-accent); }
+.saveBtn { background: var(--a-accent); color: #fff; border-color: var(--a-accent); }
+.saveBtn:hover:not(:disabled) { background: var(--a-accent-light); }
+.saveBtn:disabled { opacity: 0.6; cursor: not-allowed; }
+.error { font-size: 12.5px; color: var(--a-error); }
+.success { font-size: 12.5px; color: var(--a-success); }
+
+.workArea { flex: 1; min-height: 0; display: flex; gap: 16px; }
+
+.palette {
+    width: 280px; flex: none; min-height: 0; background: var(--a-bg-card); border: 1px solid var(--a-border);
+    border-radius: 10px; padding: 14px 14px 0; display: flex; flex-direction: column;
+}
+.paletteHead { flex: none; padding-bottom: 10px; }
+.paletteHint { font-size: 11px; color: var(--a-text-muted); margin: 0 0 8px; }
+
+.clipboardBar {
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    background: var(--a-accent-glow); border: 1px solid var(--a-border-accent); border-radius: 7px;
+    padding: 8px 10px; margin-bottom: 10px;
+}
+.clipboardLabel { display: flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 600; color: var(--a-accent-light); min-width: 0; }
+.clipboardLabel svg { flex: none; }
+.clipboardActions { display: flex; align-items: center; gap: 4px; flex: none; }
+.clipboardActions button {
+    display: flex; align-items: center; gap: 4px; border: none; background: none; color: var(--a-accent-light);
+    font-size: 11px; font-weight: 700; padding: 4px 7px; border-radius: 5px; cursor: pointer; font-family: inherit; white-space: nowrap;
+}
+.clipboardActions button:hover { background: rgba(255, 255, 255, 0.08); }
+.paletteSearch {
+    width: 100%; padding: 7px 10px; font-size: 12.5px; border: 1px solid var(--a-border); border-radius: 6px;
+    background: var(--a-bg-input); color: var(--a-text); font-family: inherit;
+}
+.paletteScroll { flex: 1; min-height: 0; overflow-y: auto; padding-bottom: 14px; display: flex; flex-direction: column; gap: 4px; }
+.paletteEmpty { font-size: 12px; color: var(--a-text-muted); font-style: italic; padding: 8px 2px; }
+
+.familyGroup { display: flex; flex-direction: column; gap: 6px; margin-bottom: 2px; }
+.familyHeader {
+    width: 100%; display: flex; align-items: center; justify-content: space-between; background: none; border: none;
+    padding: 8px 4px 4px; cursor: pointer; font-size: 10.5px; font-weight: 700; letter-spacing: 0.07em;
+    text-transform: uppercase; color: var(--a-text-muted); font-family: inherit;
+}
+.familyHeader:hover { color: var(--a-text-secondary); }
+.familyMeta { display: flex; align-items: center; gap: 6px; font-family: monospace; font-weight: 400; text-transform: none; letter-spacing: 0; }
+.paletteItem {
+    display: flex; flex-direction: column; gap: 2px; padding: 9px 11px; border-radius: 6px;
+    background: var(--a-bg-input); border: 1px solid var(--a-border); cursor: grab; user-select: none;
+    transition: border-color 0.15s;
+}
+.paletteItem:hover { border-color: var(--a-border-accent); }
+.paletteItem:active { cursor: grabbing; }
+.paletteItemLabel { font-size: 13px; font-weight: 600; color: var(--a-text); }
+.paletteItemHint { font-size: 10.5px; color: var(--a-text-muted); }
+
+.canvas { flex: 1; min-width: 0; background: var(--a-bg-card); border: 1px solid var(--a-border); border-radius: 10px; padding: 14px; overflow-y: auto; }
+.canvasEmpty {
+    height: 100%; min-height: 180px; display: flex; align-items: center; justify-content: center;
+    border: 2px dashed var(--a-border); border-radius: 8px; color: var(--a-text-muted); font-size: 13px; text-align: center; padding: 20px;
+}
+.canvasList { display: flex; flex-direction: column; gap: 8px; }
+
+.canvasItem {
+    display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 7px;
+    background: var(--a-bg-input); border: 1px solid var(--a-border); cursor: pointer;
+}
+.canvasItem.selected { border-color: var(--a-accent); background: var(--a-accent-glow); }
+.canvasItem.dragging { opacity: 0.4; }
+.handle { color: var(--a-text-muted); cursor: grab; flex: none; display: flex; }
+.handle:active { cursor: grabbing; }
+.idx { font-family: monospace; font-size: 10.5px; color: var(--a-text-muted); width: 18px; flex: none; }
+.itemMain { flex: 1; min-width: 0; }
+.itemLabel { font-size: 13.5px; font-weight: 600; color: var(--a-text); }
+.anchorInput {
+    margin-top: 4px; font-family: monospace; font-size: 11px; background: none; border: none; border-bottom: 1px dashed var(--a-border);
+    color: var(--a-text-muted); padding: 2px 0; width: 140px;
+}
+.anchorInput:focus { outline: none; border-color: var(--a-accent); }
+.itemActions { display: flex; gap: 2px; flex: none; }
+.itemActions button { border: none; background: none; color: var(--a-text-muted); padding: 5px; border-radius: 4px; cursor: pointer; display: flex; }
+.itemActions button:hover { background: var(--a-error-bg); color: var(--a-error); }
+.itemActions .copyBtn:hover, .itemActions .pasteBtn:hover { background: var(--a-accent-glow); color: var(--a-accent-light); }
+
+.editorPanel { width: 360px; flex: none; background: var(--a-bg-card); border: 1px solid var(--a-border); border-radius: 10px; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
+.editorHeader { display: flex; align-items: center; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid var(--a-border); }
+.editorTitle { font-family: var(--font-admin-heading, 'Barlow Condensed', sans-serif); font-size: 15px; font-weight: 700; letter-spacing: 0.03em; color: var(--a-text); }
+.editorClose { border: none; background: none; color: var(--a-text-muted); cursor: pointer; font-size: 16px; }
+.editorEmpty { color: var(--a-text-muted); font-size: 13px; text-align: center; padding: 40px 10px; }
+
+.livePreviewBtn {
+    align-self: flex-start; padding: 7px 14px; border-radius: 6px; font-size: 12px; font-weight: 700;
+    background: var(--a-bg-input); border: 1px solid var(--a-border); color: var(--a-text-secondary); cursor: pointer; font-family: inherit;
+}
+.livePreviewBtn:hover { border-color: var(--a-border-accent); color: var(--a-accent-light); }
+.livePreviewBtn.active { background: var(--a-accent-glow); color: var(--a-accent-light); border-color: var(--a-border-accent); }
+
+.previewArea { flex: 1; background: var(--a-bg-card); border: 1px solid var(--a-border); border-radius: 10px; overflow-y: auto; }
+.previewEmpty { padding: 60px 20px; text-align: center; color: var(--a-text-muted); }
+
+.blockPreviewWrap { min-height: 100%; }
+
+/* Page settings modal */
+.modalOverlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 100;
+}
+.modal { width: 100%; max-width: 480px; max-height: 85vh; background: var(--a-bg-card); border: 1px solid var(--a-border); border-radius: 10px; display: flex; flex-direction: column; overflow: hidden; }
+.modalHeader { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--a-border); }
+.modalTitle { font-family: var(--font-admin-heading, 'Barlow Condensed', sans-serif); font-size: 16px; font-weight: 700; letter-spacing: 0.03em; color: var(--a-text); }
+.modalClose { border: none; background: none; color: var(--a-text-muted); cursor: pointer; font-size: 16px; }
+.modalBody { padding: 20px; display: flex; flex-direction: column; gap: 16px; overflow-y: auto; }
+.modalField { display: flex; flex-direction: column; gap: 6px; }
+.modalField label { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--a-text-muted); }
+.modalField input, .modalField textarea {
+    background: var(--a-bg-input); border: 1px solid var(--a-border); border-radius: 6px; padding: 9px 12px;
+    font-size: 13.5px; color: var(--a-text); font-family: inherit;
+}
+.modalField textarea { min-height: 80px; resize: vertical; }
+.modalFooter { padding: 14px 20px; border-top: 1px solid var(--a-border); display: flex; justify-content: flex-end; }

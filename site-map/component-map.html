@@ -1,0 +1,462 @@
+<title>Sonatek Steels — Page Anatomy</title>
+<style>
+  :root {
+    --bg: #EDF0F3;
+    --canvas: #F5F7F9;
+    --surface: #FFFFFF;
+    --ink: #1A2029;
+    --ink-muted: #57626D;
+    --line: #C9D1D9;
+    --line-strong: #9BA7B3;
+    --accent: #B6572A;
+    --accent-soft: #F1DECC;
+    --warn: #A8352F;
+    --warn-soft: #F3DCD9;
+    --fam-home: #C97A45;
+    --fam-home-tint: #F5E7DA;
+    --fam-industry: #3E5C76;
+    --fam-industry-tint: #E3E9EF;
+    --fam-service: #2F7A63;
+    --fam-service-tint: #E1EEEA;
+    --fam-admin: #6E7A4E;
+    --fam-admin-tint: #E9EBDF;
+    --fam-unique-tint: #F2F3F5;
+    --font-display: ui-sans-serif, "Segoe UI Semibold", "Segoe UI", -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --font-body: ui-sans-serif, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    --font-mono: ui-monospace, "SFMono-Regular", "Cascadia Code", Consolas, "Liberation Mono", Menlo, monospace;
+    --radius: 5px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #10141A; --canvas: #151A21; --surface: #1C232C; --ink: #E7EBEF; --ink-muted: #97A3AF;
+      --line: #313A44; --line-strong: #4A5560; --accent: #E28C50; --accent-soft: #3B2A1C;
+      --warn: #E1655D; --warn-soft: #3B2321;
+      --fam-home: #E28C50; --fam-home-tint: #362A20;
+      --fam-industry: #7C93AC; --fam-industry-tint: #1E2530;
+      --fam-service: #5FA98D; --fam-service-tint: #17251F;
+      --fam-admin: #A3AE84; --fam-admin-tint: #22251C;
+      --fam-unique-tint: #1B2027;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #10141A; --canvas: #151A21; --surface: #1C232C; --ink: #E7EBEF; --ink-muted: #97A3AF;
+    --line: #313A44; --line-strong: #4A5560; --accent: #E28C50; --accent-soft: #3B2A1C;
+    --warn: #E1655D; --warn-soft: #3B2321;
+    --fam-home: #E28C50; --fam-home-tint: #362A20;
+    --fam-industry: #7C93AC; --fam-industry-tint: #1E2530;
+    --fam-service: #5FA98D; --fam-service-tint: #17251F;
+    --fam-admin: #A3AE84; --fam-admin-tint: #22251C;
+    --fam-unique-tint: #1B2027;
+  }
+  :root[data-theme="light"] {
+    --bg: #EDF0F3; --canvas: #F5F7F9; --surface: #FFFFFF; --ink: #1A2029; --ink-muted: #57626D;
+    --line: #C9D1D9; --line-strong: #9BA7B3; --accent: #B6572A; --accent-soft: #F1DECC;
+    --warn: #A8352F; --warn-soft: #F3DCD9;
+    --fam-home: #C97A45; --fam-home-tint: #F5E7DA;
+    --fam-industry: #3E5C76; --fam-industry-tint: #E3E9EF;
+    --fam-service: #2F7A63; --fam-service-tint: #E1EEEA;
+    --fam-admin: #6E7A4E; --fam-admin-tint: #E9EBDF;
+    --fam-unique-tint: #F2F3F5;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--font-body); line-height: 1.5; }
+
+  .page { max-width: 1220px; margin: 0 auto; padding: 48px 24px 80px; }
+
+  .eyebrow { font-family: var(--font-display); font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin: 0 0 10px; }
+  h1 { font-family: var(--font-display); font-size: clamp(28px, 4vw, 38px); font-weight: 700; letter-spacing: -0.01em; margin: 0 0 14px; text-wrap: balance; }
+  .lede { max-width: 72ch; color: var(--ink-muted); font-size: 15.5px; margin: 0 0 26px; }
+  .lede strong { color: var(--ink); font-weight: 600; }
+
+  h2.section-title {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin: 54px 0 6px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  h2.section-title .tag { font-family: var(--font-mono); font-weight: 400; text-transform: none; letter-spacing: 0; font-size: 11.5px; color: var(--ink-muted); }
+  .section-sub { font-size: 12.5px; color: var(--ink-muted); margin: 0 0 20px; max-width: 68ch; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 10px 22px; padding: 14px 18px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: 8px; }
+  .legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--ink-muted); }
+  .legend-chip { width: 15px; height: 15px; border-radius: 3px; flex: none; border: 1px solid rgba(0,0,0,0.08); }
+
+  .chrome-notes { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 22px 0 8px; }
+  .chrome-note { background: var(--surface); border: 1px solid var(--line-strong); border-radius: var(--radius); padding: 14px 16px; font-size: 12.5px; color: var(--ink-muted); }
+  .chrome-note strong { color: var(--ink); font-family: var(--font-mono); font-size: 12px; }
+
+  .grid { display: grid; gap: 20px; }
+  .grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+
+  .stack-card { background: var(--surface); border: 1px solid var(--line); border-radius: 7px; overflow: hidden; display: flex; flex-direction: column; }
+  .stack-card.featured { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+  .stack-head { padding: 10px 14px; border-bottom: 1px solid var(--line); background: var(--canvas); }
+  .stack-head .route { font-family: var(--font-mono); font-size: 12.5px; font-weight: 700; color: var(--ink); }
+  .stack-head .meta { font-size: 10.5px; color: var(--ink-muted); margin-top: 1px; }
+  .stack-body { display: flex; flex-direction: column; }
+
+  .band { padding: 8px 14px; border-bottom: 1px solid rgba(120,120,120,0.14); font-size: 12px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .band:last-child { border-bottom: none; }
+  .band .name { font-weight: 600; }
+  .band .note { font-size: 10px; color: var(--ink-muted); font-weight: 400; white-space: nowrap; }
+  .band.fam-home { background: var(--fam-home-tint); color: var(--fam-home); }
+  .band.fam-industry { background: var(--fam-industry-tint); color: var(--fam-industry); }
+  .band.fam-service { background: var(--fam-service-tint); color: var(--fam-service); }
+  .band.fam-admin { background: var(--fam-admin-tint); color: var(--fam-admin); }
+  .band.fam-unique { background: var(--fam-unique-tint); color: var(--ink-muted); font-style: italic; }
+  .band .name { color: var(--ink); font-style: normal; }
+
+  .badge { font-family: var(--font-mono); font-size: 9.5px; padding: 1px 6px; border-radius: 999px; background: rgba(0,0,0,0.06); color: var(--ink-muted); flex: none; }
+
+  .template-flag {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 700;
+  }
+
+  .variance-table, .xref-table, .entity-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 14px; }
+  .variance-table th, .variance-table td, .xref-table th, .xref-table td, .entity-table th, .entity-table td {
+    text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--line);
+  }
+  .variance-table th, .xref-table th, .entity-table th { font-family: var(--font-display); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-muted); font-weight: 700; }
+  .variance-table td, .entity-table td { color: var(--ink-muted); }
+  .variance-table code, .xref-table code, .entity-table code { font-family: var(--font-mono); color: var(--ink); background: var(--canvas); padding: 1px 5px; border-radius: 3px; }
+
+  .side-by-side { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+  .callout { background: var(--warn-soft); border: 1px dashed var(--warn); border-radius: var(--radius); padding: 14px 16px; margin: 18px 0; }
+  .callout .c-title { font-weight: 700; font-size: 13px; color: var(--warn); margin: 0 0 6px; }
+  .callout .c-body { font-size: 12.5px; color: var(--ink-muted); margin: 0; }
+  .callout code { font-family: var(--font-mono); font-size: 12px; background: var(--surface); padding: 1px 5px; border-radius: 3px; color: var(--ink); }
+
+  .xref-table-wrap { overflow-x: auto; }
+
+  @media (max-width: 1000px) {
+    .grid.cols-4 { grid-template-columns: repeat(2, 1fr); }
+    .grid.cols-3 { grid-template-columns: repeat(2, 1fr); }
+    .side-by-side { grid-template-columns: 1fr; }
+  }
+</style>
+
+<div class="page">
+  <p class="eyebrow">Sonatek Steels — companion to the site connection map</p>
+  <h1>What's inside every page</h1>
+  <p class="lede">
+    Each card below is one page, stacked top-to-bottom in the order its sections actually render.
+    Color marks which <strong>family</strong> a section belongs to &mdash; sections in the same color
+    are the literal same component file, reused. Where 6 pages render an identical stack (Solutions,
+    Industries), they're shown once as a template rather than six times over.
+  </p>
+
+  <div class="legend">
+    <div class="legend-item"><span class="legend-chip" style="background:var(--fam-home)"></span>Home-only components</div>
+    <div class="legend-item"><span class="legend-chip" style="background:var(--fam-industry)"></span>Industry/Solutions shared kit</div>
+    <div class="legend-item"><span class="legend-chip" style="background:var(--fam-service)"></span>Service-specific components</div>
+    <div class="legend-item"><span class="legend-chip" style="background:var(--fam-admin)"></span>Admin components</div>
+    <div class="legend-item"><span class="legend-chip" style="background:var(--fam-unique-tint); border-style:dashed;"></span>Page-specific, not reused</div>
+    <div class="legend-item"><span class="badge">shared</span>appears on other pages too</div>
+    <div class="legend-item"><span class="template-flag">×6</span>one file renders 6 routes</div>
+  </div>
+
+  <div class="chrome-notes">
+    <div class="chrome-note"><strong>(public)/layout.tsx</strong> wraps every public stack below in <strong>ScrollToTopOnRoute → Navbar … Footer</strong>. Not repeated in each card so the page's own content stays legible.</div>
+    <div class="chrome-note"><strong>admin/(protected)/layout.tsx</strong> wraps every admin stack below (except <code style="font-family:var(--font-mono)">/admin/login</code>, which has none) in <strong>AdminShell</strong>. Same reasoning.</div>
+  </div>
+
+  <h2 class="section-title">Home <span class="tag">/</span></h2>
+  <p class="section-sub">The only page pulling from the "home" component family &mdash; nothing here is reused elsewhere except GlobalNetwork and BeyondBusiness (see About Us and Sustainability).</p>
+  <div class="stack-card featured" style="max-width:340px;">
+    <div class="stack-head"><div class="route">/</div><div class="meta">client/src/app/(public)/page.tsx</div></div>
+    <div class="stack-body">
+      <div class="band fam-home"><span class="name">Hero</span></div>
+      <div class="band fam-home"><span class="name">WhySonatek</span><span class="note">→ links /supply-chain</span></div>
+      <div class="band fam-home"><span class="name">Impact</span></div>
+      <div class="band fam-home"><span class="name">SinglePlatform</span><span class="note">→ links /supply-chain</span></div>
+      <div class="band fam-home"><span class="name">Services</span></div>
+      <div class="band fam-home"><span class="name">GlobalNetwork</span><span class="badge">shared ×2</span></div>
+      <div class="band fam-home"><span class="name">BeyondBusiness</span><span class="badge">shared ×2</span></div>
+      <div class="band fam-home"><span class="name">LatestNews</span></div>
+      <div class="band fam-home"><span class="name">Testimonials</span></div>
+      <div class="band fam-home"><span class="name">CTABanner <span class="badge">home version</span></span></div>
+    </div>
+  </div>
+
+  <h2 class="section-title">Company &amp; Legal <span class="tag">8 pages</span></h2>
+  <p class="section-sub">Mostly hand-built, page-specific sections &mdash; this cluster reuses almost nothing internally, which is why it feels the least "templated" of the site.</p>
+  <div class="grid cols-4">
+    <div class="stack-card">
+      <div class="stack-head"><div class="route">/about-us</div></div>
+      <div class="stack-body">
+        <div class="band fam-unique"><span class="name">Hero (inline)</span></div>
+        <div class="band fam-unique"><span class="name">Intro (inline)</span></div>
+        <div class="band fam-home"><span class="name">GlobalNetwork</span><span class="badge">shared ×2</span></div>
+        <div class="band fam-unique"><span class="name">Story rows (inline) ×N</span></div>
+        <div class="band fam-unique"><span class="name">Join-team CTA (inline)</span></div>
+      </div>
+    </div>
+    <div class="stack-card">
+      <div class="stack-head"><div class="route">/leadership</div></div>
+      <div class="stack-body">
+        <div class="band fam-unique"><span class="name">HeroSection</span><span class="badge">shared ×2</span></div>
+        <div class="band fam-unique"><span class="name">Filter bar + card grid (inline)</span></div>
+        <div class="band fam-unique"><span class="name">Join-team CTA (inline)</span></div>
+      </div>
+    </div>
+    <div class="stack-card">
+      <div class="stack-head"><div class="route">/contact-us</div></div>
+      <div class="stack-body">
+        <div class="band fam-unique"><span class="name">HeroSection</span><span class="badge">shared ×2</span></div>
+        <div class="band fam-unique"><span class="name">ContactForm</span><span class="note">→ links /privacy</span></div>
+        <div class="band fam-unique"><span class="name">LocationSection</span></div>
+      </div>
+    </div>
+    <div class="stack-card">
+      <div class="stack-head"><div class="route">/sustainability</div></div>
+      <div class="stack-body" style="font-size:11.5px;">
+        <div class="band fam-home"><span class="name">Hero</span><span class="badge">shared ×2</span></div>
+        <div class="band fam-industry"><span class="name">StickyNav</span><span class="badge">shared ×14</span></div>
+        <div class="band fam-unique"><span class="name">MissionSection</span><span class="badge">shared ×13</span></div>
+        <div class="band fam-home"><span class="name">BeyondBusiness</span><span class="badge">shared ×2</span></div>
+        <div class="band fam-unique"><span class="name">FocusAreasSection</span></div>
+        <div class="band fam-unique"><span class="name">AlternateCardSection ×3</span><span class="badge">shared ×2</span></div>
+        <div class="band fam-unique"><span class="name">Partners, Docs, RelatedDocs</span></div>
+        <div class="band fam-unique"><span class="name">SustainabilityFaqs</span><span class="note">→ links /contact-us</span></div>
+        <div class="band fam-unique"><span class="name">CtaSection</span></div>
+      </div>
+    </div>
+    <div class="stack-card">
+      <div class="stack-head"><div class="route">/privacy</div></div>
+      <div class="stack-body">
+        <div class="band fam-unique"><span class="name">Breadcrumb + title (inline)</span></div>
+        <div class="band fam-unique"><span class="name">AccordionItem ×N (sections)</span></div>
+        <div class="band fam-unique"><span class="name">AccordionItem ×N (annex)</span></div>
+      </div>
+    </div>
+    <div class="stack-card">
+      <div class="stack-head"><div class="route">/terms-conditions</div></div>
+      <div class="stack-body">
+        <div class="band fam-unique"><span class="name">Breadcrumb + intro (inline)</span></div>
+        <div class="band fam-unique"><span class="name">Term sections (inline) ×N</span></div>
+      </div>
+    </div>
+    <div class="stack-card">
+      <div class="stack-head"><div class="route">/blogs</div></div>
+      <div class="stack-body">
+        <div class="band fam-unique"><span class="name">FeaturedNewsCard</span></div>
+        <div class="band fam-unique"><span class="name">NewsCard grid</span></div>
+        <div class="band fam-unique"><span class="name">FeaturedNewsCard (reversed)</span></div>
+        <div class="band fam-unique"><span class="name">NewsCard grid</span></div>
+        <div class="band fam-unique"><span class="name">FloatingTagsDynamic</span></div>
+      </div>
+    </div>
+    <div class="stack-card">
+      <div class="stack-head"><div class="route">/blogs/[slug]</div></div>
+      <div class="stack-body">
+        <div class="band fam-unique"><span class="name">Single &lt;article&gt; &mdash; no sub-components</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-title">Solutions <span class="tag">6 identical routes</span> <span class="template-flag">×6</span></h2>
+  <p class="section-sub">steel-procurement · custom-steel-processing · infrastructure-industrial-project · technical-steel-selection · supply-chain · freight-forwarding &mdash; same macro order every time, only how many times ServicesSection repeats changes.</p>
+  <div class="stack-card" style="max-width:360px;">
+    <div class="stack-head"><div class="route">(solutions)/&lt;page&gt;/page.tsx</div><div class="meta">macro order, all 6 files</div></div>
+    <div class="stack-body">
+      <div class="band fam-service"><span class="name">SolutionHero</span><span class="badge">shared ×6</span></div>
+      <div class="band fam-industry"><span class="name">StickyNav</span><span class="badge">shared ×14</span></div>
+      <div class="band fam-industry"><span class="name">MissionSection</span><span class="badge">shared ×13</span></div>
+      <div class="band fam-industry"><span class="name">ServicesSection ×1–2</span><span class="badge">shared ×14</span></div>
+      <div class="band fam-service"><span class="name">IconGrid</span><span class="badge">shared ×7</span></div>
+      <div class="band fam-industry"><span class="name">ServicesSection ×1–2</span><span class="badge">shared ×14</span></div>
+      <div class="band fam-service"><span class="name">SolutionInsights</span><span class="note">→ links /blogs</span></div>
+      <div class="band fam-industry"><span class="name">FAQSection</span><span class="badge">shared ×14</span></div>
+      <div class="band fam-industry"><span class="name">CTABanner <span class="badge">industry version</span></span></div>
+    </div>
+  </div>
+  <table class="variance-table">
+    <tr><th>Page</th><th>Total ServicesSection blocks</th></tr>
+    <tr><td><code>/steel-procurement</code></td><td>4</td></tr>
+    <tr><td><code>/custom-steel-processing</code></td><td>3</td></tr>
+    <tr><td><code>/infrastructure-industrial-project</code></td><td>3</td></tr>
+    <tr><td><code>/technical-steel-selection</code></td><td>3</td></tr>
+    <tr><td><code>/freight-forwarding</code></td><td>2</td></tr>
+    <tr><td><code>/supply-chain</code></td><td>2</td></tr>
+  </table>
+
+  <h2 class="section-title">Industries <span class="tag">6 identical routes</span> <span class="template-flag">×6</span></h2>
+  <p class="section-sub">construction · automotive · oil-gas · shipbuilding · heavy-engineering · fabricators-oems &mdash; every one of these page.tsx files is a 4-line wrapper: <code style="font-family:var(--font-mono)">&lt;IndustryPageContent slug="…" /&gt;</code>. All the real structure lives in one shared component.</p>
+  <div class="stack-card" style="max-width:340px;">
+    <div class="stack-head"><div class="route">IndustryPageContent.tsx</div><div class="meta">one component, driven by slug + data in constants/industries</div></div>
+    <div class="stack-body">
+      <div class="band fam-industry"><span class="name">IndustryHero</span><span class="badge">shared ×7</span></div>
+      <div class="band fam-industry"><span class="name">StickyNav</span><span class="badge">shared ×14</span></div>
+      <div class="band fam-industry"><span class="name">MissionSection</span><span class="badge">shared ×13</span></div>
+      <div class="band fam-industry"><span class="name">StatsSection</span><span class="badge">shared ×7</span></div>
+      <div class="band fam-industry"><span class="name">HowWeCanHelp</span><span class="badge">shared ×7</span></div>
+      <div class="band fam-industry"><span class="name">BuiltToDeliver</span></div>
+      <div class="band fam-industry"><span class="name">VideoTeaserSection</span></div>
+      <div class="band fam-industry"><span class="name">ServicesSection</span><span class="badge">shared ×14</span></div>
+      <div class="band fam-industry"><span class="name">FAQSection</span><span class="badge">shared ×14</span><span class="note">→ links /contact-us</span></div>
+      <div class="band fam-industry"><span class="name">CTABanner <span class="badge">industry version</span></span></div>
+    </div>
+  </div>
+
+  <h2 class="section-title">Services <span class="tag">2 pages, hand-diverged</span></h2>
+  <p class="section-sub">These borrow pieces from both the Industry kit and the Solution kit, but nobody kept the two pages' order in sync &mdash; and they use two <em>different</em> hero components that happen to sit in the same folder.</p>
+  <div class="side-by-side">
+    <div class="stack-card">
+      <div class="stack-head"><div class="route">/services/port-network</div></div>
+      <div class="stack-body">
+        <div class="band fam-industry"><span class="name">IndustryHero</span><span class="badge">shared ×7</span></div>
+        <div class="band fam-industry"><span class="name">StatsSection</span><span class="badge">shared ×7</span></div>
+        <div class="band fam-industry"><span class="name">StickyNav</span><span class="badge">shared ×14</span></div>
+        <div class="band fam-service"><span class="name">MapSection</span><span class="badge">shared ×2</span></div>
+        <div class="band fam-unique"><span class="name">AlternateCardSection</span><span class="badge">shared ×2</span></div>
+        <div class="band fam-industry"><span class="name">FAQSection</span></div>
+        <div class="band fam-industry"><span class="name">ServicesSection</span></div>
+        <div class="band fam-industry"><span class="name">CTABanner</span><span class="note">last here</span></div>
+      </div>
+    </div>
+    <div class="stack-card">
+      <div class="stack-head"><div class="route">/services/port-services</div></div>
+      <div class="stack-body">
+        <div class="band fam-service"><span class="name">ServiceHero <span class="badge">not SolutionHero</span></span></div>
+        <div class="band fam-service"><span class="name">IconGrid <span class="badge">imported as IconIntro</span></span></div>
+        <div class="band fam-service"><span class="name">MapSection</span><span class="badge">shared ×2</span></div>
+        <div class="band fam-industry"><span class="name">HowWeCanHelp</span><span class="badge">shared ×7</span></div>
+        <div class="band fam-industry"><span class="name">ServicesSection</span></div>
+        <div class="band fam-service"><span class="name">InnovationSection ×3</span></div>
+        <div class="band fam-industry"><span class="name">CTABanner</span><span class="note">before FAQ here</span></div>
+        <div class="band fam-industry"><span class="name">FAQSection</span><span class="note">last here</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-title">Products <span class="tag">2 templates</span></h2>
+  <div class="grid cols-3">
+    <div class="stack-card">
+      <div class="stack-head"><div class="route">/products</div></div>
+      <div class="stack-body">
+        <div class="band fam-unique"><span class="name">Header (inline)</span></div>
+        <div class="band fam-unique"><span class="name">ProductGrid</span><span class="note">→ links /products/[slug]</span></div>
+      </div>
+    </div>
+    <div class="stack-card">
+      <div class="stack-head"><div class="route">/products/[slug]</div></div>
+      <div class="stack-body">
+        <div class="band fam-unique"><span class="name">ProductClient <span class="badge">one black-box wrapper</span></span><span class="note">→ links /products, /contact-us</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-title">Admin <span class="tag">17 pages behind /admin/login</span></h2>
+  <p class="section-sub">Four entities (Blogs, Products, Leadership, Testimonials) all follow the same List → New/Edit shape, reusing one form component per entity. Everything else is a one-off, hand-rolled page &mdash; there is no shared table or list component anywhere in admin.</p>
+
+  <div class="grid cols-3">
+    <div class="stack-card">
+      <div class="stack-head"><div class="route">/admin/login</div><div class="meta">no AdminShell — standalone</div></div>
+      <div class="stack-body">
+        <div class="band fam-unique"><span class="name">Login card (inline, self-contained)</span></div>
+      </div>
+    </div>
+    <div class="stack-card">
+      <div class="stack-head"><div class="route">/admin/dashboard</div></div>
+      <div class="stack-body">
+        <div class="band fam-unique"><span class="name">Banner (inline)</span></div>
+        <div class="band fam-unique"><span class="name">Stat grid (inline, mapped Links)</span></div>
+        <div class="band fam-unique"><span class="name">Quick actions + system status (inline)</span></div>
+      </div>
+    </div>
+    <div class="stack-card">
+      <div class="stack-head"><div class="route">/admin/home-content</div></div>
+      <div class="stack-body">
+        <div class="band fam-unique"><span class="name">One big form (inline)</span></div>
+        <div class="band fam-admin"><span class="name">MediaPicker ×3</span><span class="badge">shared ×5 pages</span></div>
+      </div>
+    </div>
+    <div class="stack-card">
+      <div class="stack-head"><div class="route">/admin/enquiries</div></div>
+      <div class="stack-body"><div class="band fam-unique"><span class="name">Inline table + local icons</span></div></div>
+    </div>
+    <div class="stack-card">
+      <div class="stack-head"><div class="route">/admin/media</div></div>
+      <div class="stack-body"><div class="band fam-unique"><span class="name">Media-library grid (inline)</span><span class="note">source of MediaPicker's data, doesn't use it itself</span></div></div>
+    </div>
+    <div class="stack-card">
+      <div class="stack-head"><div class="route">/admin/tags</div></div>
+      <div class="stack-body"><div class="band fam-unique"><span class="name">Inline tag list + create form</span></div></div>
+    </div>
+  </div>
+
+  <div class="stack-card" style="margin-top:20px; max-width:460px;">
+    <div class="stack-head"><div class="route">List → New / [id] <span class="template-flag">×4 entities</span></div><div class="meta">Blogs · Products · Leadership · Testimonials — same shape</div></div>
+    <div class="stack-body">
+      <div class="band fam-unique"><span class="name">/admin/&lt;entity&gt; — inline table (own markup, own icons)</span></div>
+      <div class="band fam-admin"><span class="name">/admin/&lt;entity&gt;/new → &lt;Entity&gt;Form</span></div>
+      <div class="band fam-admin"><span class="name">/admin/&lt;entity&gt;/[id] → &lt;Entity&gt;Form (with data)</span></div>
+    </div>
+  </div>
+  <table class="entity-table">
+    <tr><th>Entity</th><th>Form component</th><th>Extra sub-components inside the form</th></tr>
+    <tr><td>Blogs</td><td><code>BlogForm</code></td><td>MediaPicker + RichTextEditor</td></tr>
+    <tr><td>Products</td><td><code>ProductForm</code></td><td>— none, plain inputs only</td></tr>
+    <tr><td>Leadership</td><td><code>LeaderForm</code></td><td>MediaPicker (headshot)</td></tr>
+    <tr><td>Testimonials</td><td><code>TestimonialForm</code></td><td>— none, plain inputs only</td></tr>
+  </table>
+
+  <h2 class="section-title">Name collisions worth knowing about</h2>
+  <div class="callout">
+    <p class="c-title">Two components called "CTABanner" are not the same file</p>
+    <p class="c-body"><code>@/components/core/home/CTABanner</code> (Home only) and <code>@/components/common/Industry/CTABanner</code> (all 6 Solutions, all 6 Industries, both Services pages) share a name but are unrelated components. Editing one to fix a Home bug won't touch the other 14 pages, and vice versa.</p>
+  </div>
+  <div class="callout">
+    <p class="c-title">SolutionHero and ServiceHero look related but aren't interchangeable</p>
+    <p class="c-body">All 6 Solutions pages use <code>SolutionHero</code>; <code>/services/port-services</code> uses a separate <code>ServiceHero</code> from the same <code>@/components/common/Service/</code> folder. <code>/services/port-network</code> uses neither — it uses <code>IndustryHero</code> instead.</p>
+  </div>
+
+  <h2 class="section-title">Full shared-component reference</h2>
+  <p class="section-sub">Every component used on more than one page, and exactly where.</p>
+  <div class="xref-table-wrap">
+    <table class="xref-table">
+      <tr><th>Component</th><th>Family</th><th>Used on</th></tr>
+      <tr><td><code>Navbar</code> / <code>Footer</code> / <code>ScrollToTopOnRoute</code></td><td>layout</td><td>all 24 public pages, via <code>(public)/layout.tsx</code></td></tr>
+      <tr><td><code>AdminShell</code></td><td>layout</td><td>all 16 admin pages except <code>/admin/login</code>, via <code>admin/(protected)/layout.tsx</code></td></tr>
+      <tr><td><code>Hero</code></td><td>home</td><td>Home, Sustainability</td></tr>
+      <tr><td><code>GlobalNetwork</code></td><td>home</td><td>Home, About Us</td></tr>
+      <tr><td><code>BeyondBusiness</code></td><td>home</td><td>Home, Sustainability</td></tr>
+      <tr><td><code>HeroSection</code></td><td>unique/shared</td><td>Leadership, Contact Us</td></tr>
+      <tr><td><code>MissionSection</code></td><td>industry</td><td>Sustainability + 6 Solutions + 6 Industries (13 pages)</td></tr>
+      <tr><td><code>StickyNav</code></td><td>industry</td><td>Sustainability + 6 Solutions + 6 Industries + Port Network (14 pages)</td></tr>
+      <tr><td><code>ServicesSection</code></td><td>industry</td><td>6 Solutions + 6 Industries + 2 Services (14 pages)</td></tr>
+      <tr><td><code>FAQSection</code></td><td>industry</td><td>6 Solutions + 6 Industries + 2 Services (14 pages)</td></tr>
+      <tr><td><code>CTABanner</code> (industry version)</td><td>industry</td><td>6 Solutions + 6 Industries + 2 Services (14 pages) — distinct from Home's CTABanner</td></tr>
+      <tr><td><code>IndustryHero</code></td><td>industry</td><td>6 Industries + Port Network (7 pages)</td></tr>
+      <tr><td><code>StatsSection</code></td><td>industry</td><td>6 Industries + Port Network (7 pages)</td></tr>
+      <tr><td><code>HowWeCanHelp</code></td><td>industry</td><td>6 Industries + Port Services (7 pages)</td></tr>
+      <tr><td><code>IconGrid</code></td><td>service</td><td>6 Solutions + Port Services (aliased <code>IconIntro</code>) (7 pages)</td></tr>
+      <tr><td><code>SolutionHero</code></td><td>service</td><td>6 Solutions pages only</td></tr>
+      <tr><td><code>SolutionInsights</code></td><td>service</td><td>6 Solutions pages only</td></tr>
+      <tr><td><code>MapSection</code></td><td>service</td><td>Port Network, Port Services</td></tr>
+      <tr><td><code>AlternateCardSection</code></td><td>unique/shared</td><td>Sustainability, Port Network</td></tr>
+      <tr><td><code>MediaPicker</code></td><td>admin</td><td>Home Content (×3), BlogForm (Blogs new/[id]), LeaderForm (Leadership new/[id]) — 5 pages</td></tr>
+      <tr><td><code>RichTextEditor</code></td><td>admin</td><td>BlogForm only (Blogs new/[id]) — 2 pages</td></tr>
+      <tr><td><code>BlogForm</code> / <code>ProductForm</code> / <code>LeaderForm</code> / <code>TestimonialForm</code></td><td>admin</td><td>each on its own entity's <code>new</code> + <code>[id]</code> pages (2 pages each)</td></tr>
+    </table>
+  </div>
+</div>

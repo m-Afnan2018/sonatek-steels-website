@@ -7,7 +7,9 @@
     "start": "node dist/index.js",
     "seed": "ts-node src/utils/seed.ts",
     "seed:cr-products": "ts-node src/utils/seedCrProducts.ts",
-    "seed:hr-products": "ts-node src/utils/seedHrProducts.ts"
+    "seed:hr-products": "ts-node src/utils/seedHrProducts.ts",
+    "seed:page": "ts-node src/utils/upsertPage.ts",
+    "seed:all": "ts-node src/seed/runSeed.ts"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

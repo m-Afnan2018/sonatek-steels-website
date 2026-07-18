@@ -9,7 +9,7 @@ interface AlternateCardSectionProps {
   title: string;
   description: string;
   image: string;
-  link: string;
+  link?: string;
   linkText?: string;
   isReversed?: boolean;
 }
@@ -45,23 +45,25 @@ export default function AlternateCardSection({ title, description, image, link, 
         >
           <h2 className={styles.title}>{title}</h2>
           <p className={styles.description}>{description}</p>
-          <a href={link} className={styles.btn}>
-            {linkText}
-            <svg 
-              className={styles.icon} 
-              width="20" 
-              height="20" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              stroke="currentColor" 
-              strokeWidth="1.5" 
-              strokeLinecap="round" 
-              strokeLinejoin="round"
-            >
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
+          {link && (
+            <a href={link} className={styles.btn}>
+              {linkText}
+              <svg
+                className={styles.icon}
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          )}
         </motion.div>
       </div>
     </section>

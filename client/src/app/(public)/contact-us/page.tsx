@@ -1,25 +1,31 @@
-import HeroSection from "@/components/common/HeroSection/HeroSection";
+import type { Metadata } from "next";
+import { fetchCmsPage, cmsMetadata, renderCmsBlocks } from "@/lib/cmsPage";
 import ContactForm from "./ContactForm";
 import LocationSection from "./LocationSection";
+import Legacy from "./page.legacy";
 
-export default function ContactUs() {
+// One-line restore: set to false to instantly revert to the original
+// hardcoded page (page.legacy.tsx, untouched). Only the Hero is
+// CMS-editable — ContactForm and LocationSection are functional
+// components (form submission, office locations), not marketing content,
+// so they stay hardcoded and always render below the CMS blocks.
+const CMS_ENABLED = true;
+
+async function getPage() {
+  if (!CMS_ENABLED) return null;
+  return fetchCmsPage("contact-us");
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  return cmsMetadata(await getPage());
+}
+
+export default async function Page() {
+  const page = await getPage();
+  if (!page) return <Legacy />;
   return (
     <main>
-      <HeroSection
-        title="Let&apos;s Talk"
-        description="Our team of experts is always ready to assist you with your needs."
-        bgImage="https://images.unsplash.com/photo-1613993995046-07bce4b0bfed?q=80&w=1170&auto=format"
-        breadcrumb={[
-          {
-            label: "Home",
-            href: "/",
-          },
-          {
-            label: "Contact Us",
-            href: "/contact-us",
-          },
-        ]}
-      />
+      {renderCmsBlocks(page)}
       <ContactForm />
       <LocationSection />
     </main>

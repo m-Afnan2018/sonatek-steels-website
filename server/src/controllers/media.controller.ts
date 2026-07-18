@@ -28,6 +28,25 @@ export async function uploadMedia(req: Request, res: Response) {
     }
 }
 
+export async function uploadMediaBulk(req: Request, res: Response) {
+    try {
+        const files = (req.files as Express.Multer.File[]) ?? [];
+        if (!files.length) return res.status(400).json({ message: 'No files uploaded' });
+        const items = await Media.insertMany(
+            files.map((file) => ({
+                filename:     file.filename,
+                originalName: file.originalname,
+                url:          `/uploads/media/${file.filename}`,
+                mimetype:     file.mimetype,
+                size:         file.size,
+            })),
+        );
+        res.status(201).json({ media: items });
+    } catch {
+        res.status(500).json({ message: 'Server error' });
+    }
+}
+
 export async function deleteMedia(req: Request, res: Response) {
     try {
         const item = await Media.findByIdAndDelete(req.params.id);

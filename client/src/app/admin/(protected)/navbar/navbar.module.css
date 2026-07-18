@@ -1,0 +1,20 @@
+.stickyBar {
+    position: sticky;
+    top: 64px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    background: var(--a-bg);
+    padding: 16px 0;
+    margin: 0 0 8px;
+    border-bottom: 1px solid var(--a-border);
+}
+.stickyActions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}

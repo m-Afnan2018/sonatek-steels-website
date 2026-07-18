@@ -12,6 +12,9 @@ import testimonialRoutes from './routes/testimonial.routes';
 import leaderRoutes from './routes/leader.routes';
 import homeContentRoutes from './routes/homeContent.routes';
 import mediaRoutes from './routes/media.routes';
+import pageRoutes from './routes/page.routes';
+import navbarRoutes from './routes/navbar.routes';
+import footerRoutes from './routes/footer.routes';
 
 dotenv.config();
 
@@ -44,12 +47,23 @@ app.use('/api/testimonials',  testimonialRoutes);
 app.use('/api/leadership',    leaderRoutes);
 app.use('/api/home-content',  homeContentRoutes);
 app.use('/api/media',         mediaRoutes);
+app.use('/api/pages',         pageRoutes);
+app.use('/api/navbar',        navbarRoutes);
+app.use('/api/footer',        footerRoutes);
 
 connectDB()
   .then(() => {
-    app.listen(PORT, () => {
+    const server = app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
       console.log(`API health: http://localhost:${PORT}/api/health`);
+    });
+    server.on('error', (err: NodeJS.ErrnoException) => {
+      if (err.code === 'EADDRINUSE') {
+        console.error(`Port ${PORT} is already in use — stop whatever else is running on it (or set PORT in .env) and try again.`);
+      } else {
+        console.error('Server failed to start:', err);
+      }
+      process.exit(1);
     });
   })
   .catch((err) => {

@@ -39,31 +39,6 @@ const FALLBACK_PRODUCT_SERVICES = [
     },
 ];
 
-// Last three cards — left untouched, custom linking added manually.
-const OTHER_SERVICES = [
-    {
-        title: "Freight Forwarding Services",
-        description:
-            "Seamless freight forwarding solutions combining global reach with on-ground expertise. We optimize your steel dispatches via air, ocean, rail, or road.",
-        image: "https://images.unsplash.com/photo-1699588999949-e25959a59550?q=80",
-        href: "/freight-forwarding",
-    },
-    {
-        title: "Custom Steel Processing",
-        description:
-            "Our state-of-the-art processing facilities provide slitting, shearing, and pickling services to deliver steel in the exact dimensions your project demands.",
-        image: "https://images.unsplash.com/photo-1474674556023-efef886fa147?q=80",
-        href: "/custom-steel-processing",
-    },
-    {
-        title: "Supply Chain Solutions",
-        description:
-            "Leveraging our strategic location in Northern India, we provide reliable distribution and inventory management for corporate clients and OEMs.",
-        image: "https://images.unsplash.com/photo-1713127563314-5163b052cf8b?q=80",
-        href: "/supply-chain",
-    },
-];
-
 interface ServiceCardData {
     title: string;
     description: string;
@@ -184,12 +159,10 @@ export default function Services({ products = [] }: { products?: HomeProduct[] }
             ? products.slice(0, 3).map(toServiceCard)
             : FALLBACK_PRODUCT_SERVICES;
 
-    const allServices = [...productCards, ...OTHER_SERVICES];
-
     return (
         <section className={styles.section} ref={ref}>
             <div className={styles.grid}>
-                {allServices.map((service, i) => (
+                {productCards.map((service, i) => (
                     <ServiceCard
                         key={service.title}
                         service={service}

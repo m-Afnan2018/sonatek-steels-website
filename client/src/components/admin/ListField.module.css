@@ -1,0 +1,95 @@
+.wrap { display: flex; flex-direction: column; gap: 10px; }
+.nestedWrap {
+    margin-top: 4px;
+    padding-left: 14px;
+    border-left: 2px solid var(--a-border-accent);
+}
+.row {
+    position: relative;
+    background: var(--a-bg-input);
+    border: 1px solid var(--a-border);
+    border-radius: 8px;
+    padding: 12px 14px;
+}
+.row.dragging {
+    z-index: 10;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    border-color: var(--a-border-accent);
+}
+.rowHeader {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+.dragHandle {
+    flex-shrink: 0;
+    cursor: grab;
+    color: var(--a-text-muted);
+    font-size: 14px;
+    line-height: 1;
+    padding: 2px 2px;
+    touch-action: none;
+    user-select: none;
+}
+.dragHandle:hover { color: var(--a-accent-light); }
+.dragHandle:active { cursor: grabbing; }
+.collapseBtn {
+    background: none;
+    border: none;
+    color: var(--a-text-muted);
+    cursor: pointer;
+    font-size: 11px;
+    line-height: 1;
+    padding: 2px;
+    width: 16px;
+    flex-shrink: 0;
+}
+.collapseBtn:hover { color: var(--a-accent-light); }
+.rowIndex {
+    flex: 1;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--a-text-muted);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.rowLabel {
+    color: var(--a-text);
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: normal;
+}
+.removeBtn {
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    color: var(--a-text-muted);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    line-height: 1;
+    transition: all 0.15s;
+}
+.removeBtn:hover { background: var(--a-error-bg); color: var(--a-error); }
+.addBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    align-self: flex-start;
+    padding: 7px 14px;
+    border-radius: 6px;
+    background: none;
+    border: 1px dashed var(--a-border);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--a-text-muted);
+    cursor: pointer;
+    transition: all 0.18s;
+    font-family: inherit;
+}
+.addBtn:hover { border-color: var(--a-border-accent); color: var(--a-accent-light); background: var(--a-accent-glow); }
+.empty { font-size: 12.5px; color: var(--a-text-muted); font-style: italic; padding: 4px 0; }

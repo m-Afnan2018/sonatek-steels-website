@@ -3,7 +3,24 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./GlobalNetwork.module.css";
 
-export default function GlobalNetwork({ videoUrl = 'https://www.pexels.com/download/video/8829606' }: { videoUrl?: string }) {
+interface GlobalNetworkProps {
+    videoUrl?: string;
+    label?: string;
+    headline?: string;
+    sub?: string;
+    ctaText?: string;
+    ctaHref?: string;
+}
+
+export default function GlobalNetwork({
+    videoUrl = 'https://www.pexels.com/download/video/8829606',
+    label = 'Our Distribution Network',
+    headline = 'Strong Presence Across\nNorthern India',
+    sub = 'Our extensive network means fewer handovers, faster local delivery, and tailored solutions delivered through a single trusted partner.',
+    ctaText = 'Our Locations',
+    ctaHref = '/contact-us#location',
+}: GlobalNetworkProps) {
+    const headlineLines = headline.split("\n");
     const sectionRef = useRef<HTMLDivElement>(null);
     const videoWrapRef = useRef<HTMLDivElement>(null);
     const videoRef = useRef<HTMLVideoElement>(null);
@@ -132,11 +149,11 @@ export default function GlobalNetwork({ videoUrl = 'https://www.pexels.com/downl
             <div className={styles.inner}>
                 {/* ── Header ── */}
                 <div className={styles.header}>
-                    <p className={styles.label}>Our Distribution Network</p>
+                    <p className={styles.label}>{label}</p>
                     <h2 className={styles.headline}>
-                        Strong Presence Across
-                        <br />
-                        Northern India
+                        {headlineLines.map((line, i) => (
+                            <span key={i}>{line}{i < headlineLines.length - 1 && <br />}</span>
+                        ))}
                     </h2>
                 </div>
 
@@ -224,12 +241,10 @@ export default function GlobalNetwork({ videoUrl = 'https://www.pexels.com/downl
                 {/* ── Footer text ── */}
                 <div className={styles.footer}>
                     <p className={styles.sub}>
-                        Our extensive network means fewer handovers, faster
-                        local delivery, and tailored solutions delivered
-                        through a single trusted partner.
+                        {sub}
                     </p>
-                    <a href="/contact-us#location" className={styles.cta}>
-                        Our Locations
+                    <a href={ctaHref} className={styles.cta}>
+                        {ctaText}
                         <div className={styles.arrowContainer}>
                             <svg
                                 width="18"

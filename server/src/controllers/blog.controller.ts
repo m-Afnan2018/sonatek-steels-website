@@ -14,7 +14,7 @@ function parseBody(body: Record<string, string | undefined>) {
     };
     return {
         title:       body.title?.trim() ?? '',
-        slug:        body.slug?.trim() || slugify(body.title ?? ''),
+        slug:        slugify(body.slug ?? '') || slugify(body.title ?? ''),
         excerpt:     body.excerpt?.trim() ?? '',
         content:     body.content ?? '',
         author:      body.author?.trim() || 'Sonatek Steels',
@@ -98,6 +98,8 @@ export async function createBlog(req: Request, res: Response): Promise<void> {
 
 export async function updateBlog(req: Request, res: Response): Promise<void> {
     const data = parseBody(req.body);
+    const clash = await Blog.findOne({ slug: data.slug, _id: { $ne: req.params.id } });
+    if (clash) { res.status(409).json({ message: `Slug "${data.slug}" is already in use by another post` }); return; }
     const update: Record<string, unknown> = { ...data };
     if (req.file) {
         const old = await Blog.findById(req.params.id).select('coverImage').lean();

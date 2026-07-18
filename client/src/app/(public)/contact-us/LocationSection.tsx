@@ -30,7 +30,9 @@ export default function LocationSection() {
             <div className={styles.infoItem}>
               <h4 className={styles.infoTitle}>Phone</h4>
               <p className={styles.infoText}>
-                <a href="tel:+918447083822">+91 84470 83822</a>
+                Vijay Jain (Owner): <a href="tel:+918447083022">+91 84470 83022</a>
+                <br />
+                Rajesh (Sales, Delhi): <a href="tel:+919015416940">+91 90154 16940</a>
               </p>
             </div>
 

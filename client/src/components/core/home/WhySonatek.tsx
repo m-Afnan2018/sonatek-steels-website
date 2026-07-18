@@ -4,7 +4,21 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import styles from "./WhySonatek.module.css";
 
-export default function WhySonatek() {
+interface WhySonatekProps {
+    label?: string;
+    headline?: string;
+    body?: string;
+    ctaText?: string;
+    ctaHref?: string;
+}
+
+export default function WhySonatek({
+    label = "Why Sonatek Steels?",
+    headline = "Precision. Reliability.",
+    body = "As MOU Dealers of SAIL and leading stockists in Northern India, we provide a comprehensive range of flat steel products tailored to your industrial needs. From OEMs to corporate clients, we deliver quality and excellence in every coil and sheet.",
+    ctaText = "Explore Our Solutions",
+    ctaHref = "/supply-chain",
+}: WhySonatekProps = {}) {
     const [visible, setVisible] = useState(false);
     const ref = useRef<HTMLDivElement>(null);
 
@@ -33,24 +47,21 @@ export default function WhySonatek() {
         <section className={styles.section} ref={ref}>
             <div className={`${styles.inner} ${visible ? styles.visible : ""}`}>
                 {/* Label */}
-                <p className={styles.label}>Why Sonatek Steels?</p>
+                <p className={styles.label}>{label}</p>
 
                 {/* Big headline */}
                 <motion.h2 className={styles.headline} transition={{ duration: 0.4 }} style={{ opacity }}>
-                    Precision. Reliability.
+                    {headline}
                 </motion.h2>
 
                 {/* Body */}
                 <p className={styles.body}>
-                    As MOU Dealers of SAIL and leading stockists in Northern India,
-                    we provide a comprehensive range of flat steel products tailored
-                    to your industrial needs. From OEMs to corporate clients, we
-                    deliver quality and excellence in every coil and sheet.
+                    {body}
                 </p>
 
                 {/* CTA text link */}
-                <a href="/supply-chain" className={styles.cta}>
-                    Explore Our Solutions
+                <a href={ctaHref} className={styles.cta}>
+                    {ctaText}
                     <div className={styles.arrowContainer}>
                         <svg
                             width="18"

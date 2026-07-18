@@ -12,6 +12,8 @@ interface IndustryHeroProps {
   image: string;
   ctaText?: string;
   ctaHref?: string;
+  secondaryCtaText?: string;
+  secondaryCtaHref?: string;
   breadcrumbs?: { label: string; href: string }[];
 }
 
@@ -22,6 +24,8 @@ export default function IndustryHero({
   image,
   ctaText = "Get in Touch",
   ctaHref = "/contact-us",
+  secondaryCtaText,
+  secondaryCtaHref = "/contact-us",
   breadcrumbs = [
     { label: "Home", href: "/" }
   ]
@@ -52,9 +56,16 @@ export default function IndustryHero({
             <h1 className={styles.title}>{title}</h1>
             <p className={styles.description}>{description}</p>
             
-            <Link href={ctaHref} className={styles.cta}>
-              {ctaText}
-            </Link>
+            <div className={styles.ctaRow}>
+              <Link href={ctaHref} className={styles.cta}>
+                {ctaText}
+              </Link>
+              {secondaryCtaText && (
+                <Link href={secondaryCtaHref} className={styles.ctaSecondary}>
+                  {secondaryCtaText}
+                </Link>
+              )}
+            </div>
           </div>
         </div>
         

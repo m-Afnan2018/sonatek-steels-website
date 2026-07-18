@@ -6,10 +6,11 @@ import React, { useEffect, useRef, useState } from "react";
 interface MissionSectionProps {
   label: string;
   title: React.ReactNode;
-  children: React.ReactNode;
+  children?: React.ReactNode;
+  bodyText?: string;
 }
 
-export default function MissionSection({ label, title, children }: MissionSectionProps) {
+export default function MissionSection({ label, title, children, bodyText }: MissionSectionProps) {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -48,7 +49,7 @@ export default function MissionSection({ label, title, children }: MissionSectio
           {title}
         </h2>
         <div className={styles.content}>
-          {children}
+          {bodyText ? <p>{bodyText}</p> : children}
         </div>
       </div>
     </section>

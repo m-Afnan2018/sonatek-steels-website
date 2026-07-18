@@ -11,6 +11,10 @@ interface ServiceHeroProps {
   image: string;
   ctaText?: string;
   ctaHref?: string;
+  secondaryCtaText?: string;
+  secondaryCtaHref?: string;
+  /** Short label for the breadcrumb trail; falls back to `title` (fine for short titles, but a long marketing headline should set this explicitly). */
+  breadcrumbLabel?: string;
 }
 
 export default function ServiceHero({
@@ -18,7 +22,10 @@ export default function ServiceHero({
   description,
   image,
   ctaText = "Read More",
-  ctaHref = "/contact-us"
+  ctaHref = "/contact-us",
+  secondaryCtaText,
+  secondaryCtaHref = "/contact-us",
+  breadcrumbLabel
 }: ServiceHeroProps) {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -46,19 +53,26 @@ export default function ServiceHero({
             <span className={styles.separator}> &gt; </span>
             <Link href="/services/port-services" className={styles.crumb}>Our Services</Link>
             <span className={styles.separator}> &gt; </span>
-            <span className={styles.current}>{title}</span>
+            <span className={styles.current}>{breadcrumbLabel || title}</span>
           </div>
           
           <h1 className={styles.title}>{title}</h1>
           <p className={styles.description}>{description}</p>
           
-          <Link href={ctaHref} className={styles.cta}>
-            {ctaText}
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
-            </svg>
-          </Link>
+          <div className={styles.ctaRow}>
+            <Link href={ctaHref} className={styles.cta}>
+              {ctaText}
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </Link>
+            {secondaryCtaText && (
+              <Link href={secondaryCtaHref} className={styles.ctaSecondary}>
+                {secondaryCtaText}
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </section>

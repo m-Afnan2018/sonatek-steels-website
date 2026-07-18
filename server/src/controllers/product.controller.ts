@@ -1,6 +1,4 @@
 import { Request, Response } from 'express';
-import fs from 'fs';
-import path from 'path';
 import Product from '../models/Product';
 
 function slugify(text: string): string {
@@ -8,20 +6,23 @@ function slugify(text: string): string {
         .replace(/[^\w\s-]/g, '').replace(/[\s_-]+/g, '-').replace(/^-+|-+$/g, '');
 }
 
-function parseBody(body: Record<string, string | undefined>) {
-    const safe = <T>(key: string, fallback: T): T => {
-        try { return body[key] ? JSON.parse(body[key]!) : fallback; } catch { return fallback; }
-    };
+// Body arrives as plain JSON now (image is a Media Library URL string, not
+// an uploaded file), so nested fields are already real arrays/objects —
+// no JSON.parse round-trip needed.
+function parseBody(body: Record<string, unknown>) {
+    const overview = (body.overview && typeof body.overview === 'object') ? body.overview as Record<string, unknown> : {};
+    const specs = (body.specs && typeof body.specs === 'object') ? body.specs as Record<string, unknown> : { composition: [], mechanical: [], tolerance: [] };
     return {
-        name:           body.name?.trim() ?? '',
-        slug:           body.slug?.trim() || slugify(body.name ?? ''),
-        brand:          body.brand?.trim() ?? '',
-        whatsappNumber: body.whatsappNumber?.trim() ?? '',
-        isActive:       body.isActive !== 'false',
-        thicknesses:    safe<string[]>('thicknesses', []),
-        widths:         safe<string[]>('widths', []),
-        overview:       safe('overview', {}),
-        specs:          safe('specs', { composition: [], mechanical: [], tolerance: [] }),
+        name:           String(body.name ?? '').trim(),
+        slug:           slugify(String(body.slug ?? '')) || slugify(String(body.name ?? '')),
+        brand:          String(body.brand ?? '').trim(),
+        whatsappNumber: String(body.whatsappNumber ?? '').trim(),
+        isActive:       body.isActive !== false,
+        image:          typeof body.image === 'string' ? body.image.trim() : undefined,
+        thicknesses:    Array.isArray(body.thicknesses) ? body.thicknesses : [],
+        widths:         Array.isArray(body.widths) ? body.widths : [],
+        overview,
+        specs,
     };
 }
 
@@ -66,36 +67,23 @@ export async function getAllProducts(req: Request, res: Response): Promise<void>
 export async function createProduct(req: Request, res: Response): Promise<void> {
     const data = parseBody(req.body);
     if (!data.name) { res.status(400).json({ message: 'Product name is required' }); return; }
-    const image = req.file ? `/uploads/products/${req.file.filename}` : undefined;
     let { slug } = data;
     if (await Product.findOne({ slug })) slug = `${slug}-${Date.now()}`;
-    const product = await Product.create({ ...data, slug, image });
+    const product = await Product.create({ ...data, slug });
     res.status(201).json({ product });
 }
 
 export async function updateProduct(req: Request, res: Response): Promise<void> {
     const data = parseBody(req.body);
-    const update: Record<string, unknown> = { ...data };
-    if (req.file) {
-        const old = await Product.findById(req.params.id).select('image').lean();
-        if (old?.image) {
-            const p = path.join(__dirname, '../../', old.image);
-            if (fs.existsSync(p)) fs.unlinkSync(p);
-        }
-        update.image = `/uploads/products/${req.file.filename}`;
-    }
-    const product = await Product.findByIdAndUpdate(req.params.id, update, { new: true });
+    const clash = await Product.findOne({ slug: data.slug, _id: { $ne: req.params.id } });
+    if (clash) { res.status(409).json({ message: `Slug "${data.slug}" is already in use by another product` }); return; }
+    const product = await Product.findByIdAndUpdate(req.params.id, data, { new: true });
     if (!product) { res.status(404).json({ message: 'Product not found' }); return; }
     res.json({ product });
 }
 
 export async function deleteProduct(req: Request, res: Response): Promise<void> {
-    const product = await Product.findById(req.params.id).select('image');
+    const product = await Product.findByIdAndDelete(req.params.id);
     if (!product) { res.status(404).json({ message: 'Product not found' }); return; }
-    if (product.image) {
-        const p = path.join(__dirname, '../../', product.image);
-        if (fs.existsSync(p)) fs.unlinkSync(p);
-    }
-    await Product.findByIdAndDelete(req.params.id);
     res.json({ message: 'Product deleted' });
 }

@@ -113,6 +113,65 @@
   display: none;
 }
 
+.phoneWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.phoneDropdown {
+  position: absolute;
+  top: calc(100% + 14px);
+  right: 0;
+  min-width: 220px;
+  background: rgba(25, 25, 25, 0.85);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 1000;
+}
+
+.phoneDropdownItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.phoneDropdownItem:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.phoneRole {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.phoneName {
+  font-family: var(--font-pilat-wide);
+  font-size: 13px;
+  font-weight: 600;
+  color: white;
+}
+
+.phoneNumber {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
 /* Mega Menu */
 .megaMenu {
   position: fixed;
@@ -151,8 +210,8 @@
 }
 
 .megaMenuColumns {
+  /* grid-template-columns is set inline per menu item, based on its section count */
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
   gap: 48px;
 }
 
@@ -194,8 +253,11 @@
 }
 
 .megaMenuRight {
-  width: 420px;
-  flex-shrink: 0;
+  /* proportional share of the mega menu instead of a fixed width, so it
+     scales with whatever space the left column grid doesn't take up */
+  flex: 0 1 32%;
+  min-width: 320px;
+  max-width: 460px;
   overflow: hidden;
 }
 
@@ -368,12 +430,13 @@
 
   .megaMenuColumns {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
     gap: 32px;
   }
 
   .megaMenuRight {
+    flex-basis: 100%;
     width: 100%;
+    max-width: 100%;
   }
 
   .megaMenuTitle {

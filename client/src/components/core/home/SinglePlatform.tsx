@@ -3,7 +3,22 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./SinglePlatform.module.css";
 
-export default function SinglePlatform() {
+interface SinglePlatformProps {
+    label?: string;
+    headline?: string;
+    sub?: string;
+    ctaText?: string;
+    ctaHref?: string;
+}
+
+export default function SinglePlatform({
+    label = "A Single Platform for Trade",
+    headline = "One Partner. Total\nSteel Solutions.",
+    sub = "Whatever your project, whatever your requirement, we have the complete range of flat steel products and custom processing solutions. That's the Sonatek Steels advantage.",
+    ctaText = "Find Your Solution",
+    ctaHref = "/supply-chain",
+}: SinglePlatformProps = {}) {
+    const headlineLines = headline.split("\n");
     const [visible, setVisible] = useState(false);
     const ref = useRef<HTMLDivElement>(null);
 
@@ -25,25 +40,23 @@ export default function SinglePlatform() {
         <section className={styles.section} ref={ref}>
             <div className={`${styles.inner} ${visible ? styles.visible : ""}`}>
                 {/* Label */}
-                <p className={styles.label}>A Single Platform for Trade</p>
+                <p className={styles.label}>{label}</p>
 
                 {/* Headline */}
                 <h2 className={styles.headline}>
-                    One Partner. Total
-                    <br />
-                    Steel Solutions.
+                    {headlineLines.map((line, i) => (
+                        <span key={i}>{line}{i < headlineLines.length - 1 && <br />}</span>
+                    ))}
                 </h2>
 
                 {/* Subtext */}
                 <p className={styles.sub}>
-                    Whatever your project, whatever your requirement, we have
-                    the complete range of flat steel products and custom
-                    processing solutions. That&apos;s the Sonatek Steels advantage.
+                    {sub}
                 </p>
 
                 {/* Outlined pill CTA */}
-                <a href="/supply-chain" className={styles.ctaBtn}>
-                    Find Your Solution
+                <a href={ctaHref} className={styles.ctaBtn}>
+                    {ctaText}
                     <div className={styles.arrowContainer}>
                         <svg
                             width="18"

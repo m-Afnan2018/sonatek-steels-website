@@ -5,6 +5,7 @@ import styles from './Navbar.module.css';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import Logo from '@/assets/images/logo.png';
+import { DEFAULT_NAVBAR, type NavbarSettings } from '@/lib/navbarSchema';
 
 
 // SVG Icons
@@ -114,69 +115,6 @@ const FALLBACK_PRODUCTS = [
   { label: 'Chequered Plates', href: '/products/chequered-plates' },
 ];
 
-const NAV_DATA = [
-  {
-    label: 'Solutions',
-    href: '#',
-    hasMegaMenu: true,
-    featured: [
-      {
-        img: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80',
-        title: 'Certified sourcing and technical support.',
-        cta: 'Learn More',
-        href: '/steel-procurement',
-      },
-    ],
-    sections: [
-      {
-        title: 'FLAT STEEL PRODUCTS',
-        links: FALLBACK_PRODUCTS,
-      },
-      {
-        title: 'INDUSTRIAL SEGMENTS',
-        links: [
-          { label: 'Construction', href: '/industries/construction' },
-          { label: 'Automotive', href: '/industries/automotive' },
-          { label: 'Oil & Gas', href: '/industries/oil-gas' },
-          { label: 'Shipbuilding', href: '/industries/shipbuilding' },
-          { label: 'Heavy Engineering', href: '/industries/heavy-engineering' },
-          { label: 'Fabricators & OEMs', href: '/industries/fabricators-oems' },
-        ],
-      },
-      {
-        title: 'SOLUTIONS',
-        links: [
-          { label: 'Steel Procurement', href: '/steel-procurement' },
-          { label: 'Custom Steel Processing', href: '/custom-steel-processing' },
-          { label: 'Infrastructure & Industrial Project', href: '/infrastructure-industrial-project' },
-          { label: 'Technical Steel Selection', href: '/technical-steel-selection' },
-          { label: 'Supply Chain Solutions', href: '/supply-chain' },
-          { label: 'Freight Forwarding Services', href: '/freight-forwarding' },
-        ],
-      },
-      {
-        title: 'SERVICES',
-        links: [
-          { label: 'Custom Processing', href: '/custom-steel-processing' },
-          { label: 'Distribution Support', href: '/supply-chain' },
-          { label: 'Technical Assistance', href: '/technical-steel-selection' },
-        ],
-      },
-    ],
-  },
-  {
-    label: "Products",
-    href: "/products"
-  },
-  {
-    label: "About Us",
-    href: "/about-us"
-  },
-  { label: 'Sustainability', href: '/sustainability' },
-  { label: 'Blogs', href: '/blogs' },
-  { label: 'Contact', href: '/contact-us' },
-];
-
 export default function Navbar() {
   const pathname = usePathname();
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
@@ -184,6 +122,27 @@ export default function Navbar() {
   const [activeMobileMenu, setActiveMobileMenu] = useState<string | null>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [navProducts, setNavProducts] = useState<{ label: string; href: string }[]>(FALLBACK_PRODUCTS);
+  const [settings, setSettings] = useState<NavbarSettings>(DEFAULT_NAVBAR);
+  const [hoveredLink, setHoveredLink] = useState<{ label: string; href: string; previewImg?: string; previewCta?: string } | null>(null);
+  const [isPhoneMenuOpen, setIsPhoneMenuOpen] = useState(false);
+  const phoneWrapperRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const fetchNavbarSettings = async () => {
+      try {
+        const res = await fetch(`${API_URL}/api/navbar`);
+        if (res.ok) {
+          const data = await res.json();
+          if (data.navbar && Array.isArray(data.navbar.navItems) && data.navbar.navItems.length > 0) {
+            setSettings(data.navbar);
+          }
+        }
+      } catch (err) {
+        console.error('Failed to load navbar settings:', err);
+      }
+    };
+    fetchNavbarSettings();
+  }, []);
 
   useEffect(() => {
     const fetchNavbarProducts = async () => {
@@ -207,8 +166,8 @@ export default function Navbar() {
   }, []);
 
   const getNavData = () => {
-    return NAV_DATA.map(item => {
-      if (item.label === 'Solutions' && item.sections) {
+    return settings.navItems.map(item => {
+      if (item.hasMegaMenu && item.sections) {
         return {
           ...item,
           sections: item.sections.map(section => {
@@ -264,20 +223,51 @@ export default function Navbar() {
     }
   }, [isMobileMenuOpen]);
 
+  // Reset the hover preview whenever the open mega menu changes
+  useEffect(() => {
+    setHoveredLink(null);
+  }, [activeMenu]);
+
+  const FeaturedCard = ({ feature }: { feature: { img?: string; title: string; cta?: string; href: string } }) => (
+    <div className={styles.featuredCard}>
+      <img src={feature.img} alt={feature.title} className={styles.featuredImg} />
+      <div className={styles.featuredContent}>
+        <h4>{feature.title}</h4>
+        <a href={feature.href} className={styles.caseStudyLink}>
+          {feature.cta || 'Learn More'} <ArrowRightIcon />
+        </a>
+      </div>
+    </div>
+  );
+
   const MegaMenuContent = ({ item }: { item: any }) => {
     if (!item || !item.sections) return null;
+
+    const columnCount = isMobile
+      ? Math.min(item.sections.length, 2)
+      : item.sections.length;
+
+    const hasDefaultFeatured = item.featured && item.featured.length > 0;
+    const showHoverPreview = !isMobile && !!hoveredLink?.previewImg;
 
     return (
       <div className={styles.megaMenuContainer}>
         <div className={styles.megaMenuLeft}>
           <h2 className={styles.megaMenuTitle}>{item.label}</h2>
-          <div className={styles.megaMenuColumns} style={{ overflowX: 'auto' }}>
+          <div
+            className={styles.megaMenuColumns}
+            style={{ gridTemplateColumns: `repeat(${Math.max(columnCount, 1)}, 1fr)`, overflowX: 'auto' }}
+          >
             {item.sections.map((section: any) => (
               <div key={section.title} className={styles.column}>
                 <h3>{section.title}</h3>
                 <ul>
                   {section.links.map((link: any) => (
-                    <li key={link.label}>
+                    <li
+                      key={link.label}
+                      onMouseEnter={() => setHoveredLink(link)}
+                      onMouseLeave={() => setHoveredLink(null)}
+                    >
                       <a href={link.href}>{link.label}</a>
                     </li>
                   ))}
@@ -286,25 +276,42 @@ export default function Navbar() {
             ))}
           </div>
         </div>
-        {item.featured && item.featured.length > 0 && (
+        {(hasDefaultFeatured || showHoverPreview) && (
           <div className={styles.megaMenuRight}>
-            <div className={styles.featuredSlider}>
-              {item.featured.map((feature: any, index: number) => (
-                <div key={index} className={styles.featuredCard}>
-                  <img
-                    src={feature.img}
-                    alt={feature.title}
-                    className={styles.featuredImg}
+            <AnimatePresence mode="wait">
+              {showHoverPreview ? (
+                <motion.div
+                  key={hoveredLink!.href}
+                  className={styles.featuredSlider}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.15 }}
+                >
+                  <FeaturedCard
+                    feature={{
+                      img: hoveredLink!.previewImg,
+                      title: hoveredLink!.label,
+                      cta: hoveredLink!.previewCta,
+                      href: hoveredLink!.href,
+                    }}
                   />
-                  <div className={styles.featuredContent}>
-                    <h4>{feature.title}</h4>
-                    <a href={feature.href} className={styles.caseStudyLink}>
-                      {feature.cta} <ArrowRightIcon />
-                    </a>
-                  </div>
-                </div>
-              ))}
-            </div>
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="default"
+                  className={styles.featuredSlider}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.15 }}
+                >
+                  {item.featured.map((feature: any, index: number) => (
+                    <FeaturedCard key={index} feature={feature} />
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         )}
       </div>
@@ -315,6 +322,9 @@ export default function Navbar() {
       if (navRef.current && !navRef.current.contains(event.target as Node)) {
         setActiveMenu(null);
         setIsMobileMenuOpen(false);
+      }
+      if (phoneWrapperRef.current && !phoneWrapperRef.current.contains(event.target as Node)) {
+        setIsPhoneMenuOpen(false);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
@@ -331,7 +341,7 @@ export default function Navbar() {
           {/* Logo */}
           <div className={styles.logo}>
             <a href="/">
-              <Image src={Logo} alt="Sonatek Steels Logo" width={160} height={40} priority />
+              <Image src={settings.logoUrl || Logo} alt="Sonatek Steels Logo" width={160} height={40} priority />
             </a>
           </div>
 
@@ -366,7 +376,7 @@ export default function Navbar() {
           {/* Right Icons */}
           <div className={styles.navIcons}>
             <a
-              href="https://www.google.com/maps/search/?api=1&query=Sonatek+Steels+X-7+Loha+Mandi+Naraina+New+Delhi+110028"
+              href={settings.mapUrl}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.iconBtn}
@@ -374,13 +384,35 @@ export default function Navbar() {
             >
               <MapPinIcon />
             </a>
-            <a
-              href="tel:+918447083822"
-              className={styles.iconBtn}
-              aria-label="Call us"
-            >
-              <PhoneIcon />
-            </a>
+            <div className={styles.phoneWrapper} ref={phoneWrapperRef}>
+              <button
+                type="button"
+                className={styles.iconBtn}
+                aria-label="Call us"
+                onClick={() => setIsPhoneMenuOpen((v) => !v)}
+              >
+                <PhoneIcon />
+              </button>
+              <AnimatePresence>
+                {isPhoneMenuOpen && (
+                  <motion.div
+                    className={styles.phoneDropdown}
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.15 }}
+                  >
+                    {settings.phones.map((c) => (
+                      <a key={c.tel} href={`tel:+${c.tel}`} className={styles.phoneDropdownItem}>
+                        <span className={styles.phoneRole}>{c.role}</span>
+                        <span className={styles.phoneName}>{c.name}</span>
+                        <span className={styles.phoneNumber}>{c.phone}</span>
+                      </a>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
             {/* Mobile menu toggle */}
             <button
               className={styles.mobileToggle}

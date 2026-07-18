@@ -1,0 +1,717 @@
+<title>Sonatek Steels — Layout Builder</title>
+<style>
+  :root {
+    --bg: #EDF0F3;
+    --canvas-bg: #F5F7F9;
+    --surface: #FFFFFF;
+    --ink: #1A2029;
+    --ink-muted: #57626D;
+    --ink-subtle: #858F98;
+    --line: #C9D1D9;
+    --line-strong: #9BA7B3;
+    --accent: #B6572A;
+    --accent-soft: #F1DECC;
+    --warn: #A8352F;
+    --warn-soft: #F3DCD9;
+    --good: #2F7A45;
+    --fam-home: #C97A45;      --fam-home-tint: #F5E7DA;
+    --fam-industry: #3E5C76;  --fam-industry-tint: #E3E9EF;
+    --fam-service: #2F7A63;   --fam-service-tint: #E1EEEA;
+    --fam-admin: #6E7A4E;     --fam-admin-tint: #E9EBDF;
+    --fam-misc: #6B7480;      --fam-misc-tint: #EBEDEF;
+    --font-display: ui-sans-serif, "Segoe UI Semibold", "Segoe UI", -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --font-body: ui-sans-serif, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    --font-mono: ui-monospace, "SFMono-Regular", "Cascadia Code", Consolas, "Liberation Mono", Menlo, monospace;
+    --radius: 6px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #10141A; --canvas-bg: #151A21; --surface: #1C232C; --ink: #E7EBEF; --ink-muted: #97A3AF; --ink-subtle: #6B7684;
+      --line: #313A44; --line-strong: #4A5560; --accent: #E28C50; --accent-soft: #3B2A1C;
+      --warn: #E1655D; --warn-soft: #3B2321; --good: #5FA98D;
+      --fam-home: #E28C50; --fam-home-tint: #362A20;
+      --fam-industry: #7C93AC; --fam-industry-tint: #1E2530;
+      --fam-service: #5FA98D; --fam-service-tint: #17251F;
+      --fam-admin: #A3AE84; --fam-admin-tint: #22251C;
+      --fam-misc: #929BA5; --fam-misc-tint: #1E232A;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #10141A; --canvas-bg: #151A21; --surface: #1C232C; --ink: #E7EBEF; --ink-muted: #97A3AF; --ink-subtle: #6B7684;
+    --line: #313A44; --line-strong: #4A5560; --accent: #E28C50; --accent-soft: #3B2A1C;
+    --warn: #E1655D; --warn-soft: #3B2321; --good: #5FA98D;
+    --fam-home: #E28C50; --fam-home-tint: #362A20;
+    --fam-industry: #7C93AC; --fam-industry-tint: #1E2530;
+    --fam-service: #5FA98D; --fam-service-tint: #17251F;
+    --fam-admin: #A3AE84; --fam-admin-tint: #22251C;
+    --fam-misc: #929BA5; --fam-misc-tint: #1E232A;
+  }
+  :root[data-theme="light"] {
+    --bg: #EDF0F3; --canvas-bg: #F5F7F9; --surface: #FFFFFF; --ink: #1A2029; --ink-muted: #57626D; --ink-subtle: #858F98;
+    --line: #C9D1D9; --line-strong: #9BA7B3; --accent: #B6572A; --accent-soft: #F1DECC;
+    --warn: #A8352F; --warn-soft: #F3DCD9; --good: #2F7A45;
+    --fam-home: #C97A45; --fam-home-tint: #F5E7DA;
+    --fam-industry: #3E5C76; --fam-industry-tint: #E3E9EF;
+    --fam-service: #2F7A63; --fam-service-tint: #E1EEEA;
+    --fam-admin: #6E7A4E; --fam-admin-tint: #E9EBDF;
+    --fam-misc: #6B7480; --fam-misc-tint: #EBEDEF;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100%; }
+  body {
+    background: var(--bg); color: var(--ink); font-family: var(--font-body);
+    height: 100vh; display: flex; flex-direction: column; overflow: hidden;
+  }
+  button { font-family: inherit; cursor: pointer; }
+  input { font-family: inherit; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+  /* ── Header ───────────────────────────────────────────────── */
+  .topbar {
+    flex: none; display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+    padding: 12px 20px; border-bottom: 1px solid var(--line); background: var(--surface);
+  }
+  .brand { font-family: var(--font-display); font-weight: 700; font-size: 14px; letter-spacing: -0.01em; white-space: nowrap; }
+  .brand span { color: var(--accent); }
+  .field { display: flex; flex-direction: column; gap: 2px; }
+  .field label { font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-subtle); font-weight: 700; }
+  .field input {
+    font-size: 12.5px; padding: 6px 9px; border: 1px solid var(--line); border-radius: 4px;
+    background: var(--canvas-bg); color: var(--ink); min-width: 190px; font-family: var(--font-mono);
+  }
+  .type-toggle { display: flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+  .type-toggle button {
+    border: none; background: var(--surface); color: var(--ink-muted); font-size: 11.5px; font-weight: 600;
+    padding: 7px 14px; transition: background 0.12s, color 0.12s;
+  }
+  .type-toggle button.active { background: var(--accent); color: #fff; }
+  .topbar-spacer { flex: 1; }
+  .templates-wrap { display: flex; align-items: center; gap: 8px; }
+  .templates-wrap label { font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-subtle); font-weight: 700; }
+  select#templatePicker {
+    font-size: 12px; padding: 6px 9px; border: 1px solid var(--line); border-radius: 4px; background: var(--canvas-bg); color: var(--ink);
+  }
+  .btn {
+    border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink); border-radius: 4px;
+    padding: 7px 13px; font-size: 12px; font-weight: 600; white-space: nowrap;
+  }
+  .btn:hover { background: var(--canvas-bg); }
+  .btn.danger { color: var(--warn); border-color: var(--warn); }
+  .btn.danger:hover { background: var(--warn-soft); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn.primary:hover { filter: brightness(1.06); }
+
+  /* ── Workspace ────────────────────────────────────────────── */
+  .workspace { flex: 1; min-height: 0; display: flex; }
+
+  .palette {
+    width: 260px; flex: none; border-right: 1px solid var(--line); background: var(--surface);
+    display: flex; flex-direction: column; min-height: 0;
+  }
+  .palette-search { padding: 12px 14px 8px; flex: none; }
+  .palette-search input { width: 100%; padding: 7px 10px; font-size: 12.5px; border: 1px solid var(--line); border-radius: 4px; background: var(--canvas-bg); color: var(--ink); }
+  .palette-legend { display: flex; flex-wrap: wrap; gap: 6px 10px; padding: 0 14px 10px; flex: none; }
+  .palette-legend .li { display: flex; align-items: center; gap: 5px; font-size: 10px; color: var(--ink-muted); }
+  .palette-legend .dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+  .palette-scroll { flex: 1; overflow-y: auto; padding: 4px 14px 20px; }
+  .fam-group { margin-bottom: 16px; }
+  .fam-group h3 {
+    font-family: var(--font-display); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em;
+    color: var(--ink-subtle); margin: 0 0 8px; padding-top: 8px; border-top: 1px solid var(--line);
+  }
+  .fam-group:first-child h3 { border-top: none; padding-top: 0; }
+  .chip {
+    display: flex; align-items: center; gap: 7px; padding: 7px 9px; margin-bottom: 6px; border-radius: 4px;
+    font-size: 12px; font-weight: 600; cursor: grab; user-select: none; border: 1px solid transparent;
+    transition: transform 0.08s ease, box-shadow 0.08s ease;
+  }
+  .chip:active { cursor: grabbing; }
+  .chip:hover { transform: translateX(2px); box-shadow: 0 1px 4px rgba(0,0,0,0.12); }
+  .chip .plus { margin-left: auto; font-size: 13px; color: var(--ink-subtle); opacity: 0; }
+  .chip:hover .plus { opacity: 1; }
+  .chip.fam-home { background: var(--fam-home-tint); color: var(--fam-home); }
+  .chip.fam-industry { background: var(--fam-industry-tint); color: var(--fam-industry); }
+  .chip.fam-service { background: var(--fam-service-tint); color: var(--fam-service); }
+  .chip.fam-admin { background: var(--fam-admin-tint); color: var(--fam-admin); }
+  .chip.fam-misc { background: var(--fam-misc-tint); color: var(--fam-misc); border-style: dashed; border-color: currentColor; }
+  .chip.hidden { display: none; }
+
+  /* ── Canvas ───────────────────────────────────────────────── */
+  .canvas-wrap { flex: 1; min-width: 0; display: flex; flex-direction: column; background: var(--canvas-bg); }
+  .canvas-scroll { flex: 1; overflow-y: auto; padding: 24px; display: flex; justify-content: center; }
+  .canvas-inner { width: 100%; max-width: 480px; }
+
+  .chrome-band {
+    background: var(--line-strong); color: var(--surface); font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+    text-align: center; padding: 9px; letter-spacing: 0.04em;
+  }
+  .chrome-band.top { border-radius: 8px 8px 0 0; }
+  .chrome-band.bottom { border-radius: 0 0 8px 8px; }
+
+  ol.canvas {
+    list-style: none; margin: 0; padding: 4px; min-height: 90px;
+    background: var(--surface); border-left: 1px solid var(--line); border-right: 1px solid var(--line);
+    display: flex; flex-direction: column; gap: 5px;
+    transition: background 0.12s;
+  }
+  ol.canvas.drag-over { background: var(--accent-soft); }
+  ol.canvas.empty::after {
+    content: "Drag a component here, or click one on the left";
+    display: block; text-align: center; padding: 30px 10px; color: var(--ink-subtle); font-size: 12.5px; font-style: italic;
+  }
+
+  .canvas-item {
+    display: flex; align-items: center; gap: 8px; padding: 9px 10px; border-radius: 5px; font-size: 12.5px; font-weight: 600;
+    border: 1px solid rgba(0,0,0,0.05); cursor: grab;
+  }
+  .canvas-item.dragging { opacity: 0.35; }
+  .canvas-item .handle { color: currentColor; opacity: 0.45; font-size: 13px; flex: none; }
+  .canvas-item .idx { font-family: var(--font-mono); font-size: 10px; opacity: 0.55; flex: none; width: 16px; }
+  .canvas-item .cname { flex: 1; }
+  .canvas-item .actions { display: flex; gap: 2px; flex: none; }
+  .canvas-item .actions button {
+    border: none; background: transparent; color: currentColor; opacity: 0.55; font-size: 12px; padding: 3px 5px; border-radius: 3px; line-height: 1;
+  }
+  .canvas-item .actions button:hover { opacity: 1; background: rgba(0,0,0,0.08); }
+  .canvas-item.fam-home { background: var(--fam-home-tint); color: var(--fam-home); }
+  .canvas-item.fam-industry { background: var(--fam-industry-tint); color: var(--fam-industry); }
+  .canvas-item.fam-service { background: var(--fam-service-tint); color: var(--fam-service); }
+  .canvas-item.fam-admin { background: var(--fam-admin-tint); color: var(--fam-admin); }
+  .canvas-item.fam-misc { background: var(--fam-misc-tint); color: var(--fam-misc); }
+
+  .canvas-footer-hint { text-align: center; font-size: 11px; color: var(--ink-subtle); padding: 12px 24px 20px; }
+
+  /* ── Export panel ─────────────────────────────────────────── */
+  .export-panel {
+    width: 300px; flex: none; border-left: 1px solid var(--line); background: var(--surface);
+    display: flex; flex-direction: column; min-height: 0;
+  }
+  .export-head { padding: 14px 16px 10px; flex: none; border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; }
+  .export-head h2 { font-family: var(--font-display); font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; margin: 0; }
+  .export-scroll { flex: 1; overflow-y: auto; padding: 14px 16px; }
+  pre#exportCode {
+    font-family: var(--font-mono); font-size: 11.5px; line-height: 1.6; white-space: pre-wrap; word-break: break-word;
+    background: var(--canvas-bg); border: 1px solid var(--line); border-radius: 5px; padding: 12px; margin: 0 0 12px; color: var(--ink);
+  }
+  pre#exportCode .chrome-line { color: var(--ink-subtle); font-style: italic; }
+  .copy-row { display: flex; gap: 8px; margin-bottom: 22px; }
+  .copy-row .btn { flex: 1; }
+
+  .saves-block h3 { font-family: var(--font-display); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink-subtle); margin: 0 0 8px; }
+  .save-row { display: flex; gap: 6px; margin-bottom: 10px; }
+  .save-row input { flex: 1; padding: 6px 9px; font-size: 12px; border: 1px solid var(--line); border-radius: 4px; background: var(--canvas-bg); color: var(--ink); }
+  ul#savedList { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 5px; }
+  ul#savedList li {
+    display: flex; align-items: center; gap: 6px; padding: 7px 9px; border: 1px solid var(--line); border-radius: 4px; font-size: 12px;
+  }
+  ul#savedList li .sname { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; cursor: pointer; }
+  ul#savedList li .sname:hover { text-decoration: underline; }
+  ul#savedList li button { border: none; background: transparent; color: var(--ink-subtle); font-size: 12px; padding: 2px 5px; }
+  ul#savedList li button:hover { color: var(--warn); }
+  .empty-saves { font-size: 11.5px; color: var(--ink-subtle); font-style: italic; }
+  .toast {
+    position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%) translateY(8px); opacity: 0;
+    background: var(--ink); color: var(--canvas-bg); font-size: 12.5px; font-weight: 600; padding: 9px 16px; border-radius: 999px;
+    pointer-events: none; transition: opacity 0.15s ease, transform 0.15s ease; z-index: 50;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  @media (max-width: 900px) {
+    .workspace { flex-direction: column; overflow-y: auto; }
+    .palette, .export-panel { width: auto; border: none; border-bottom: 1px solid var(--line); }
+    .palette-scroll { max-height: 220px; }
+  }
+</style>
+
+<div class="topbar">
+  <div class="brand">Sonatek Steels <span>/ Layout Builder</span></div>
+  <div class="field">
+    <label for="pageNameInput">Page / route</label>
+    <input id="pageNameInput" type="text" placeholder="/new-page-name" />
+  </div>
+  <div class="type-toggle" role="group" aria-label="Page type">
+    <button id="typePublic" class="active">Public</button>
+    <button id="typeAdmin">Admin</button>
+  </div>
+  <div class="topbar-spacer"></div>
+  <div class="templates-wrap">
+    <label for="templatePicker">Start from</label>
+    <select id="templatePicker"></select>
+  </div>
+  <button class="btn danger" id="clearBtn">Clear</button>
+</div>
+
+<div class="workspace">
+  <aside class="palette">
+    <div class="palette-search"><input id="paletteSearch" type="text" placeholder="Search components…" /></div>
+    <div class="palette-legend">
+      <span class="li"><span class="dot" style="background:var(--fam-home)"></span>Home</span>
+      <span class="li"><span class="dot" style="background:var(--fam-industry)"></span>Industry/Solutions</span>
+      <span class="li"><span class="dot" style="background:var(--fam-service)"></span>Service</span>
+      <span class="li"><span class="dot" style="background:var(--fam-admin)"></span>Admin</span>
+      <span class="li"><span class="dot" style="background:var(--fam-misc)"></span>One-off</span>
+    </div>
+    <div class="palette-scroll" id="paletteScroll"></div>
+  </aside>
+
+  <main class="canvas-wrap">
+    <div class="canvas-scroll">
+      <div class="canvas-inner">
+        <div class="chrome-band top" id="chromeTop">Navbar</div>
+        <ol class="canvas" id="canvas"></ol>
+        <div class="chrome-band bottom" id="chromeBottom">Footer</div>
+        <p class="canvas-footer-hint">Drag rows to reorder, or use the ↑ ↓ buttons. Click a component on the left to append it to the end.</p>
+      </div>
+    </div>
+  </main>
+
+  <aside class="export-panel">
+    <div class="export-head"><h2>Export</h2></div>
+    <div class="export-scroll">
+      <pre id="exportCode"></pre>
+      <div class="copy-row"><button class="btn primary" id="copyBtn">Copy code</button></div>
+      <div class="saves-block">
+        <h3>Saved layouts</h3>
+        <div class="save-row">
+          <input id="saveNameInput" type="text" placeholder="Name this layout…" />
+          <button class="btn" id="saveBtn">Save</button>
+        </div>
+        <ul id="savedList"></ul>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function () {
+  var LIB = [
+    { name: 'Hero', family: 'home' },
+    { name: 'WhySonatek', family: 'home' },
+    { name: 'Impact', family: 'home' },
+    { name: 'SinglePlatform', family: 'home' },
+    { name: 'Services (home)', family: 'home' },
+    { name: 'GlobalNetwork', family: 'home' },
+    { name: 'BeyondBusiness', family: 'home' },
+    { name: 'LatestNews', family: 'home' },
+    { name: 'Testimonials', family: 'home' },
+    { name: 'CTABanner (home)', family: 'home' },
+
+    { name: 'IndustryHero', family: 'industry' },
+    { name: 'StickyNav', family: 'industry' },
+    { name: 'MissionSection', family: 'industry' },
+    { name: 'StatsSection', family: 'industry' },
+    { name: 'HowWeCanHelp', family: 'industry' },
+    { name: 'BuiltToDeliver', family: 'industry' },
+    { name: 'VideoTeaserSection', family: 'industry' },
+    { name: 'ServicesSection', family: 'industry' },
+    { name: 'FAQSection', family: 'industry' },
+    { name: 'CTABanner (industry)', family: 'industry' },
+
+    { name: 'SolutionHero', family: 'service' },
+    { name: 'ServiceHero', family: 'service' },
+    { name: 'IconGrid', family: 'service' },
+    { name: 'SolutionInsights', family: 'service' },
+    { name: 'MapSection', family: 'service' },
+    { name: 'InnovationSection', family: 'service' },
+    { name: 'AlternateCardSection', family: 'service' },
+
+    { name: 'HeroSection', family: 'misc' },
+    { name: 'ContactForm', family: 'misc' },
+    { name: 'LocationSection', family: 'misc' },
+    { name: 'AccordionItem', family: 'misc' },
+    { name: 'FocusAreasSection', family: 'misc' },
+    { name: 'SustainabilityPartners', family: 'misc' },
+    { name: 'KeyDocuments', family: 'misc' },
+    { name: 'RelatedDocuments', family: 'misc' },
+    { name: 'SustainabilityFaqs', family: 'misc' },
+    { name: 'CtaSection', family: 'misc' },
+    { name: 'FeaturedNewsCard', family: 'misc' },
+    { name: 'NewsCard', family: 'misc' },
+    { name: 'FloatingTagsDynamic', family: 'misc' },
+    { name: 'ProductGrid', family: 'misc' },
+    { name: 'ProductClient', family: 'misc' },
+
+    { name: 'MediaPicker', family: 'admin' },
+    { name: 'RichTextEditor', family: 'admin' },
+    { name: 'BlogForm', family: 'admin' },
+    { name: 'ProductForm', family: 'admin' },
+    { name: 'LeaderForm', family: 'admin' },
+    { name: 'TestimonialForm', family: 'admin' },
+    { name: 'Admin list table', family: 'admin' },
+    { name: 'Stat grid', family: 'admin' }
+  ];
+  var FAM_LABEL = { home: 'Home', industry: 'Industry / Solutions', service: 'Service', misc: 'One-off / misc', admin: 'Admin' };
+  var FAM_ORDER = ['home', 'industry', 'service', 'misc', 'admin'];
+
+  var TEMPLATES = {
+    blank: { label: 'Blank', type: 'public', items: [] },
+    home: { label: 'Home (/)', type: 'public', items: ['Hero', 'WhySonatek', 'Impact', 'SinglePlatform', 'Services (home)', 'GlobalNetwork', 'BeyondBusiness', 'LatestNews', 'Testimonials', 'CTABanner (home)'] },
+    solutions: { label: 'Solutions template', type: 'public', items: ['SolutionHero', 'StickyNav', 'MissionSection', 'ServicesSection', 'IconGrid', 'ServicesSection', 'SolutionInsights', 'FAQSection', 'CTABanner (industry)'] },
+    industries: { label: 'Industries template', type: 'public', items: ['IndustryHero', 'StickyNav', 'MissionSection', 'StatsSection', 'HowWeCanHelp', 'BuiltToDeliver', 'VideoTeaserSection', 'ServicesSection', 'FAQSection', 'CTABanner (industry)'] },
+    sustainability: { label: 'Sustainability', type: 'public', items: ['Hero', 'StickyNav', 'MissionSection', 'BeyondBusiness', 'FocusAreasSection', 'AlternateCardSection', 'SustainabilityPartners', 'KeyDocuments', 'RelatedDocuments', 'SustainabilityFaqs', 'CtaSection'] },
+    contact: { label: 'Contact Us', type: 'public', items: ['HeroSection', 'ContactForm', 'LocationSection'] },
+    portNetwork: { label: 'Port Network', type: 'public', items: ['IndustryHero', 'StatsSection', 'StickyNav', 'MapSection', 'AlternateCardSection', 'FAQSection', 'ServicesSection', 'CTABanner (industry)'] },
+    portServices: { label: 'Port Services', type: 'public', items: ['ServiceHero', 'IconGrid', 'MapSection', 'HowWeCanHelp', 'ServicesSection', 'InnovationSection', 'CTABanner (industry)', 'FAQSection'] },
+    blogs: { label: 'Blogs listing', type: 'public', items: ['FeaturedNewsCard', 'NewsCard', 'FeaturedNewsCard', 'NewsCard', 'FloatingTagsDynamic'] },
+    adminForm: { label: 'Admin: Blog form', type: 'admin', items: ['MediaPicker', 'RichTextEditor'] },
+    adminDash: { label: 'Admin: Dashboard', type: 'admin', items: ['Stat grid'] }
+  };
+
+  var LIB_BY_NAME = {};
+  LIB.forEach(function (c) { LIB_BY_NAME[c.name] = c; });
+
+  var state = { type: 'public', items: [], pageName: '' };
+  var uidCounter = 1;
+  var draggingUid = null;
+
+  var canvasEl = document.getElementById('canvas');
+  var chromeTop = document.getElementById('chromeTop');
+  var chromeBottom = document.getElementById('chromeBottom');
+  var exportCode = document.getElementById('exportCode');
+  var savedListEl = document.getElementById('savedList');
+  var toastEl = document.getElementById('toast');
+
+  var DRAFT_KEY = 'sonatek-layout-builder-draft';
+  var SAVES_KEY = 'sonatek-layout-builder-saves';
+
+  function uid() { return 'i' + (uidCounter++); }
+
+  function showToast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    setTimeout(function () { toastEl.classList.remove('show'); }, 1400);
+  }
+
+  /* ── Palette ────────────────────────────────────────────── */
+  function renderPalette(filter) {
+    var scroll = document.getElementById('paletteScroll');
+    scroll.innerHTML = '';
+    var f = (filter || '').trim().toLowerCase();
+    FAM_ORDER.forEach(function (fam) {
+      var items = LIB.filter(function (c) { return c.family === fam; });
+      var group = document.createElement('div');
+      group.className = 'fam-group';
+      var h3 = document.createElement('h3');
+      h3.textContent = FAM_LABEL[fam];
+      group.appendChild(h3);
+      var anyVisible = false;
+      items.forEach(function (c) {
+        var match = !f || c.name.toLowerCase().indexOf(f) !== -1;
+        if (match) anyVisible = true;
+        var chip = document.createElement('div');
+        chip.className = 'chip fam-' + fam + (match ? '' : ' hidden');
+        chip.draggable = true;
+        chip.tabIndex = 0;
+        chip.setAttribute('role', 'button');
+        chip.setAttribute('aria-label', 'Add ' + c.name);
+        chip.innerHTML = '<span class="cname">' + c.name + '</span><span class="plus">+ add</span>';
+        chip.addEventListener('dragstart', function (e) {
+          e.dataTransfer.setData('application/json', JSON.stringify({ kind: 'new', name: c.name }));
+          e.dataTransfer.effectAllowed = 'copy';
+        });
+        chip.addEventListener('click', function () { addItem(c.name); });
+        chip.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); addItem(c.name); }
+        });
+        group.appendChild(chip);
+      });
+      if (anyVisible) scroll.appendChild(group);
+    });
+  }
+
+  /* ── Canvas state ops ─────────────────────────────────────── */
+  function addItem(name, atIndex) {
+    var lib = LIB_BY_NAME[name] || { name: name, family: 'misc' };
+    var item = { uid: uid(), name: lib.name, family: lib.family };
+    if (atIndex === undefined || atIndex === null || atIndex > state.items.length) {
+      state.items.push(item);
+    } else {
+      state.items.splice(atIndex, 0, item);
+    }
+    persistDraft();
+    renderCanvas();
+  }
+  function removeItem(itemUid) {
+    state.items = state.items.filter(function (it) { return it.uid !== itemUid; });
+    persistDraft(); renderCanvas();
+  }
+  function duplicateItem(itemUid) {
+    var idx = state.items.findIndex(function (it) { return it.uid === itemUid; });
+    if (idx === -1) return;
+    var src = state.items[idx];
+    state.items.splice(idx + 1, 0, { uid: uid(), name: src.name, family: src.family });
+    persistDraft(); renderCanvas();
+  }
+  function moveItem(itemUid, dir) {
+    var idx = state.items.findIndex(function (it) { return it.uid === itemUid; });
+    var newIdx = idx + dir;
+    if (idx === -1 || newIdx < 0 || newIdx >= state.items.length) return;
+    var tmp = state.items[idx];
+    state.items[idx] = state.items[newIdx];
+    state.items[newIdx] = tmp;
+    persistDraft(); renderCanvas();
+  }
+  function reorderByDrag(itemUid, beforeUid) {
+    var idx = state.items.findIndex(function (it) { return it.uid === itemUid; });
+    if (idx === -1) return;
+    var moving = state.items.splice(idx, 1)[0];
+    if (beforeUid === null) {
+      state.items.push(moving);
+    } else {
+      var targetIdx = state.items.findIndex(function (it) { return it.uid === beforeUid; });
+      state.items.splice(targetIdx === -1 ? state.items.length : targetIdx, 0, moving);
+    }
+    persistDraft(); renderCanvas();
+  }
+
+  function getDragAfterUid(container, y) {
+    var els = Array.prototype.slice.call(container.querySelectorAll('.canvas-item:not(.dragging)'));
+    var closest = { offset: -Infinity, uid: null };
+    els.forEach(function (el) {
+      var box = el.getBoundingClientRect();
+      var offset = y - box.top - box.height / 2;
+      if (offset < 0 && offset > closest.offset) closest = { offset: offset, uid: el.dataset.uid };
+    });
+    return closest.uid;
+  }
+
+  /* ── Render canvas ────────────────────────────────────────── */
+  function renderCanvas() {
+    canvasEl.innerHTML = '';
+    canvasEl.classList.toggle('empty', state.items.length === 0);
+    state.items.forEach(function (item, i) {
+      var li = document.createElement('li');
+      li.className = 'canvas-item fam-' + item.family;
+      li.draggable = true;
+      li.dataset.uid = item.uid;
+      li.innerHTML =
+        '<span class="handle">⠿</span>' +
+        '<span class="idx">' + (i + 1) + '</span>' +
+        '<span class="cname">' + item.name + '</span>' +
+        '<span class="actions">' +
+          '<button data-act="up" title="Move up">↑</button>' +
+          '<button data-act="down" title="Move down">↓</button>' +
+          '<button data-act="dup" title="Duplicate">⧉</button>' +
+          '<button data-act="rm" title="Remove">×</button>' +
+        '</span>';
+      li.addEventListener('dragstart', function (e) {
+        draggingUid = item.uid;
+        li.classList.add('dragging');
+        e.dataTransfer.setData('application/json', JSON.stringify({ kind: 'move', uid: item.uid }));
+        e.dataTransfer.effectAllowed = 'move';
+      });
+      li.addEventListener('dragend', function () {
+        draggingUid = null;
+        li.classList.remove('dragging');
+      });
+      li.querySelector('[data-act="up"]').addEventListener('click', function () { moveItem(item.uid, -1); });
+      li.querySelector('[data-act="down"]').addEventListener('click', function () { moveItem(item.uid, 1); });
+      li.querySelector('[data-act="dup"]').addEventListener('click', function () { duplicateItem(item.uid); });
+      li.querySelector('[data-act="rm"]').addEventListener('click', function () { removeItem(item.uid); });
+      canvasEl.appendChild(li);
+    });
+    renderExport();
+  }
+
+  canvasEl.addEventListener('dragover', function (e) { e.preventDefault(); canvasEl.classList.add('drag-over'); });
+  canvasEl.addEventListener('dragleave', function (e) {
+    if (e.target === canvasEl) canvasEl.classList.remove('drag-over');
+  });
+  canvasEl.addEventListener('drop', function (e) {
+    e.preventDefault();
+    canvasEl.classList.remove('drag-over');
+    var raw = e.dataTransfer.getData('application/json');
+    if (!raw) return;
+    var data = JSON.parse(raw);
+    var beforeUid = getDragAfterUid(canvasEl, e.clientY);
+    if (data.kind === 'new') {
+      var beforeIdx = beforeUid ? state.items.findIndex(function (it) { return it.uid === beforeUid; }) : state.items.length;
+      addItem(data.name, beforeIdx);
+    } else if (data.kind === 'move') {
+      reorderByDrag(data.uid, beforeUid);
+    }
+  });
+
+  /* ── Export ───────────────────────────────────────────────── */
+  function renderExport() {
+    var topChrome = state.type === 'admin' ? 'AdminShell (sidebar)' : 'Navbar';
+    var bottomChrome = state.type === 'admin' ? '/AdminShell' : 'Footer';
+    var lines = [];
+    lines.push('<span class="chrome-line">// ' + (state.pageName || (state.type === 'admin' ? '/admin/…' : '/…')) + '</span>');
+    lines.push('<span class="chrome-line">&lt;' + topChrome + ' /&gt;</span>');
+    state.items.forEach(function (it) { lines.push('&lt;' + escapeHtml(it.name) + ' /&gt;'); });
+    lines.push('<span class="chrome-line">&lt;' + bottomChrome + ' /&gt;</span>');
+    exportCode.innerHTML = lines.join('\n');
+  }
+  function escapeHtml(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+  function plainExportText() {
+    var topChrome = state.type === 'admin' ? 'AdminShell (sidebar)' : 'Navbar';
+    var bottomChrome = state.type === 'admin' ? '/AdminShell' : 'Footer';
+    var lines = [];
+    lines.push('// ' + (state.pageName || (state.type === 'admin' ? '/admin/…' : '/…')));
+    lines.push('<' + topChrome + ' />');
+    state.items.forEach(function (it) { lines.push('<' + it.name + ' />'); });
+    lines.push('<' + bottomChrome + ' />');
+    return lines.join('\n');
+  }
+
+  document.getElementById('copyBtn').addEventListener('click', function () {
+    var text = plainExportText();
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { showToast('Copied to clipboard'); })
+        .catch(function () { showToast('Copy failed — select the text manually'); });
+    } else {
+      showToast('Clipboard unavailable — select the text manually');
+    }
+  });
+
+  /* ── Page type toggle ─────────────────────────────────────── */
+  function setType(type) {
+    state.type = type;
+    document.getElementById('typePublic').classList.toggle('active', type === 'public');
+    document.getElementById('typeAdmin').classList.toggle('active', type === 'admin');
+    chromeTop.textContent = type === 'admin' ? 'AdminShell — sidebar (top)' : 'Navbar';
+    chromeBottom.textContent = type === 'admin' ? 'AdminShell — sidebar (bottom)' : 'Footer';
+    persistDraft();
+    renderExport();
+  }
+  document.getElementById('typePublic').addEventListener('click', function () { setType('public'); });
+  document.getElementById('typeAdmin').addEventListener('click', function () { setType('admin'); });
+
+  /* ── Page name ────────────────────────────────────────────── */
+  var pageNameInput = document.getElementById('pageNameInput');
+  pageNameInput.addEventListener('input', function () {
+    state.pageName = pageNameInput.value;
+    persistDraft();
+    renderExport();
+  });
+
+  /* ── Templates ────────────────────────────────────────────── */
+  var templatePicker = document.getElementById('templatePicker');
+  Object.keys(TEMPLATES).forEach(function (key) {
+    var opt = document.createElement('option');
+    opt.value = key;
+    opt.textContent = TEMPLATES[key].label;
+    templatePicker.appendChild(opt);
+  });
+  templatePicker.value = '';
+  templatePicker.insertBefore(new Option('Load a template…', ''), templatePicker.firstChild);
+  templatePicker.value = '';
+  templatePicker.addEventListener('change', function () {
+    var key = templatePicker.value;
+    if (!key) return;
+    var tpl = TEMPLATES[key];
+    state.items = tpl.items.map(function (name) {
+      var lib = LIB_BY_NAME[name] || { name: name, family: 'misc' };
+      return { uid: uid(), name: lib.name, family: lib.family };
+    });
+    setType(tpl.type);
+    persistDraft();
+    renderCanvas();
+    templatePicker.value = '';
+  });
+
+  document.getElementById('clearBtn').addEventListener('click', function () {
+    state.items = [];
+    persistDraft();
+    renderCanvas();
+  });
+
+  /* ── Palette search ───────────────────────────────────────── */
+  document.getElementById('paletteSearch').addEventListener('input', function (e) {
+    renderPalette(e.target.value);
+  });
+
+  /* ── Persistence: draft ───────────────────────────────────── */
+  function persistDraft() {
+    try {
+      localStorage.setItem(DRAFT_KEY, JSON.stringify({ type: state.type, pageName: state.pageName, items: state.items }));
+    } catch (e) { /* storage unavailable — builder still works, just won't persist */ }
+  }
+  function loadDraft() {
+    try {
+      var raw = localStorage.getItem(DRAFT_KEY);
+      if (!raw) return false;
+      var d = JSON.parse(raw);
+      state.type = d.type || 'public';
+      state.pageName = d.pageName || '';
+      state.items = (d.items || []).map(function (it) {
+        return { uid: uid(), name: it.name, family: it.family || (LIB_BY_NAME[it.name] || {}).family || 'misc' };
+      });
+      return true;
+    } catch (e) { return false; }
+  }
+
+  /* ── Persistence: named saves ─────────────────────────────── */
+  function getSaves() {
+    try { return JSON.parse(localStorage.getItem(SAVES_KEY) || '[]'); } catch (e) { return []; }
+  }
+  function setSaves(list) {
+    try { localStorage.setItem(SAVES_KEY, JSON.stringify(list)); } catch (e) { /* ignore */ }
+  }
+  function renderSavedList() {
+    var saves = getSaves();
+    savedListEl.innerHTML = '';
+    if (saves.length === 0) {
+      var p = document.createElement('p');
+      p.className = 'empty-saves';
+      p.textContent = 'No saved layouts yet.';
+      savedListEl.appendChild(p);
+      return;
+    }
+    saves.forEach(function (s) {
+      var li = document.createElement('li');
+      var span = document.createElement('span');
+      span.className = 'sname';
+      span.textContent = s.name;
+      span.title = 'Load "' + s.name + '"';
+      span.addEventListener('click', function () {
+        state.type = s.type;
+        state.pageName = s.pageName || '';
+        state.items = s.items.map(function (it) {
+          return { uid: uid(), name: it.name, family: it.family };
+        });
+        pageNameInput.value = state.pageName;
+        setType(state.type);
+        renderCanvas();
+        showToast('Loaded "' + s.name + '"');
+      });
+      var del = document.createElement('button');
+      del.textContent = '×';
+      del.title = 'Delete';
+      del.addEventListener('click', function () {
+        setSaves(getSaves().filter(function (x) { return x.name !== s.name; }));
+        renderSavedList();
+      });
+      li.appendChild(span);
+      li.appendChild(del);
+      savedListEl.appendChild(li);
+    });
+  }
+  document.getElementById('saveBtn').addEventListener('click', function () {
+    var nameInput = document.getElementById('saveNameInput');
+    var name = nameInput.value.trim();
+    if (!name) { showToast('Give this layout a name first'); return; }
+    var saves = getSaves().filter(function (s) { return s.name !== name; });
+    saves.push({ name: name, type: state.type, pageName: state.pageName, items: state.items.map(function (it) { return { name: it.name, family: it.family }; }) });
+    setSaves(saves);
+    nameInput.value = '';
+    renderSavedList();
+    showToast('Saved "' + name + '"');
+  });
+
+  /* ── Init ─────────────────────────────────────────────────── */
+  renderPalette('');
+  if (loadDraft()) {
+    pageNameInput.value = state.pageName;
+    setType(state.type);
+  } else {
+    setType('public');
+  }
+  renderCanvas();
+  renderSavedList();
+})();
+</script>

@@ -30,14 +30,28 @@ const FALLBACK_NEWS = [
     },
 ];
 
-export default function LatestNews() {
+export interface NewsItem {
+    date: string;
+    title: string;
+    href: string;
+    image?: string;
+    isLogo?: boolean;
+}
+
+interface LatestNewsProps {
+    items?: NewsItem[];
+}
+
+export default function LatestNews({ items }: LatestNewsProps = {}) {
     const [visible, setVisible] = useState(false);
     const [activeIndex, setActiveIndex] = useState(0);
     const [isMobile, setIsMobile] = useState(false);
     const ref = useRef<HTMLDivElement>(null);
-    const [news, setNews] = useState<any[]>(FALLBACK_NEWS);
+    const [news, setNews] = useState<any[]>(items && items.length > 0 ? items : FALLBACK_NEWS);
 
     useEffect(() => {
+        // Explicit content (e.g. from the page builder) wins — don't clobber it with a live fetch.
+        if (items && items.length > 0) return;
         const fetchNews = async () => {
             try {
                 const res = await fetch(`${API_URL}/api/blogs?limit=3`);
@@ -59,7 +73,7 @@ export default function LatestNews() {
             }
         };
         fetchNews();
-    }, []);
+    }, [items]);
 
     // Touch gesture tracking for mobile swipe-to-scroll
     const touchStartX = useRef<number | null>(null);

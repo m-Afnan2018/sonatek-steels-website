@@ -1,83 +1,80 @@
-import Hero from "@/components/core/home/Hero";
-import Impact from "@/components/core/home/Impact";
-import SinglePlatform from "@/components/core/home/SinglePlatform";
-import GlobalNetwork from "@/components/core/home/GlobalNetwork";
-import BeyondBusiness from "@/components/core/home/BeyondBusiness";
-import LatestNews from "@/components/core/home/LatestNews";
-import CTABanner from "@/components/core/home/CTABanner";
-import Testimonials from "@/components/core/home/Testimonials";
-import Services from "@/components/core/home/Services";
-import WhySonatek from "@/components/core/home/WhySonatek";
+import type { Metadata } from "next";
+import { getBlockDefinition } from "@/lib/blockRegistry";
+import { resolveBlockData } from "@/lib/cmsPage";
+import BlockErrorBoundary from "@/components/admin/BlockErrorBoundary";
+import LegacyHome from "./page.legacy";
+
+// One-line restore: set this back to false to instantly revert "/" to the
+// original hardcoded Home (page.legacy.tsx, untouched). The page also falls
+// back to Legacy automatically if no published "home" Page doc exists yet.
+const BUILDER_HOME_ENABLED = true;
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
-async function fetchHomeContent() {
+interface CmsBlock {
+    _id?: string;
+    blockType: string;
+    order: number;
+    anchorId?: string;
+    data: Record<string, any>;
+}
+interface CmsPage {
+    title: string;
+    seo?: { metaTitle?: string; metaDescription?: string; ogImage?: string };
+    blocks: CmsBlock[];
+}
+
+async function fetchHomePage(): Promise<CmsPage | null> {
+    if (!BUILDER_HOME_ENABLED) return null;
     try {
-        const res = await fetch(`${API_URL}/api/home-content`, { next: { revalidate: 60 } });
+        const res = await fetch(`${API_URL}/api/pages/home`, { next: { revalidate: 60 } });
         if (!res.ok) return null;
-        return (await res.json()).homeContent ?? null;
+        return (await res.json()).page ?? null;
     } catch { return null; }
 }
 
-async function fetchTestimonials() {
-    try {
-        const res = await fetch(`${API_URL}/api/testimonials`, { next: { revalidate: 60 } });
-        if (!res.ok) return [];
-        return (await res.json()).testimonials ?? [];
-    } catch { return []; }
-}
-
-async function fetchProducts() {
-    try {
-        const res = await fetch(`${API_URL}/api/products`, { next: { revalidate: 60 } });
-        if (!res.ok) return [];
-        return (await res.json()).products ?? [];
-    } catch { return []; }
+export async function generateMetadata(): Promise<Metadata> {
+    const page = await fetchHomePage();
+    if (!page?.seo) return {};
+    const { metaTitle, metaDescription, ogImage } = page.seo;
+    return {
+        ...(metaTitle ? { title: metaTitle } : {}),
+        ...(metaDescription ? { description: metaDescription } : {}),
+        ...(ogImage ? { openGraph: { images: [ogImage] } } : {}),
+    };
 }
 
 export default async function Home() {
-    const [hc, testimonials, products] = await Promise.all([
-        fetchHomeContent(),
-        fetchTestimonials(),
-        fetchProducts(),
-    ]);
+    const page = await fetchHomePage();
+    if (!page) return <LegacyHome />;
+
+    const sorted = [...page.blocks].sort((a, b) => a.order - b.order);
+    const beyondIdx = sorted.findIndex((b) => b.blockType === 'beyond-business');
 
     return (
         <main>
-            <Hero
-                title={hc?.hero?.title}
-                description={hc?.hero?.description}
-                paragraph={hc?.hero?.paragraph}
-                btnText={hc?.hero?.btnText}
-                btnLink={hc?.hero?.btnLink}
-                videoUrl={hc?.hero?.videoUrl}
-                posterUrl={hc?.hero?.posterUrl}
-            />
-            <WhySonatek />
-            <Impact
-                label={hc?.impact?.label}
-                headline={hc?.impact?.headline}
-                sub={hc?.impact?.sub}
-                stats={hc?.impact?.stats}
-            />
-            <SinglePlatform />
-            <Services products={products} />
-            <GlobalNetwork />
-            {/* Sticky-pin wrapper: BeyondBusiness sticks at top while bottom sections scroll over it */}
-            <div style={{ position: "sticky", top: 0, zIndex: 1 }}>
-                <BeyondBusiness />
-            </div>
-            <div style={{ position: "relative", zIndex: 2 }}>
-                <LatestNews />
-                <Testimonials items={testimonials} />
-                <CTABanner
-                    headline={hc?.cta?.headline}
-                    sub={hc?.cta?.sub}
-                    btnText={hc?.cta?.btnText}
-                    btnLink={hc?.cta?.btnLink}
-                    bgImage={hc?.cta?.bgImage}
-                />
-            </div>
+            {sorted.map((block, i) => {
+                const def = getBlockDefinition(block.blockType);
+                if (!def) return null; // unknown blockType: skip, don't crash the page
+                const Cmp = def.component;
+                const rendered = (
+                    <BlockErrorBoundary key={block._id ?? i} label={def.label}>
+                        <div id={block.anchorId}>
+                            <Cmp {...resolveBlockData(block.data, def.fields)} />
+                        </div>
+                    </BlockErrorBoundary>
+                );
+                // Preserve Home's sticky-scroll effect: BeyondBusiness pins while
+                // everything after it scrolls over — a page-specific visual choice,
+                // not a generic rule for every future CMS page.
+                if (i === beyondIdx) {
+                    return <div key={`sticky-${i}`} style={{ position: "sticky", top: 0, zIndex: 1 }}>{rendered}</div>;
+                }
+                if (beyondIdx !== -1 && i > beyondIdx) {
+                    return <div key={`over-${i}`} style={{ position: "relative", zIndex: 2 }}>{rendered}</div>;
+                }
+                return rendered;
+            })}
         </main>
     );
 }

@@ -1,7 +1,7 @@
 .hero {
   position: relative;
   height: 80vh;
-  min-height: 600px;
+  min-height: 650px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -131,6 +131,34 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
+.ctaRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.ctaSecondary {
+  display: inline-flex;
+  align-items: center;
+  color: #fff;
+  padding: 16px 32px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  font-family: var(--font-pilat-wide), sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+}
+
+.ctaSecondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
+}
+
 @media (max-width: 768px) {
   .hero {
     height: 70vh;
@@ -143,6 +171,10 @@
   .content {
     text-align: center;
     margin: 0 auto;
+  }
+
+  .ctaRow {
+    justify-content: center;
   }
 
   .breadcrumb {

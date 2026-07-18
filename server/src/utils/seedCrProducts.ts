@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
-dotenv.config();
+import path from 'path';
+dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 
 import { connectDB } from '../config/db';
 import Product from '../models/Product';
@@ -53,7 +54,7 @@ const products = [
       packaging: 'Coils are edge-protected, strapped with steel or PP straps, wrapped in waterproof VCI paper, and mounted on wooden coil skids or pallets to prevent corrosion and edge damage during transit.',
     },
     specs: { composition: COMPOSITION, mechanical: MECHANICAL, tolerance: TOLERANCE },
-    whatsappNumber: '918447083822',
+    whatsappNumber: '919015416940',
     isActive: true,
   },
   {
@@ -79,7 +80,7 @@ const products = [
       packaging: 'Sheets are stacked and bundled with edge protectors, strapped securely, and wrapped in waterproof packaging on pallets for safe handling and damage-free delivery.',
     },
     specs: { composition: COMPOSITION, mechanical: MECHANICAL, tolerance: TOLERANCE },
-    whatsappNumber: '918447083822',
+    whatsappNumber: '919015416940',
     isActive: true,
   },
 ];

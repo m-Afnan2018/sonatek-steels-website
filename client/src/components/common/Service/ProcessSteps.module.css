@@ -1,0 +1,128 @@
+.section {
+  padding: 100px 0;
+  background-color: #f6f6f8;
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 72px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.header.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.label {
+  font-family: var(--font-pilat-wide), sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #2b3990;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-family: var(--font-pilat-wide), sans-serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.subtitle {
+  font-family: var(--font-pilat-narrow), sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #666;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.steps {
+  display: grid;
+  gap: 32px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stepsVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+}
+
+.stepNumberRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.stepNumber {
+  font-family: var(--font-pilat-wide), sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: #2b3990;
+  flex-shrink: 0;
+}
+
+.stepLine {
+  height: 1px;
+  width: 100%;
+  background: repeating-linear-gradient(90deg, #c7cae6 0, #c7cae6 6px, transparent 6px, transparent 12px);
+}
+
+.stepTitle {
+  font-family: var(--font-pilat-wide), sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.stepDescription {
+  font-family: var(--font-pilat-narrow), sans-serif;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: #555;
+}
+
+@media (max-width: 1024px) {
+  .steps {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .stepLine {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .steps {
+    grid-template-columns: 1fr !important;
+    gap: 40px;
+  }
+
+  .container {
+    padding: 0 20px;
+  }
+}

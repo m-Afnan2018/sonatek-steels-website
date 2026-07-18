@@ -21,6 +21,13 @@ export interface BlogData {
 function slugify(s: string) {
     return s.toLowerCase().trim().replace(/[^\w\s-]/g, '').replace(/[\s_-]+/g, '-').replace(/^-+|-+$/g, '');
 }
+// Keystroke-safe variant for the Slug field's own input: normalizes case and
+// disallowed characters without trimming or collapsing hyphens, so a
+// trailing "-" or space mid-typing isn't erased before the user can
+// continue composing a multi-word slug. Full slugify() runs on blur/submit.
+function slugifyLive(s: string) {
+    return s.toLowerCase().replace(/[^\w\s-]/g, '').replace(/[\s_]+/g, '-');
+}
 
 export default function BlogForm({ initial }: { initial?: Partial<BlogData> }) {
     const router = useRouter();
@@ -39,6 +46,11 @@ export default function BlogForm({ initial }: { initial?: Partial<BlogData> }) {
         tags:        initial?.tags        ?? [],
     });
 
+    // Tracks whether the user has manually edited the Slug field directly —
+    // until then, it auto-derives from the Title field on every keystroke.
+    // (Using `!!form.slug` instead would freeze auto-generation after the
+    // first typed character, since slug becomes non-empty immediately.)
+    const [slugTouched, setSlugTouched] = useState(isEdit || !!initial?.slug);
     const [allTags, setAllTags] = useState<Tag[]>([]);
     const [saving, setSaving]   = useState(false);
     const [error, setError]     = useState('');
@@ -58,11 +70,12 @@ export default function BlogForm({ initial }: { initial?: Partial<BlogData> }) {
     async function handleSubmit() {
         if (!form.title.trim()) { setError('Title is required.'); return; }
         if (!form.slug.trim())  { setError('Slug is required.');  return; }
+        const slug = slugify(form.slug);
         setSaving(true); setError(''); setSuccess('');
         try {
             const fd = new FormData();
             fd.append('title',       form.title);
-            fd.append('slug',        form.slug);
+            fd.append('slug',        slug);
             fd.append('excerpt',     form.excerpt);
             fd.append('content',     form.content);
             fd.append('author',      form.author);
@@ -101,13 +114,21 @@ export default function BlogForm({ initial }: { initial?: Partial<BlogData> }) {
                     <div className={`${styles.formGroup} ${styles.fullSpan}`}>
                         <label className={styles.formLabel}>Title *</label>
                         <input className={styles.formInput} value={form.title}
-                            onChange={(e) => setForm((p) => ({ ...p, title: e.target.value, slug: p.slug || slugify(e.target.value) }))}
+                            onChange={(e) => {
+                                const title = e.target.value;
+                                setForm((p) => ({ ...p, title, slug: slugTouched ? p.slug : slugify(title) }));
+                            }}
                             placeholder="e.g. Basics of Steel Grades" />
                     </div>
                     <div className={styles.formGroup}>
                         <label className={styles.formLabel}>Slug *</label>
                         <input className={styles.formInput} value={form.slug}
-                            onChange={(e) => setForm((p) => ({ ...p, slug: slugify(e.target.value) }))}
+                            onChange={(e) => {
+                                setSlugTouched(true);
+                                const val = e.target.value;
+                                setForm((p) => ({ ...p, slug: slugifyLive(val) }));
+                            }}
+                            onBlur={() => setForm((p) => ({ ...p, slug: slugify(p.slug) }))}
                             placeholder="auto-generated" />
                         <span className={styles.formHint}>URL: /blogs/{form.slug || '…'}</span>
                     </div>
